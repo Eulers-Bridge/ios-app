@@ -1,0 +1,492 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		04FD417C19062ECD00AF17DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FD417B19062ECD00AF17DC /* Foundation.framework */; };
+		04FD417E19062ECD00AF17DC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FD417D19062ECD00AF17DC /* CoreGraphics.framework */; };
+		04FD418019062ECD00AF17DC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FD417F19062ECD00AF17DC /* UIKit.framework */; };
+		04FD418619062ECD00AF17DC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04FD418419062ECD00AF17DC /* InfoPlist.strings */; };
+		04FD418819062ECD00AF17DC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FD418719062ECD00AF17DC /* main.m */; };
+		04FD418C19062ECD00AF17DC /* EBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FD418B19062ECD00AF17DC /* EBAppDelegate.m */; };
+		04FD418F19062ECD00AF17DC /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04FD418D19062ECD00AF17DC /* Main_iPhone.storyboard */; };
+		04FD419219062ECD00AF17DC /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04FD419019062ECD00AF17DC /* Main_iPad.storyboard */; };
+		04FD419519062ECD00AF17DC /* EBFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FD419419062ECD00AF17DC /* EBFirstViewController.m */; };
+		04FD419819062ECD00AF17DC /* EBSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FD419719062ECD00AF17DC /* EBSecondViewController.m */; };
+		04FD419A19062ECD00AF17DC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04FD419919062ECD00AF17DC /* Images.xcassets */; };
+		04FD41A119062ECD00AF17DC /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FD41A019062ECD00AF17DC /* XCTest.framework */; };
+		04FD41A219062ECD00AF17DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FD417B19062ECD00AF17DC /* Foundation.framework */; };
+		04FD41A319062ECD00AF17DC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FD417F19062ECD00AF17DC /* UIKit.framework */; };
+		04FD41AB19062ECD00AF17DC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04FD41A919062ECD00AF17DC /* InfoPlist.strings */; };
+		04FD41AD19062ECD00AF17DC /* EulersBridgeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FD41AC19062ECD00AF17DC /* EulersBridgeTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		04FD41A419062ECD00AF17DC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04FD417019062ECD00AF17DC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04FD417719062ECD00AF17DC;
+			remoteInfo = EulersBridge;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		04FD417819062ECD00AF17DC /* EulersBridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EulersBridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		04FD417B19062ECD00AF17DC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		04FD417D19062ECD00AF17DC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		04FD417F19062ECD00AF17DC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		04FD418319062ECD00AF17DC /* EulersBridge-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EulersBridge-Info.plist"; sourceTree = "<group>"; };
+		04FD418519062ECD00AF17DC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		04FD418719062ECD00AF17DC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		04FD418919062ECD00AF17DC /* EulersBridge-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EulersBridge-Prefix.pch"; sourceTree = "<group>"; };
+		04FD418A19062ECD00AF17DC /* EBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EBAppDelegate.h; sourceTree = "<group>"; };
+		04FD418B19062ECD00AF17DC /* EBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EBAppDelegate.m; sourceTree = "<group>"; };
+		04FD418E19062ECD00AF17DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		04FD419119062ECD00AF17DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		04FD419319062ECD00AF17DC /* EBFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EBFirstViewController.h; sourceTree = "<group>"; };
+		04FD419419062ECD00AF17DC /* EBFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EBFirstViewController.m; sourceTree = "<group>"; };
+		04FD419619062ECD00AF17DC /* EBSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EBSecondViewController.h; sourceTree = "<group>"; };
+		04FD419719062ECD00AF17DC /* EBSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EBSecondViewController.m; sourceTree = "<group>"; };
+		04FD419919062ECD00AF17DC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		04FD419F19062ECD00AF17DC /* EulersBridgeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EulersBridgeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		04FD41A019062ECD00AF17DC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		04FD41A819062ECD00AF17DC /* EulersBridgeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EulersBridgeTests-Info.plist"; sourceTree = "<group>"; };
+		04FD41AA19062ECD00AF17DC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		04FD41AC19062ECD00AF17DC /* EulersBridgeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EulersBridgeTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		04FD417519062ECD00AF17DC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04FD417E19062ECD00AF17DC /* CoreGraphics.framework in Frameworks */,
+				04FD418019062ECD00AF17DC /* UIKit.framework in Frameworks */,
+				04FD417C19062ECD00AF17DC /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04FD419C19062ECD00AF17DC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04FD41A119062ECD00AF17DC /* XCTest.framework in Frameworks */,
+				04FD41A319062ECD00AF17DC /* UIKit.framework in Frameworks */,
+				04FD41A219062ECD00AF17DC /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		04FD416F19062ECD00AF17DC = {
+			isa = PBXGroup;
+			children = (
+				04FD418119062ECD00AF17DC /* EulersBridge */,
+				04FD41A619062ECD00AF17DC /* EulersBridgeTests */,
+				04FD417A19062ECD00AF17DC /* Frameworks */,
+				04FD417919062ECD00AF17DC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		04FD417919062ECD00AF17DC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				04FD417819062ECD00AF17DC /* EulersBridge.app */,
+				04FD419F19062ECD00AF17DC /* EulersBridgeTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		04FD417A19062ECD00AF17DC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				04FD417B19062ECD00AF17DC /* Foundation.framework */,
+				04FD417D19062ECD00AF17DC /* CoreGraphics.framework */,
+				04FD417F19062ECD00AF17DC /* UIKit.framework */,
+				04FD41A019062ECD00AF17DC /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		04FD418119062ECD00AF17DC /* EulersBridge */ = {
+			isa = PBXGroup;
+			children = (
+				04FD418A19062ECD00AF17DC /* EBAppDelegate.h */,
+				04FD418B19062ECD00AF17DC /* EBAppDelegate.m */,
+				04FD418D19062ECD00AF17DC /* Main_iPhone.storyboard */,
+				04FD419019062ECD00AF17DC /* Main_iPad.storyboard */,
+				04FD419319062ECD00AF17DC /* EBFirstViewController.h */,
+				04FD419419062ECD00AF17DC /* EBFirstViewController.m */,
+				04FD419619062ECD00AF17DC /* EBSecondViewController.h */,
+				04FD419719062ECD00AF17DC /* EBSecondViewController.m */,
+				04FD419919062ECD00AF17DC /* Images.xcassets */,
+				04FD418219062ECD00AF17DC /* Supporting Files */,
+			);
+			path = EulersBridge;
+			sourceTree = "<group>";
+		};
+		04FD418219062ECD00AF17DC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				04FD418319062ECD00AF17DC /* EulersBridge-Info.plist */,
+				04FD418419062ECD00AF17DC /* InfoPlist.strings */,
+				04FD418719062ECD00AF17DC /* main.m */,
+				04FD418919062ECD00AF17DC /* EulersBridge-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		04FD41A619062ECD00AF17DC /* EulersBridgeTests */ = {
+			isa = PBXGroup;
+			children = (
+				04FD41AC19062ECD00AF17DC /* EulersBridgeTests.m */,
+				04FD41A719062ECD00AF17DC /* Supporting Files */,
+			);
+			path = EulersBridgeTests;
+			sourceTree = "<group>";
+		};
+		04FD41A719062ECD00AF17DC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				04FD41A819062ECD00AF17DC /* EulersBridgeTests-Info.plist */,
+				04FD41A919062ECD00AF17DC /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		04FD417719062ECD00AF17DC /* EulersBridge */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04FD41B019062ECD00AF17DC /* Build configuration list for PBXNativeTarget "EulersBridge" */;
+			buildPhases = (
+				04FD417419062ECD00AF17DC /* Sources */,
+				04FD417519062ECD00AF17DC /* Frameworks */,
+				04FD417619062ECD00AF17DC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EulersBridge;
+			productName = EulersBridge;
+			productReference = 04FD417819062ECD00AF17DC /* EulersBridge.app */;
+			productType = "com.apple.product-type.application";
+		};
+		04FD419E19062ECD00AF17DC /* EulersBridgeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04FD41B319062ECD00AF17DC /* Build configuration list for PBXNativeTarget "EulersBridgeTests" */;
+			buildPhases = (
+				04FD419B19062ECD00AF17DC /* Sources */,
+				04FD419C19062ECD00AF17DC /* Frameworks */,
+				04FD419D19062ECD00AF17DC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				04FD41A519062ECD00AF17DC /* PBXTargetDependency */,
+			);
+			name = EulersBridgeTests;
+			productName = EulersBridgeTests;
+			productReference = 04FD419F19062ECD00AF17DC /* EulersBridgeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		04FD417019062ECD00AF17DC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = EB;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Eulers Bridge";
+				TargetAttributes = {
+					04FD419E19062ECD00AF17DC = {
+						TestTargetID = 04FD417719062ECD00AF17DC;
+					};
+				};
+			};
+			buildConfigurationList = 04FD417319062ECD00AF17DC /* Build configuration list for PBXProject "EulersBridge" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 04FD416F19062ECD00AF17DC;
+			productRefGroup = 04FD417919062ECD00AF17DC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				04FD417719062ECD00AF17DC /* EulersBridge */,
+				04FD419E19062ECD00AF17DC /* EulersBridgeTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		04FD417619062ECD00AF17DC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04FD419219062ECD00AF17DC /* Main_iPad.storyboard in Resources */,
+				04FD419A19062ECD00AF17DC /* Images.xcassets in Resources */,
+				04FD418F19062ECD00AF17DC /* Main_iPhone.storyboard in Resources */,
+				04FD418619062ECD00AF17DC /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04FD419D19062ECD00AF17DC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04FD41AB19062ECD00AF17DC /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		04FD417419062ECD00AF17DC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04FD418819062ECD00AF17DC /* main.m in Sources */,
+				04FD419819062ECD00AF17DC /* EBSecondViewController.m in Sources */,
+				04FD419519062ECD00AF17DC /* EBFirstViewController.m in Sources */,
+				04FD418C19062ECD00AF17DC /* EBAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04FD419B19062ECD00AF17DC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04FD41AD19062ECD00AF17DC /* EulersBridgeTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		04FD41A519062ECD00AF17DC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 04FD417719062ECD00AF17DC /* EulersBridge */;
+			targetProxy = 04FD41A419062ECD00AF17DC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		04FD418419062ECD00AF17DC /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04FD418519062ECD00AF17DC /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		04FD418D19062ECD00AF17DC /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04FD418E19062ECD00AF17DC /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		04FD419019062ECD00AF17DC /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04FD419119062ECD00AF17DC /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		04FD41A919062ECD00AF17DC /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04FD41AA19062ECD00AF17DC /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		04FD41AE19062ECD00AF17DC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		04FD41AF19062ECD00AF17DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		04FD41B119062ECD00AF17DC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "EulersBridge/EulersBridge-Prefix.pch";
+				INFOPLIST_FILE = "EulersBridge/EulersBridge-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		04FD41B219062ECD00AF17DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "EulersBridge/EulersBridge-Prefix.pch";
+				INFOPLIST_FILE = "EulersBridge/EulersBridge-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		04FD41B419062ECD00AF17DC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/EulersBridge.app/EulersBridge";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "EulersBridge/EulersBridge-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "EulersBridgeTests/EulersBridgeTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		04FD41B519062ECD00AF17DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/EulersBridge.app/EulersBridge";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "EulersBridge/EulersBridge-Prefix.pch";
+				INFOPLIST_FILE = "EulersBridgeTests/EulersBridgeTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		04FD417319062ECD00AF17DC /* Build configuration list for PBXProject "EulersBridge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04FD41AE19062ECD00AF17DC /* Debug */,
+				04FD41AF19062ECD00AF17DC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04FD41B019062ECD00AF17DC /* Build configuration list for PBXNativeTarget "EulersBridge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04FD41B119062ECD00AF17DC /* Debug */,
+				04FD41B219062ECD00AF17DC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		04FD41B319062ECD00AF17DC /* Build configuration list for PBXNativeTarget "EulersBridgeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04FD41B419062ECD00AF17DC /* Debug */,
+				04FD41B519062ECD00AF17DC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 04FD417019062ECD00AF17DC /* Project object */;
+}
