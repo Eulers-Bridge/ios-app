@@ -14,9 +14,8 @@
 {
     // Override point for customization after application launch.
     // Set Global tint color
-//    self.window.tintColor = [UIColor colorWithRed:90.0/255.0 green:95.0/255.0 blue:203.0/255.0 alpha:1.0];
-    self.window.tintColor = [UIColor colorWithRed:0.0/255.0 green:95.0/255.0 blue:203.0/255.0 alpha:1.0];
-    
+    self.window.tintColor = [UIColor colorWithRed:90.0/255.0 green:95.0/255.0 blue:203.0/255.0 alpha:1.0];
+    self.window.rootViewController = [self.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"loginView"];
     return YES;
 }
 							
