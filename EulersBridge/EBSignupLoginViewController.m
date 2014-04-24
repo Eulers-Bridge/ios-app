@@ -7,8 +7,11 @@
 //
 
 #import "EBSignupLoginViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface EBSignupLoginViewController ()
+
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 
 @end
 
@@ -19,6 +22,15 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+       
+    }
+    return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
     }
     return self;
 }
@@ -27,6 +39,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+//    [[self.segmentedControl layer] setBorderWidth:10.0];
 }
 
 - (void)viewWillAppear:(BOOL)animated

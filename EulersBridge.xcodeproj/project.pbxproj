@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04BB702A190890920059E93C /* EBFeedCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BB7029190890920059E93C /* EBFeedCollectionViewCell.m */; };
+		04BB702D190891320059E93C /* EBFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BB702C190891320059E93C /* EBFeedViewController.m */; };
 		04FD417C19062ECD00AF17DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FD417B19062ECD00AF17DC /* Foundation.framework */; };
 		04FD417E19062ECD00AF17DC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FD417D19062ECD00AF17DC /* CoreGraphics.framework */; };
 		04FD418019062ECD00AF17DC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FD417F19062ECD00AF17DC /* UIKit.framework */; };
@@ -15,8 +17,6 @@
 		04FD418C19062ECD00AF17DC /* EBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FD418B19062ECD00AF17DC /* EBAppDelegate.m */; };
 		04FD418F19062ECD00AF17DC /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04FD418D19062ECD00AF17DC /* Main_iPhone.storyboard */; };
 		04FD419219062ECD00AF17DC /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04FD419019062ECD00AF17DC /* Main_iPad.storyboard */; };
-		04FD419519062ECD00AF17DC /* EBFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FD419419062ECD00AF17DC /* EBFirstViewController.m */; };
-		04FD419819062ECD00AF17DC /* EBSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FD419719062ECD00AF17DC /* EBSecondViewController.m */; };
 		04FD419A19062ECD00AF17DC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04FD419919062ECD00AF17DC /* Images.xcassets */; };
 		04FD41A119062ECD00AF17DC /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FD41A019062ECD00AF17DC /* XCTest.framework */; };
 		04FD41A219062ECD00AF17DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FD417B19062ECD00AF17DC /* Foundation.framework */; };
@@ -25,6 +25,7 @@
 		04FD41AD19062ECD00AF17DC /* EulersBridgeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FD41AC19062ECD00AF17DC /* EulersBridgeTests.m */; };
 		04FD41C11906554200AF17DC /* EBSignupLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FD41C01906554200AF17DC /* EBSignupLoginViewController.m */; };
 		04FD41C41906574900AF17DC /* EBWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FD41C31906574900AF17DC /* EBWelcomeViewController.m */; };
+		04FD41C61906B68200AF17DC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FD41C51906B68200AF17DC /* QuartzCore.framework */; };
 		8CC2FEF72E8D4741B1BFD910 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA4A187B11A845AF9E3E5CDF /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04BB7028190890920059E93C /* EBFeedCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBFeedCollectionViewCell.h; sourceTree = "<group>"; };
+		04BB7029190890920059E93C /* EBFeedCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBFeedCollectionViewCell.m; sourceTree = "<group>"; };
+		04BB702B190891320059E93C /* EBFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBFeedViewController.h; sourceTree = "<group>"; };
+		04BB702C190891320059E93C /* EBFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBFeedViewController.m; sourceTree = "<group>"; };
 		04FD417819062ECD00AF17DC /* EulersBridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EulersBridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04FD417B19062ECD00AF17DC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		04FD417D19062ECD00AF17DC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -51,10 +56,6 @@
 		04FD418B19062ECD00AF17DC /* EBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EBAppDelegate.m; sourceTree = "<group>"; };
 		04FD418E19062ECD00AF17DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		04FD419119062ECD00AF17DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		04FD419319062ECD00AF17DC /* EBFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EBFirstViewController.h; sourceTree = "<group>"; };
-		04FD419419062ECD00AF17DC /* EBFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EBFirstViewController.m; sourceTree = "<group>"; };
-		04FD419619062ECD00AF17DC /* EBSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EBSecondViewController.h; sourceTree = "<group>"; };
-		04FD419719062ECD00AF17DC /* EBSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EBSecondViewController.m; sourceTree = "<group>"; };
 		04FD419919062ECD00AF17DC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		04FD419F19062ECD00AF17DC /* EulersBridgeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EulersBridgeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04FD41A019062ECD00AF17DC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -65,6 +66,7 @@
 		04FD41C01906554200AF17DC /* EBSignupLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBSignupLoginViewController.m; sourceTree = "<group>"; };
 		04FD41C21906574900AF17DC /* EBWelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBWelcomeViewController.h; sourceTree = "<group>"; };
 		04FD41C31906574900AF17DC /* EBWelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBWelcomeViewController.m; sourceTree = "<group>"; };
+		04FD41C51906B68200AF17DC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8FB63B052AC2408A9C372E37 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		DA4A187B11A845AF9E3E5CDF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -74,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04FD41C61906B68200AF17DC /* QuartzCore.framework in Frameworks */,
 				04FD417E19062ECD00AF17DC /* CoreGraphics.framework in Frameworks */,
 				04FD418019062ECD00AF17DC /* UIKit.framework in Frameworks */,
 				04FD417C19062ECD00AF17DC /* Foundation.framework in Frameworks */,
@@ -94,6 +97,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04BB702E190891690059E93C /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				04BB7028190890920059E93C /* EBFeedCollectionViewCell.h */,
+				04BB7029190890920059E93C /* EBFeedCollectionViewCell.m */,
+				04BB702B190891320059E93C /* EBFeedViewController.h */,
+				04BB702C190891320059E93C /* EBFeedViewController.m */,
+			);
+			name = Feed;
+			sourceTree = "<group>";
+		};
+		04BB702F1908917C0059E93C /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				04FD41BF1906554200AF17DC /* EBSignupLoginViewController.h */,
+				04FD41C01906554200AF17DC /* EBSignupLoginViewController.m */,
+				04FD41C21906574900AF17DC /* EBWelcomeViewController.h */,
+				04FD41C31906574900AF17DC /* EBWelcomeViewController.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
 		04FD416F19062ECD00AF17DC = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +142,7 @@
 		04FD417A19062ECD00AF17DC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				04FD41C51906B68200AF17DC /* QuartzCore.framework */,
 				04FD417B19062ECD00AF17DC /* Foundation.framework */,
 				04FD417D19062ECD00AF17DC /* CoreGraphics.framework */,
 				04FD417F19062ECD00AF17DC /* UIKit.framework */,
@@ -133,14 +159,8 @@
 				04FD419019062ECD00AF17DC /* Main_iPad.storyboard */,
 				04FD418A19062ECD00AF17DC /* EBAppDelegate.h */,
 				04FD418B19062ECD00AF17DC /* EBAppDelegate.m */,
-				04FD41BF1906554200AF17DC /* EBSignupLoginViewController.h */,
-				04FD41C01906554200AF17DC /* EBSignupLoginViewController.m */,
-				04FD41C21906574900AF17DC /* EBWelcomeViewController.h */,
-				04FD41C31906574900AF17DC /* EBWelcomeViewController.m */,
-				04FD419319062ECD00AF17DC /* EBFirstViewController.h */,
-				04FD419419062ECD00AF17DC /* EBFirstViewController.m */,
-				04FD419619062ECD00AF17DC /* EBSecondViewController.h */,
-				04FD419719062ECD00AF17DC /* EBSecondViewController.m */,
+				04BB702F1908917C0059E93C /* Login */,
+				04BB702E190891690059E93C /* Feed */,
 				04FD419919062ECD00AF17DC /* Images.xcassets */,
 				04FD418219062ECD00AF17DC /* Supporting Files */,
 			);
@@ -311,11 +331,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				04FD418819062ECD00AF17DC /* main.m in Sources */,
-				04FD419819062ECD00AF17DC /* EBSecondViewController.m in Sources */,
-				04FD419519062ECD00AF17DC /* EBFirstViewController.m in Sources */,
+				04BB702D190891320059E93C /* EBFeedViewController.m in Sources */,
 				04FD418C19062ECD00AF17DC /* EBAppDelegate.m in Sources */,
 				04FD41C41906574900AF17DC /* EBWelcomeViewController.m in Sources */,
 				04FD41C11906554200AF17DC /* EBSignupLoginViewController.m in Sources */,
+				04BB702A190890920059E93C /* EBFeedCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
