@@ -8,6 +8,7 @@
 
 #import "EBFeedViewController.h"
 #import "EBFeedCollectionViewCell.h"
+#import "MyConstants.h"
 
 @interface EBFeedViewController ()
 
@@ -40,11 +41,10 @@
 - (void)changeSegment
 {
     int newsX, eventX, photoX = 0;
-    int widthOfScreen = 320;
     
-    newsX = (int)self.segmentedControl.selectedSegmentIndex * -widthOfScreen;
-    eventX = newsX + widthOfScreen;
-    photoX = eventX + widthOfScreen;
+    newsX = (int)self.segmentedControl.selectedSegmentIndex * -WIDTH_OF_SCREEN;
+    eventX = newsX + WIDTH_OF_SCREEN;
+    photoX = eventX + WIDTH_OF_SCREEN;
     
     
     [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{

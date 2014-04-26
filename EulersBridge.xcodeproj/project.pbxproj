@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		04BB702A190890920059E93C /* EBFeedCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BB7029190890920059E93C /* EBFeedCollectionViewCell.m */; };
 		04BB702D190891320059E93C /* EBFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BB702C190891320059E93C /* EBFeedViewController.m */; };
+		04BB7034190B83710059E93C /* EBStopWatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BB7033190B83710059E93C /* EBStopWatch.m */; };
+		04BB7038190B89B70059E93C /* EBStopwatchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BB7037190B89B70059E93C /* EBStopwatchViewController.m */; };
+		04BB703B190B8F7E0059E93C /* EBStopWatchInt.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BB703A190B8F7E0059E93C /* EBStopWatchInt.m */; };
+		04BB703E190BCEB50059E93C /* EBNewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BB703D190BCEB50059E93C /* EBNewsDetailViewController.m */; };
+		04BB7040190BCF390059E93C /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BB703F190BCF390059E93C /* EventKit.framework */; };
+		04BB7043190BD9920059E93C /* EBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BB7042190BD9920059E93C /* EBHelper.m */; };
+		04BB7046190BE93F0059E93C /* EBVoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BB7045190BE93F0059E93C /* EBVoteViewController.m */; };
+		04BB7049190BF1D00059E93C /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BB7048190BF1D00059E93C /* Social.framework */; };
 		04FD417C19062ECD00AF17DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FD417B19062ECD00AF17DC /* Foundation.framework */; };
 		04FD417E19062ECD00AF17DC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FD417D19062ECD00AF17DC /* CoreGraphics.framework */; };
 		04FD418019062ECD00AF17DC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FD417F19062ECD00AF17DC /* UIKit.framework */; };
@@ -44,6 +52,21 @@
 		04BB7029190890920059E93C /* EBFeedCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBFeedCollectionViewCell.m; sourceTree = "<group>"; };
 		04BB702B190891320059E93C /* EBFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBFeedViewController.h; sourceTree = "<group>"; };
 		04BB702C190891320059E93C /* EBFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBFeedViewController.m; sourceTree = "<group>"; };
+		04BB7031190B82360059E93C /* MyConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyConstants.h; sourceTree = "<group>"; };
+		04BB7032190B83710059E93C /* EBStopWatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBStopWatch.h; sourceTree = "<group>"; };
+		04BB7033190B83710059E93C /* EBStopWatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBStopWatch.m; sourceTree = "<group>"; };
+		04BB7036190B89B70059E93C /* EBStopwatchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBStopwatchViewController.h; sourceTree = "<group>"; };
+		04BB7037190B89B70059E93C /* EBStopwatchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBStopwatchViewController.m; sourceTree = "<group>"; };
+		04BB7039190B8F7E0059E93C /* EBStopWatchInt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBStopWatchInt.h; sourceTree = "<group>"; };
+		04BB703A190B8F7E0059E93C /* EBStopWatchInt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBStopWatchInt.m; sourceTree = "<group>"; };
+		04BB703C190BCEB50059E93C /* EBNewsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBNewsDetailViewController.h; sourceTree = "<group>"; };
+		04BB703D190BCEB50059E93C /* EBNewsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBNewsDetailViewController.m; sourceTree = "<group>"; };
+		04BB703F190BCF390059E93C /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		04BB7041190BD9920059E93C /* EBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBHelper.h; sourceTree = "<group>"; };
+		04BB7042190BD9920059E93C /* EBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBHelper.m; sourceTree = "<group>"; };
+		04BB7044190BE93F0059E93C /* EBVoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBVoteViewController.h; sourceTree = "<group>"; };
+		04BB7045190BE93F0059E93C /* EBVoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBVoteViewController.m; sourceTree = "<group>"; };
+		04BB7048190BF1D00059E93C /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		04FD417819062ECD00AF17DC /* EulersBridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EulersBridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04FD417B19062ECD00AF17DC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		04FD417D19062ECD00AF17DC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -76,6 +99,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04BB7049190BF1D00059E93C /* Social.framework in Frameworks */,
+				04BB7040190BCF390059E93C /* EventKit.framework in Frameworks */,
 				04FD41C61906B68200AF17DC /* QuartzCore.framework in Frameworks */,
 				04FD417E19062ECD00AF17DC /* CoreGraphics.framework in Frameworks */,
 				04FD418019062ECD00AF17DC /* UIKit.framework in Frameworks */,
@@ -100,10 +125,12 @@
 		04BB702E190891690059E93C /* Feed */ = {
 			isa = PBXGroup;
 			children = (
-				04BB7028190890920059E93C /* EBFeedCollectionViewCell.h */,
-				04BB7029190890920059E93C /* EBFeedCollectionViewCell.m */,
 				04BB702B190891320059E93C /* EBFeedViewController.h */,
 				04BB702C190891320059E93C /* EBFeedViewController.m */,
+				04BB7028190890920059E93C /* EBFeedCollectionViewCell.h */,
+				04BB7029190890920059E93C /* EBFeedCollectionViewCell.m */,
+				04BB703C190BCEB50059E93C /* EBNewsDetailViewController.h */,
+				04BB703D190BCEB50059E93C /* EBNewsDetailViewController.m */,
 			);
 			name = Feed;
 			sourceTree = "<group>";
@@ -117,6 +144,31 @@
 				04FD41C31906574900AF17DC /* EBWelcomeViewController.m */,
 			);
 			name = Login;
+			sourceTree = "<group>";
+		};
+		04BB7035190B83AC0059E93C /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				04BB7031190B82360059E93C /* MyConstants.h */,
+				04BB7041190BD9920059E93C /* EBHelper.h */,
+				04BB7042190BD9920059E93C /* EBHelper.m */,
+				04BB7032190B83710059E93C /* EBStopWatch.h */,
+				04BB7033190B83710059E93C /* EBStopWatch.m */,
+				04BB7039190B8F7E0059E93C /* EBStopWatchInt.h */,
+				04BB703A190B8F7E0059E93C /* EBStopWatchInt.m */,
+				04BB7036190B89B70059E93C /* EBStopwatchViewController.h */,
+				04BB7037190B89B70059E93C /* EBStopwatchViewController.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		04BB7047190BE9470059E93C /* Vote */ = {
+			isa = PBXGroup;
+			children = (
+				04BB7044190BE93F0059E93C /* EBVoteViewController.h */,
+				04BB7045190BE93F0059E93C /* EBVoteViewController.m */,
+			);
+			name = Vote;
 			sourceTree = "<group>";
 		};
 		04FD416F19062ECD00AF17DC = {
@@ -142,6 +194,8 @@
 		04FD417A19062ECD00AF17DC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				04BB7048190BF1D00059E93C /* Social.framework */,
+				04BB703F190BCF390059E93C /* EventKit.framework */,
 				04FD41C51906B68200AF17DC /* QuartzCore.framework */,
 				04FD417B19062ECD00AF17DC /* Foundation.framework */,
 				04FD417D19062ECD00AF17DC /* CoreGraphics.framework */,
@@ -161,7 +215,9 @@
 				04FD418B19062ECD00AF17DC /* EBAppDelegate.m */,
 				04BB702F1908917C0059E93C /* Login */,
 				04BB702E190891690059E93C /* Feed */,
+				04BB7047190BE9470059E93C /* Vote */,
 				04FD419919062ECD00AF17DC /* Images.xcassets */,
+				04BB7035190B83AC0059E93C /* Helpers */,
 				04FD418219062ECD00AF17DC /* Supporting Files */,
 			);
 			path = EulersBridge;
@@ -331,11 +387,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				04FD418819062ECD00AF17DC /* main.m in Sources */,
+				04BB7038190B89B70059E93C /* EBStopwatchViewController.m in Sources */,
 				04BB702D190891320059E93C /* EBFeedViewController.m in Sources */,
+				04BB7043190BD9920059E93C /* EBHelper.m in Sources */,
 				04FD418C19062ECD00AF17DC /* EBAppDelegate.m in Sources */,
 				04FD41C41906574900AF17DC /* EBWelcomeViewController.m in Sources */,
+				04BB703B190B8F7E0059E93C /* EBStopWatchInt.m in Sources */,
 				04FD41C11906554200AF17DC /* EBSignupLoginViewController.m in Sources */,
 				04BB702A190890920059E93C /* EBFeedCollectionViewCell.m in Sources */,
+				04BB7046190BE93F0059E93C /* EBVoteViewController.m in Sources */,
+				04BB7034190B83710059E93C /* EBStopWatch.m in Sources */,
+				04BB703E190BCEB50059E93C /* EBNewsDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
