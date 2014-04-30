@@ -17,6 +17,10 @@
 		04BB7043190BD9920059E93C /* EBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BB7042190BD9920059E93C /* EBHelper.m */; };
 		04BB7046190BE93F0059E93C /* EBVoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BB7045190BE93F0059E93C /* EBVoteViewController.m */; };
 		04BB7049190BF1D00059E93C /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BB7048190BF1D00059E93C /* Social.framework */; };
+		04BB704B190CF7570059E93C /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BB704A190CF7570059E93C /* EventKitUI.framework */; };
+		04BB704E190D229D0059E93C /* EBProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BB704D190D229D0059E93C /* EBProfileViewController.m */; };
+		04BB7052190D22EE0059E93C /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BB7050190D22EE0059E93C /* AddressBook.framework */; };
+		04BB7053190D22EE0059E93C /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BB7051190D22EE0059E93C /* AddressBookUI.framework */; };
 		04FD417C19062ECD00AF17DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FD417B19062ECD00AF17DC /* Foundation.framework */; };
 		04FD417E19062ECD00AF17DC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FD417D19062ECD00AF17DC /* CoreGraphics.framework */; };
 		04FD418019062ECD00AF17DC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FD417F19062ECD00AF17DC /* UIKit.framework */; };
@@ -67,6 +71,11 @@
 		04BB7044190BE93F0059E93C /* EBVoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBVoteViewController.h; sourceTree = "<group>"; };
 		04BB7045190BE93F0059E93C /* EBVoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBVoteViewController.m; sourceTree = "<group>"; };
 		04BB7048190BF1D00059E93C /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		04BB704A190CF7570059E93C /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
+		04BB704C190D229D0059E93C /* EBProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EBProfileViewController.h; path = ../EBProfileViewController.h; sourceTree = "<group>"; };
+		04BB704D190D229D0059E93C /* EBProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EBProfileViewController.m; path = ../EBProfileViewController.m; sourceTree = "<group>"; };
+		04BB7050190D22EE0059E93C /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		04BB7051190D22EE0059E93C /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		04FD417819062ECD00AF17DC /* EulersBridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EulersBridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04FD417B19062ECD00AF17DC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		04FD417D19062ECD00AF17DC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -99,6 +108,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04BB7052190D22EE0059E93C /* AddressBook.framework in Frameworks */,
+				04BB7053190D22EE0059E93C /* AddressBookUI.framework in Frameworks */,
+				04BB704B190CF7570059E93C /* EventKitUI.framework in Frameworks */,
 				04BB7049190BF1D00059E93C /* Social.framework in Frameworks */,
 				04BB7040190BCF390059E93C /* EventKit.framework in Frameworks */,
 				04FD41C61906B68200AF17DC /* QuartzCore.framework in Frameworks */,
@@ -171,6 +183,15 @@
 			name = Vote;
 			sourceTree = "<group>";
 		};
+		04BB704F190D22A70059E93C /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				04BB704C190D229D0059E93C /* EBProfileViewController.h */,
+				04BB704D190D229D0059E93C /* EBProfileViewController.m */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
 		04FD416F19062ECD00AF17DC = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +215,9 @@
 		04FD417A19062ECD00AF17DC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				04BB7050190D22EE0059E93C /* AddressBook.framework */,
+				04BB7051190D22EE0059E93C /* AddressBookUI.framework */,
+				04BB704A190CF7570059E93C /* EventKitUI.framework */,
 				04BB7048190BF1D00059E93C /* Social.framework */,
 				04BB703F190BCF390059E93C /* EventKit.framework */,
 				04FD41C51906B68200AF17DC /* QuartzCore.framework */,
@@ -216,6 +240,7 @@
 				04BB702F1908917C0059E93C /* Login */,
 				04BB702E190891690059E93C /* Feed */,
 				04BB7047190BE9470059E93C /* Vote */,
+				04BB704F190D22A70059E93C /* Profile */,
 				04FD419919062ECD00AF17DC /* Images.xcassets */,
 				04BB7035190B83AC0059E93C /* Helpers */,
 				04FD418219062ECD00AF17DC /* Supporting Files */,
@@ -393,6 +418,7 @@
 				04FD418C19062ECD00AF17DC /* EBAppDelegate.m in Sources */,
 				04FD41C41906574900AF17DC /* EBWelcomeViewController.m in Sources */,
 				04BB703B190B8F7E0059E93C /* EBStopWatchInt.m in Sources */,
+				04BB704E190D229D0059E93C /* EBProfileViewController.m in Sources */,
 				04FD41C11906554200AF17DC /* EBSignupLoginViewController.m in Sources */,
 				04BB702A190890920059E93C /* EBFeedCollectionViewCell.m in Sources */,
 				04BB7046190BE93F0059E93C /* EBVoteViewController.m in Sources */,

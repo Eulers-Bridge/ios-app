@@ -8,8 +8,18 @@
 
 #import "EBVoteViewController.h"
 #import <EventKit/EventKit.h>
+@import EventKitUI;
+#import "CDZQRScanningViewController.h"
 
-@interface EBVoteViewController ()
+@interface EBVoteViewController () <UIPickerViewDataSource, UIPickerViewDelegate, EKEventEditViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UIPickerView *picker;
+@property (weak, nonatomic) IBOutlet UILabel *scanResultLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
+@property (strong, nonatomic) NSArray *votingDates;
+@property (strong, nonatomic) NSArray *votingLocations;
+@property (strong, nonatomic) NSArray *pickerViewCurrentArray;
 
 @end
 
@@ -28,49 +38,151 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.picker.hidden = YES;
+    
+    self.votingDates = @[@"2014-08-12 14:30", @"2014-08-15 9:30", @"2014-08-20 15:30", @"2014-09-08 16:30", @"2014-09-15 10:30"];
+    self.votingLocations = @[@"Union House", @"Baillieu Library", @"ERC Library"];
 }
 
+
+
+
+
+- (IBAction)chooseDate:(UIButton *)sender
+{
+    self.picker.hidden = NO;
+    self.pickerViewCurrentArray = self.votingDates;
+    [self.picker reloadAllComponents];
+    
+    if ([self.dateLabel.text isEqualToString:@""]) {
+        self.dateLabel.text = self.pickerViewCurrentArray[[self.picker selectedRowInComponent:0]];
+    }
+}
+
+
+- (IBAction)chooseLocation:(UIButton *)sender
+{
+    self.picker.hidden = NO;
+    self.pickerViewCurrentArray = self.votingLocations;
+    [self.picker reloadAllComponents];
+    
+    if ([self.locationLabel.text isEqualToString:@""]) {
+        self.locationLabel.text = self.pickerViewCurrentArray[[self.picker selectedRowInComponent:0]];
+    }
+}
+
+
+
+
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+-(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return [self.pickerViewCurrentArray count];
+}
+
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return self.pickerViewCurrentArray[row];
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    if (self.pickerViewCurrentArray == self.votingDates) {
+        self.dateLabel.text = self.votingDates[row];
+    }
+    
+    if (self.pickerViewCurrentArray == self.votingLocations) {
+        self.locationLabel.text = self.votingLocations[row];
+    }
+}
 
 
 
 
 - (IBAction)setReminder:(UIButton *)sender
 {
+    
+    if ([self.dateLabel.text isEqualToString:@""] || [self.locationLabel.text isEqualToString:@""]) {
+        
+        [[[UIAlertView alloc] initWithTitle:@"Please choose date and location" message:@"Please choose date and location before you set reminder." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
+        return;
+    }
+    
+    
     EKEventStore *store = [[EKEventStore alloc] init];
-    [store requestAccessToEntityType:EKEntityTypeReminder completion:^(BOOL granted, NSError *error) {
+    [store requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
         if (!granted) {
             NSLog(@"Not allowed");
             return;
         }
         
-        EKReminder *reminder = [EKReminder reminderWithEventStore:store];
-        reminder.title = @"Vote for student union election";
-        reminder.location = @"Union House";
         
         
-        NSDateComponents *start = reminder.startDateComponents;
-        start.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"AEST"];
-        start.year = 2014;
-        start.month = 4;
-        start.day = 26;
-        start.hour = 21;
-        start.minute = 0;
-        reminder.startDateComponents = start;
+        EKEvent *event = [EKEvent eventWithEventStore:store];
+        event.title = @"Voting for student union election";
+        event.location = self.locationLabel.text;
+        
+        
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+        NSDate *date = [formatter dateFromString:self.dateLabel.text];
+        
+        
+        event.startDate = date;
+        event.endDate = [event.startDate dateByAddingTimeInterval:60*60];  //set 1 hour meeting
+        [event setCalendar:[store defaultCalendarForNewEvents]];
+        event.allDay = NO;
+        
+        event.alarms = @[[EKAlarm alarmWithAbsoluteDate:date]];
         
         
         
-        NSError *err = nil;
+        EKEventEditViewController *evc = [[EKEventEditViewController alloc] init];
+        evc.editViewDelegate = self;
+        evc.eventStore = store;
+        evc.event = event;
+        [self presentViewController:evc animated:YES completion:nil];
         
-        
-        [store saveReminder:reminder commit:YES error:&err];
-        
-        [[[UIAlertView alloc] initWithTitle:@"Reminder Set" message:@"The reminder is successfully set." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
     }];
+    
+
 
 }
 
 
+- (void)eventEditViewController:(EKEventEditViewController *)controller didCompleteWithAction:(EKEventEditViewAction)action
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
+
+
+- (IBAction)scanQR:(UIButton *)sender
+{
+    // create the scanning view controller and a navigation controller in which to present it:
+    CDZQRScanningViewController *scanningVC = [CDZQRScanningViewController new];
+    UINavigationController *scanningNavVC = [[UINavigationController alloc] initWithRootViewController:scanningVC];
+    
+    // configure the scanning view controller:
+    scanningVC.resultBlock = ^(NSString *result) {
+        self.scanResultLabel.text = result;
+        [scanningNavVC dismissViewControllerAnimated:YES completion:nil];
+    };
+    scanningVC.cancelBlock = ^() {
+        [scanningNavVC dismissViewControllerAnimated:YES completion:nil];
+    };
+    scanningVC.errorBlock = ^(NSError *error) {
+        // todo: show a UIAlertView orNSLog the error
+        [scanningNavVC dismissViewControllerAnimated:YES completion:nil];
+    };
+    
+    // present the view controller full-screen on iPhone; in a form sheet on iPad:
+    scanningNavVC.modalPresentationStyle = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ? UIModalPresentationFullScreen : UIModalPresentationFormSheet;
+    [self presentViewController:scanningNavVC animated:YES completion:nil];}
 
 
 

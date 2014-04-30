@@ -9,9 +9,10 @@
 #import "EBNewsDetailViewController.h"
 #import "EBHelper.h"
 #import <EventKit/EventKit.h>
+#import <EventKitUI/EventKitUI.h>
 #import <Social/Social.h>
 
-@interface EBNewsDetailViewController ()
+@interface EBNewsDetailViewController () <EKEventEditViewDelegate>
 
 @end
 
@@ -40,15 +41,19 @@
 
 - (IBAction)addToCalendar:(UIButton *)sender
 {
+    
     EKEventStore *store = [[EKEventStore alloc] init];
     [store requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
         if (!granted) {
             NSLog(@"Not allowed");
             return;
         }
+        
+        
+        
         EKEvent *event = [EKEvent eventWithEventStore:store];
-        event.title = @"Event Title";
-        event.location = @"Event Location";
+        event.title = @"Election event on campus";
+        event.location = @"University of Melbourne Union House";
         
         
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -59,14 +64,27 @@
         event.startDate = date;
         event.endDate = [event.startDate dateByAddingTimeInterval:60*60];  //set 1 hour meeting
         [event setCalendar:[store defaultCalendarForNewEvents]];
-        NSError *err = nil;
-        [store saveEvent:event span:EKSpanThisEvent commit:YES error:&err];
-        NSString *savedEventId = event.eventIdentifier;  //this is so you can access this event later
+        event.allDay = NO;
         
-        [[[UIAlertView alloc] initWithTitle:@"Event Added" message:@"The Event is successfully added to your calendar." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
+        
+        
+        EKEventEditViewController *evc = [[EKEventEditViewController alloc] init];
+        evc.editViewDelegate = self;
+        evc.eventStore = store;
+        evc.event = event;
+        [self presentViewController:evc animated:YES completion:nil];
+        
     }];
+
+
+    
 }
 
+
+- (void)eventEditViewController:(EKEventEditViewController *)controller didCompleteWithAction:(EKEventEditViewAction)action
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 - (IBAction)shareOnFacebook:(UIButton *)sender
 {
