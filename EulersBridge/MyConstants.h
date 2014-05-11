@@ -12,5 +12,8 @@
 
 #define WIDTH_OF_SCREEN 320
 
+#define PERSON_NAME_PROPERTY @"name"
+#define PERSON_EMAILS_PROPERTY @"emails"
+#define PERSON_PHONES_PROPERTY @"phones"
 
 #endif

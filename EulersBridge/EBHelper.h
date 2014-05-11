@@ -7,10 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MyConstants.h"
+@import AddressBook;
 
 @interface EBHelper : NSObject
 
 
 + (NSTimeInterval)timeIntervalWithHours:(double)hours minutes:(double)minutes seconds:(double)seconds;
 
++ (NSArray *)contactsWithAddressBookRef:(ABAddressBookRef)addressBookRef;
 @end
