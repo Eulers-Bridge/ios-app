@@ -24,12 +24,28 @@
     [[UIToolbar appearance] setTintColor:[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0]];
     
     // Set Top bar background color.
-    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:51.0/255.0 green:55.0/255.0 blue:69.0/255.0 alpha:1.0]];
-    [[UIToolbar appearance] setBarTintColor:[UIColor colorWithRed:51.0/255.0 green:55.0/255.0 blue:69.0/255.0 alpha:1.0]];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:9/255.0 green:14.0/255.0 blue:30/255.0 alpha:1.0]];
+    [[UIToolbar appearance] setBarTintColor:[UIColor colorWithRed:51.0/255.0 green:56.0/255.0 blue:69.0/255.0 alpha:1.0]];
     
     // Status bar
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 
+    // UI label
+//    [[UILabel appearance] setFont:[UIFont fontWithName:@"MuseoSansRounded-500" size:10.0]];
+    
+    // Segmented control
+    UIFont *font = [UIFont fontWithName:@"MuseoSansRounded-500" size:14.0];
+    NSDictionary *attributes = [NSDictionary dictionaryWithObject:font
+                                                           forKey:NSFontAttributeName];
+    [[UISegmentedControl appearance] setTitleTextAttributes:attributes
+                                    forState:UIControlStateNormal];
+    
+    // Tab bar
+    UIFont *tabBarFont = [UIFont fontWithName:@"MuseoSansRounded-500" size:10.0];
+    NSDictionary *tabBarAttributes = [NSDictionary dictionaryWithObject:tabBarFont
+                                                           forKey:NSFontAttributeName];
+    [[UITabBarItem appearance] setTitleTextAttributes:tabBarAttributes
+                                                   forState:UIControlStateNormal];
     
     
     return YES;

@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0493F3D1191F49C400853DBF /* EBNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0493F3D0191F49C400853DBF /* EBNetworkService.m */; };
+		0493F3D4191F49EA00853DBF /* EBImageService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0493F3D3191F49EA00853DBF /* EBImageService.m */; };
+		0494A4BB1920AA6300602CB9 /* MuseoSansRounded-100.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0494A4B91920AA6300602CB9 /* MuseoSansRounded-100.otf */; };
+		0494A4BC1920AA6300602CB9 /* MuseoSansRounded-300.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0494A4BA1920AA6300602CB9 /* MuseoSansRounded-300.otf */; };
+		0494A4BE1920AA8D00602CB9 /* MuseoSansRounded-500.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0494A4BD1920AA8D00602CB9 /* MuseoSansRounded-500.otf */; };
+		0494A4CB1921B3CC00602CB9 /* sample0.png in Resources */ = {isa = PBXBuildFile; fileRef = 0494A4C61921B3CC00602CB9 /* sample0.png */; };
+		0494A4CC1921B3CC00602CB9 /* sample1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0494A4C71921B3CC00602CB9 /* sample1.png */; };
+		0494A4CD1921B3CC00602CB9 /* sample3.png in Resources */ = {isa = PBXBuildFile; fileRef = 0494A4C81921B3CC00602CB9 /* sample3.png */; };
+		0494A4CF1921B3CC00602CB9 /* sample4.png in Resources */ = {isa = PBXBuildFile; fileRef = 0494A4CA1921B3CC00602CB9 /* sample4.png */; };
+		0494A4D11921D3E500602CB9 /* sample2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0494A4D01921D3E500602CB9 /* sample2.png */; };
 		0495C508191B651900EAEAB5 /* EBPhotoStackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0495C507191B651900EAEAB5 /* EBPhotoStackViewController.m */; };
 		0495C50C191B661000EAEAB5 /* EBStackLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0495C50B191B661000EAEAB5 /* EBStackLayout.m */; };
 		04BB702A190890920059E93C /* EBFeedCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BB7029190890920059E93C /* EBFeedCollectionViewCell.m */; };
@@ -56,6 +66,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0493F3CF191F49C400853DBF /* EBNetworkService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBNetworkService.h; sourceTree = "<group>"; };
+		0493F3D0191F49C400853DBF /* EBNetworkService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBNetworkService.m; sourceTree = "<group>"; };
+		0493F3D2191F49EA00853DBF /* EBImageService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBImageService.h; sourceTree = "<group>"; };
+		0493F3D3191F49EA00853DBF /* EBImageService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBImageService.m; sourceTree = "<group>"; };
+		0494A4B91920AA6300602CB9 /* MuseoSansRounded-100.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MuseoSansRounded-100.otf"; sourceTree = "<group>"; };
+		0494A4BA1920AA6300602CB9 /* MuseoSansRounded-300.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MuseoSansRounded-300.otf"; sourceTree = "<group>"; };
+		0494A4BD1920AA8D00602CB9 /* MuseoSansRounded-500.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MuseoSansRounded-500.otf"; sourceTree = "<group>"; };
+		0494A4C61921B3CC00602CB9 /* sample0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sample0.png; sourceTree = "<group>"; };
+		0494A4C71921B3CC00602CB9 /* sample1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sample1.png; sourceTree = "<group>"; };
+		0494A4C81921B3CC00602CB9 /* sample3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sample3.png; sourceTree = "<group>"; };
+		0494A4CA1921B3CC00602CB9 /* sample4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sample4.png; sourceTree = "<group>"; };
+		0494A4D01921D3E500602CB9 /* sample2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sample2.png; sourceTree = "<group>"; };
 		0495C506191B651900EAEAB5 /* EBPhotoStackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBPhotoStackViewController.h; sourceTree = "<group>"; };
 		0495C507191B651900EAEAB5 /* EBPhotoStackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBPhotoStackViewController.m; sourceTree = "<group>"; };
 		0495C50A191B661000EAEAB5 /* EBStackLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBStackLayout.h; sourceTree = "<group>"; };
@@ -100,7 +122,7 @@
 		04FD418B19062ECD00AF17DC /* EBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EBAppDelegate.m; sourceTree = "<group>"; };
 		04FD418E19062ECD00AF17DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		04FD419119062ECD00AF17DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		04FD419919062ECD00AF17DC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		04FD419919062ECD00AF17DC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = EulersBridge/Images.xcassets; sourceTree = "<group>"; };
 		04FD419F19062ECD00AF17DC /* EulersBridgeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EulersBridgeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04FD41A019062ECD00AF17DC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		04FD41A819062ECD00AF17DC /* EulersBridgeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EulersBridgeTests-Info.plist"; sourceTree = "<group>"; };
@@ -146,6 +168,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0493F3D5191F49F600853DBF /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				0493F3CF191F49C400853DBF /* EBNetworkService.h */,
+				0493F3D0191F49C400853DBF /* EBNetworkService.m */,
+				0493F3D2191F49EA00853DBF /* EBImageService.h */,
+				0493F3D3191F49EA00853DBF /* EBImageService.m */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		0494A4B81920AA2C00602CB9 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				0494A4B91920AA6300602CB9 /* MuseoSansRounded-100.otf */,
+				0494A4BA1920AA6300602CB9 /* MuseoSansRounded-300.otf */,
+				0494A4BD1920AA8D00602CB9 /* MuseoSansRounded-500.otf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		0494A4C51921B3B100602CB9 /* sample images */ = {
+			isa = PBXGroup;
+			children = (
+				0494A4C61921B3CC00602CB9 /* sample0.png */,
+				0494A4C71921B3CC00602CB9 /* sample1.png */,
+				0494A4D01921D3E500602CB9 /* sample2.png */,
+				0494A4C81921B3CC00602CB9 /* sample3.png */,
+				0494A4CA1921B3CC00602CB9 /* sample4.png */,
+			);
+			name = "sample images";
+			sourceTree = "<group>";
+		};
 		0495C509191B65CC00EAEAB5 /* Test concepts */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +281,7 @@
 				04FD41A619062ECD00AF17DC /* EulersBridgeTests */,
 				04FD417A19062ECD00AF17DC /* Frameworks */,
 				04FD417919062ECD00AF17DC /* Products */,
+				04FD419919062ECD00AF17DC /* Images.xcassets */,
 				8FB63B052AC2408A9C372E37 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
@@ -264,14 +320,14 @@
 				04FD419019062ECD00AF17DC /* Main_iPad.storyboard */,
 				04FD418A19062ECD00AF17DC /* EBAppDelegate.h */,
 				04FD418B19062ECD00AF17DC /* EBAppDelegate.m */,
-				0495C509191B65CC00EAEAB5 /* Test concepts */,
 				04BB702F1908917C0059E93C /* Login */,
 				04BB702E190891690059E93C /* Feed */,
 				04BB7047190BE9470059E93C /* Vote */,
 				04BB704F190D22A70059E93C /* Profile */,
-				04FD419919062ECD00AF17DC /* Images.xcassets */,
+				0493F3D5191F49F600853DBF /* Services */,
 				04BB7035190B83AC0059E93C /* Helpers */,
 				04FD418219062ECD00AF17DC /* Supporting Files */,
+				0495C509191B65CC00EAEAB5 /* Test concepts */,
 			);
 			path = EulersBridge;
 			sourceTree = "<group>";
@@ -283,6 +339,8 @@
 				04FD418419062ECD00AF17DC /* InfoPlist.strings */,
 				04FD418719062ECD00AF17DC /* main.m */,
 				04FD418919062ECD00AF17DC /* EulersBridge-Prefix.pch */,
+				0494A4C51921B3B100602CB9 /* sample images */,
+				0494A4B81920AA2C00602CB9 /* Fonts */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -385,9 +443,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				04FD419219062ECD00AF17DC /* Main_iPad.storyboard in Resources */,
+				0494A4CD1921B3CC00602CB9 /* sample3.png in Resources */,
+				0494A4D11921D3E500602CB9 /* sample2.png in Resources */,
+				0494A4CB1921B3CC00602CB9 /* sample0.png in Resources */,
 				04FD419A19062ECD00AF17DC /* Images.xcassets in Resources */,
+				0494A4BC1920AA6300602CB9 /* MuseoSansRounded-300.otf in Resources */,
+				0494A4CF1921B3CC00602CB9 /* sample4.png in Resources */,
+				0494A4BE1920AA8D00602CB9 /* MuseoSansRounded-500.otf in Resources */,
 				04FD418F19062ECD00AF17DC /* Main_iPhone.storyboard in Resources */,
+				0494A4BB1920AA6300602CB9 /* MuseoSansRounded-100.otf in Resources */,
 				04FD418619062ECD00AF17DC /* InfoPlist.strings in Resources */,
+				0494A4CC1921B3CC00602CB9 /* sample1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,8 +508,10 @@
 				04FD418819062ECD00AF17DC /* main.m in Sources */,
 				04BB7038190B89B70059E93C /* EBStopwatchViewController.m in Sources */,
 				04BB70561911C01F0059E93C /* EBFindFriendViewController.m in Sources */,
+				0493F3D4191F49EA00853DBF /* EBImageService.m in Sources */,
 				04BB702D190891320059E93C /* EBFeedViewController.m in Sources */,
 				04BB7043190BD9920059E93C /* EBHelper.m in Sources */,
+				0493F3D1191F49C400853DBF /* EBNetworkService.m in Sources */,
 				04FD418C19062ECD00AF17DC /* EBAppDelegate.m in Sources */,
 				04FD41C41906574900AF17DC /* EBWelcomeViewController.m in Sources */,
 				0495C50C191B661000EAEAB5 /* EBStackLayout.m in Sources */,
@@ -591,6 +659,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EulersBridge/EulersBridge-Prefix.pch";
 				INFOPLIST_FILE = "EulersBridge/EulersBridge-Info.plist";
@@ -605,10 +674,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EulersBridge/EulersBridge-Prefix.pch";
 				INFOPLIST_FILE = "EulersBridge/EulersBridge-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "09E0C9AE-4FF1-493F-89B5-F8C4FC61F3E2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

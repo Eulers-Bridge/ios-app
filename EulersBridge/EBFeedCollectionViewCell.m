@@ -7,16 +7,66 @@
 //
 
 #import "EBFeedCollectionViewCell.h"
+#import "UIImageView+AFNetworking.h"
 
 @implementation EBFeedCollectionViewCell
 
-- (id)initWithFrame:(CGRect)frame
+
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
-    self = [super initWithFrame:frame];
+    self = [super initWithCoder:aDecoder];
     if (self) {
-        // Initialization code
+        
     }
     return self;
+}
+
+- (void)setup
+{
+    // Setup the frame according to content priority
+    self.frame = CGRectMake(self.frame.origin.x,
+                            self.frame.origin.y,
+                            [self.data[@"priority"] intValue] == 1 ? 307.0 : 150.0,
+                            self.frame.size.height);
+
+    // Setup the mask.
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    gradient.frame = self.imageView.bounds;
+    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithWhite:0.0 alpha:1.0] CGColor], (id)[[UIColor colorWithWhite:0.0 alpha:0.2] CGColor], nil];
+    gradient.locations = @[@(0.35), @(1.0)];
+    self.imageView.layer.mask = gradient;
+    
+    // Define Shadow object
+    NSShadow *shadow = [[NSShadow alloc] init];
+    [shadow setShadowColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.65]];
+    [shadow setShadowBlurRadius:1.5];
+    [shadow setShadowOffset:CGSizeMake(0, 0.5)];
+    
+    // The font
+    UIFont *font = [UIFont fontWithName:@"MuseoSansRounded-500" size:10.0];
+    // The color
+    UIColor *color = [UIColor whiteColor];
+    NSDictionary *attributes = @{NSFontAttributeName: font,
+                                 NSShadowAttributeName: shadow,
+                                 NSForegroundColorAttributeName: color};
+    
+    self.titleLabel.attributedText = [[NSAttributedString alloc] initWithString:self.data[@"title"] attributes:attributes];
+    self.dateLabel.attributedText = [[NSAttributedString alloc] initWithString:self.data[@"date"] attributes:attributes];
+    
+    self.dateLabel.alpha = 0.65;
+    
+    // Setup the image
+    self.imageView.frame = self.bounds;
+
+//    self.imageView.image = [UIImage imageNamed:self.data[@"imageName"]];
+    [self.imageView setImageWithURL:[NSURL URLWithString:self.data[@"imageUrl"]]];
+}
+
+- (void)prepareForReuse
+{
+    self.imageView.image = nil;
+    self.titleLabel.text = nil;
+    self.dateLabel.text = nil;
 }
 
 /*
