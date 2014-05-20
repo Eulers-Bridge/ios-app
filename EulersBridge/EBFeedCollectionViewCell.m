@@ -45,7 +45,7 @@
     
     // The font
     UIFont *fontTitle = [UIFont fontWithName:@"MuseoSansRounded-300" size:[self.data[@"priority"] intValue] == 1 ? FONT_SIZE_CELL_TITLE_LARGE : FONT_SIZE_CELL_TITLE_SMALL];
-    UIFont *fontDate = [UIFont fontWithName:@"MuseoSansRounded-300" size:[self.data[@"priority"] intValue] == 1 ? FONT_SIZE_CELL_TIME_LARGE : FONT_SIZE_CELL_TIME_SMALL];
+    UIFont *fontDate = [UIFont fontWithName:@"MuseoSansRounded-300" size:[self.data[@"priority"] intValue] == 1 ? FONT_SIZE_CELL_DATE_LARGE : FONT_SIZE_CELL_DATE_SMALL];
     // The color
 //    UIColor *color = [UIColor whiteColor];
 //    NSDictionary *attributes = @{NSFontAttributeName: font,

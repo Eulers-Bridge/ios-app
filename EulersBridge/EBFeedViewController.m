@@ -46,12 +46,8 @@
     [self.newsCollectionView addSubview:refreshControl];
     
     
-    [self fetchDataNews:nil];
-    self.sampleTitles = @[@"Former MP goes back to school",
-                          @"GSA to stop advocacy",
-                          @"Film set on Old Quad",
-                          @"Melbourne and RMIT to become Superuniversity",
-                          @"Smoke no more: Parkville now tobacco-free"];
+//    [self fetchDataNews:nil];
+//    [self setupSampleData];
     self.sampleDates = @[@"Yesterday, 9:00 AM",
                          @"Friday, 1:00 PM",
                          @"Wednesday, 2:00 PM",
@@ -124,9 +120,9 @@
 
     
     cell.data = @{@"priority"   : @(indexPath.item % 3 == 0 ? 1 : 0),
-                  @"title"      : self.sampleTitles[indexPath.item%5],
+                  @"title"      : @"",
                   @"date"       : self.sampleDates[indexPath.item%5],
-                  @"imageName"  : [NSString stringWithFormat:@"%@%ld.png", @"sample", indexPath.item%5]};
+                  @"imageName"  : [NSString stringWithFormat:@"%@%ld.jpg", @"news", (long)indexPath.item]};
 //    NSLog(@"%ld", indexPath.item);
 //    NSLog(@"%@", cell.data);
 //    NSMutableDictionary *dict = [self.newsList[indexPath.item] mutableCopy];
@@ -219,5 +215,13 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+
+- (void)setupSampleData
+{
+
+    
+}
 
 @end

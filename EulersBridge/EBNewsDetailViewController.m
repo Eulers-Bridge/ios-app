@@ -14,6 +14,16 @@
 
 @interface EBNewsDetailViewController () <EKEventEditViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIImageView *authorImageView;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *authorLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UIButton *shareButton;
+
+
 @end
 
 @implementation EBNewsDetailViewController
@@ -32,11 +42,55 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    // test dates
+    // Setup Font
+    self.titleLabel.font = [UIFont fontWithName:@"MuseoSansRounded-300" size:FONT_SIZE_ARTICLE_TITLE];
+    self.authorLabel.font = [UIFont fontWithName:@"MuseoSansRounded-300" size:FONT_SIZE_ARTICLE_AUTHOR];
+    self.dateLabel.font = [UIFont fontWithName:@"MuseoSansRounded-300" size:FONT_SIZE_ARTICLE_DATE];
+    self.shareButton.titleLabel.font = [UIFont fontWithName:@"MuseoSansRounded-700" size:FONT_SIZE_BUTTON];
+    self.textView.font = [UIFont fontWithName:@"Sentinel-Medium" size:FONT_SIZE_ARTICLE_BODY];
     
+    // Setup the mask
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    gradient.frame = self.imageView.bounds;
+    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithWhite:0.0 alpha:1.0] CGColor], (id)[[UIColor colorWithWhite:0.0 alpha:0.2] CGColor], nil];
+    gradient.locations = @[@(0.35), @(1.0)];
+    self.imageView.layer.mask = gradient;
+    
+    // Setup Data
+    [self setupData];
+    CGSize size = [self.textView sizeThatFits:CGSizeMake(WIDTH_OF_SCREEN, 200)];
+    self.textView.frame = CGRectMake(0.0,
+                                     self.imageView.bounds.size.height,
+                                     WIDTH_OF_SCREEN,
+                                     size.height);
+    
+    self.scrollView.contentSize = CGSizeMake(WIDTH_OF_SCREEN,
+                                             self.imageView.bounds.size.height + self.textView.frame.size.height);
+
+    
+
+    self.shareButton.layer.borderColor = [UIColor whiteColor].CGColor;
 }
 
 
+- (void)setupData
+{
+//    self.titleLabel.text = self.data[@"title"];
+//    self.authorLabel.text = self.data[@"author"];
+//    self.dateLabel.text = self.data[@"date"];
+//    self.imageView.image = [UIImage imageNamed:self.data[@"imageName"]];
+//    self.authorImageView.image = [UIImage imageNamed:self.data[@"authorImage"]];
+//    self.textView.text = self.data[@"article"];
+    
+    self.titleLabel.text = @"Labor pulls ahead in Nielson poll";
+    self.authorLabel.text = @"Eva Menendez";
+    self.dateLabel.text = @"Yesterday, 9:00 AM";
+    self.imageView.image = [UIImage imageNamed:@"news1.jpg"];
+    self.authorImageView.image = [UIImage imageNamed:@"head1.jpg"];
+    self.authorImageView.layer.cornerRadius = 12;
+    self.textView.text = @"Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content ";
+    
+}
 
 
 - (IBAction)addToCalendar:(UIButton *)sender
