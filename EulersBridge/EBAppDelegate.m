@@ -34,7 +34,7 @@
 //    [[UILabel appearance] setFont:[UIFont fontWithName:@"MuseoSansRounded-500" size:10.0]];
     
     // Segmented control
-    UIFont *font = [UIFont fontWithName:@"MuseoSansRounded-500" size:14.0];
+    UIFont *font = [UIFont fontWithName:@"MuseoSansRounded-700" size:14.0];
     NSDictionary *attributes = [NSDictionary dictionaryWithObject:font
                                                            forKey:NSFontAttributeName];
     [[UISegmentedControl appearance] setTitleTextAttributes:attributes

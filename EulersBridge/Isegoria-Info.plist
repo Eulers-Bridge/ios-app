@@ -29,6 +29,7 @@
 		<string>MuseoSansRounded-100.otf</string>
 		<string>MuseoSansRounded-300.otf</string>
 		<string>MuseoSansRounded-500.otf</string>
+		<string>MuseoSansRounded-700.otf</string>
 	</array>
 	<key>UIMainStoryboardFile</key>
 	<string>Main_iPhone</string>

@@ -108,24 +108,30 @@
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [self.newsList count];
+//    return [self.newsList count];
+    return 15;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    EBFeedCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"FeedCell" forIndexPath:indexPath];
-    
+    EBFeedCollectionViewCell *cell;
+    int priority = indexPath.item % 3 == 0 ? 1 : 0;
+    if (priority == 1) {
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"FeedCellLarge" forIndexPath:indexPath];
+    } else {
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"FeedCell" forIndexPath:indexPath];
+    }
 
     
-//    cell.data = @{@"priority"   : @(indexPath.item % 3 == 0 ? 1 : 0),
-//                  @"title"      : self.sampleTitles[indexPath.item%5],
-//                  @"date"       : self.sampleDates[indexPath.item%5],
-//                  @"imageName"  : [NSString stringWithFormat:@"%@%ld.png", @"sample", indexPath.item%5]};
+    cell.data = @{@"priority"   : @(indexPath.item % 3 == 0 ? 1 : 0),
+                  @"title"      : self.sampleTitles[indexPath.item%5],
+                  @"date"       : self.sampleDates[indexPath.item%5],
+                  @"imageName"  : [NSString stringWithFormat:@"%@%ld.png", @"sample", indexPath.item%5]};
 //    NSLog(@"%ld", indexPath.item);
 //    NSLog(@"%@", cell.data);
-    NSMutableDictionary *dict = [self.newsList[indexPath.item] mutableCopy];
-    [dict setObject:@(indexPath.item % 3 == 0 ? 1 : 0) forKey:@"priority"];
-    cell.data = [dict copy];
+//    NSMutableDictionary *dict = [self.newsList[indexPath.item] mutableCopy];
+//    [dict setObject:@(indexPath.item % 3 == 0 ? 1 : 0) forKey:@"priority"];
+//    cell.data = [dict copy];
     
     [cell setup];
     

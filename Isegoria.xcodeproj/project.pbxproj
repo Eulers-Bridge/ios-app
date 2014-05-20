@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040761931929BF3D00E660A8 /* MuseoSansRounded-700.otf in Resources */ = {isa = PBXBuildFile; fileRef = 040761921929BF3D00E660A8 /* MuseoSansRounded-700.otf */; };
 		0493F3D1191F49C400853DBF /* EBNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0493F3D0191F49C400853DBF /* EBNetworkService.m */; };
 		0493F3D4191F49EA00853DBF /* EBImageService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0493F3D3191F49EA00853DBF /* EBImageService.m */; };
 		0494A4BB1920AA6300602CB9 /* MuseoSansRounded-100.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0494A4B91920AA6300602CB9 /* MuseoSansRounded-100.otf */; };
@@ -66,6 +67,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		040761921929BF3D00E660A8 /* MuseoSansRounded-700.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MuseoSansRounded-700.otf"; sourceTree = "<group>"; };
 		0493F3CF191F49C400853DBF /* EBNetworkService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBNetworkService.h; sourceTree = "<group>"; };
 		0493F3D0191F49C400853DBF /* EBNetworkService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBNetworkService.m; sourceTree = "<group>"; };
 		0493F3D2191F49EA00853DBF /* EBImageService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBImageService.h; sourceTree = "<group>"; };
@@ -110,22 +112,22 @@
 		04BB70551911C01F0059E93C /* EBFindFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBFindFriendViewController.m; sourceTree = "<group>"; };
 		04BB705D1911E9430059E93C /* EBFindFriendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBFindFriendTableViewCell.h; sourceTree = "<group>"; };
 		04BB705E1911E9430059E93C /* EBFindFriendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBFindFriendTableViewCell.m; sourceTree = "<group>"; };
-		04FD417819062ECD00AF17DC /* EulersBridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EulersBridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		04FD417819062ECD00AF17DC /* Isegoria.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Isegoria.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04FD417B19062ECD00AF17DC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		04FD417D19062ECD00AF17DC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		04FD417F19062ECD00AF17DC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		04FD418319062ECD00AF17DC /* EulersBridge-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EulersBridge-Info.plist"; sourceTree = "<group>"; };
+		04FD418319062ECD00AF17DC /* Isegoria-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Isegoria-Info.plist"; sourceTree = "<group>"; };
 		04FD418519062ECD00AF17DC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		04FD418719062ECD00AF17DC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		04FD418919062ECD00AF17DC /* EulersBridge-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EulersBridge-Prefix.pch"; sourceTree = "<group>"; };
+		04FD418919062ECD00AF17DC /* Isegoria-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Isegoria-Prefix.pch"; sourceTree = "<group>"; };
 		04FD418A19062ECD00AF17DC /* EBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EBAppDelegate.h; sourceTree = "<group>"; };
 		04FD418B19062ECD00AF17DC /* EBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EBAppDelegate.m; sourceTree = "<group>"; };
 		04FD418E19062ECD00AF17DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		04FD419119062ECD00AF17DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		04FD419919062ECD00AF17DC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = EulersBridge/Images.xcassets; sourceTree = "<group>"; };
-		04FD419F19062ECD00AF17DC /* EulersBridgeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EulersBridgeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		04FD419F19062ECD00AF17DC /* IsegoriaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IsegoriaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04FD41A019062ECD00AF17DC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		04FD41A819062ECD00AF17DC /* EulersBridgeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EulersBridgeTests-Info.plist"; sourceTree = "<group>"; };
+		04FD41A819062ECD00AF17DC /* IsegoriaTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IsegoriaTests-Info.plist"; sourceTree = "<group>"; };
 		04FD41AA19062ECD00AF17DC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		04FD41AC19062ECD00AF17DC /* EulersBridgeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EulersBridgeTests.m; sourceTree = "<group>"; };
 		04FD41BF1906554200AF17DC /* EBSignupLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBSignupLoginViewController.h; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				0494A4B91920AA6300602CB9 /* MuseoSansRounded-100.otf */,
 				0494A4BA1920AA6300602CB9 /* MuseoSansRounded-300.otf */,
 				0494A4BD1920AA8D00602CB9 /* MuseoSansRounded-500.otf */,
+				040761921929BF3D00E660A8 /* MuseoSansRounded-700.otf */,
 			);
 			name = Fonts;
 			sourceTree = "<group>";
@@ -289,8 +292,8 @@
 		04FD417919062ECD00AF17DC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				04FD417819062ECD00AF17DC /* EulersBridge.app */,
-				04FD419F19062ECD00AF17DC /* EulersBridgeTests.xctest */,
+				04FD417819062ECD00AF17DC /* Isegoria.app */,
+				04FD419F19062ECD00AF17DC /* IsegoriaTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -335,10 +338,10 @@
 		04FD418219062ECD00AF17DC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				04FD418319062ECD00AF17DC /* EulersBridge-Info.plist */,
+				04FD418319062ECD00AF17DC /* Isegoria-Info.plist */,
 				04FD418419062ECD00AF17DC /* InfoPlist.strings */,
 				04FD418719062ECD00AF17DC /* main.m */,
-				04FD418919062ECD00AF17DC /* EulersBridge-Prefix.pch */,
+				04FD418919062ECD00AF17DC /* Isegoria-Prefix.pch */,
 				0494A4C51921B3B100602CB9 /* sample images */,
 				0494A4B81920AA2C00602CB9 /* Fonts */,
 			);
@@ -357,7 +360,7 @@
 		04FD41A719062ECD00AF17DC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				04FD41A819062ECD00AF17DC /* EulersBridgeTests-Info.plist */,
+				04FD41A819062ECD00AF17DC /* IsegoriaTests-Info.plist */,
 				04FD41A919062ECD00AF17DC /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -366,9 +369,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		04FD417719062ECD00AF17DC /* EulersBridge */ = {
+		04FD417719062ECD00AF17DC /* Isegoria */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 04FD41B019062ECD00AF17DC /* Build configuration list for PBXNativeTarget "EulersBridge" */;
+			buildConfigurationList = 04FD41B019062ECD00AF17DC /* Build configuration list for PBXNativeTarget "Isegoria" */;
 			buildPhases = (
 				B7ABA1A7F4B74F7594112334 /* Check Pods Manifest.lock */,
 				04FD417419062ECD00AF17DC /* Sources */,
@@ -380,14 +383,14 @@
 			);
 			dependencies = (
 			);
-			name = EulersBridge;
+			name = Isegoria;
 			productName = EulersBridge;
-			productReference = 04FD417819062ECD00AF17DC /* EulersBridge.app */;
+			productReference = 04FD417819062ECD00AF17DC /* Isegoria.app */;
 			productType = "com.apple.product-type.application";
 		};
-		04FD419E19062ECD00AF17DC /* EulersBridgeTests */ = {
+		04FD419E19062ECD00AF17DC /* IsegoriaTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 04FD41B319062ECD00AF17DC /* Build configuration list for PBXNativeTarget "EulersBridgeTests" */;
+			buildConfigurationList = 04FD41B319062ECD00AF17DC /* Build configuration list for PBXNativeTarget "IsegoriaTests" */;
 			buildPhases = (
 				04FD419B19062ECD00AF17DC /* Sources */,
 				04FD419C19062ECD00AF17DC /* Frameworks */,
@@ -398,9 +401,9 @@
 			dependencies = (
 				04FD41A519062ECD00AF17DC /* PBXTargetDependency */,
 			);
-			name = EulersBridgeTests;
+			name = IsegoriaTests;
 			productName = EulersBridgeTests;
-			productReference = 04FD419F19062ECD00AF17DC /* EulersBridgeTests.xctest */;
+			productReference = 04FD419F19062ECD00AF17DC /* IsegoriaTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -418,7 +421,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 04FD417319062ECD00AF17DC /* Build configuration list for PBXProject "EulersBridge" */;
+			buildConfigurationList = 04FD417319062ECD00AF17DC /* Build configuration list for PBXProject "Isegoria" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -431,8 +434,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				04FD417719062ECD00AF17DC /* EulersBridge */,
-				04FD419E19062ECD00AF17DC /* EulersBridgeTests */,
+				04FD417719062ECD00AF17DC /* Isegoria */,
+				04FD419E19062ECD00AF17DC /* IsegoriaTests */,
 			);
 		};
 /* End PBXProject section */
@@ -454,6 +457,7 @@
 				0494A4BB1920AA6300602CB9 /* MuseoSansRounded-100.otf in Resources */,
 				04FD418619062ECD00AF17DC /* InfoPlist.strings in Resources */,
 				0494A4CC1921B3CC00602CB9 /* sample1.png in Resources */,
+				040761931929BF3D00E660A8 /* MuseoSansRounded-700.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -540,7 +544,7 @@
 /* Begin PBXTargetDependency section */
 		04FD41A519062ECD00AF17DC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 04FD417719062ECD00AF17DC /* EulersBridge */;
+			target = 04FD417719062ECD00AF17DC /* Isegoria */;
 			targetProxy = 04FD41A419062ECD00AF17DC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -661,9 +665,9 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "EulersBridge/EulersBridge-Prefix.pch";
-				INFOPLIST_FILE = "EulersBridge/EulersBridge-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "EulersBridge/Isegoria-Prefix.pch";
+				INFOPLIST_FILE = "EulersBridge/Isegoria-Info.plist";
+				PRODUCT_NAME = Isegoria;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -677,9 +681,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "EulersBridge/EulersBridge-Prefix.pch";
-				INFOPLIST_FILE = "EulersBridge/EulersBridge-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "EulersBridge/Isegoria-Prefix.pch";
+				INFOPLIST_FILE = "EulersBridge/Isegoria-Info.plist";
+				PRODUCT_NAME = Isegoria;
 				PROVISIONING_PROFILE = "09E0C9AE-4FF1-493F-89B5-F8C4FC61F3E2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -700,8 +704,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "EulersBridgeTests/EulersBridgeTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "EulersBridgeTests/IsegoriaTests-Info.plist";
+				PRODUCT_NAME = IsegoriaTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -718,8 +722,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EulersBridge/EulersBridge-Prefix.pch";
-				INFOPLIST_FILE = "EulersBridgeTests/EulersBridgeTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "EulersBridgeTests/IsegoriaTests-Info.plist";
+				PRODUCT_NAME = IsegoriaTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -728,7 +732,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		04FD417319062ECD00AF17DC /* Build configuration list for PBXProject "EulersBridge" */ = {
+		04FD417319062ECD00AF17DC /* Build configuration list for PBXProject "Isegoria" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				04FD41AE19062ECD00AF17DC /* Debug */,
@@ -737,7 +741,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		04FD41B019062ECD00AF17DC /* Build configuration list for PBXNativeTarget "EulersBridge" */ = {
+		04FD41B019062ECD00AF17DC /* Build configuration list for PBXNativeTarget "Isegoria" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				04FD41B119062ECD00AF17DC /* Debug */,
@@ -746,7 +750,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		04FD41B319062ECD00AF17DC /* Build configuration list for PBXNativeTarget "EulersBridgeTests" */ = {
+		04FD41B319062ECD00AF17DC /* Build configuration list for PBXNativeTarget "IsegoriaTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				04FD41B419062ECD00AF17DC /* Debug */,
