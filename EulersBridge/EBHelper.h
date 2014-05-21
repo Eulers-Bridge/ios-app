@@ -16,4 +16,6 @@
 + (NSTimeInterval)timeIntervalWithHours:(double)hours minutes:(double)minutes seconds:(double)seconds;
 
 + (NSArray *)contactsWithAddressBookRef:(ABAddressBookRef)addressBookRef;
+
++ (UIColor *)greenColor;
 @end

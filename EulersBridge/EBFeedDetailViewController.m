@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 Eulers Bridge. All rights reserved.
 //
 
-#import "EBNewsDetailViewController.h"
+#import "EBFeedDetailViewController.h"
 #import "EBHelper.h"
 #import <EventKit/EventKit.h>
 #import <EventKitUI/EventKitUI.h>
 #import <Social/Social.h>
 
-@interface EBNewsDetailViewController () <EKEventEditViewDelegate>
+@interface EBFeedDetailViewController () <EKEventEditViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
@@ -21,12 +21,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *authorLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
-@property (weak, nonatomic) IBOutlet UIButton *shareButton;
+@property (weak, nonatomic) IBOutlet UIButton *actionButton;
 
 
 @end
 
-@implementation EBNewsDetailViewController
+@implementation EBFeedDetailViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -41,13 +41,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    // Setup Font
-    self.titleLabel.font = [UIFont fontWithName:@"MuseoSansRounded-300" size:FONT_SIZE_ARTICLE_TITLE];
-    self.authorLabel.font = [UIFont fontWithName:@"MuseoSansRounded-300" size:FONT_SIZE_ARTICLE_AUTHOR];
-    self.dateLabel.font = [UIFont fontWithName:@"MuseoSansRounded-300" size:FONT_SIZE_ARTICLE_DATE];
-    self.shareButton.titleLabel.font = [UIFont fontWithName:@"MuseoSansRounded-700" size:FONT_SIZE_BUTTON];
-    self.textView.font = [UIFont fontWithName:@"Sentinel-Medium" size:FONT_SIZE_ARTICLE_BODY];
+    self.view.layer.shouldRasterize = YES;
+    self.view.layer.rasterizationScale = [UIScreen mainScreen].scale;
     
     // Setup the mask
     CAGradientLayer *gradient = [CAGradientLayer layer];
@@ -56,8 +51,22 @@
     gradient.locations = @[@(0.35), @(1.0)];
     self.imageView.layer.mask = gradient;
     
-    // Setup Data
-    [self setupData];
+    // Setup Font
+    self.titleLabel.font = [UIFont fontWithName:@"MuseoSansRounded-300" size:FONT_SIZE_ARTICLE_TITLE];
+    self.actionButton.titleLabel.font = [UIFont fontWithName:@"MuseoSansRounded-700" size:FONT_SIZE_BUTTON];
+    self.textView.font = [UIFont fontWithName:@"Sentinel-Medium" size:FONT_SIZE_ARTICLE_BODY];
+    
+    // Action button
+    self.actionButton.layer.borderColor = [UIColor whiteColor].CGColor;
+    
+    if (self.feedDetailType == EBFeedDetailNews) {
+        [self setupNews];
+    } else if (self.feedDetailType == EBFeedDetailEvent) {
+        [self setupEvent];
+    }
+    
+    
+    
     CGSize size = [self.textView sizeThatFits:CGSizeMake(WIDTH_OF_SCREEN, 200)];
     self.textView.frame = CGRectMake(0.0,
                                      self.imageView.bounds.size.height,
@@ -69,9 +78,32 @@
 
     
 
-    self.shareButton.layer.borderColor = [UIColor whiteColor].CGColor;
+    
 }
 
+
+- (void)setupNews
+{
+    self.dateLabel.font = [UIFont fontWithName:@"MuseoSansRounded-300" size:FONT_SIZE_ARTICLE_DATE];
+    self.authorLabel.font = [UIFont fontWithName:@"MuseoSansRounded-300" size:FONT_SIZE_ARTICLE_AUTHOR];
+    
+    self.titleLabel.text = @"Labor pulls ahead in Nielson poll";
+    self.authorLabel.text = @"Eva Menendez";
+    self.dateLabel.text = @"Yesterday, 9:00 AM";
+    self.imageView.image = [UIImage imageNamed:@"news1.jpg"];
+    self.authorImageView.image = [UIImage imageNamed:@"head1.jpg"];
+    self.authorImageView.layer.cornerRadius = 12;
+    self.textView.text = @"Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content ";
+}
+
+- (void)setupEvent
+{
+    self.dateLabel.font = [UIFont fontWithName:@"MuseoSansRounded-300" size:FONT_SIZE_EVENT_DATE];
+    self.titleLabel.text = @"Labor pulls ahead in Nielson poll";
+    self.dateLabel.text = @"Yesterday, 9:00 AM";
+    self.imageView.image = [UIImage imageNamed:@"news1.jpg"];
+    self.textView.text = @"Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content ";
+}
 
 - (void)setupData
 {
@@ -82,13 +114,7 @@
 //    self.authorImageView.image = [UIImage imageNamed:self.data[@"authorImage"]];
 //    self.textView.text = self.data[@"article"];
     
-    self.titleLabel.text = @"Labor pulls ahead in Nielson poll";
-    self.authorLabel.text = @"Eva Menendez";
-    self.dateLabel.text = @"Yesterday, 9:00 AM";
-    self.imageView.image = [UIImage imageNamed:@"news1.jpg"];
-    self.authorImageView.image = [UIImage imageNamed:@"head1.jpg"];
-    self.authorImageView.layer.cornerRadius = 12;
-    self.textView.text = @"Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content Some content ";
+    
     
 }
 
@@ -173,6 +199,13 @@
 }
 
 
+- (IBAction)share:(UIButton *)sender
+{
+    UIActivityViewController *avc = [[UIActivityViewController alloc] initWithActivityItems:@[@"share string"] applicationActivities:nil];
+    [self presentViewController:avc animated:YES completion:^{
+        
+    }];
+}
 
 
 

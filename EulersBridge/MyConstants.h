@@ -29,7 +29,18 @@
 #define FONT_SIZE_ARTICLE_AUTHOR 14
 #define FONT_SIZE_ARTICLE_DATE 9
 #define FONT_SIZE_ARTICLE_BODY 14
+#define FONT_SIZE_EVENT_DATE 14
 
 #define FONT_SIZE_BUTTON 15
+
+#define FONT_SIZE_VOLUNTEER_TITLE 15
+#define FONT_SIZE_VOLUNTEER_POSITION 14
+#define FONT_SIZE_VOLUNTEER_DESCRIPTION 14
+
+typedef NS_ENUM(NSInteger, EBFeedDetail) {
+    EBFeedDetailNews,
+    EBFeedDetailEvent,
+    EBFeedDetailPhoto
+};
 
 #endif

@@ -56,4 +56,8 @@
     return [contacts copy];
 }
 
++ (UIColor *)greenColor
+{
+    return [UIColor colorWithRed:96.0/255.0 green:195.0/255.0 blue:83.0/255.0 alpha:1.0];
+}
 @end

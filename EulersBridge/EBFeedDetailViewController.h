@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MyConstants.h"
 
+@interface EBFeedDetailViewController : UIViewController
 
-@interface EBNewsDetailViewController : UIViewController
-
+@property EBFeedDetail feedDetailType;
 @property (strong, nonatomic) NSDictionary *data;
 
 @end

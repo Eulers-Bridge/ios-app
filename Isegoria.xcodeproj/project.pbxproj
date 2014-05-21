@@ -39,6 +39,8 @@
 		046D6448192B225F00C354F4 /* news14.txt in Resources */ = {isa = PBXBuildFile; fileRef = 046D6439192B225F00C354F4 /* news14.txt */; };
 		046D6449192B225F00C354F4 /* news15.txt in Resources */ = {isa = PBXBuildFile; fileRef = 046D643A192B225F00C354F4 /* news15.txt */; };
 		046D644C192B4A5100C354F4 /* head1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 046D644B192B4A5100C354F4 /* head1.jpg */; };
+		046D644F192C3D4000C354F4 /* EBVolunteerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D644E192C3D4000C354F4 /* EBVolunteerTableViewController.m */; };
+		046D6453192C3E7600C354F4 /* EBVolunteerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D6452192C3E7600C354F4 /* EBVolunteerTableViewCell.m */; };
 		0493F3D1191F49C400853DBF /* EBNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0493F3D0191F49C400853DBF /* EBNetworkService.m */; };
 		0493F3D4191F49EA00853DBF /* EBImageService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0493F3D3191F49EA00853DBF /* EBImageService.m */; };
 		0494A4BB1920AA6300602CB9 /* MuseoSansRounded-100.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0494A4B91920AA6300602CB9 /* MuseoSansRounded-100.otf */; };
@@ -51,7 +53,7 @@
 		04BB7034190B83710059E93C /* EBStopWatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BB7033190B83710059E93C /* EBStopWatch.m */; };
 		04BB7038190B89B70059E93C /* EBStopwatchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BB7037190B89B70059E93C /* EBStopwatchViewController.m */; };
 		04BB703B190B8F7E0059E93C /* EBStopWatchInt.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BB703A190B8F7E0059E93C /* EBStopWatchInt.m */; };
-		04BB703E190BCEB50059E93C /* EBNewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BB703D190BCEB50059E93C /* EBNewsDetailViewController.m */; };
+		04BB703E190BCEB50059E93C /* EBFeedDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BB703D190BCEB50059E93C /* EBFeedDetailViewController.m */; };
 		04BB7040190BCF390059E93C /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BB703F190BCF390059E93C /* EventKit.framework */; };
 		04BB7043190BD9920059E93C /* EBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BB7042190BD9920059E93C /* EBHelper.m */; };
 		04BB7046190BE93F0059E93C /* EBVoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BB7045190BE93F0059E93C /* EBVoteViewController.m */; };
@@ -125,6 +127,10 @@
 		046D6439192B225F00C354F4 /* news14.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = news14.txt; sourceTree = "<group>"; };
 		046D643A192B225F00C354F4 /* news15.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = news15.txt; sourceTree = "<group>"; };
 		046D644B192B4A5100C354F4 /* head1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = head1.jpg; sourceTree = "<group>"; };
+		046D644D192C3D4000C354F4 /* EBVolunteerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBVolunteerTableViewController.h; sourceTree = "<group>"; };
+		046D644E192C3D4000C354F4 /* EBVolunteerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBVolunteerTableViewController.m; sourceTree = "<group>"; };
+		046D6451192C3E7600C354F4 /* EBVolunteerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBVolunteerTableViewCell.h; sourceTree = "<group>"; };
+		046D6452192C3E7600C354F4 /* EBVolunteerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBVolunteerTableViewCell.m; sourceTree = "<group>"; };
 		0493F3CF191F49C400853DBF /* EBNetworkService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBNetworkService.h; sourceTree = "<group>"; };
 		0493F3D0191F49C400853DBF /* EBNetworkService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBNetworkService.m; sourceTree = "<group>"; };
 		0493F3D2191F49EA00853DBF /* EBImageService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBImageService.h; sourceTree = "<group>"; };
@@ -147,8 +153,8 @@
 		04BB7037190B89B70059E93C /* EBStopwatchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBStopwatchViewController.m; sourceTree = "<group>"; };
 		04BB7039190B8F7E0059E93C /* EBStopWatchInt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBStopWatchInt.h; sourceTree = "<group>"; };
 		04BB703A190B8F7E0059E93C /* EBStopWatchInt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBStopWatchInt.m; sourceTree = "<group>"; };
-		04BB703C190BCEB50059E93C /* EBNewsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBNewsDetailViewController.h; sourceTree = "<group>"; };
-		04BB703D190BCEB50059E93C /* EBNewsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBNewsDetailViewController.m; sourceTree = "<group>"; };
+		04BB703C190BCEB50059E93C /* EBFeedDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBFeedDetailViewController.h; sourceTree = "<group>"; };
+		04BB703D190BCEB50059E93C /* EBFeedDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBFeedDetailViewController.m; sourceTree = "<group>"; };
 		04BB703F190BCF390059E93C /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		04BB7041190BD9920059E93C /* EBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBHelper.h; sourceTree = "<group>"; };
 		04BB7042190BD9920059E93C /* EBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBHelper.m; sourceTree = "<group>"; };
@@ -281,6 +287,17 @@
 			name = Headshots;
 			sourceTree = "<group>";
 		};
+		046D6450192C3E5B00C354F4 /* Volunteer */ = {
+			isa = PBXGroup;
+			children = (
+				046D644D192C3D4000C354F4 /* EBVolunteerTableViewController.h */,
+				046D644E192C3D4000C354F4 /* EBVolunteerTableViewController.m */,
+				046D6451192C3E7600C354F4 /* EBVolunteerTableViewCell.h */,
+				046D6452192C3E7600C354F4 /* EBVolunteerTableViewCell.m */,
+			);
+			name = Volunteer;
+			sourceTree = "<group>";
+		};
 		0493F3D5191F49F600853DBF /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -331,8 +348,9 @@
 				04BB702C190891320059E93C /* EBFeedViewController.m */,
 				04BB7028190890920059E93C /* EBFeedCollectionViewCell.h */,
 				04BB7029190890920059E93C /* EBFeedCollectionViewCell.m */,
-				04BB703C190BCEB50059E93C /* EBNewsDetailViewController.h */,
-				04BB703D190BCEB50059E93C /* EBNewsDetailViewController.m */,
+				04BB703C190BCEB50059E93C /* EBFeedDetailViewController.h */,
+				04BB703D190BCEB50059E93C /* EBFeedDetailViewController.m */,
+				046D6450192C3E5B00C354F4 /* Volunteer */,
 			);
 			name = Feed;
 			sourceTree = "<group>";
@@ -652,9 +670,11 @@
 				04BB702D190891320059E93C /* EBFeedViewController.m in Sources */,
 				04BB7043190BD9920059E93C /* EBHelper.m in Sources */,
 				0493F3D1191F49C400853DBF /* EBNetworkService.m in Sources */,
+				046D6453192C3E7600C354F4 /* EBVolunteerTableViewCell.m in Sources */,
 				04FD418C19062ECD00AF17DC /* EBAppDelegate.m in Sources */,
 				04FD41C41906574900AF17DC /* EBWelcomeViewController.m in Sources */,
 				0495C50C191B661000EAEAB5 /* EBStackLayout.m in Sources */,
+				046D644F192C3D4000C354F4 /* EBVolunteerTableViewController.m in Sources */,
 				04BB703B190B8F7E0059E93C /* EBStopWatchInt.m in Sources */,
 				04BB705F1911E9430059E93C /* EBFindFriendTableViewCell.m in Sources */,
 				04BB704E190D229D0059E93C /* EBProfileViewController.m in Sources */,
@@ -663,7 +683,7 @@
 				04BB7046190BE93F0059E93C /* EBVoteViewController.m in Sources */,
 				0495C508191B651900EAEAB5 /* EBPhotoStackViewController.m in Sources */,
 				04BB7034190B83710059E93C /* EBStopWatch.m in Sources */,
-				04BB703E190BCEB50059E93C /* EBNewsDetailViewController.m in Sources */,
+				04BB703E190BCEB50059E93C /* EBFeedDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -25,10 +25,10 @@
 - (void)setup
 {
     // Setup the frame according to content priority
-    self.frame = CGRectMake(self.frame.origin.x,
-                            self.frame.origin.y,
-                            [self.data[@"priority"] intValue] == 1 ? 307.0 : 150.0,
-                            self.frame.size.height);
+//    self.frame = CGRectMake(self.frame.origin.x,
+//                            self.frame.origin.y,
+//                            [self.data[@"priority"] intValue] == 1 ? 307.0 : 150.0,
+//                            self.frame.size.height);
 
     // Setup the mask.
     CAGradientLayer *gradient = [CAGradientLayer layer];
@@ -57,7 +57,7 @@
     self.dateLabel.text = self.data[@"date"];
     
     // Setup the image
-    self.imageView.frame = self.bounds;
+//    self.imageView.frame = self.bounds;
 
     self.imageView.image = [UIImage imageNamed:self.data[@"imageName"]];
 //    [self.imageView setImageWithURL:[NSURL URLWithString:self.data[@"imageUrl"]]];
