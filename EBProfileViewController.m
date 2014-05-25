@@ -9,8 +9,32 @@
 #import "EBProfileViewController.h"
 #import <AddressBook/AddressBook.h>
 #import <AddressBookUI/AddressBookUI.h>
+#import "UIImage+ImageEffects.h"
 
 @interface EBProfileViewController () <ABPeoplePickerNavigationControllerDelegate>
+
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
+
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *uniNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *numOfFriendsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *numOfXPLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *friendsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *XPLevelLabel;
+@property (weak, nonatomic) IBOutlet UILabel *badgesLabel;
+@property (weak, nonatomic) IBOutlet UILabel *tasksLabel;
+@property (weak, nonatomic) IBOutlet UILabel *sampleTaskLabel;
+@property (weak, nonatomic) IBOutlet UILabel *sampleXPLabel;
+
+@property (weak, nonatomic) IBOutlet UIButton *actionButton;
+@property (weak, nonatomic) IBOutlet UIButton *showBadges;
+@property (weak, nonatomic) IBOutlet UIButton *showTasks;
+
+
+
 
 @end
 
@@ -28,7 +52,32 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    // Font setup
+    self.nameLabel.font = [UIFont fontWithName:@"MuseoSansRounded-100" size:self.nameLabel.font.pointSize];
+    self.uniNameLabel.font = [UIFont fontWithName:@"MuseoSansRounded-700" size:self.uniNameLabel.font.pointSize];
+    self.numOfFriendsLabel.font = [UIFont fontWithName:@"MuseoSansRounded-100" size:self.numOfFriendsLabel.font.pointSize];
+    self.numOfXPLabel.font = [UIFont fontWithName:@"MuseoSansRounded-100" size:self.numOfXPLabel.font.pointSize];
+    self.friendsLabel.font = [UIFont fontWithName:@"MuseoSansRounded-500" size:self.friendsLabel.font.pointSize];
+    self.XPLevelLabel.font = [UIFont fontWithName:@"MuseoSansRounded-500" size:self.XPLevelLabel.font.pointSize];
+    self.badgesLabel.font = [UIFont fontWithName:@"MuseoSansRounded-700" size:self.badgesLabel.font.pointSize];
+    self.tasksLabel.font = [UIFont fontWithName:@"MuseoSansRounded-700" size:self.tasksLabel.font.pointSize];
+    self.sampleTaskLabel.font = [UIFont fontWithName:@"MuseoSansRounded-500" size:self.sampleTaskLabel.font.pointSize];
+    self.sampleXPLabel.font = [UIFont fontWithName:@"MuseoSansRounded-500" size:self.sampleXPLabel.font.pointSize];
+    
+    self.showBadges.titleLabel.font = [UIFont fontWithName:@"MuseoSansRounded-700" size:self.showBadges.titleLabel.font.pointSize];
+    self.showTasks.titleLabel.font = [UIFont fontWithName:@"MuseoSansRounded-700" size:self.showBadges.titleLabel.font.pointSize];
+    
+    self.actionButton.titleLabel.font = [UIFont fontWithName:@"MuseoSansRounded-700" size:self.actionButton.titleLabel.font.pointSize];
+    self.actionButton.titleLabel.textColor = [UIColor whiteColor];
+    self.actionButton.layer.borderColor = [UIColor whiteColor].CGColor;
+    
+    // Image setup
+    self.profileImageView.image = [UIImage imageNamed:@"selfHead.jpg"];
+    self.imageView.image = [UIImage imageNamed:@"selfHeadBig.jpg"];
+    UIColor *tintColor = [UIColor colorWithRed:51.0/255.0 green:56.0/255.0 blue:69.0/255.0 alpha:0.5];
+    self.imageView.image = [self.imageView.image applyBlurWithRadius:20 tintColor:tintColor saturationDeltaFactor:1.8 maskImage:nil];
+
+
 }
 
 

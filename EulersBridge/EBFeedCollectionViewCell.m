@@ -51,6 +51,15 @@
 //    NSDictionary *attributes = @{NSFontAttributeName: font,
 //                                 NSShadowAttributeName: shadow,
 //                                 NSForegroundColorAttributeName: color};
+    if ([self.data[@"priority"] intValue] == 1) {
+        CGRect frame = self.titleLabel.frame;
+        frame.size.width = 295;
+        self.titleLabel.frame = frame;
+        CGRect dateframe = self.dateLabel.frame;
+        dateframe.size.width = 295;
+        self.dateLabel.frame = dateframe;
+    }
+
     self.titleLabel.font = fontTitle;
     self.dateLabel.font = fontDate;
     self.titleLabel.text = self.data[@"title"];

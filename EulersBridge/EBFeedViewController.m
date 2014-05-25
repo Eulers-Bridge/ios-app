@@ -19,9 +19,10 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *photosCollectionView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 @property (weak, nonatomic) IBOutlet UIScrollView *customScrollView;
-@property (strong, nonatomic) NSArray *sampleTitles;
 @property (strong, nonatomic) NSArray *sampleDates;
 @property (strong, nonatomic) NSArray *newsList;
+@property (strong, nonatomic) NSArray *newsDataList;
+@property (strong, nonatomic) NSArray *eventDataList;
 
 
 @end
@@ -59,14 +60,14 @@
     self.newsCollectionView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
     self.photosCollectionView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
     
-    
 //    [self fetchDataNews:nil];
-//    [self setupSampleData];
     self.sampleDates = @[@"Yesterday, 9:00 AM",
                          @"Friday, 1:00 PM",
                          @"Wednesday, 2:00 PM",
                          @"2nd May 2014, 8:00 AM",
                          @"28th April 2014, 10:00AM"];
+    [self setupSampleData];
+
 
 }
 
@@ -88,18 +89,33 @@
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
 //    return [self.newsList count];
-    return 15;
+    if (collectionView == self.newsCollectionView) {
+        return 15;
+    } else if (collectionView == self.eventsCollectionView) {
+        return 8;
+    } else if (collectionView == self.photosCollectionView) {
+        return 15;
+    }
+    return 0;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     EBFeedCollectionViewCell *cell;
-    int priority = indexPath.item % 3 == 0 ? 1 : 0;
-    if (collectionView == self.eventsCollectionView) {
-        priority = 1;
+    NSDictionary *dict;
+    if (collectionView == self.newsCollectionView) {
+        dict = self.newsDataList[indexPath.item];
+    } else if (collectionView == self.eventsCollectionView) {
+        dict = self.eventDataList[indexPath.item];
     } else if (collectionView == self.photosCollectionView) {
-        priority = 0;
+        dict = @{@"imageName": [NSString stringWithFormat:@"photo%ld.jpg", indexPath.item],
+                 @"title": @"",
+                 @"date": @""};
     }
+
+    int priority = [dict[@"priority"] intValue];
+    
+
     
     if (priority == 1) {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"FeedCellLarge" forIndexPath:indexPath];
@@ -108,10 +124,7 @@
     }
 
     
-    cell.data = @{@"priority"   : @(priority),
-                  @"title"      : @"Example title",
-                  @"date"       : self.sampleDates[indexPath.item%5],
-                  @"imageName"  : [NSString stringWithFormat:@"%@%ld.jpg", @"news", (long)indexPath.item]};
+    cell.data = dict;
 //    NSLog(@"%ld", indexPath.item);
 //    NSLog(@"%@", cell.data);
 //    NSMutableDictionary *dict = [self.newsList[indexPath.item] mutableCopy];
@@ -208,6 +221,7 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     if ([segue.identifier isEqualToString:@"showNewsDetail"]) {
@@ -215,14 +229,73 @@
     } else if ([segue.identifier isEqualToString:@"showEventDetail"]) {
         [[segue destinationViewController] setFeedDetailType:EBFeedDetailEvent];
     }
+    [[segue destinationViewController] setData:[sender data]];
 }
 
 
 
 - (void)setupSampleData
 {
-
+    // Get the titles.
+    NSString* path = [[NSBundle mainBundle] pathForResource:@"newsTitles"
+                                                     ofType:@"txt"];
+    NSString* content = [NSString stringWithContentsOfFile:path
+                                                  encoding:NSUTF8StringEncoding
+                                                     error:NULL];
+    NSArray *newsTitleArray = [content componentsSeparatedByString:@"\n"];
     
+    NSMutableArray *newsDataList = [NSMutableArray arrayWithCapacity:15];
+    int i = 0;
+    for (i = 0; i < 15; i += 1) {
+        path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"news%d", i]
+                                                         ofType:@"txt"];
+        
+        content = [NSString stringWithContentsOfFile:path
+                                                      encoding:NSUTF8StringEncoding
+                                                         error:NULL];
+        
+        NSDictionary *data = @{@"priority"   : @(i % 3 == 0 ? 1 : 0),
+                               @"title"      : newsTitleArray[i],
+                               @"date"       : self.sampleDates[i%5],
+                               @"imageName"  : [NSString stringWithFormat:@"%@%ld.jpg", @"news", (long)i],
+                               @"article"    : content
+                               };
+        [newsDataList addObject:data];
+
+
+    }
+    self.newsDataList = [newsDataList copy];
+    
+    
+    // Events
+    path = [[NSBundle mainBundle] pathForResource:@"eventTitles"
+                                           ofType:@"txt"];
+    
+    content = [NSString stringWithContentsOfFile:path
+                                        encoding:NSUTF8StringEncoding
+                                           error:NULL];
+    NSArray *eventsTitleArray = [content componentsSeparatedByString:@"\n"];
+
+    NSMutableArray *eventDataList = [NSMutableArray arrayWithCapacity:8];
+    for (i = 0; i < 8; i += 1) {
+        path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"event%d", i]
+                                               ofType:@"txt"];
+        
+        content = [NSString stringWithContentsOfFile:path
+                                            encoding:NSUTF8StringEncoding
+                                               error:NULL];
+        
+        NSDictionary *data = @{@"priority"   : @(1),
+                               @"title"      : eventsTitleArray[i],
+                               @"date"       : self.sampleDates[i%5],
+                               @"imageName"  : [NSString stringWithFormat:@"%@%ld.jpg", @"event", (long)i],
+                               @"article"    : content
+                               };
+        [eventDataList addObject:data];
+        
+        
+    }
+    self.eventDataList = [eventDataList copy];
 }
 
 @end
