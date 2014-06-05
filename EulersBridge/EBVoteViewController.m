@@ -14,6 +14,8 @@
 
 @interface EBVoteViewController () <UIPickerViewDataSource, UIPickerViewDelegate, EKEventEditViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *backButton;
+
 @property (weak, nonatomic) IBOutlet UIPickerView *picker;
 @property (weak, nonatomic) IBOutlet UILabel *scanResultLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
@@ -27,6 +29,16 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *voteLabel0;
 @property (weak, nonatomic) IBOutlet UILabel *voteLabel1;
+
+@property (weak, nonatomic) IBOutlet UIView *pledgeView;
+@property (weak, nonatomic) IBOutlet UIView *finishView;
+@property (weak, nonatomic) IBOutlet UIButton *createReminderButton;
+
+@property (weak, nonatomic) IBOutlet UILabel *finishTitleLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *finishImageView;
+@property (weak, nonatomic) IBOutlet UITextView *finishTextView;
+@property (weak, nonatomic) IBOutlet UIButton *scanButton;
+
 
 @end
 
@@ -51,12 +63,40 @@
     self.votingDates = @[@"2014-08-12 14:30", @"2014-08-15 9:30", @"2014-08-20 15:30", @"2014-09-08 16:30", @"2014-09-15 10:30"];
     self.votingLocations = @[@"Union House", @"Baillieu Library", @"ERC Library"];
     
+    // Font setup
     self.voteLabel0.font = [UIFont fontWithName:@"MuseoSansRounded-300" size:self.voteLabel0.font.pointSize];
     self.voteLabel1.font = [UIFont fontWithName:@"MuseoSansRounded-300" size:self.voteLabel1.font.pointSize];
     self.dateLabel.font = [UIFont fontWithName:@"MuseoSansRounded-500" size:self.dateLabel.font.pointSize];
     self.locationLabel.font = [UIFont fontWithName:@"MuseoSansRounded-500" size:self.locationLabel.font.pointSize];
+    self.textView.font = [UIFont fontWithName:@"MuseoSansRounded-500" size:self.textView.font.pointSize];
+    self.createReminderButton.titleLabel.font = [UIFont fontWithName:@"MuseoSansRounded-700" size:self.createReminderButton.titleLabel.font.pointSize];
+    
+    self.finishTitleLabel.font = [UIFont fontWithName:@"MuseoSansRounded-300" size:self.finishTitleLabel.font.pointSize];
+    self.finishTextView.font = [UIFont fontWithName:@"MuseoSansRounded-300" size:self.finishTextView.font.pointSize];
+    self.scanButton.titleLabel.font = [UIFont fontWithName:@"MuseoSansRounded-700" size:self.scanButton.titleLabel.font.pointSize];
+    
+    // Gesture Recognizer
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                          action:@selector(tapAnywhere)];
+    
+    [self.view addGestureRecognizer:tap];
+    
+    // Hide the back button
+    self.backButton.tintColor = [UIColor clearColor];
+    self.backButton.enabled = NO;
+    
 }
 
+
+#pragma mark tap gesture
+
+- (void)tapAnywhere
+{
+    self.picker.hidden = YES;
+    self.textView.hidden = NO;
+}
+
+#pragma mark button action
 
 - (IBAction)chooseDate:(UIButton *)sender
 {
@@ -83,8 +123,25 @@
     }
 }
 
+- (IBAction)back:(UIBarButtonItem *)sender
+{
+    self.backButton.tintColor = [UIColor clearColor];
+    self.backButton.enabled = NO;
+    [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        CGRect pledgeFrame = self.pledgeView.frame;
+        pledgeFrame.origin.x = 0;
+        self.pledgeView.frame = pledgeFrame;
+        
+        CGRect finishFrame = self.finishView.frame;
+        finishFrame.origin.x = 320;
+        self.finishView.frame = finishFrame;
+    } completion:^(BOOL finished) {
+        
+    }];
+}
 
 
+#pragma mark pickerView delegate
 
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
@@ -175,6 +232,22 @@
 - (void)eventEditViewController:(EKEventEditViewController *)controller didCompleteWithAction:(EKEventEditViewAction)action
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+    if (action == EKEventEditViewActionSaved) {
+        self.backButton.tintColor = [UIColor whiteColor];
+        self.backButton.enabled = YES;
+        [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            CGRect pledgeFrame = self.pledgeView.frame;
+            pledgeFrame.origin.x = -320;
+            self.pledgeView.frame = pledgeFrame;
+            
+            CGRect finishFrame = self.finishView.frame;
+            finishFrame.origin.x = 0;
+            self.finishView.frame = finishFrame;
+        } completion:^(BOOL finished) {
+            
+        }];
+        
+    }
 }
 
 

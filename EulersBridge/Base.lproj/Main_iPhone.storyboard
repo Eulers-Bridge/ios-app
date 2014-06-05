@@ -1021,7 +1021,7 @@
                         <segue destination="hD3-eP-Xat" kind="relationship" relationship="viewControllers" id="SUk-Ux-ee1"/>
                         <segue destination="kFz-NU-ccf" kind="relationship" relationship="viewControllers" id="M8t-EP-wfW"/>
                         <segue destination="rUn-Qx-cVO" kind="relationship" relationship="viewControllers" id="9NR-0x-LGw"/>
-                        <segue destination="tqy-QC-0u3" kind="relationship" relationship="viewControllers" id="6Fx-3s-43h"/>
+                        <segue destination="5Pr-ln-4CL" kind="relationship" relationship="viewControllers" id="6Fx-3s-43h"/>
                         <segue destination="v0e-pi-1LY" kind="relationship" relationship="viewControllers" id="1L4-YE-S3B"/>
                     </connections>
                 </tabBarController>
@@ -1044,7 +1044,7 @@
             </objects>
             <point key="canvasLocation" x="773" y="517"/>
         </scene>
-        <!--Vote View Controller - Vote-->
+        <!--Vote View Controller - Pledge-->
         <scene sceneID="iBl-yy-B90">
             <objects>
                 <viewController id="tqy-QC-0u3" customClass="EBVoteViewController" sceneMemberID="viewController">
@@ -1052,62 +1052,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ji8-YE-zpB">
-                                <rect key="frame" x="110" y="440" width="100" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Scan QR code">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="scanQR:" destination="tqy-QC-0u3" eventType="touchUpInside" id="PSY-JS-7DL"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EJm-TD-Ghe">
-                                <rect key="frame" x="23" y="478" width="280" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.89638458029197088" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="center" id="vdL-Ve-STw">
-                                <rect key="frame" x="0.0" y="315" width="320" height="137"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <string key="text">Voting is the most key part of a democratic system and the best method of having your voice heard, or something. Play a part in the next election by ensuring you take your vote and using your right!
-Create a reminder to vote, by selecting the date and time for your next student union election.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <pickerView contentMode="scaleToFill" id="qUi-wf-J7b">
-                                <rect key="frame" x="0.0" y="290" width="320" height="162"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="tqy-QC-0u3" id="Vgm-EQ-wrt"/>
-                                    <outlet property="delegate" destination="tqy-QC-0u3" id="clo-Hf-aLU"/>
-                                </connections>
-                            </pickerView>
                             <view contentMode="scaleToFill" id="1x1-Xb-F8A">
-                                <rect key="frame" x="30" y="45" width="260" height="262"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I will be voting in the next university election at" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="f52-pO-cI9">
-                                        <rect key="frame" x="8" y="20" width="245" height="53"/>
+                                        <rect key="frame" x="38" y="108" width="245" height="53"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <color key="textColor" red="0.47058823529999999" green="0.4823529412" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="And I'll set a reminder for my vote at the time of" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ErV-lq-3IK">
-                                        <rect key="frame" x="8" y="104" width="245" height="53"/>
+                                        <rect key="frame" x="38" y="192" width="245" height="53"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <color key="textColor" red="0.47058823529999999" green="0.4823529412" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Djd-nc-cN4">
-                                        <rect key="frame" x="65" y="212" width="131" height="30"/>
+                                        <rect key="frame" x="95" y="437" width="131" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Create Reminder">
                                             <color key="titleColor" red="0.49803921569999998" green="0.73333333329999995" blue="0.32549019610000002" alpha="1" colorSpace="deviceRGB"/>
@@ -1128,21 +1092,21 @@ Create a reminder to vote, by selecting the date and time for your next student 
                                         </connections>
                                     </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pIP-Un-EfL">
-                                        <rect key="frame" x="20" y="70" width="220" height="28"/>
+                                        <rect key="frame" x="50" y="158" width="220" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6No-h7-4yF">
-                                        <rect key="frame" x="20" y="159" width="220" height="28"/>
+                                        <rect key="frame" x="50" y="247" width="220" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ot0-gX-KOx">
-                                        <rect key="frame" x="20" y="159" width="220" height="30"/>
+                                        <rect key="frame" x="50" y="247" width="220" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1152,7 +1116,7 @@ Create a reminder to vote, by selecting the date and time for your next student 
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ueo-OP-k9m">
-                                        <rect key="frame" x="20" y="69" width="220" height="30"/>
+                                        <rect key="frame" x="50" y="157" width="220" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1161,37 +1125,206 @@ Create a reminder to vote, by selecting the date and time for your next student 
                                             <action selector="chooseDate:" destination="tqy-QC-0u3" eventType="touchUpInside" id="ou0-Qd-vd9"/>
                                         </connections>
                                     </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" id="aUb-s3-Odh">
+                                        <rect key="frame" x="30" y="287" width="260" height="142"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <string key="text">Voting is the most key part of a democratic system and the best method of having your voice heard.
+
+Create a reminder to vote, by selecting the date and time for your next student union election.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <pickerView opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" id="qUi-wf-J7b">
+                                        <rect key="frame" x="0.0" y="288" width="320" height="162"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="tqy-QC-0u3" id="Vgm-EQ-wrt"/>
+                                            <outlet property="delegate" destination="tqy-QC-0u3" id="clo-Hf-aLU"/>
+                                        </connections>
+                                    </pickerView>
+                                    <view contentMode="scaleToFill" id="6Tw-Pn-wlj">
+                                        <rect key="frame" x="50" y="278" width="220" height="1"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.47450980392156861" green="0.47450980392156861" blue="0.56470588235294117" alpha="1" colorSpace="deviceRGB"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="wUz-nj-Ox9">
+                                        <rect key="frame" x="50" y="186" width="220" height="1"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.47450980390000003" green="0.47450980390000003" blue="0.56470588239999997" alpha="1" colorSpace="deviceRGB"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                        <integer key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="6"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
-                                        <color key="value" red="0.49803921569999998" green="0.73333333329999995" blue="0.32549019610000002" alpha="1" colorSpace="deviceRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" id="b9m-jg-RPd">
+                                <rect key="frame" x="320" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eVL-2F-TCx">
+                                        <rect key="frame" x="20" y="478" width="280" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.89638458030000001" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are all ready to go!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Pw1-tv-C5w">
+                                        <rect key="frame" x="53" y="99" width="214" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <color key="textColor" red="0.47058823529999999" green="0.4823529412" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="i4d-3z-s47">
+                                        <rect key="frame" x="96" y="150" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="deviceRGB"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="64"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DWo-Xo-Kpj">
+                                        <rect key="frame" x="95" y="425" width="131" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Scan QR Code">
+                                            <color key="titleColor" red="0.30196078430000001" green="0.3294117647" blue="0.6705882353" alpha="1" colorSpace="deviceRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
+                                                <color key="value" red="0.30196078430000001" green="0.3294117647" blue="0.6705882353" alpha="1" colorSpace="deviceRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="scanQR:" destination="tqy-QC-0u3" eventType="touchUpInside" id="ygI-lg-buQ"/>
+                                        </connections>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" id="Pa6-pA-u1G">
+                                        <rect key="frame" x="30" y="286" width="260" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <string key="text">You’re ready to go! Make sure you check with the university before then to find out where the polling booths are positioned, and make sure you scan your QR code at the polling booth to recieve your exclusive voting badge!</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Vote" image="first" id="GE7-4w-R8P"/>
+                    <navigationItem key="navigationItem" title="Pledge" id="mSu-Sw-xTx">
+                        <barButtonItem key="leftBarButtonItem" systemItem="rewind" id="LVY-eT-ctf">
+                            <connections>
+                                <action selector="back:" destination="tqy-QC-0u3" id="jcp-XU-WLU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="backButton" destination="LVY-eT-ctf" id="l15-hw-bbm"/>
+                        <outlet property="createReminderButton" destination="Djd-nc-cN4" id="j9y-ad-B4w"/>
                         <outlet property="dateLabel" destination="pIP-Un-EfL" id="GOK-dF-8xf"/>
+                        <outlet property="finishImageView" destination="i4d-3z-s47" id="gne-e4-CjF"/>
+                        <outlet property="finishTextView" destination="Pa6-pA-u1G" id="dyk-pM-Aa5"/>
+                        <outlet property="finishTitleLabel" destination="Pw1-tv-C5w" id="VSe-f9-8sn"/>
+                        <outlet property="finishView" destination="b9m-jg-RPd" id="3cJ-u5-Nhh"/>
                         <outlet property="locationLabel" destination="6No-h7-4yF" id="4Hi-ef-MYP"/>
                         <outlet property="picker" destination="qUi-wf-J7b" id="hsd-GZ-QDR"/>
+                        <outlet property="pledgeView" destination="1x1-Xb-F8A" id="TuQ-pU-4SJ"/>
+                        <outlet property="scanButton" destination="DWo-Xo-Kpj" id="KHN-FR-itn"/>
                         <outlet property="scanResultLabel" destination="EJm-TD-Ghe" id="fIn-dS-xVg"/>
-                        <outlet property="textView" destination="vdL-Ve-STw" id="EL2-Bs-hP1"/>
+                        <outlet property="textView" destination="aUb-s3-Odh" id="ewF-gX-6K2"/>
                         <outlet property="voteLabel0" destination="f52-pO-cI9" id="T4O-7J-mCF"/>
                         <outlet property="voteLabel1" destination="ErV-lq-3IK" id="cam-3z-bun"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aaz-NA-Qz5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="773" y="1249"/>
+            <point key="canvasLocation" x="1299" y="1249"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="6Ra-m8-e3q">
+            <objects>
+                <viewController id="H1p-gu-bdU" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KoS-kw-2c6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="qBV-1b-cI5">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EJm-TD-Ghe">
+                                        <rect key="frame" x="20" y="478" width="280" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.89638458029197088" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are all ready to go!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="s4o-sJ-Znm">
+                                        <rect key="frame" x="53" y="99" width="214" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <color key="textColor" red="0.47058823529999999" green="0.4823529412" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="viJ-Qv-VAa">
+                                        <rect key="frame" x="96" y="150" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="deviceRGB"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="64"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="crJ-yE-or7">
+                                        <rect key="frame" x="95" y="437" width="131" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Scan QR Code">
+                                            <color key="titleColor" red="0.30196078431372547" green="0.32941176470588235" blue="0.6705882352941176" alpha="1" colorSpace="deviceRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
+                                                <color key="value" red="0.30196078430000001" green="0.3294117647" blue="0.6705882353" alpha="1" colorSpace="deviceRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="setReminder:" destination="tqy-QC-0u3" eventType="touchUpInside" id="aEM-uh-l29"/>
+                                        </connections>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" id="VpI-ov-Yep">
+                                        <rect key="frame" x="30" y="286" width="260" height="137"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <string key="text">You’re ready to go! Make sure you check with the university before then to find out where the polling booths are positioned, and make sure you scan your QR code at the polling booth to recieve your exclusive voting badge!</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jmJ-3Y-rq0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1730" y="1246"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="F6B-Hq-Py0">
@@ -1851,6 +1984,25 @@ Create a reminder to vote, by selecting the date and time for your next student 
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BkN-1R-pD0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1889" y="-187"/>
+        </scene>
+        <!--Navigation Controller - Vote-->
+        <scene sceneID="tXN-n8-bof">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5Pr-ln-4CL" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Vote" image="first" id="GE7-4w-R8P"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vnB-Eo-sFy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="tqy-QC-0u3" kind="relationship" relationship="rootViewController" id="aOI-dT-FDD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4GX-OC-QGB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="773" y="1249"/>
         </scene>
     </scenes>
     <resources>
