@@ -14,8 +14,8 @@
 {
     // Override point for customization after application launch.
     // Set Global tint color
-    self.window.tintColor = [UIColor colorWithRed:90.0/255.0 green:95.0/255.0 blue:203.0/255.0 alpha:1.0];
-//    self.window.rootViewController = [self.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"loginView"];
+    self.window.tintColor = [UIColor colorWithRed:82.0/255.0 green:128.0/255.0 blue:213.0/255.0 alpha:1.0];
+    self.window.rootViewController = [self.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"loginView"];
     
     
     
@@ -24,7 +24,7 @@
 //    [[UIToolbar appearance] setTintColor:[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0]];
     
     // Set Top bar background color.
-    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:9/255.0 green:14.0/255.0 blue:30/255.0 alpha:1.0]];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:82/255.0 green:128.0/255.0 blue:213/255.0 alpha:1.0]];
 //    [[UIToolbar appearance] setBarTintColor:[UIColor colorWithRed:51.0/255.0 green:56.0/255.0 blue:69.0/255.0 alpha:1.0]];
     
     // Set Nav bar title color and font.

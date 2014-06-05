@@ -10,6 +10,7 @@
 #import <EventKit/EventKit.h>
 @import EventKitUI;
 #import "CDZQRScanningViewController.h"
+#import "MyConstants.h"
 
 @interface EBVoteViewController () <UIPickerViewDataSource, UIPickerViewDelegate, EKEventEditViewDelegate>
 
@@ -20,6 +21,12 @@
 @property (strong, nonatomic) NSArray *votingDates;
 @property (strong, nonatomic) NSArray *votingLocations;
 @property (strong, nonatomic) NSArray *pickerViewCurrentArray;
+
+@property (strong, nonatomic) UIPickerView *pickerView;
+@property (weak, nonatomic) IBOutlet UITextView *textView;
+
+@property (weak, nonatomic) IBOutlet UILabel *voteLabel0;
+@property (weak, nonatomic) IBOutlet UILabel *voteLabel1;
 
 @end
 
@@ -39,18 +46,22 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.picker.hidden = YES;
+    self.textView.hidden = NO;
     
     self.votingDates = @[@"2014-08-12 14:30", @"2014-08-15 9:30", @"2014-08-20 15:30", @"2014-09-08 16:30", @"2014-09-15 10:30"];
     self.votingLocations = @[@"Union House", @"Baillieu Library", @"ERC Library"];
+    
+    self.voteLabel0.font = [UIFont fontWithName:@"MuseoSansRounded-300" size:self.voteLabel0.font.pointSize];
+    self.voteLabel1.font = [UIFont fontWithName:@"MuseoSansRounded-300" size:self.voteLabel1.font.pointSize];
+    self.dateLabel.font = [UIFont fontWithName:@"MuseoSansRounded-500" size:self.dateLabel.font.pointSize];
+    self.locationLabel.font = [UIFont fontWithName:@"MuseoSansRounded-500" size:self.locationLabel.font.pointSize];
 }
-
-
-
 
 
 - (IBAction)chooseDate:(UIButton *)sender
 {
     self.picker.hidden = NO;
+    self.textView.hidden = YES;
     self.pickerViewCurrentArray = self.votingDates;
     [self.picker reloadAllComponents];
     
@@ -63,6 +74,7 @@
 - (IBAction)chooseLocation:(UIButton *)sender
 {
     self.picker.hidden = NO;
+    self.textView.hidden = YES;
     self.pickerViewCurrentArray = self.votingLocations;
     [self.picker reloadAllComponents];
     
@@ -100,6 +112,12 @@
     }
 }
 
+// Not available in ios 7
+//- (NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component
+//{
+//    UIFont *font = [UIFont fontWithName:@"MuseoSansRounded-300" size:15];
+//    return [[NSAttributedString alloc] initWithString:self.pickerViewCurrentArray[row] attributes:@{NSFontAttributeName: font}];
+//}
 
 
 

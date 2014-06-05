@@ -18,6 +18,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *electionTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *electionDateLabel;
 
+@property (weak, nonatomic) IBOutlet UIView *candidateView;
+
+
 @end
 
 @implementation EBElectionViewController
@@ -34,6 +37,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.candidateView.hidden = YES;
     
     // Font setup
     self.electionTitleLabel.font = [UIFont fontWithName:@"MuseoSansRounded-300" size:self.electionTitleLabel.font.pointSize];
@@ -44,7 +48,18 @@
     self.electionScrollView.alwaysBounceVertical = NO;
     self.electionScrollView.delegate = self;
     
+    [self.segmentedControl addTarget:self action:@selector(changeSegment) forControlEvents:UIControlEventValueChanged];
     [self.electionSegmentedControl addTarget:self action:@selector(electionChangeSegment) forControlEvents:UIControlEventValueChanged];
+}
+
+- (void)changeSegment
+{
+    if (self.segmentedControl.selectedSegmentIndex == 1) {
+        self.candidateView.hidden = NO;
+    } else {
+        self.candidateView.hidden = YES;
+    }
+
 }
 
 - (void)electionChangeSegment

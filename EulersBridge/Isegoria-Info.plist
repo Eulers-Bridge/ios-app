@@ -31,6 +31,7 @@
 		<string>MuseoSansRounded-500.otf</string>
 		<string>MuseoSansRounded-700.otf</string>
 		<string>Sentinel-Medium.otf</string>
+		<string>Sentinel-Book.otf</string>
 	</array>
 	<key>UIMainStoryboardFile</key>
 	<string>Main_iPhone</string>
