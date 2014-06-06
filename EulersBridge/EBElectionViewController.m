@@ -8,6 +8,9 @@
 
 #import "EBElectionViewController.h"
 #import "MyConstants.h"
+#import "EBElectionPositionsDataSource.h"
+#import "EBFeedCollectionViewCell.h"
+#import "EBElectionPositionDetailViewController.h"
 
 @interface EBElectionViewController () <UIScrollViewDelegate>
 
@@ -19,6 +22,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *electionDateLabel;
 
 @property (weak, nonatomic) IBOutlet UIView *candidateView;
+
+@property (weak, nonatomic) IBOutlet UICollectionView *positionsCollectionView;
+@property (strong, nonatomic) EBElectionPositionsDataSource *positionsDataSource;
 
 
 @end
@@ -50,6 +56,10 @@
     
     [self.segmentedControl addTarget:self action:@selector(changeSegment) forControlEvents:UIControlEventValueChanged];
     [self.electionSegmentedControl addTarget:self action:@selector(electionChangeSegment) forControlEvents:UIControlEventValueChanged];
+    
+    self.positionsDataSource = [[EBElectionPositionsDataSource alloc] init];
+    self.positionsCollectionView.dataSource = self.positionsDataSource;
+    self.positionsCollectionView.delegate = self.positionsDataSource;
 }
 
 - (void)changeSegment
@@ -78,15 +88,17 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"ShowPositionDetail"]) {
+        EBFeedCollectionViewCell *cell = (EBFeedCollectionViewCell *)sender;
+        EBElectionPositionDetailViewController *detail = (EBElectionPositionDetailViewController *)[segue destinationViewController];
+        detail.data = self.positionsDataSource.positions[cell.index];
+    }
 }
-*/
+
 
 @end

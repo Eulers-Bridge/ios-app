@@ -27,7 +27,10 @@
 
 - (void)showResult
 {
-    CGFloat percentage = [self.result[@"votes"] doubleValue]/[self.result[@"totalVotes"] doubleValue];
+    double votes = [self.result[@"votes"] doubleValue] + (self.voted ? 1 : 0);
+    double totalVotes = [self.result[@"totalVotes"] doubleValue] + (self.voted ? 1 : 0);
+    CGFloat percentage = votes/totalVotes;
+ 
     CGFloat width = percentage * 320;
     
     [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
@@ -52,8 +55,8 @@
     
     
     self.resultNumberLabel.text = [NSString stringWithFormat:@"%ld, %ld",
-                                   (long)[self.result[@"votes"] integerValue],
-                                   (long)[self.result[@"change"] integerValue]];
+                                   (long)votes,
+                                   (long)totalVotes];
 
 }
 

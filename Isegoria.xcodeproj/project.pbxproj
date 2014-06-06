@@ -117,6 +117,10 @@
 		04EC19571941B4D10001FF72 /* EBLabelHeavy.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EC19561941B4D10001FF72 /* EBLabelHeavy.m */; };
 		04EC195A1941B6BC0001FF72 /* EBTextViewMuseo.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EC19591941B6BC0001FF72 /* EBTextViewMuseo.m */; };
 		04EC195D1941C0A90001FF72 /* EBPollAnswerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EC195C1941C0A90001FF72 /* EBPollAnswerTableViewCell.m */; };
+		04EC1960194206150001FF72 /* EBTextViewMuseoLight.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EC195F194206150001FF72 /* EBTextViewMuseoLight.m */; };
+		04EC19631942080C0001FF72 /* EBElectionContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EC19621942080C0001FF72 /* EBElectionContainerViewController.m */; };
+		04EC1966194214820001FF72 /* EBElectionPositionsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EC1965194214820001FF72 /* EBElectionPositionsDataSource.m */; };
+		04EC196919421E680001FF72 /* EBElectionPositionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EC196819421E680001FF72 /* EBElectionPositionDetailViewController.m */; };
 		04FD417C19062ECD00AF17DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FD417B19062ECD00AF17DC /* Foundation.framework */; };
 		04FD417E19062ECD00AF17DC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FD417D19062ECD00AF17DC /* CoreGraphics.framework */; };
 		04FD418019062ECD00AF17DC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FD417F19062ECD00AF17DC /* UIKit.framework */; };
@@ -290,6 +294,14 @@
 		04EC19591941B6BC0001FF72 /* EBTextViewMuseo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBTextViewMuseo.m; sourceTree = "<group>"; };
 		04EC195B1941C0A90001FF72 /* EBPollAnswerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBPollAnswerTableViewCell.h; sourceTree = "<group>"; };
 		04EC195C1941C0A90001FF72 /* EBPollAnswerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBPollAnswerTableViewCell.m; sourceTree = "<group>"; };
+		04EC195E194206150001FF72 /* EBTextViewMuseoLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBTextViewMuseoLight.h; sourceTree = "<group>"; };
+		04EC195F194206150001FF72 /* EBTextViewMuseoLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBTextViewMuseoLight.m; sourceTree = "<group>"; };
+		04EC19611942080C0001FF72 /* EBElectionContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBElectionContainerViewController.h; sourceTree = "<group>"; };
+		04EC19621942080C0001FF72 /* EBElectionContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBElectionContainerViewController.m; sourceTree = "<group>"; };
+		04EC1964194214820001FF72 /* EBElectionPositionsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBElectionPositionsDataSource.h; sourceTree = "<group>"; };
+		04EC1965194214820001FF72 /* EBElectionPositionsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBElectionPositionsDataSource.m; sourceTree = "<group>"; };
+		04EC196719421E680001FF72 /* EBElectionPositionDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBElectionPositionDetailViewController.h; sourceTree = "<group>"; };
+		04EC196819421E680001FF72 /* EBElectionPositionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBElectionPositionDetailViewController.m; sourceTree = "<group>"; };
 		04FD417819062ECD00AF17DC /* Isegoria.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Isegoria.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04FD417B19062ECD00AF17DC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		04FD417D19062ECD00AF17DC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -432,6 +444,12 @@
 				0425593B19346DA40030AA0A /* EBCandidateViewController.m */,
 				0425593719346D5F0030AA0A /* EBCandidateView.h */,
 				0425593819346D5F0030AA0A /* EBCandidateView.m */,
+				04EC19611942080C0001FF72 /* EBElectionContainerViewController.h */,
+				04EC19621942080C0001FF72 /* EBElectionContainerViewController.m */,
+				04EC1964194214820001FF72 /* EBElectionPositionsDataSource.h */,
+				04EC1965194214820001FF72 /* EBElectionPositionsDataSource.m */,
+				04EC196719421E680001FF72 /* EBElectionPositionDetailViewController.h */,
+				04EC196819421E680001FF72 /* EBElectionPositionDetailViewController.m */,
 			);
 			name = Election;
 			sourceTree = "<group>";
@@ -641,6 +659,8 @@
 				04EC19561941B4D10001FF72 /* EBLabelHeavy.m */,
 				04EC19581941B6BC0001FF72 /* EBTextViewMuseo.h */,
 				04EC19591941B6BC0001FF72 /* EBTextViewMuseo.m */,
+				04EC195E194206150001FF72 /* EBTextViewMuseoLight.h */,
+				04EC195F194206150001FF72 /* EBTextViewMuseoLight.m */,
 			);
 			name = "Custom UI";
 			sourceTree = "<group>";
@@ -951,8 +971,10 @@
 				046D6462192DB28200C354F4 /* EBElectionViewController.m in Sources */,
 				04EC19501941A4930001FF72 /* EBPollContentViewController.m in Sources */,
 				04BB70561911C01F0059E93C /* EBFindFriendViewController.m in Sources */,
+				04EC19631942080C0001FF72 /* EBElectionContainerViewController.m in Sources */,
 				04EC19571941B4D10001FF72 /* EBLabelHeavy.m in Sources */,
 				0425593C19346DA40030AA0A /* EBCandidateViewController.m in Sources */,
+				04EC1966194214820001FF72 /* EBElectionPositionsDataSource.m in Sources */,
 				0493F3D4191F49EA00853DBF /* EBImageService.m in Sources */,
 				046D645E192D963400C354F4 /* UIImage+ImageEffects.m in Sources */,
 				04BB702D190891320059E93C /* EBFeedViewController.m in Sources */,
@@ -968,6 +990,7 @@
 				04EC19531941B48B0001FF72 /* EBLabelMedium.m in Sources */,
 				046D644F192C3D4000C354F4 /* EBVolunteerTableViewController.m in Sources */,
 				04079741194072800097706C /* EBSignupTermsViewController.m in Sources */,
+				04EC196919421E680001FF72 /* EBElectionPositionDetailViewController.m in Sources */,
 				040797471940E7F80097706C /* EBButton.m in Sources */,
 				04EC195D1941C0A90001FF72 /* EBPollAnswerTableViewCell.m in Sources */,
 				04BB703B190B8F7E0059E93C /* EBStopWatchInt.m in Sources */,
@@ -980,6 +1003,7 @@
 				0495C508191B651900EAEAB5 /* EBPhotoStackViewController.m in Sources */,
 				04BB7034190B83710059E93C /* EBStopWatch.m in Sources */,
 				04BB703E190BCEB50059E93C /* EBFeedDetailViewController.m in Sources */,
+				04EC1960194206150001FF72 /* EBTextViewMuseoLight.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

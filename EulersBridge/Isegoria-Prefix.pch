@@ -16,4 +16,5 @@
     #import "EBLabelLight.h"
     #import "EBLabelMedium.h"
     #import "EBLabelHeavy.h"
+    #import "EBTextViewMuseoLight.h"
 #endif
