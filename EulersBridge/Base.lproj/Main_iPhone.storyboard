@@ -347,9 +347,6 @@
                                                         <integer key="value" value="1"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="share:" destination="77v-bU-2BT" eventType="touchUpInside" id="WCV-4o-50G"/>
-                                                </connections>
                                             </button>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4Pd-qn-Vw1">
                                                 <rect key="frame" x="47" y="202" width="186" height="11"/>
@@ -376,7 +373,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Article" id="H64-8b-eFa"/>
+                    <navigationItem key="navigationItem" title="Article" id="H64-8b-eFa">
+                        <barButtonItem key="rightBarButtonItem" image="Share" id="b4E-4m-nFE">
+                            <connections>
+                                <action selector="share:" destination="77v-bU-2BT" id="3wU-xX-nXu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="actionButton" destination="spc-2G-iCL" id="pDd-g1-yIy"/>
                         <outlet property="authorImageView" destination="ye4-k9-0v7" id="IU7-VB-dwD"/>
@@ -542,7 +545,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LpQ-4G-AJ1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1299" y="2659"/>
+            <point key="canvasLocation" x="1299" y="3211"/>
         </scene>
         <!--Find Friend View Controller-->
         <scene sceneID="4HU-cR-rrk">
@@ -602,7 +605,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N4J-gx-Gmd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1749" y="2659"/>
+            <point key="canvasLocation" x="1749" y="3211"/>
         </scene>
         <!--Signup Login View Controller - Sign Up-->
         <scene sceneID="UBg-rf-R3Y">
@@ -976,7 +979,7 @@ That it.   Let’s do this. </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3qq-4t-Ow8" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1299" y="-236"/>
+            <point key="canvasLocation" x="1291" y="6"/>
         </scene>
         <!--Stopwatch View Controller-->
         <scene sceneID="R5H-QO-9Ph">
@@ -1112,7 +1115,7 @@ That it.   Let’s do this. </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XB8-VG-G4u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1299" y="517"/>
+            <point key="canvasLocation" x="1299" y="1069"/>
         </scene>
         <!--Poll Content View Controller-->
         <scene sceneID="0iq-Go-eY0">
@@ -1263,7 +1266,7 @@ That it.   Let’s do this. </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KD7-cF-PjY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1668" y="517"/>
+            <point key="canvasLocation" x="1668" y="1069"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="8EK-Ay-rj0">
@@ -1271,7 +1274,7 @@ That it.   Let’s do this. </string>
                 <pageViewController storyboardIdentifier="PollPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Fsr-40-3S5" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qWA-51-Ucy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2063" y="517"/>
+            <point key="canvasLocation" x="2063" y="1069"/>
         </scene>
         <!--Vote View Controller - Pledge-->
         <scene sceneID="iBl-yy-B90">
@@ -1382,14 +1385,6 @@ Create a reminder to vote, by selecting the date and time for your next student 
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.47450980390000003" green="0.47450980390000003" blue="0.56470588239999997" alpha="1" colorSpace="deviceRGB"/>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nbV-tX-20V" customClass="EBButton">
-                                        <rect key="frame" x="231" y="471" width="78" height="46"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                        <state key="normal" title="Button">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -1484,7 +1479,7 @@ Create a reminder to vote, by selecting the date and time for your next student 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aaz-NA-Qz5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1299" y="1249"/>
+            <point key="canvasLocation" x="1299" y="1801"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="6Ra-m8-e3q">
@@ -1561,7 +1556,7 @@ Create a reminder to vote, by selecting the date and time for your next student 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jmJ-3Y-rq0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1730" y="1246"/>
+            <point key="canvasLocation" x="1730" y="1798"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="F6B-Hq-Py0">
@@ -1587,7 +1582,7 @@ Create a reminder to vote, by selecting the date and time for your next student 
         <scene sceneID="TNU-bB-P6z">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hD3-eP-Xat" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Feed" image="first" id="u1e-5L-l1D"/>
+                    <tabBarItem key="tabBarItem" title="Feed" image="Feed" id="u1e-5L-l1D"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5tE-NY-HFS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1619,7 +1614,7 @@ Create a reminder to vote, by selecting the date and time for your next student 
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F3N-Ry-2Cw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="773" y="2659"/>
+            <point key="canvasLocation" x="773" y="3211"/>
         </scene>
         <!--Election Position Detail View Controller - Position-->
         <scene sceneID="Azd-lh-c3N">
@@ -1665,7 +1660,7 @@ Create a reminder to vote, by selecting the date and time for your next student 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fYv-Nu-QHj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2107" y="-236"/>
+            <point key="canvasLocation" x="1847" y="368"/>
         </scene>
         <!--Feed Detail View Controller - Event-->
         <scene sceneID="0gD-tZ-4UY">
@@ -1840,7 +1835,7 @@ Create a reminder to vote, by selecting the date and time for your next student 
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="e1d-vA-vJF">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" id="e1d-vA-vJF">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
@@ -1867,7 +1862,7 @@ Create a reminder to vote, by selecting the date and time for your next student 
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="x8c-vJ-UnJ">
                                                 <rect key="frame" x="192" y="184" width="112" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="View Rewards">
+                                                <state key="normal" title="View Friends">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -1878,6 +1873,9 @@ Create a reminder to vote, by selecting the date and time for your next student 
                                                         <integer key="value" value="1"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <segue destination="w99-Gd-rpm" kind="push" id="gu6-Dm-J7H"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="University of Melbourne" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jgl-hJ-rNr">
                                                 <rect key="frame" x="20" y="136" width="280" height="13"/>
@@ -2098,7 +2096,7 @@ Create a reminder to vote, by selecting the date and time for your next student 
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="3W0-ks-gmk">
-                        <barButtonItem key="rightBarButtonItem" title="Find Friends" id="dtc-ls-afw"/>
+                        <barButtonItem key="rightBarButtonItem" image="Settings" id="dtc-ls-afw"/>
                     </navigationItem>
                     <connections>
                         <outlet property="XPLevelLabel" destination="p4I-kL-Z7M" id="Vhu-I8-dfC"/>
@@ -2121,13 +2119,103 @@ Create a reminder to vote, by selecting the date and time for your next student 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HNL-pv-fz6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1299" y="1926"/>
+            <point key="canvasLocation" x="1299" y="2478"/>
+        </scene>
+        <!--Friends Table View Controller - Friends-->
+        <scene sceneID="GdQ-37-tIE">
+            <objects>
+                <tableViewController id="w99-Gd-rpm" customClass="EBFriendsTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="XxI-bc-t6s">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="cWk-Mg-CaP">
+                            <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FriendCell" id="qig-dS-uit" customClass="EBFriendTableViewCell">
+                                <rect key="frame" x="0.0" y="130" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qig-dS-uit" id="xAZ-4z-yn0">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MiU-E9-5Xa" customClass="EBLabelMedium">
+                                            <rect key="frame" x="40" y="7" width="201" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="VSN-17-Bue">
+                                            <rect key="frame" x="8" y="10" width="24" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
+                                            <color key="backgroundColor" red="0.63677577549999997" green="0.63677577549999997" blue="0.63677577549999997" alpha="1" colorSpace="deviceRGB"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="12"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Univerisity" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EmX-eq-RCY" customClass="EBLabelMedium">
+                                            <rect key="frame" x="40" y="22" width="201" height="14"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                            <color key="textColor" red="0.47450980390000003" green="0.47450980390000003" blue="0.56470588239999997" alpha="1" colorSpace="deviceRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="VjT-ll-SkW" customClass="EBButtonHeavy">
+                                            <rect key="frame" x="251" y="11" width="53" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Invite">
+                                                <color key="titleColor" red="0.47450980390000003" green="0.47450980390000003" blue="0.56470588239999997" alpha="1" colorSpace="deviceRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="11"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                    <integer key="value" value="1"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
+                                                    <color key="value" red="0.47450980390000003" green="0.47450980390000003" blue="0.56470588239999997" alpha="1" colorSpace="deviceRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="actionButtonPressed:" destination="qig-dS-uit" eventType="touchUpInside" id="8GP-XR-iDT"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="MiU-E9-5Xa" id="bYy-QL-qQo"/>
+                                    <outlet property="profileImageView" destination="VSN-17-Bue" id="RBe-bn-ssF"/>
+                                    <outlet property="subtitleLabel" destination="EmX-eq-RCY" id="AAl-MA-Mdo"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="w99-Gd-rpm" id="ohD-Ru-f8W"/>
+                            <outlet property="delegate" destination="w99-Gd-rpm" id="Oe2-aH-zI6"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Friends" id="OLn-S0-r06"/>
+                    <connections>
+                        <outlet property="searchBar" destination="cWk-Mg-CaP" id="Boo-Ok-xPm"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZnZ-G4-2P4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1755" y="2478"/>
         </scene>
         <!--Navigation Controller - Profile-->
         <scene sceneID="lcg-Dh-Qgj">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="v0e-pi-1LY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="first" id="guI-z8-BKy"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="Profile" id="guI-z8-BKy"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="8Dm-ul-rAK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2140,13 +2228,13 @@ Create a reminder to vote, by selecting the date and time for your next student 
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gQs-Bh-NFH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="773" y="1926"/>
+            <point key="canvasLocation" x="773" y="2478"/>
         </scene>
         <!--Navigation Controller - Election-->
         <scene sceneID="j5C-13-e5M">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kFz-NU-ccf" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Election" image="first" id="Z7h-1E-pvt"/>
+                    <tabBarItem key="tabBarItem" title="Election" image="Election" id="Z7h-1E-pvt"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tvM-xn-TcE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2159,7 +2247,7 @@ Create a reminder to vote, by selecting the date and time for your next student 
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GBh-zg-LT8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="773" y="-230"/>
+            <point key="canvasLocation" x="773" y="6"/>
         </scene>
         <!--Candidate View Controller-->
         <scene sceneID="QOB-3Y-zd5">
@@ -2230,6 +2318,79 @@ Create a reminder to vote, by selecting the date and time for your next student 
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="150" sectionHeaderHeight="22" sectionFooterHeight="22" id="cgh-M4-cY4">
+                                        <rect key="frame" x="640" y="0.0" width="320" height="568"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <inset key="contentInset" minX="0.0" minY="108" maxX="0.0" maxY="49"/>
+                                        <searchBar key="tableHeaderView" contentMode="redraw" id="R8l-XT-RxP">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </searchBar>
+                                        <prototypes>
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CandidateCell" id="oWH-Zt-8WK" customClass="EBCandidateTableViewCell">
+                                                <rect key="frame" x="0.0" y="66" width="320" height="150"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oWH-Zt-8WK" id="pJc-7S-Dcg">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="149"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Kef-eO-OM0" customClass="EBLabelMedium">
+                                                            <rect key="frame" x="40" y="20" width="179" height="18"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" id="xuV-fc-36x">
+                                                            <rect key="frame" x="0.0" y="46" width="320" height="103"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                        </textView>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="99b-h8-s7B" customClass="EBButtonHeavy">
+                                                            <rect key="frame" x="227" y="14" width="85" height="30"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <state key="normal" title="Read More">
+                                                                <color key="titleColor" red="0.47450980390000003" green="0.47450980390000003" blue="0.56470588239999997" alpha="1" colorSpace="deviceRGB"/>
+                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <integer key="value" value="15"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                                    <integer key="value" value="1"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
+                                                                    <color key="value" red="0.47450980390000003" green="0.47450980390000003" blue="0.56470588239999997" alpha="1" colorSpace="deviceRGB"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </button>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Mnp-pn-FTw">
+                                                            <rect key="frame" x="8" y="17" width="24" height="24"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <color key="backgroundColor" red="0.63677577549999997" green="0.63677577549999997" blue="0.63677577549999997" alpha="1" colorSpace="deviceRGB"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <integer key="value" value="12"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </imageView>
+                                                    </subviews>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="candidateImageView" destination="Mnp-pn-FTw" id="1bO-ZQ-Go4"/>
+                                                    <outlet property="descriptionTextView" destination="xuV-fc-36x" id="Svd-ZK-f2Y"/>
+                                                    <outlet property="nameLabel" destination="Kef-eO-OM0" id="xrf-ca-772"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
                                 </subviews>
                                 <connections>
                                     <outlet property="delegate" destination="KYc-k3-CcX" id="AP5-Lu-xie"/>
@@ -2260,6 +2421,8 @@ Create a reminder to vote, by selecting the date and time for your next student 
                     </view>
                     <toolbarItems/>
                     <connections>
+                        <outlet property="candidateSearchBar" destination="R8l-XT-RxP" id="NH8-UP-I1R"/>
+                        <outlet property="candidatesTableView" destination="cgh-M4-cY4" id="p8j-EZ-BbY"/>
                         <outlet property="customScrollView" destination="9xB-sl-uIw" id="NNx-Df-Ep4"/>
                         <outlet property="positionsCollectionView" destination="Q5o-eW-M7v" id="oJ9-6f-bTx"/>
                         <outlet property="segmentedControl" destination="MRO-Aa-9l8" id="uZV-zy-pLh"/>
@@ -2267,13 +2430,13 @@ Create a reminder to vote, by selecting the date and time for your next student 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BkN-1R-pD0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1697" y="-236"/>
+            <point key="canvasLocation" x="1847" y="-340"/>
         </scene>
         <!--Navigation Controller - Vote-->
         <scene sceneID="tXN-n8-bof">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5Pr-ln-4CL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Vote" image="first" id="GE7-4w-R8P"/>
+                    <tabBarItem key="tabBarItem" title="Vote" image="Vote" id="GE7-4w-R8P"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vnB-Eo-sFy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2286,13 +2449,13 @@ Create a reminder to vote, by selecting the date and time for your next student 
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4GX-OC-QGB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="773" y="1249"/>
+            <point key="canvasLocation" x="773" y="1801"/>
         </scene>
         <!--Navigation Controller - Poll-->
         <scene sceneID="Gdx-hb-JrZ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eWg-dv-v8o" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Poll" image="first" id="Dk4-ee-L5n"/>
+                    <tabBarItem key="tabBarItem" title="Poll" image="Poll" id="Dk4-ee-L5n"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="MHl-bc-zAX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2305,7 +2468,7 @@ Create a reminder to vote, by selecting the date and time for your next student 
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xf6-xo-skA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="773" y="517"/>
+            <point key="canvasLocation" x="773" y="1069"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ClN-q5-rGV">
@@ -2386,7 +2549,7 @@ That it. Let’s do this. </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tdN-pj-bdG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3532" y="-230"/>
+            <point key="canvasLocation" x="3532" y="6"/>
         </scene>
         <!--Election Container View Controller - Second-->
         <scene sceneID="Znw-ku-z2j">
@@ -2415,7 +2578,7 @@ That it. Let’s do this. </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ufg-T9-L15" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3125" y="-230"/>
+            <point key="canvasLocation" x="3125" y="6"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2c0-8V-JdU">
@@ -2433,11 +2596,18 @@ That it. Let’s do this. </string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YdV-8E-d7U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2599" y="-230"/>
+            <point key="canvasLocation" x="2599" y="6"/>
         </scene>
     </scenes>
     <resources>
+        <image name="Election" width="25" height="25"/>
+        <image name="Feed" width="25" height="25"/>
         <image name="Icon-76.png" width="76" height="76"/>
+        <image name="Poll" width="25" height="25"/>
+        <image name="Profile" width="25" height="25"/>
+        <image name="Settings" width="22" height="22"/>
+        <image name="Share" width="22" height="22"/>
+        <image name="Vote" width="25" height="25"/>
         <image name="first" width="30" height="30"/>
         <image name="welcome.jpg" width="640" height="1136"/>
     </resources>

@@ -129,9 +129,8 @@
     
     actionSheet.cancelButtonIndex = [actionSheet addButtonWithTitle:@"Cancel"];
     
-    [actionSheet  showFromTabBar:self.tabBarController.tabBar];
+    [actionSheet  showInView:self.view];
 }
-
 
 
 

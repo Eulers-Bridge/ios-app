@@ -43,7 +43,17 @@
             NSString* phoneNumber = (__bridge_transfer NSString*) ABMultiValueCopyValueAtIndex(phonesRef, i);
             [phoneNumbers addObject:phoneNumber];
         }
-        
+        if (name == nil) {
+            if ([phoneNumbers count] > 0) {
+                name = phoneNumbers[0];
+            } else {
+                if ([emails count] > 0) {
+                    name = emails[0];
+                } else {
+                    name = @"";
+                }
+            }
+        }
         NSDictionary *person = @{PERSON_NAME_PROPERTY   : name,
                                  PERSON_EMAILS_PROPERTY : [emails copy],
                                  PERSON_PHONES_PROPERTY : [phoneNumbers copy]};

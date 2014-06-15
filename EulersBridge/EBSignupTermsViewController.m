@@ -50,6 +50,27 @@
 {
     UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
     window.rootViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"tabBarView"];
+    
+    // Tabbar custom image
+    UITabBarController *tabBarController = (UITabBarController *)window.rootViewController;
+    UITabBar *tabBar = tabBarController.tabBar;
+    UITabBarItem *tabBarItem1 = [tabBar.items objectAtIndex:0];
+    UITabBarItem *tabBarItem2 = [tabBar.items objectAtIndex:1];
+    UITabBarItem *tabBarItem3 = [tabBar.items objectAtIndex:2];
+    UITabBarItem *tabBarItem4 = [tabBar.items objectAtIndex:3];
+    UITabBarItem *tabBarItem5 = [tabBar.items objectAtIndex:4];
+    tabBarItem1.selectedImage = [UIImage imageNamed:@"Feed Higlighted"];
+    tabBarItem2.selectedImage = [UIImage imageNamed:@"Election Higlighted"];
+    tabBarItem3.selectedImage = [UIImage imageNamed:@"Poll Higlighted"];
+    tabBarItem4.selectedImage = [UIImage imageNamed:@"Vote Higlighted"];
+    tabBarItem5.selectedImage = [UIImage imageNamed:@"Profile Higlighted"];
+    
+    UIPageControl *pageControl = [UIPageControl appearance];
+    pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
+    pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
+    pageControl.backgroundColor = [UIColor whiteColor];
+    
+
 }
 
 

@@ -48,7 +48,7 @@
 {
     EBFeedCollectionViewCell *cell;
     NSDictionary *dict;
-    dict = @{@"imageName": [NSString stringWithFormat:@"photo%ld.jpg", indexPath.item],
+    dict = @{@"imageName": [NSString stringWithFormat:@"photo%ld.jpg", (long)indexPath.item],
              @"title": self.positions[indexPath.item][@"title"],
              @"date": @"",
              @"priority": @(0)};
@@ -65,6 +65,7 @@
     
     return cell;
 }
+
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {

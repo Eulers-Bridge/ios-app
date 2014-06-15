@@ -54,7 +54,7 @@
     // Setup Font
     self.titleLabel.font = [UIFont fontWithName:@"MuseoSansRounded-300" size:FONT_SIZE_ARTICLE_TITLE];
     self.actionButton.titleLabel.font = [UIFont fontWithName:@"MuseoSansRounded-700" size:FONT_SIZE_BUTTON];
-    self.textView.font = [UIFont fontWithName:@"Sentinel-Book" size:FONT_SIZE_ARTICLE_BODY];
+    self.textView.font = [UIFont fontWithName:@"GentiumBookBasic" size:FONT_SIZE_ARTICLE_BODY];
     
     // Action button
     self.actionButton.layer.borderColor = [UIColor whiteColor].CGColor;
@@ -198,8 +198,7 @@
     }
 }
 
-
-- (IBAction)share:(UIButton *)sender
+- (IBAction)share:(UIBarButtonItem *)sender
 {
     UIActivityViewController *avc = [[UIActivityViewController alloc] initWithActivityItems:@[@"share string"] applicationActivities:nil];
     [self presentViewController:avc animated:YES completion:^{

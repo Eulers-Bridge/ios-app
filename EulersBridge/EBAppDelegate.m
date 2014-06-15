@@ -15,15 +15,9 @@
     // Override point for customization after application launch.
     // Set Global tint color
     self.window.tintColor = [UIColor colorWithRed:82.0/255.0 green:128.0/255.0 blue:213.0/255.0 alpha:1.0];
-//    self.window.rootViewController = [self.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"loginView"];
-    
-    
-    UIPageControl *pageControl = [UIPageControl appearance];
-    pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
-    pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
-    pageControl.backgroundColor = [UIColor whiteColor];
+    self.window.rootViewController = [self.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"loginView"];
 
-    
+        
     
     // Set tint color
     [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0]];

@@ -42,6 +42,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    // tab bar image
+    
     [self.segmentedControl addTarget:self action:@selector(changeSegment) forControlEvents:UIControlEventValueChanged];
     self.newsCollectionView.alwaysBounceVertical = YES;
     self.customScrollView.contentSize = CGSizeMake(WIDTH_OF_SCREEN * 3, self.customScrollView.bounds.size.height - 150);
