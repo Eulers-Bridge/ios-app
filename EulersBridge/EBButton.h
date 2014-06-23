@@ -10,4 +10,6 @@
 
 @interface EBButton : UIButton
 
+@property (strong, nonatomic) UIColor *mainColor;
+
 @end

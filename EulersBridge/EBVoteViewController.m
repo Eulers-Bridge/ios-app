@@ -60,7 +60,7 @@
     self.picker.hidden = YES;
     self.textView.hidden = NO;
     
-    self.votingDates = @[@"2014-08-12 14:30", @"2014-08-15 9:30", @"2014-08-20 15:30", @"2014-09-08 16:30", @"2014-09-15 10:30"];
+    self.votingDates = @[@"14:30 12th July 2014", @"14:30 12th July 2014", @"14:30 12th July 2014", @"14:30 12th July 2014", @"14:30 12th July 2014"];
     self.votingLocations = @[@"Union House", @"Baillieu Library", @"ERC Library"];
     
     // Font setup

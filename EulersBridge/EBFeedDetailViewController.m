@@ -12,16 +12,16 @@
 #import <EventKitUI/EventKitUI.h>
 #import <Social/Social.h>
 
-@interface EBFeedDetailViewController () <EKEventEditViewDelegate>
+@interface EBFeedDetailViewController () <EKEventEditViewDelegate, UIScrollViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIScrollView *detailScrollView;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIImageView *authorImageView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *authorLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
-@property (weak, nonatomic) IBOutlet UIButton *actionButton;
+@property (weak, nonatomic) IBOutlet EBLabelLight *likesLabel;
 
 
 @end
@@ -44,6 +44,9 @@
     self.view.layer.shouldRasterize = YES;
     self.view.layer.rasterizationScale = [UIScreen mainScreen].scale;
     
+    self.detailScrollView.delegate = self;
+    self.detailScrollView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0);
+    
     // Setup the mask
     CAGradientLayer *gradient = [CAGradientLayer layer];
     gradient.frame = self.imageView.bounds;
@@ -53,11 +56,8 @@
     
     // Setup Font
     self.titleLabel.font = [UIFont fontWithName:@"MuseoSansRounded-300" size:FONT_SIZE_ARTICLE_TITLE];
-    self.actionButton.titleLabel.font = [UIFont fontWithName:@"MuseoSansRounded-700" size:FONT_SIZE_BUTTON];
     self.textView.font = [UIFont fontWithName:@"GentiumBookBasic" size:FONT_SIZE_ARTICLE_BODY];
     
-    // Action button
-    self.actionButton.layer.borderColor = [UIColor whiteColor].CGColor;
     
     if (self.feedDetailType == EBFeedDetailNews) {
         [self setupNews];
@@ -73,10 +73,10 @@
                                      WIDTH_OF_SCREEN,
                                      size.height);
     
-    self.scrollView.contentSize = CGSizeMake(WIDTH_OF_SCREEN,
+    self.detailScrollView.contentSize = CGSizeMake(WIDTH_OF_SCREEN,
                                              self.imageView.bounds.size.height + self.textView.frame.size.height);
 
-    
+    self.likes = 205;
 
     
 }
@@ -94,6 +94,8 @@
     self.authorImageView.image = [UIImage imageNamed:@"head1.jpg"];
     self.authorImageView.layer.cornerRadius = 12;
     self.textView.text = self.data[@"article"];
+    self.likes = 205;
+    self.likesLabel.text = [NSString stringWithFormat:@"%d Likes", self.likes];
 }
 
 - (void)setupEvent
@@ -118,6 +120,7 @@
     
 }
 
+#pragma mark IBActions
 
 - (IBAction)addToCalendar:(UIButton *)sender
 {
@@ -206,10 +209,28 @@
     }];
 }
 
+- (IBAction)like:(UIButton *)sender
+{
+    [sender setSelected:!sender.selected];
+    self.likes += (sender.selected?1:-1);
+    self.likesLabel.text = [NSString stringWithFormat:@"%d Likes", self.likes];
+}
 
 
 
-
+#pragma mark Scroll View Delegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    if (scrollView == self.detailScrollView) {
+        if (scrollView.contentOffset.y <= -64) {
+            [scrollView setContentOffset:CGPointMake(0, -64) animated:NO];
+            return;
+        }
+        CGRect frame = self.imageView.frame;
+        frame.origin.y = (scrollView.contentOffset.y + 64) * 0.2;
+        self.imageView.frame = frame;
+    }
+}
 
 
 

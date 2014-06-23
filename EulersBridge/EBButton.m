@@ -7,6 +7,7 @@
 //
 
 #import "EBButton.h"
+#import "UIImage+ImageWithColor.h"
 
 @implementation EBButton
 
@@ -24,8 +25,26 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         self.titleLabel.font = [UIFont fontWithName:@"MuseoSansRounded-300" size:self.titleLabel.font.pointSize];
+        self.layer.cornerRadius = self.bounds.size.height / 2;
+        self.layer.borderWidth = 1.0;
+        self.clipsToBounds = YES;
+        
     }
     return self;
+}
+
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    self.layer.borderColor = self.mainColor.CGColor;
+    self.titleLabel.textColor = self.mainColor;
+    [self setTitleColor:self.mainColor forState:UIControlStateNormal];
+    [self setTitleColor:[UIColor clearColor] forState:UIControlStateHighlighted];
+    [self setTitleColor:[UIColor clearColor] forState:UIControlStateSelected];
+    [self setBackgroundImage:[UIImage imageWithColor:self.mainColor] forState:UIControlStateHighlighted];
+    [self setBackgroundImage:[UIImage imageWithColor:self.mainColor] forState:UIControlStateSelected];
+    
+    
 }
 
 /*

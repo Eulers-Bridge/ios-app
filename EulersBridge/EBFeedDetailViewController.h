@@ -13,5 +13,6 @@
 
 @property EBFeedDetail feedDetailType;
 @property (strong, nonatomic) NSDictionary *data;
+@property int likes;
 
 @end

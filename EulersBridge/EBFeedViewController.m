@@ -111,7 +111,7 @@
     } else if (collectionView == self.eventsCollectionView) {
         dict = self.eventDataList[indexPath.item];
     } else if (collectionView == self.photosCollectionView) {
-        dict = @{@"imageName": [NSString stringWithFormat:@"photo%ld.jpg", indexPath.item],
+        dict = @{@"imageName": [NSString stringWithFormat:@"photo%ld.jpg", (long)indexPath.item],
                  @"title": @"",
                  @"date": @""};
     }

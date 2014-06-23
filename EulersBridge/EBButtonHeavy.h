@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EBButtonHeavy : UIButton
+@interface EBButtonHeavy : EBButton
 
 @end

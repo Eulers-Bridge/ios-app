@@ -11,7 +11,7 @@
 #import <AddressBookUI/AddressBookUI.h>
 #import "UIImage+ImageEffects.h"
 
-@interface EBProfileViewController () <ABPeoplePickerNavigationControllerDelegate>
+@interface EBProfileViewController () <ABPeoplePickerNavigationControllerDelegate, UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
@@ -126,7 +126,16 @@
 
 
 
-
+#pragma mark Scroll View Delegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (scrollView.contentOffset.y <= 0) {
+        [scrollView setContentOffset:CGPointMake(0, 0) animated:NO];
+        return;
+    }
+    CGRect frame = self.imageView.frame;
+    frame.origin.y = scrollView.contentOffset.y * 0.2;
+    self.imageView.frame = frame;
+}
 
 
 
