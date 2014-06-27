@@ -31,7 +31,7 @@
     // Configure the view for the selected state
 }
 
-- (IBAction)actionButtonPressed:(EBButtonHeavy *)sender
+- (IBAction)actionButtonPressed:(EBButtonRoundedHeavy *)sender
 {
     [self.delegate inviteFriendWithContact:self.contact];
 }

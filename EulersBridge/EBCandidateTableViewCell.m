@@ -30,5 +30,9 @@
 
     // Configure the view for the selected state
 }
+- (IBAction)showDetail:(UIButton *)sender
+{
+    [self.delegate candidateShowDetailWithIndex:self.index];
+}
 
 @end

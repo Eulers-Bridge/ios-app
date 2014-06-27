@@ -10,9 +10,10 @@
 #import "EBFeedCollectionViewCell.h"
 #import "EBElectionPositionsDataSource.h"
 #import "EBElectionCandidateTableDataSource.h"
+#import "EBCandidateProfileViewController.h"
 #import "MyConstants.h"
 
-@interface EBCandidateViewController () <UIScrollViewDelegate, UISearchBarDelegate, UICollectionViewDelegate>
+@interface EBCandidateViewController () <UIScrollViewDelegate, UISearchBarDelegate, UICollectionViewDelegate, EBCandidateCellDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *customScrollView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 @property (weak, nonatomic) IBOutlet UICollectionView *positionsCollectionView;
@@ -20,6 +21,8 @@
 @property (weak, nonatomic) IBOutlet UITableView *candidatesTableView;
 @property (strong, nonatomic) EBElectionCandidateTableDataSource *candidatesDataSource;
 @property (weak, nonatomic) IBOutlet UISearchBar *candidateSearchBar;
+
+@property NSUInteger seletedCellIndex;
 
 @end
 
@@ -48,6 +51,7 @@
     self.candidatesDataSource = [[EBElectionCandidateTableDataSource alloc] init];
     self.candidatesTableView.delegate = self.candidatesDataSource;
     self.candidatesTableView.dataSource = self.candidatesDataSource;
+    self.candidatesDataSource.cellDelegate = self;
     
     self.candidateSearchBar.delegate = self;
     self.candidateSearchBar.showsCancelButton = YES;
@@ -89,6 +93,12 @@
     [searchBar resignFirstResponder];
 }
 
+#pragma mark EBCandidateCellDelegate
+- (void)candidateShowDetailWithIndex:(NSUInteger)index
+{
+    self.seletedCellIndex = index;
+    [self performSegueWithIdentifier:@"showCandidateDetail" sender:nil];
+}
 
 /*
 #pragma mark position collection view delegate
@@ -127,12 +137,11 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-//    if ([segue.identifier isEqualToString:@"ShowPositionDetail"]) {
-//        EBFeedCollectionViewCell *cell = (EBFeedCollectionViewCell *)sender;
-//        EBElectionPositionDetailViewController *detail = (EBElectionPositionDetailViewController *)[segue destinationViewController];
-//        detail.titleLabel.text = self.positionsDataSource.positions[cell.index][@"title"];
-//        detail.descriptionTextView.text = self.positionsDataSource.positions[cell.index][@"description"];
-//    }
+    if ([segue.identifier isEqualToString:@"showCandidateDetail"]) {
+        EBCandidateProfileViewController *detail = (EBCandidateProfileViewController *)[segue destinationViewController];
+        detail.name = self.candidatesDataSource.candidates[self.seletedCellIndex][@"name"];
+        detail.imageName = [NSString stringWithFormat:@"candidate%ld.jpg", self.seletedCellIndex];
+    }
 }
 
 

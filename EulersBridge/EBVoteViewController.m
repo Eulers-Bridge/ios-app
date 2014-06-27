@@ -60,21 +60,9 @@
     self.picker.hidden = YES;
     self.textView.hidden = NO;
     
-    self.votingDates = @[@"14:30 12th July 2014", @"14:30 12th July 2014", @"14:30 12th July 2014", @"14:30 12th July 2014", @"14:30 12th July 2014"];
+    self.votingDates = @[@"2014-07-12 14:30", @"2014-08-12 11:30", @"2014-09-14 12:30", @"2014-10-12 12:00", @"2014-07-12 14:30"];
     self.votingLocations = @[@"Union House", @"Baillieu Library", @"ERC Library"];
-    
-    // Font setup
-    self.voteLabel0.font = [UIFont fontWithName:@"MuseoSansRounded-300" size:self.voteLabel0.font.pointSize];
-    self.voteLabel1.font = [UIFont fontWithName:@"MuseoSansRounded-300" size:self.voteLabel1.font.pointSize];
-    self.dateLabel.font = [UIFont fontWithName:@"MuseoSansRounded-500" size:self.dateLabel.font.pointSize];
-    self.locationLabel.font = [UIFont fontWithName:@"MuseoSansRounded-500" size:self.locationLabel.font.pointSize];
-    self.textView.font = [UIFont fontWithName:@"MuseoSansRounded-500" size:self.textView.font.pointSize];
-    self.createReminderButton.titleLabel.font = [UIFont fontWithName:@"MuseoSansRounded-700" size:self.createReminderButton.titleLabel.font.pointSize];
-    
-    self.finishTitleLabel.font = [UIFont fontWithName:@"MuseoSansRounded-300" size:self.finishTitleLabel.font.pointSize];
-    self.finishTextView.font = [UIFont fontWithName:@"MuseoSansRounded-300" size:self.finishTextView.font.pointSize];
-    self.scanButton.titleLabel.font = [UIFont fontWithName:@"MuseoSansRounded-700" size:self.scanButton.titleLabel.font.pointSize];
-    
+    // 14:30 12th July 2014
     // Gesture Recognizer
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                           action:@selector(tapAnywhere)];
@@ -106,7 +94,7 @@
     [self.picker reloadAllComponents];
     
     if ([self.dateLabel.text isEqualToString:@""]) {
-        self.dateLabel.text = self.pickerViewCurrentArray[[self.picker selectedRowInComponent:0]];
+        self.dateLabel.text = [self pickerView:self.picker titleForRow:[self.picker selectedRowInComponent:0] forComponent:0];
     }
 }
 
@@ -155,13 +143,24 @@
 
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    return self.pickerViewCurrentArray[row];
+    if (self.pickerViewCurrentArray == self.votingDates) {
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+        NSDate *date = [formatter dateFromString:self.pickerViewCurrentArray[row]];
+        
+        NSDateFormatter *formatter2 = [[NSDateFormatter alloc] init];
+        [formatter2 setDateFormat:@"hh:mm, dd MMMM yyyy"];
+        return [formatter2 stringFromDate:date];
+
+    } else {
+        return self.pickerViewCurrentArray[row];
+    }
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
     if (self.pickerViewCurrentArray == self.votingDates) {
-        self.dateLabel.text = self.votingDates[row];
+        self.dateLabel.text = [self pickerView:pickerView titleForRow:row forComponent:component];
     }
     
     if (self.pickerViewCurrentArray == self.votingLocations) {

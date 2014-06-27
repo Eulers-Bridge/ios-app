@@ -9,12 +9,13 @@
 #import "EBProfileViewController.h"
 #import <AddressBook/AddressBook.h>
 #import <AddressBookUI/AddressBookUI.h>
-#import "UIImage+ImageEffects.h"
+#import "EBBlurImageView.h"
+#import "EBBadgesCollectionViewController.h"
 
 @interface EBProfileViewController () <ABPeoplePickerNavigationControllerDelegate, UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet EBBlurImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -30,8 +31,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *sampleXPLabel;
 
 @property (weak, nonatomic) IBOutlet UIButton *actionButton;
-@property (weak, nonatomic) IBOutlet UIButton *showBadges;
-@property (weak, nonatomic) IBOutlet UIButton *showTasks;
 
 
 
@@ -64,8 +63,6 @@
     self.sampleTaskLabel.font = [UIFont fontWithName:@"MuseoSansRounded-500" size:self.sampleTaskLabel.font.pointSize];
     self.sampleXPLabel.font = [UIFont fontWithName:@"MuseoSansRounded-500" size:self.sampleXPLabel.font.pointSize];
     
-    self.showBadges.titleLabel.font = [UIFont fontWithName:@"MuseoSansRounded-700" size:self.showBadges.titleLabel.font.pointSize];
-    self.showTasks.titleLabel.font = [UIFont fontWithName:@"MuseoSansRounded-700" size:self.showBadges.titleLabel.font.pointSize];
     
     self.actionButton.titleLabel.font = [UIFont fontWithName:@"MuseoSansRounded-700" size:self.actionButton.titleLabel.font.pointSize];
     self.actionButton.titleLabel.textColor = [UIColor whiteColor];
@@ -74,10 +71,6 @@
     // Image setup
     self.profileImageView.image = [UIImage imageNamed:@"selfHead.jpg"];
     self.imageView.image = [UIImage imageNamed:@"selfHeadBig.jpg"];
-    UIColor *tintColor = [UIColor colorWithRed:51.0/255.0 green:56.0/255.0 blue:69.0/255.0 alpha:0.5];
-    self.imageView.image = [self.imageView.image applyBlurWithRadius:20 tintColor:tintColor saturationDeltaFactor:1.8 maskImage:nil];
-
-
 }
 
 
@@ -148,15 +141,19 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    if ([segue.identifier isEqualToString:@"BadgesEmbed"]) {
+        EBBadgesCollectionViewController *badgesViewController = (EBBadgesCollectionViewController *)[segue destinationViewController];
+        badgesViewController.badgesViewType = EBBadgesViewTypeSmall;
+    }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
+
 
 @end

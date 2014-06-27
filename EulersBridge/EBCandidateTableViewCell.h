@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EBCandidateCellDelegate.h"
 
 @interface EBCandidateTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet EBLabelMedium *nameLabel;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
 @property (weak, nonatomic) IBOutlet UIImageView *candidateImageView;
+@property NSUInteger index;
 
+@property (assign, nonatomic) id<EBCandidateCellDelegate> delegate;
 
 @end

@@ -45,10 +45,6 @@
     [super viewDidLoad];
     self.candidateView.hidden = YES;
     
-    // Font setup
-    self.electionTitleLabel.font = [UIFont fontWithName:@"MuseoSansRounded-300" size:self.electionTitleLabel.font.pointSize];
-    self.electionDateLabel.font = [UIFont fontWithName:@"MuseoSansRounded-500" size:self.electionDateLabel.font.pointSize];
-    
     self.electionScrollView.contentSize = CGSizeMake(3 * WIDTH_OF_SCREEN, self.electionScrollView.bounds.size.height);
     self.electionScrollView.pagingEnabled = YES;
     self.electionScrollView.alwaysBounceVertical = NO;

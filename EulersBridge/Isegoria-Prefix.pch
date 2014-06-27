@@ -18,5 +18,8 @@
     #import "EBLabelHeavy.h"
     #import "EBTextViewMuseoLight.h"
     #import "EBButton.h"
+    #import "EBButtonRounded.h"
+    #import "EBButtonRoundedHeavy.h"
+    #import "EBOnePixelLine.h"
     #import "EBButtonHeavy.h"
 #endif

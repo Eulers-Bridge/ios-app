@@ -22,6 +22,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *authorLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet EBLabelLight *likesLabel;
+@property (weak, nonatomic) IBOutlet EBButtonRoundedHeavy *attendButton;
+@property (weak, nonatomic) IBOutlet UIView *contactView;
+@property (weak, nonatomic) IBOutlet EBOnePixelLine *separator;
 
 
 @end
@@ -56,27 +59,38 @@
     
     // Setup Font
     self.titleLabel.font = [UIFont fontWithName:@"MuseoSansRounded-300" size:FONT_SIZE_ARTICLE_TITLE];
-    self.textView.font = [UIFont fontWithName:@"GentiumBookBasic" size:FONT_SIZE_ARTICLE_BODY];
     
-    
+    CGFloat offset = 0.0;
     if (self.feedDetailType == EBFeedDetailNews) {
         [self setupNews];
+        self.likes = 205;
+        self.separator.hidden = YES;
     } else if (self.feedDetailType == EBFeedDetailEvent) {
         [self setupEvent];
+        offset = 44.0;
+        self.separator.hidden = NO;
     }
     
     
     
     CGSize size = [self.textView sizeThatFits:CGSizeMake(WIDTH_OF_SCREEN, 200)];
     self.textView.frame = CGRectMake(0.0,
-                                     self.imageView.bounds.size.height,
+                                     self.imageView.bounds.size.height + offset,
                                      WIDTH_OF_SCREEN,
                                      size.height);
     
+    CGRect contactFrame = self.contactView.frame;
+    contactFrame.origin.y = self.imageView.bounds.size.height + self.textView.frame.size.height + offset;
+    self.contactView.frame = contactFrame;
+    
+    CGRect separatorFrame = self.separator.frame;
+    separatorFrame.origin.y = contactFrame.origin.y + 25;
+    self.separator.frame = separatorFrame;
+    
     self.detailScrollView.contentSize = CGSizeMake(WIDTH_OF_SCREEN,
-                                             self.imageView.bounds.size.height + self.textView.frame.size.height);
+                                             self.imageView.bounds.size.height + self.textView.frame.size.height + offset + self.contactView.bounds.size.height);
 
-    self.likes = 205;
+    
 
     
 }
@@ -167,6 +181,14 @@
 - (void)eventEditViewController:(EKEventEditViewController *)controller didCompleteWithAction:(EKEventEditViewAction)action
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+    if (action == EKEventEditViewActionSaved) {
+
+//        CGRect frame = self.attendButton.frame;
+//        frame.origin.x = frame.origin.x + 15;
+//        frame.size.width = frame.size.width - 15;
+//        self.attendButton.frame = frame;
+//        self.attendButton.titleLabel.text = @"Attending";
+    }
 }
 
 - (IBAction)shareOnFacebook:(UIButton *)sender
@@ -222,13 +244,14 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
     if (scrollView == self.detailScrollView) {
+        CGRect frame = self.imageView.frame;
+        frame.origin.y = (scrollView.contentOffset.y + 64) * 0.2;
+        self.imageView.frame = frame;
         if (scrollView.contentOffset.y <= -64) {
             [scrollView setContentOffset:CGPointMake(0, -64) animated:NO];
             return;
         }
-        CGRect frame = self.imageView.frame;
-        frame.origin.y = (scrollView.contentOffset.y + 64) * 0.2;
-        self.imageView.frame = frame;
+        
     }
 }
 

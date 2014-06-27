@@ -7,11 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "EBCandidateCellDelegate.h"
 
 @interface EBElectionCandidateTableDataSource : NSObject <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) NSArray *candidates;
 @property (strong, nonatomic) NSArray *matchingCandidates;
+
+@property (assign, nonatomic) id<EBCandidateCellDelegate> cellDelegate;
 
 -(void)updateData:(NSString *)searchText;
 

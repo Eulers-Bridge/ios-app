@@ -48,7 +48,10 @@
     EBCandidateTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CandidateCell" forIndexPath:indexPath];
     cell.nameLabel.text = self.matchingCandidates[indexPath.row][@"name"];
     cell.descriptionTextView.text = self.matchingCandidates[indexPath.row][@"description"];
-    cell.candidateImageView.image = [UIImage imageNamed:@"head1.jpg"];
+    NSString *imageName = [NSString stringWithFormat:@"candidate%ld.jpg", (long)indexPath.row];
+    cell.candidateImageView.image = [UIImage imageNamed:imageName];
+    cell.index = indexPath.row;
+    cell.delegate = self.cellDelegate;
     return cell;
 }
 

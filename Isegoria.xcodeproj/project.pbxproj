@@ -86,6 +86,26 @@
 		046D64F019319D8800C354F4 /* photo13.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 046D64E119319D8800C354F4 /* photo13.jpg */; };
 		046D64F119319D8800C354F4 /* photo14.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 046D64E219319D8800C354F4 /* photo14.jpg */; };
 		04788EC81958076B0015FB06 /* UIImage+ImageWithColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 04788EC71958076B0015FB06 /* UIImage+ImageWithColor.m */; };
+		04788ECB195A6C0C0015FB06 /* EBOnePixelLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 04788ECA195A6C0C0015FB06 /* EBOnePixelLine.m */; };
+		04788ECE195A70460015FB06 /* EBButtonRounded.m in Sources */ = {isa = PBXBuildFile; fileRef = 04788ECD195A70460015FB06 /* EBButtonRounded.m */; };
+		048D01C1195BAEE600E878DA /* EBCandidateProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 048D01C0195BAEE600E878DA /* EBCandidateProfileViewController.m */; };
+		048D01C4195BB0A600E878DA /* EBBlurImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 048D01C3195BB0A600E878DA /* EBBlurImageView.m */; };
+		048D01C7195BB6C900E878DA /* EBButtonHeavy.m in Sources */ = {isa = PBXBuildFile; fileRef = 048D01C6195BB6C900E878DA /* EBButtonHeavy.m */; };
+		048D01CB195BBBEF00E878DA /* head2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 048D01CA195BBBEF00E878DA /* head2.jpg */; };
+		048D01CE195BC53500E878DA /* EBFriendProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 048D01CD195BC53500E878DA /* EBFriendProfileViewController.m */; };
+		048D01D0195BC9EB00E878DA /* Badges.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 048D01CF195BC9EB00E878DA /* Badges.xcassets */; };
+		048D01D3195BDC5400E878DA /* EBBadgesCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 048D01D2195BDC5400E878DA /* EBBadgesCollectionViewController.m */; };
+		048D01E0195BEF8200E878DA /* candidate0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 048D01D7195BEF8200E878DA /* candidate0.jpg */; };
+		048D01E1195BEF8200E878DA /* candidate1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 048D01D8195BEF8200E878DA /* candidate1.jpg */; };
+		048D01E2195BEF8200E878DA /* candidate2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 048D01D9195BEF8200E878DA /* candidate2.jpg */; };
+		048D01E3195BEF8200E878DA /* candidate3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 048D01DA195BEF8200E878DA /* candidate3.jpg */; };
+		048D01E4195BEF8200E878DA /* candidate4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 048D01DB195BEF8200E878DA /* candidate4.jpg */; };
+		048D01E5195BEF8200E878DA /* candidate5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 048D01DC195BEF8200E878DA /* candidate5.jpg */; };
+		048D01E6195BEF8200E878DA /* candidate6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 048D01DD195BEF8200E878DA /* candidate6.jpg */; };
+		048D01E7195BEF8200E878DA /* candidate7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 048D01DE195BEF8200E878DA /* candidate7.jpg */; };
+		048D01E8195BEF8200E878DA /* candidate8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 048D01DF195BEF8200E878DA /* candidate8.jpg */; };
+		048D01ED195CFE5500E878DA /* EBTicketsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 048D01EC195CFE5500E878DA /* EBTicketsCollectionViewController.m */; };
+		048D01F0195CFE6A00E878DA /* EBTicketCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 048D01EF195CFE6A00E878DA /* EBTicketCollectionViewCell.m */; };
 		0493F3D1191F49C400853DBF /* EBNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0493F3D0191F49C400853DBF /* EBNetworkService.m */; };
 		0493F3D4191F49EA00853DBF /* EBImageService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0493F3D3191F49EA00853DBF /* EBImageService.m */; };
 		0494A4BB1920AA6300602CB9 /* MuseoSansRounded-100.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0494A4B91920AA6300602CB9 /* MuseoSansRounded-100.otf */; };
@@ -115,7 +135,7 @@
 		04EC19501941A4930001FF72 /* EBPollContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EC194F1941A4930001FF72 /* EBPollContentViewController.m */; };
 		04EC19531941B48B0001FF72 /* EBLabelMedium.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EC19521941B48B0001FF72 /* EBLabelMedium.m */; };
 		04EC19571941B4D10001FF72 /* EBLabelHeavy.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EC19561941B4D10001FF72 /* EBLabelHeavy.m */; };
-		04EC195A1941B6BC0001FF72 /* EBTextViewMuseo.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EC19591941B6BC0001FF72 /* EBTextViewMuseo.m */; };
+		04EC195A1941B6BC0001FF72 /* EBTextViewGentium.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EC19591941B6BC0001FF72 /* EBTextViewGentium.m */; };
 		04EC195D1941C0A90001FF72 /* EBPollAnswerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EC195C1941C0A90001FF72 /* EBPollAnswerTableViewCell.m */; };
 		04EC1960194206150001FF72 /* EBTextViewMuseoLight.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EC195F194206150001FF72 /* EBTextViewMuseoLight.m */; };
 		04EC19631942080C0001FF72 /* EBElectionContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EC19621942080C0001FF72 /* EBElectionContainerViewController.m */; };
@@ -123,7 +143,7 @@
 		04EC196919421E680001FF72 /* EBElectionPositionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EC196819421E680001FF72 /* EBElectionPositionDetailViewController.m */; };
 		04EC196C19483B4C0001FF72 /* EBElectionCandidateTableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EC196B19483B4C0001FF72 /* EBElectionCandidateTableDataSource.m */; };
 		04EC19701948839C0001FF72 /* EBCandidateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EC196F1948839C0001FF72 /* EBCandidateTableViewCell.m */; };
-		04EC197319488A730001FF72 /* EBButtonHeavy.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EC197219488A730001FF72 /* EBButtonHeavy.m */; };
+		04EC197319488A730001FF72 /* EBButtonRoundedHeavy.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EC197219488A730001FF72 /* EBButtonRoundedHeavy.m */; };
 		04EC1977194987A20001FF72 /* GenBkBasR.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04EC1976194987A20001FF72 /* GenBkBasR.ttf */; };
 		04EC197A194989E20001FF72 /* EBFriendsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EC1979194989E20001FF72 /* EBFriendsTableViewController.m */; };
 		04EC197E19498FC20001FF72 /* EBFriendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EC197D19498FC20001FF72 /* EBFriendTableViewCell.m */; };
@@ -247,6 +267,36 @@
 		046D64E219319D8800C354F4 /* photo14.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = photo14.jpg; sourceTree = "<group>"; };
 		04788EC61958076B0015FB06 /* UIImage+ImageWithColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageWithColor.h"; sourceTree = "<group>"; };
 		04788EC71958076B0015FB06 /* UIImage+ImageWithColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageWithColor.m"; sourceTree = "<group>"; };
+		04788EC9195A6C0C0015FB06 /* EBOnePixelLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBOnePixelLine.h; sourceTree = "<group>"; };
+		04788ECA195A6C0C0015FB06 /* EBOnePixelLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBOnePixelLine.m; sourceTree = "<group>"; };
+		04788ECC195A70460015FB06 /* EBButtonRounded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBButtonRounded.h; sourceTree = "<group>"; };
+		04788ECD195A70460015FB06 /* EBButtonRounded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBButtonRounded.m; sourceTree = "<group>"; };
+		048D01BF195BAEE600E878DA /* EBCandidateProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBCandidateProfileViewController.h; sourceTree = "<group>"; };
+		048D01C0195BAEE600E878DA /* EBCandidateProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBCandidateProfileViewController.m; sourceTree = "<group>"; };
+		048D01C2195BB0A600E878DA /* EBBlurImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBBlurImageView.h; sourceTree = "<group>"; };
+		048D01C3195BB0A600E878DA /* EBBlurImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBBlurImageView.m; sourceTree = "<group>"; };
+		048D01C5195BB6C900E878DA /* EBButtonHeavy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBButtonHeavy.h; sourceTree = "<group>"; };
+		048D01C6195BB6C900E878DA /* EBButtonHeavy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBButtonHeavy.m; sourceTree = "<group>"; };
+		048D01CA195BBBEF00E878DA /* head2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = head2.jpg; sourceTree = "<group>"; };
+		048D01CC195BC53500E878DA /* EBFriendProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBFriendProfileViewController.h; sourceTree = "<group>"; };
+		048D01CD195BC53500E878DA /* EBFriendProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBFriendProfileViewController.m; sourceTree = "<group>"; };
+		048D01CF195BC9EB00E878DA /* Badges.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Badges.xcassets; sourceTree = "<group>"; };
+		048D01D1195BDC5400E878DA /* EBBadgesCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBBadgesCollectionViewController.h; sourceTree = "<group>"; };
+		048D01D2195BDC5400E878DA /* EBBadgesCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBBadgesCollectionViewController.m; sourceTree = "<group>"; };
+		048D01D7195BEF8200E878DA /* candidate0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = candidate0.jpg; sourceTree = "<group>"; };
+		048D01D8195BEF8200E878DA /* candidate1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = candidate1.jpg; sourceTree = "<group>"; };
+		048D01D9195BEF8200E878DA /* candidate2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = candidate2.jpg; sourceTree = "<group>"; };
+		048D01DA195BEF8200E878DA /* candidate3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = candidate3.jpg; sourceTree = "<group>"; };
+		048D01DB195BEF8200E878DA /* candidate4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = candidate4.jpg; sourceTree = "<group>"; };
+		048D01DC195BEF8200E878DA /* candidate5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = candidate5.jpg; sourceTree = "<group>"; };
+		048D01DD195BEF8200E878DA /* candidate6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = candidate6.jpg; sourceTree = "<group>"; };
+		048D01DE195BEF8200E878DA /* candidate7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = candidate7.jpg; sourceTree = "<group>"; };
+		048D01DF195BEF8200E878DA /* candidate8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = candidate8.jpg; sourceTree = "<group>"; };
+		048D01E9195BF3AA00E878DA /* EBCandidateCellDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBCandidateCellDelegate.h; sourceTree = "<group>"; };
+		048D01EB195CFE5500E878DA /* EBTicketsCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBTicketsCollectionViewController.h; sourceTree = "<group>"; };
+		048D01EC195CFE5500E878DA /* EBTicketsCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBTicketsCollectionViewController.m; sourceTree = "<group>"; };
+		048D01EE195CFE6A00E878DA /* EBTicketCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBTicketCollectionViewCell.h; sourceTree = "<group>"; };
+		048D01EF195CFE6A00E878DA /* EBTicketCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBTicketCollectionViewCell.m; sourceTree = "<group>"; };
 		0493F3CF191F49C400853DBF /* EBNetworkService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBNetworkService.h; sourceTree = "<group>"; };
 		0493F3D0191F49C400853DBF /* EBNetworkService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBNetworkService.m; sourceTree = "<group>"; };
 		0493F3D2191F49EA00853DBF /* EBImageService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBImageService.h; sourceTree = "<group>"; };
@@ -296,8 +346,8 @@
 		04EC19521941B48B0001FF72 /* EBLabelMedium.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBLabelMedium.m; sourceTree = "<group>"; };
 		04EC19551941B4D10001FF72 /* EBLabelHeavy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBLabelHeavy.h; sourceTree = "<group>"; };
 		04EC19561941B4D10001FF72 /* EBLabelHeavy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBLabelHeavy.m; sourceTree = "<group>"; };
-		04EC19581941B6BC0001FF72 /* EBTextViewMuseo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBTextViewMuseo.h; sourceTree = "<group>"; };
-		04EC19591941B6BC0001FF72 /* EBTextViewMuseo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBTextViewMuseo.m; sourceTree = "<group>"; };
+		04EC19581941B6BC0001FF72 /* EBTextViewGentium.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBTextViewGentium.h; sourceTree = "<group>"; };
+		04EC19591941B6BC0001FF72 /* EBTextViewGentium.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBTextViewGentium.m; sourceTree = "<group>"; };
 		04EC195B1941C0A90001FF72 /* EBPollAnswerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBPollAnswerTableViewCell.h; sourceTree = "<group>"; };
 		04EC195C1941C0A90001FF72 /* EBPollAnswerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBPollAnswerTableViewCell.m; sourceTree = "<group>"; };
 		04EC195E194206150001FF72 /* EBTextViewMuseoLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBTextViewMuseoLight.h; sourceTree = "<group>"; };
@@ -312,8 +362,8 @@
 		04EC196B19483B4C0001FF72 /* EBElectionCandidateTableDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBElectionCandidateTableDataSource.m; sourceTree = "<group>"; };
 		04EC196E1948839C0001FF72 /* EBCandidateTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBCandidateTableViewCell.h; sourceTree = "<group>"; };
 		04EC196F1948839C0001FF72 /* EBCandidateTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBCandidateTableViewCell.m; sourceTree = "<group>"; };
-		04EC197119488A730001FF72 /* EBButtonHeavy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBButtonHeavy.h; sourceTree = "<group>"; };
-		04EC197219488A730001FF72 /* EBButtonHeavy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBButtonHeavy.m; sourceTree = "<group>"; };
+		04EC197119488A730001FF72 /* EBButtonRoundedHeavy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBButtonRoundedHeavy.h; sourceTree = "<group>"; };
+		04EC197219488A730001FF72 /* EBButtonRoundedHeavy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBButtonRoundedHeavy.m; sourceTree = "<group>"; };
 		04EC1976194987A20001FF72 /* GenBkBasR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GenBkBasR.ttf; sourceTree = "<group>"; };
 		04EC1978194989E20001FF72 /* EBFriendsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBFriendsTableViewController.h; sourceTree = "<group>"; };
 		04EC1979194989E20001FF72 /* EBFriendsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBFriendsTableViewController.m; sourceTree = "<group>"; };
@@ -435,6 +485,7 @@
 			isa = PBXGroup;
 			children = (
 				046D644B192B4A5100C354F4 /* head1.jpg */,
+				048D01CA195BBBEF00E878DA /* head2.jpg */,
 				046D6458192D8DC000C354F4 /* selfHead.jpg */,
 				046D645A192D8E9D00C354F4 /* selfHeadBig.jpg */,
 			);
@@ -523,6 +574,33 @@
 			name = photos;
 			sourceTree = "<group>";
 		};
+		048D01D6195BEF7800E878DA /* Candidates */ = {
+			isa = PBXGroup;
+			children = (
+				048D01D7195BEF8200E878DA /* candidate0.jpg */,
+				048D01D8195BEF8200E878DA /* candidate1.jpg */,
+				048D01D9195BEF8200E878DA /* candidate2.jpg */,
+				048D01DA195BEF8200E878DA /* candidate3.jpg */,
+				048D01DB195BEF8200E878DA /* candidate4.jpg */,
+				048D01DC195BEF8200E878DA /* candidate5.jpg */,
+				048D01DD195BEF8200E878DA /* candidate6.jpg */,
+				048D01DE195BEF8200E878DA /* candidate7.jpg */,
+				048D01DF195BEF8200E878DA /* candidate8.jpg */,
+			);
+			name = Candidates;
+			sourceTree = "<group>";
+		};
+		048D01EA195CFE3200E878DA /* Tickets */ = {
+			isa = PBXGroup;
+			children = (
+				048D01EB195CFE5500E878DA /* EBTicketsCollectionViewController.h */,
+				048D01EC195CFE5500E878DA /* EBTicketsCollectionViewController.m */,
+				048D01EE195CFE6A00E878DA /* EBTicketCollectionViewCell.h */,
+				048D01EF195CFE6A00E878DA /* EBTicketCollectionViewCell.m */,
+			);
+			name = Tickets;
+			sourceTree = "<group>";
+		};
 		0493F3D5191F49F600853DBF /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -551,6 +629,7 @@
 		0494A4C51921B3B100602CB9 /* sample images */ = {
 			isa = PBXGroup;
 			children = (
+				048D01D6195BEF7800E878DA /* Candidates */,
 				04982C28193EE53A00BABE41 /* Login */,
 				046D64D319319D7B00C354F4 /* photos */,
 				046D64C21930F2A600C354F4 /* Events */,
@@ -642,6 +721,12 @@
 		04BB704F190D22A70059E93C /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				048D01BF195BAEE600E878DA /* EBCandidateProfileViewController.h */,
+				048D01C0195BAEE600E878DA /* EBCandidateProfileViewController.m */,
+				048D01CC195BC53500E878DA /* EBFriendProfileViewController.h */,
+				048D01CD195BC53500E878DA /* EBFriendProfileViewController.m */,
+				048D01D1195BDC5400E878DA /* EBBadgesCollectionViewController.h */,
+				048D01D2195BDC5400E878DA /* EBBadgesCollectionViewController.m */,
 				04EC197B19498FA20001FF72 /* Friends */,
 				04BB704C190D229D0059E93C /* EBProfileViewController.h */,
 				04BB704D190D229D0059E93C /* EBProfileViewController.m */,
@@ -669,20 +754,28 @@
 		04EC19541941B49B0001FF72 /* Custom UI */ = {
 			isa = PBXGroup;
 			children = (
+				04788EC9195A6C0C0015FB06 /* EBOnePixelLine.h */,
+				04788ECA195A6C0C0015FB06 /* EBOnePixelLine.m */,
+				048D01C5195BB6C900E878DA /* EBButtonHeavy.h */,
+				048D01C6195BB6C900E878DA /* EBButtonHeavy.m */,
 				040797451940E7F80097706C /* EBButton.h */,
 				040797461940E7F80097706C /* EBButton.m */,
-				04EC197119488A730001FF72 /* EBButtonHeavy.h */,
-				04EC197219488A730001FF72 /* EBButtonHeavy.m */,
+				04788ECC195A70460015FB06 /* EBButtonRounded.h */,
+				04788ECD195A70460015FB06 /* EBButtonRounded.m */,
+				04EC197119488A730001FF72 /* EBButtonRoundedHeavy.h */,
+				04EC197219488A730001FF72 /* EBButtonRoundedHeavy.m */,
 				040797421940E5AA0097706C /* EBLabelLight.h */,
 				040797431940E5AA0097706C /* EBLabelLight.m */,
 				04EC19511941B48B0001FF72 /* EBLabelMedium.h */,
 				04EC19521941B48B0001FF72 /* EBLabelMedium.m */,
 				04EC19551941B4D10001FF72 /* EBLabelHeavy.h */,
 				04EC19561941B4D10001FF72 /* EBLabelHeavy.m */,
-				04EC19581941B6BC0001FF72 /* EBTextViewMuseo.h */,
-				04EC19591941B6BC0001FF72 /* EBTextViewMuseo.m */,
+				04EC19581941B6BC0001FF72 /* EBTextViewGentium.h */,
+				04EC19591941B6BC0001FF72 /* EBTextViewGentium.m */,
 				04EC195E194206150001FF72 /* EBTextViewMuseoLight.h */,
 				04EC195F194206150001FF72 /* EBTextViewMuseoLight.m */,
+				048D01C2195BB0A600E878DA /* EBBlurImageView.h */,
+				048D01C3195BB0A600E878DA /* EBBlurImageView.m */,
 			);
 			name = "Custom UI";
 			sourceTree = "<group>";
@@ -694,6 +787,8 @@
 				04EC196B19483B4C0001FF72 /* EBElectionCandidateTableDataSource.m */,
 				04EC196E1948839C0001FF72 /* EBCandidateTableViewCell.h */,
 				04EC196F1948839C0001FF72 /* EBCandidateTableViewCell.m */,
+				048D01E9195BF3AA00E878DA /* EBCandidateCellDelegate.h */,
+				048D01EA195CFE3200E878DA /* Tickets */,
 			);
 			name = "Candidate table";
 			sourceTree = "<group>";
@@ -717,6 +812,7 @@
 				04FD417A19062ECD00AF17DC /* Frameworks */,
 				04FD417919062ECD00AF17DC /* Products */,
 				04FD419919062ECD00AF17DC /* Images.xcassets */,
+				048D01CF195BC9EB00E878DA /* Badges.xcassets */,
 				8FB63B052AC2408A9C372E37 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
@@ -888,42 +984,52 @@
 				046D64CC1930F2B900C354F4 /* event1.jpg in Resources */,
 				046D649D192E2DEA00C354F4 /* news8.txt in Resources */,
 				046D647E192E29E700C354F4 /* news12.jpg in Resources */,
+				048D01E6195BEF8200E878DA /* candidate6.jpg in Resources */,
 				04EC1977194987A20001FF72 /* GenBkBasR.ttf in Resources */,
 				046D649C192E2DEA00C354F4 /* news7.txt in Resources */,
 				046D64A4192E2DEA00C354F4 /* newsTitles.txt in Resources */,
 				046D64E919319D8800C354F4 /* photo6.jpg in Resources */,
 				046D64BA1930F29E00C354F4 /* event1.txt in Resources */,
 				046D647D192E29E700C354F4 /* news11.jpg in Resources */,
+				048D01E5195BEF8200E878DA /* candidate5.jpg in Resources */,
 				046D6498192E2DEA00C354F4 /* news3.txt in Resources */,
 				046D6477192E29E700C354F4 /* news5.jpg in Resources */,
 				046D64EF19319D8800C354F4 /* photo12.jpg in Resources */,
 				04954709193F04C9003F020B /* Icon-76@2x.png in Resources */,
 				046D645B192D8E9D00C354F4 /* selfHeadBig.jpg in Resources */,
 				04FD419219062ECD00AF17DC /* Main_iPad.storyboard in Resources */,
+				048D01E2195BEF8200E878DA /* candidate2.jpg in Resources */,
+				048D01E0195BEF8200E878DA /* candidate0.jpg in Resources */,
 				046D64EB19319D8800C354F4 /* photo8.jpg in Resources */,
 				046D64E319319D8800C354F4 /* photo0.jpg in Resources */,
 				046D64B91930F29E00C354F4 /* event0.txt in Resources */,
 				046D64E519319D8800C354F4 /* photo2.jpg in Resources */,
 				046D64CF1930F2B900C354F4 /* event4.jpg in Resources */,
+				048D01E1195BEF8200E878DA /* candidate1.jpg in Resources */,
 				046D64BC1930F29E00C354F4 /* event3.txt in Resources */,
 				046D64A8192E3E8600C354F4 /* news5.txt in Resources */,
 				046D64BD1930F29E00C354F4 /* event4.txt in Resources */,
 				04FD419A19062ECD00AF17DC /* Images.xcassets in Resources */,
+				048D01D0195BC9EB00E878DA /* Badges.xcassets in Resources */,
 				046D64E619319D8800C354F4 /* photo3.jpg in Resources */,
 				046D6499192E2DEA00C354F4 /* news4.txt in Resources */,
 				046D649E192E2DEA00C354F4 /* news9.txt in Resources */,
 				046D647B192E29E700C354F4 /* news9.jpg in Resources */,
+				048D01E7195BEF8200E878DA /* candidate7.jpg in Resources */,
 				046D64E419319D8800C354F4 /* photo1.jpg in Resources */,
 				046D64EE19319D8800C354F4 /* photo11.jpg in Resources */,
 				046D64EC19319D8800C354F4 /* photo9.jpg in Resources */,
+				048D01E3195BEF8200E878DA /* candidate3.jpg in Resources */,
 				046D64E819319D8800C354F4 /* photo5.jpg in Resources */,
 				046D647F192E29E700C354F4 /* news13.jpg in Resources */,
 				0494A4BC1920AA6300602CB9 /* MuseoSansRounded-300.otf in Resources */,
 				046D644C192B4A5100C354F4 /* head1.jpg in Resources */,
 				046D6476192E29E700C354F4 /* news4.jpg in Resources */,
+				048D01E4195BEF8200E878DA /* candidate4.jpg in Resources */,
 				046D64AE192E434100C354F4 /* news14.txt in Resources */,
 				046D64BB1930F29E00C354F4 /* event2.txt in Resources */,
 				046D6497192E2DEA00C354F4 /* news2.txt in Resources */,
+				048D01CB195BBBEF00E878DA /* head2.jpg in Resources */,
 				0494A4BE1920AA8D00602CB9 /* MuseoSansRounded-500.otf in Resources */,
 				046D64C11930F29E00C354F4 /* eventTitles.txt in Resources */,
 				046D64CE1930F2B900C354F4 /* event3.jpg in Resources */,
@@ -950,6 +1056,7 @@
 				046D64F019319D8800C354F4 /* photo13.jpg in Resources */,
 				046D64D21930F2B900C354F4 /* event7.jpg in Resources */,
 				046D64EA19319D8800C354F4 /* photo7.jpg in Resources */,
+				048D01E8195BEF8200E878DA /* candidate8.jpg in Resources */,
 				046D6478192E29E700C354F4 /* news6.jpg in Resources */,
 				046D64BE1930F29E00C354F4 /* event5.txt in Resources */,
 				046D647C192E29E700C354F4 /* news10.jpg in Resources */,
@@ -1012,13 +1119,18 @@
 			files = (
 				04FD418819062ECD00AF17DC /* main.m in Sources */,
 				04BB7038190B89B70059E93C /* EBStopwatchViewController.m in Sources */,
-				04EC195A1941B6BC0001FF72 /* EBTextViewMuseo.m in Sources */,
+				04EC195A1941B6BC0001FF72 /* EBTextViewGentium.m in Sources */,
+				048D01ED195CFE5500E878DA /* EBTicketsCollectionViewController.m in Sources */,
 				046D6462192DB28200C354F4 /* EBElectionViewController.m in Sources */,
+				048D01D3195BDC5400E878DA /* EBBadgesCollectionViewController.m in Sources */,
 				04EC197A194989E20001FF72 /* EBFriendsTableViewController.m in Sources */,
+				048D01CE195BC53500E878DA /* EBFriendProfileViewController.m in Sources */,
 				04EC19501941A4930001FF72 /* EBPollContentViewController.m in Sources */,
 				04BB70561911C01F0059E93C /* EBFindFriendViewController.m in Sources */,
 				04EC19631942080C0001FF72 /* EBElectionContainerViewController.m in Sources */,
+				048D01C7195BB6C900E878DA /* EBButtonHeavy.m in Sources */,
 				04EC19571941B4D10001FF72 /* EBLabelHeavy.m in Sources */,
+				04788ECB195A6C0C0015FB06 /* EBOnePixelLine.m in Sources */,
 				0425593C19346DA40030AA0A /* EBCandidateViewController.m in Sources */,
 				04EC1966194214820001FF72 /* EBElectionPositionsDataSource.m in Sources */,
 				0493F3D4191F49EA00853DBF /* EBImageService.m in Sources */,
@@ -1037,19 +1149,23 @@
 				046D644F192C3D4000C354F4 /* EBVolunteerTableViewController.m in Sources */,
 				04079741194072800097706C /* EBSignupTermsViewController.m in Sources */,
 				04EC196919421E680001FF72 /* EBElectionPositionDetailViewController.m in Sources */,
+				04788ECE195A70460015FB06 /* EBButtonRounded.m in Sources */,
 				040797471940E7F80097706C /* EBButton.m in Sources */,
 				04EC195D1941C0A90001FF72 /* EBPollAnswerTableViewCell.m in Sources */,
-				04EC197319488A730001FF72 /* EBButtonHeavy.m in Sources */,
+				04EC197319488A730001FF72 /* EBButtonRoundedHeavy.m in Sources */,
 				04BB703B190B8F7E0059E93C /* EBStopWatchInt.m in Sources */,
 				04BB705F1911E9430059E93C /* EBFindFriendTableViewCell.m in Sources */,
 				04BB704E190D229D0059E93C /* EBProfileViewController.m in Sources */,
 				04788EC81958076B0015FB06 /* UIImage+ImageWithColor.m in Sources */,
 				04FD41C11906554200AF17DC /* EBSignupLoginViewController.m in Sources */,
 				0425593F1935D6970030AA0A /* CALayer+XibConfiguration.m in Sources */,
+				048D01C4195BB0A600E878DA /* EBBlurImageView.m in Sources */,
 				04BB702A190890920059E93C /* EBFeedCollectionViewCell.m in Sources */,
 				04BB7046190BE93F0059E93C /* EBVoteViewController.m in Sources */,
 				04EC19701948839C0001FF72 /* EBCandidateTableViewCell.m in Sources */,
 				0495C508191B651900EAEAB5 /* EBPhotoStackViewController.m in Sources */,
+				048D01C1195BAEE600E878DA /* EBCandidateProfileViewController.m in Sources */,
+				048D01F0195CFE6A00E878DA /* EBTicketCollectionViewCell.m in Sources */,
 				04BB7034190B83710059E93C /* EBStopWatch.m in Sources */,
 				04BB703E190BCEB50059E93C /* EBFeedDetailViewController.m in Sources */,
 				04EC197E19498FC20001FF72 /* EBFriendTableViewCell.m in Sources */,

@@ -43,4 +43,10 @@ typedef NS_ENUM(NSInteger, EBFeedDetail) {
     EBFeedDetailPhoto
 };
 
+typedef NS_ENUM(NSInteger, EBBadgesViewType) {
+    EBBadgesViewTypeSmall,
+    EBBadgesViewTypeLarge,
+    EBBadgesViewTypeDetail
+};
+
 #endif

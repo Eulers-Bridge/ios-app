@@ -25,8 +25,6 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         self.titleLabel.font = [UIFont fontWithName:@"MuseoSansRounded-300" size:self.titleLabel.font.pointSize];
-        self.layer.cornerRadius = self.bounds.size.height / 2;
-        self.layer.borderWidth = 1.0;
         self.clipsToBounds = YES;
         
     }
@@ -36,13 +34,14 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    self.layer.borderColor = self.mainColor.CGColor;
-    self.titleLabel.textColor = self.mainColor;
-    [self setTitleColor:self.mainColor forState:UIControlStateNormal];
-    [self setTitleColor:[UIColor clearColor] forState:UIControlStateHighlighted];
-    [self setTitleColor:[UIColor clearColor] forState:UIControlStateSelected];
-    [self setBackgroundImage:[UIImage imageWithColor:self.mainColor] forState:UIControlStateHighlighted];
-    [self setBackgroundImage:[UIImage imageWithColor:self.mainColor] forState:UIControlStateSelected];
+
+    self.titleLabel.textColor = self.textColor ? self.textColor : self.mainColor;
+
+    [self setTitleColor:self.titleLabel.textColor forState:UIControlStateNormal];
+    
+    UIColor *highlightedColor = self.highlightedColor ? self.highlightedColor : self.mainColor;
+    [self setBackgroundImage:[UIImage imageWithColor:highlightedColor] forState:UIControlStateHighlighted];
+    [self setBackgroundImage:[UIImage imageWithColor:highlightedColor] forState:UIControlStateSelected];
     
     
 }

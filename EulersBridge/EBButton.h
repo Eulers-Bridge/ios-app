@@ -11,5 +11,8 @@
 @interface EBButton : UIButton
 
 @property (strong, nonatomic) UIColor *mainColor;
+@property (strong, nonatomic) UIColor *highlightedColor;
+@property (strong, nonatomic) UIColor *textColor;
+@property (strong, nonatomic) UIColor *textHighlightedColor;
 
 @end
