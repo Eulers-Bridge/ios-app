@@ -65,6 +65,7 @@
     } else {
         self.candidateView.hidden = YES;
     }
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"CandidateCancelSearch" object:nil];
 
 }
 

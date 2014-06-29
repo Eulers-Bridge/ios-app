@@ -39,7 +39,6 @@
     self.navigationItem.title = self.name;
 }
 
-
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];

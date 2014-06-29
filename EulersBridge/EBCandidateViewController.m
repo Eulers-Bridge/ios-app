@@ -50,6 +50,7 @@
 - (void)changeSegment
 {
     [self.customScrollView setContentOffset:CGPointMake(self.segmentedControl.selectedSegmentIndex * WIDTH_OF_SCREEN, 0.0) animated:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"CandidateCancelSearch" object:nil];
 }
 
 #pragma mark UIScrollView delegate
@@ -58,6 +59,7 @@
     
     if (scrollView == self.customScrollView) {
         self.segmentedControl.selectedSegmentIndex = scrollView.contentOffset.x / WIDTH_OF_SCREEN;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"CandidateCancelSearch" object:nil];
     }
 }
 

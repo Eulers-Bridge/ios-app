@@ -1524,7 +1524,6 @@ Create a reminder to vote, by selecting the date and time for your next student 
                         <outlet property="picker" destination="qUi-wf-J7b" id="hsd-GZ-QDR"/>
                         <outlet property="pledgeView" destination="1x1-Xb-F8A" id="TuQ-pU-4SJ"/>
                         <outlet property="scanButton" destination="DWo-Xo-Kpj" id="KHN-FR-itn"/>
-                        <outlet property="scanResultLabel" destination="EJm-TD-Ghe" id="fIn-dS-xVg"/>
                         <outlet property="textView" destination="aUb-s3-Odh" id="ewF-gX-6K2"/>
                         <outlet property="voteLabel0" destination="f52-pO-cI9" id="T4O-7J-mCF"/>
                         <outlet property="voteLabel1" destination="ErV-lq-3IK" id="cam-3z-bun"/>
@@ -1533,83 +1532,6 @@ Create a reminder to vote, by selecting the date and time for your next student 
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aaz-NA-Qz5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1825" y="1801"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="6Ra-m8-e3q">
-            <objects>
-                <viewController id="H1p-gu-bdU" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="KoS-kw-2c6">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" id="qBV-1b-cI5">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EJm-TD-Ghe">
-                                        <rect key="frame" x="20" y="478" width="280" height="35"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.89638458029197088" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are all ready to go!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="s4o-sJ-Znm">
-                                        <rect key="frame" x="53" y="99" width="214" height="34"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <color key="textColor" red="0.47058823529999999" green="0.4823529412" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="viJ-Qv-VAa">
-                                        <rect key="frame" x="96" y="150" width="128" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="deviceRGB"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="64"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="crJ-yE-or7">
-                                        <rect key="frame" x="95" y="437" width="131" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Scan QR Code">
-                                            <color key="titleColor" red="0.30196078431372547" green="0.32941176470588235" blue="0.6705882352941176" alpha="1" colorSpace="deviceRGB"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="15"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                <integer key="value" value="1"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
-                                                <color key="value" red="0.30196078430000001" green="0.3294117647" blue="0.6705882353" alpha="1" colorSpace="deviceRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="setReminder:" destination="tqy-QC-0u3" eventType="touchUpInside" id="aEM-uh-l29"/>
-                                        </connections>
-                                    </button>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" id="VpI-ov-Yep" customClass="EBTextViewGentium">
-                                        <rect key="frame" x="30" y="286" width="260" height="137"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <string key="text">You’re ready to go! Make sure you check with the university before then to find out where the polling booths are positioned, and make sure you scan your QR code at the polling booth to recieve your exclusive voting badge!</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jmJ-3Y-rq0" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2256" y="1798"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="F6B-Hq-Py0">
@@ -2410,7 +2332,7 @@ Create a reminder to vote, by selecting the date and time for your next student 
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CandidateCell" id="aQZ-I8-idZ" customClass="EBCandidateTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CandidateCell" id="aQZ-I8-idZ" customClass="EBCandidateTableViewCell">
                                 <rect key="frame" x="0.0" y="66" width="320" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aQZ-I8-idZ" id="wZU-HP-bKN">

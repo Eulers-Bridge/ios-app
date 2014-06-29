@@ -88,6 +88,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     self.navigationController.navigationBarHidden = NO;
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     // Setup transparent nav bar
@@ -268,7 +269,7 @@
 
 - (void)imagePicker:(GKImagePicker *)imagePicker pickedImage:(UIImage *)image{
     self.photoImageView.image = image;
-    
+    self.photoImageView.contentMode = UIViewContentModeScaleAspectFill;
     NSData *imageData = UIImageJPEGRepresentation(image, 0.6);
     NSUInteger imageSize = imageData.length;
     NSLog(@"SIZE OF IMAGE: %lu ", (unsigned long)imageSize);

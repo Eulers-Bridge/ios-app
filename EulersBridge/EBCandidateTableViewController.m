@@ -11,7 +11,7 @@
 #import "EBCandidateCellDelegate.h"
 #import "EBCandidateProfileViewController.h"
 
-@interface EBCandidateTableViewController () <UISearchBarDelegate, EBCandidateCellDelegate>
+@interface EBCandidateTableViewController () <UISearchBarDelegate, EBCandidateCellDelegate, UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UISearchBar *candidateSearchBar;
 @property NSUInteger selectedCellIndex;
@@ -83,8 +83,26 @@
                           @"name": @"Jeffrey Young",
                           @"description": @"This is a short description of the candidate."}];
     
-    self.matchingCandidates = self.candidates;
+
     [self setup];
+    self.matchingCandidates = self.candidates;
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissKeyboard) name:@"CandidateCancelSearch" object:nil];
+    
+    // Gesture Recognizer
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                          action:@selector(dismissKeyboard)];
+    tap.cancelsTouchesInView = NO;
+    [self.view addGestureRecognizer:tap];
+    
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [self dismissKeyboard];
+}
+-(void)dismissKeyboard {
+    [self.candidateSearchBar resignFirstResponder];
 }
 
 - (void)setup
@@ -109,7 +127,7 @@
             [matchingCandidates addObject:candidate];
         }
     }
-    self.matchingCandidates = [matchingCandidates copy];
+    self.candidates = [matchingCandidates copy];
 }
 
 - (void)didReceiveMemoryWarning
