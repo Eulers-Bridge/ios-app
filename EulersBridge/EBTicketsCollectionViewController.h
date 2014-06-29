@@ -10,4 +10,6 @@
 
 @interface EBTicketsCollectionViewController : UICollectionViewController
 
+@property (strong, nonatomic) NSArray *tickets;
+
 @end

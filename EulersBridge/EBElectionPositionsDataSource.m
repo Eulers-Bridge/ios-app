@@ -16,23 +16,32 @@
 {
     self = [super init];
     if (self) {
-        self.positions = @[@{@"title": @"President",
+        self.positions = @[@{@"id": @"0",
+                             @"title": @"President",
                              @"description": @"The president sets policy and governs the party direction. While the president is the leader of a party, they still need the support of their peers to enact change."},
-                           @{@"title": @"Secretary",
+                           @{@"id": @"1",
+                             @"title": @"Secretary",
                              @"description": @"The secretary’s role is to ensure the smooth functioning of the organisation’s activities and undertakings through their term."},
-                           @{@"title": @"Women’s Officer",
+                           @{@"id": @"2",
+                             @"title": @"Women’s Officer",
                              @"description": @"The Women’s officer tends to the needs of the female-gendered."},
-                           @{@"title": @"Queer Officer",
+                           @{@"id": @"3",
+                             @"title": @"Queer Officer",
                              @"description": @"The Queer officer looks out for the LGBT community at The University of Melbourne."},
-                           @{@"title": @"Clubs and Societies",
+                           @{@"id": @"4",
+                             @"title": @"Clubs and Societies",
                              @"description": @"Responsible for managing the large number of clubs and societies at The University of Melbourne."},
-                           @{@"title": @"Environmental Officer",
+                           @{@"id": @"5",
+                             @"title": @"Environmental Officer",
                              @"description": @"Is responsible for all environmental concerns of the student body, including bore water usage, solar initiatives and proper management of university environmental assets."},
-                           @{@"title": @"Welfare Officer",
+                           @{@"id": @"6",
+                             @"title": @"Welfare Officer",
                              @"description": @"The Welfare Officer manages as the aspects of pastoral care from UMSU’s end, often acting as a medium and speaking on behalf of disadvantaged students."},
-                           @{@"title": @"Creative Arts Officer",
+                           @{@"id": @"7",
+                             @"title": @"Creative Arts Officer",
                              @"description": @"The creative Arts Officer is response for all major art installations and projects on campus."},
-                           @{@"title": @"Faculty Liaison",
+                           @{@"id": @"8",
+                             @"title": @"Faculty Liaison",
                              @"description": @"Each faculty sends a liaison to UMSU to stand for their interests and act as a messenger for the student body. There are a number of roles, generally one for each faculty."},
                            ];
     }
@@ -50,6 +59,7 @@
     NSDictionary *dict;
     dict = @{@"imageName": [NSString stringWithFormat:@"photo%ld.jpg", (long)indexPath.item],
              @"title": self.positions[indexPath.item][@"title"],
+             @"id": self.positions[indexPath.item][@"id"],
              @"date": @"",
              @"priority": @(0)};
     

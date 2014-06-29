@@ -49,4 +49,10 @@ typedef NS_ENUM(NSInteger, EBBadgesViewType) {
     EBBadgesViewTypeDetail
 };
 
+typedef NS_ENUM(NSInteger, EBCandidateFilter) {
+    EBCandidateFilterByPosition,
+    EBCandidateFilterByTicket,
+    EBCandidateFilterAll
+};
+
 #endif

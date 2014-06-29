@@ -33,6 +33,7 @@
 - (IBAction)showDetail:(UIButton *)sender
 {
     [self.delegate candidateShowDetailWithIndex:self.index];
+    
 }
 
 @end

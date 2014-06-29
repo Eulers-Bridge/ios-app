@@ -11,18 +11,15 @@
 #import "EBElectionPositionsDataSource.h"
 #import "EBElectionCandidateTableDataSource.h"
 #import "EBCandidateProfileViewController.h"
+#import "EBCandidateTableViewController.h"
 #import "MyConstants.h"
 
-@interface EBCandidateViewController () <UIScrollViewDelegate, UISearchBarDelegate, UICollectionViewDelegate, EBCandidateCellDelegate>
+@interface EBCandidateViewController () <UIScrollViewDelegate, UISearchBarDelegate, UICollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *customScrollView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 @property (weak, nonatomic) IBOutlet UICollectionView *positionsCollectionView;
 @property (strong, nonatomic) EBElectionPositionsDataSource *positionsDataSource;
-@property (weak, nonatomic) IBOutlet UITableView *candidatesTableView;
-@property (strong, nonatomic) EBElectionCandidateTableDataSource *candidatesDataSource;
-@property (weak, nonatomic) IBOutlet UISearchBar *candidateSearchBar;
 
-@property NSUInteger seletedCellIndex;
 
 @end
 
@@ -47,15 +44,7 @@
     self.positionsDataSource = [[EBElectionPositionsDataSource alloc] init];
     self.positionsCollectionView.delegate = self;
     self.positionsCollectionView.dataSource = self.positionsDataSource;
-    
-    self.candidatesDataSource = [[EBElectionCandidateTableDataSource alloc] init];
-    self.candidatesTableView.delegate = self.candidatesDataSource;
-    self.candidatesTableView.dataSource = self.candidatesDataSource;
-    self.candidatesDataSource.cellDelegate = self;
-    
-    self.candidateSearchBar.delegate = self;
-    self.candidateSearchBar.showsCancelButton = YES;
-    self.candidatesTableView.contentOffset = CGPointMake(0, -108);
+
 }
 
 - (void)changeSegment
@@ -72,33 +61,6 @@
     }
 }
 
-
-#pragma mark UISearchBar delegate
-
--(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
-{
-    [self.candidatesDataSource updateData:searchText];
-    [self.candidatesTableView reloadData];
-}
-
--(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
-{
-    [searchBar resignFirstResponder];
-}
-
--(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
-{
-    [self.candidatesDataSource updateData:searchBar.text];
-    [self.candidatesTableView reloadData];
-    [searchBar resignFirstResponder];
-}
-
-#pragma mark EBCandidateCellDelegate
-- (void)candidateShowDetailWithIndex:(NSUInteger)index
-{
-    self.seletedCellIndex = index;
-    [self performSegueWithIdentifier:@"showCandidateDetail" sender:nil];
-}
 
 /*
 #pragma mark position collection view delegate
@@ -137,10 +99,16 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"showCandidateDetail"]) {
-        EBCandidateProfileViewController *detail = (EBCandidateProfileViewController *)[segue destinationViewController];
-        detail.name = self.candidatesDataSource.candidates[self.seletedCellIndex][@"name"];
-        detail.imageName = [NSString stringWithFormat:@"candidate%ld.jpg", self.seletedCellIndex];
+    if ([segue.identifier isEqualToString:@"CandidateTableEmbed"]) {
+        EBCandidateTableViewController *tvc = (EBCandidateTableViewController *)[segue destinationViewController];
+        tvc.candidateFilter = EBCandidateFilterAll;
+    }
+    if ([segue.identifier isEqualToString:@"ShowCandidateFromPosition"]) {
+        EBCandidateTableViewController *tvc = (EBCandidateTableViewController *)[segue destinationViewController];
+        tvc.candidateFilter = EBCandidateFilterByPosition;
+        EBFeedCollectionViewCell *cell = (EBFeedCollectionViewCell *)sender;
+        tvc.filterId = [cell.data[@"id"] intValue];
+        tvc.filterTitle = cell.titleLabel.text;
     }
 }
 

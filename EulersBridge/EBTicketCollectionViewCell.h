@@ -10,4 +10,9 @@
 
 @interface EBTicketCollectionViewCell : UICollectionViewCell
 
+@property (weak, nonatomic) IBOutlet EBLabelLight *titleLabel;
+@property (weak, nonatomic) IBOutlet EBLabelMedium *subtitleLabel;
+@property (weak, nonatomic) IBOutlet UIView *backView;
+@property int ticketId;
+
 @end

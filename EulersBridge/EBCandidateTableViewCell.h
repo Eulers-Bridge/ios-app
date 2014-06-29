@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet EBLabelMedium *nameLabel;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
 @property (weak, nonatomic) IBOutlet UIImageView *candidateImageView;
+@property (weak, nonatomic) IBOutlet UIButton *showDetailButton;
 @property NSUInteger index;
 
 @property (assign, nonatomic) id<EBCandidateCellDelegate> delegate;
