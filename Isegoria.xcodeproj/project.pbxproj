@@ -116,6 +116,8 @@
 		04954709193F04C9003F020B /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04954708193F04C9003F020B /* Icon-76@2x.png */; };
 		0495C508191B651900EAEAB5 /* EBPhotoStackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0495C507191B651900EAEAB5 /* EBPhotoStackViewController.m */; };
 		0495C50C191B661000EAEAB5 /* EBStackLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0495C50B191B661000EAEAB5 /* EBStackLayout.m */; };
+		04B6556C196109EE0002E784 /* EBBadgeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B6556B196109EE0002E784 /* EBBadgeCollectionViewCell.m */; };
+		04B6556F196123610002E784 /* EBProfileSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B6556E196123610002E784 /* EBProfileSettingsViewController.m */; };
 		04BB702A190890920059E93C /* EBFeedCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BB7029190890920059E93C /* EBFeedCollectionViewCell.m */; };
 		04BB702D190891320059E93C /* EBFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BB702C190891320059E93C /* EBFeedViewController.m */; };
 		04BB7034190B83710059E93C /* EBStopWatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BB7033190B83710059E93C /* EBStopWatch.m */; };
@@ -313,6 +315,10 @@
 		0495C507191B651900EAEAB5 /* EBPhotoStackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBPhotoStackViewController.m; sourceTree = "<group>"; };
 		0495C50A191B661000EAEAB5 /* EBStackLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBStackLayout.h; sourceTree = "<group>"; };
 		0495C50B191B661000EAEAB5 /* EBStackLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBStackLayout.m; sourceTree = "<group>"; };
+		04B6556A196109EE0002E784 /* EBBadgeCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBBadgeCollectionViewCell.h; sourceTree = "<group>"; };
+		04B6556B196109EE0002E784 /* EBBadgeCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBBadgeCollectionViewCell.m; sourceTree = "<group>"; };
+		04B6556D196123610002E784 /* EBProfileSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBProfileSettingsViewController.h; sourceTree = "<group>"; };
+		04B6556E196123610002E784 /* EBProfileSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBProfileSettingsViewController.m; sourceTree = "<group>"; };
 		04BB7028190890920059E93C /* EBFeedCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBFeedCollectionViewCell.h; sourceTree = "<group>"; };
 		04BB7029190890920059E93C /* EBFeedCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBFeedCollectionViewCell.m; sourceTree = "<group>"; };
 		04BB702B190891320059E93C /* EBFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBFeedViewController.h; sourceTree = "<group>"; };
@@ -662,6 +668,17 @@
 			name = Login;
 			sourceTree = "<group>";
 		};
+		04B655691961099D0002E784 /* Badges */ = {
+			isa = PBXGroup;
+			children = (
+				048D01D1195BDC5400E878DA /* EBBadgesCollectionViewController.h */,
+				048D01D2195BDC5400E878DA /* EBBadgesCollectionViewController.m */,
+				04B6556A196109EE0002E784 /* EBBadgeCollectionViewCell.h */,
+				04B6556B196109EE0002E784 /* EBBadgeCollectionViewCell.m */,
+			);
+			name = Badges;
+			sourceTree = "<group>";
+		};
 		04BB702E190891690059E93C /* Feed */ = {
 			isa = PBXGroup;
 			children = (
@@ -728,8 +745,7 @@
 				048D01C0195BAEE600E878DA /* EBCandidateProfileViewController.m */,
 				048D01CC195BC53500E878DA /* EBFriendProfileViewController.h */,
 				048D01CD195BC53500E878DA /* EBFriendProfileViewController.m */,
-				048D01D1195BDC5400E878DA /* EBBadgesCollectionViewController.h */,
-				048D01D2195BDC5400E878DA /* EBBadgesCollectionViewController.m */,
+				04B655691961099D0002E784 /* Badges */,
 				04EC197B19498FA20001FF72 /* Friends */,
 				04BB704C190D229D0059E93C /* EBProfileViewController.h */,
 				04BB704D190D229D0059E93C /* EBProfileViewController.m */,
@@ -737,6 +753,8 @@
 				04BB70551911C01F0059E93C /* EBFindFriendViewController.m */,
 				04BB705D1911E9430059E93C /* EBFindFriendTableViewCell.h */,
 				04BB705E1911E9430059E93C /* EBFindFriendTableViewCell.m */,
+				04B6556D196123610002E784 /* EBProfileSettingsViewController.h */,
+				04B6556E196123610002E784 /* EBProfileSettingsViewController.m */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -1124,6 +1142,7 @@
 			files = (
 				04FD418819062ECD00AF17DC /* main.m in Sources */,
 				04BB7038190B89B70059E93C /* EBStopwatchViewController.m in Sources */,
+				04B6556C196109EE0002E784 /* EBBadgeCollectionViewCell.m in Sources */,
 				04EC195A1941B6BC0001FF72 /* EBTextViewGentium.m in Sources */,
 				048D01ED195CFE5500E878DA /* EBTicketsCollectionViewController.m in Sources */,
 				046D6462192DB28200C354F4 /* EBElectionViewController.m in Sources */,
@@ -1141,6 +1160,7 @@
 				0493F3D4191F49EA00853DBF /* EBImageService.m in Sources */,
 				046D645E192D963400C354F4 /* UIImage+ImageEffects.m in Sources */,
 				04BB702D190891320059E93C /* EBFeedViewController.m in Sources */,
+				04B6556F196123610002E784 /* EBProfileSettingsViewController.m in Sources */,
 				04EC194A19416F1E0001FF72 /* EBPollViewController.m in Sources */,
 				04BB7043190BD9920059E93C /* EBHelper.m in Sources */,
 				0493F3D1191F49C400853DBF /* EBNetworkService.m in Sources */,

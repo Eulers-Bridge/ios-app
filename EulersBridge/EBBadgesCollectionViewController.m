@@ -7,6 +7,7 @@
 //
 
 #import "EBBadgesCollectionViewController.h"
+#import "EBBadgeCollectionViewCell.h"
 
 @interface EBBadgesCollectionViewController ()
 
@@ -42,6 +43,12 @@
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (self.badgesViewType == EBBadgesViewTypeDetail) {
+        EBBadgeCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"badgeCellDetail" forIndexPath:indexPath];
+        NSString *imageName = [NSString stringWithFormat:@"badge%ldl",(long)indexPath.item];
+        cell.badgeImageView.image = [UIImage imageNamed:imageName];
+        return cell;
+    }
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"badgeCellMedium" forIndexPath:indexPath];
     NSString *imageName = [NSString stringWithFormat:@"badge%ld%@",(long)indexPath.item,
                            self.badgesViewType == EBBadgesViewTypeSmall ? @"m" : @"l"];

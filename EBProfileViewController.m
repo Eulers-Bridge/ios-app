@@ -11,6 +11,7 @@
 #import <AddressBookUI/AddressBookUI.h>
 #import "EBBlurImageView.h"
 #import "EBBadgesCollectionViewController.h"
+#import "EBProfileSettingsViewController.h"
 
 @interface EBProfileViewController () <ABPeoplePickerNavigationControllerDelegate, UIScrollViewDelegate>
 
@@ -150,6 +151,14 @@
     if ([segue.identifier isEqualToString:@"BadgesEmbed"]) {
         EBBadgesCollectionViewController *badgesViewController = (EBBadgesCollectionViewController *)[segue destinationViewController];
         badgesViewController.badgesViewType = EBBadgesViewTypeSmall;
+    }
+    if ([segue.identifier isEqualToString:@"BadgesDetail"]) {
+        EBBadgesCollectionViewController *badgesViewController = (EBBadgesCollectionViewController *)[segue destinationViewController];
+        badgesViewController.badgesViewType = EBBadgesViewTypeDetail;
+    }
+    if ([segue.identifier isEqualToString:@"ProfileSettings"]) {
+        EBProfileSettingsViewController *settingsViewController = (EBProfileSettingsViewController *)[segue destinationViewController];
+        
     }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.

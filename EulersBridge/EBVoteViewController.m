@@ -39,6 +39,8 @@
 @property (weak, nonatomic) IBOutlet UITextView *finishTextView;
 @property (weak, nonatomic) IBOutlet UIButton *scanButton;
 
+@property (strong, nonatomic) NSString *dateSelected;
+
 
 @end
 
@@ -95,6 +97,7 @@
     
     if ([self.dateLabel.text isEqualToString:@""]) {
         self.dateLabel.text = [self pickerView:self.picker titleForRow:[self.picker selectedRowInComponent:0] forComponent:0];
+        self.dateSelected = self.votingDates[[self.picker selectedRowInComponent:0]];
     }
 }
 
@@ -161,6 +164,7 @@
 {
     if (self.pickerViewCurrentArray == self.votingDates) {
         self.dateLabel.text = [self pickerView:pickerView titleForRow:row forComponent:component];
+        self.dateSelected = self.votingDates[row];
     }
     
     if (self.pickerViewCurrentArray == self.votingLocations) {
@@ -203,7 +207,7 @@
         
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
-        NSDate *date = [formatter dateFromString:self.dateLabel.text];
+        NSDate *date = [formatter dateFromString:self.dateSelected];
         
         
         event.startDate = date;
