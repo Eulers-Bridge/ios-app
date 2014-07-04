@@ -11,6 +11,7 @@
 #import <AddressBookUI/AddressBookUI.h>
 #import "EBBlurImageView.h"
 #import "EBBadgesCollectionViewController.h"
+#import "EBTasksTableViewController.h"
 #import "EBProfileSettingsViewController.h"
 
 @interface EBProfileViewController () <ABPeoplePickerNavigationControllerDelegate, UIScrollViewDelegate>
@@ -72,6 +73,8 @@
     // Image setup
     self.profileImageView.image = [UIImage imageNamed:@"selfHead.jpg"];
     self.imageView.image = [UIImage imageNamed:@"selfHeadBig.jpg"];
+    self.scrollView.contentSize = CGSizeMake(WIDTH_OF_SCREEN, 665.0);
+    
 }
 
 
@@ -159,6 +162,10 @@
     if ([segue.identifier isEqualToString:@"ProfileSettings"]) {
         EBProfileSettingsViewController *settingsViewController = (EBProfileSettingsViewController *)[segue destinationViewController];
         
+    }
+    if ([segue.identifier isEqualToString:@"TasksEmbed"]) {
+        EBTasksTableViewController *tasksViewController = (EBTasksTableViewController *)[segue destinationViewController];
+        tasksViewController.tasksViewType = EBTasksViewTypeSmall;
     }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.

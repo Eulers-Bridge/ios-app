@@ -15,4 +15,6 @@
 @property (weak, nonatomic) IBOutlet UIView *backView;
 @property int ticketId;
 
+@property (strong, nonatomic) NSDictionary *ticketData;
+
 @end

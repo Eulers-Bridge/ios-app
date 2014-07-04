@@ -37,6 +37,9 @@
 #define FONT_SIZE_VOLUNTEER_POSITION 14
 #define FONT_SIZE_VOLUNTEER_DESCRIPTION 14
 
+#define ISEGORIA_COLOR_GREY [UIColor colorWithRed:121.0/255.0 green:121.0/255.0 blue:144.0/255.0 alpha:1.0]
+#define ONE_PIXEL_GREY [UIColor colorWithRed:212.0/255.0 green:212.0/255.0 blue:212.0/255.0 alpha:1.0]
+
 typedef NS_ENUM(NSInteger, EBFeedDetail) {
     EBFeedDetailNews,
     EBFeedDetailEvent,
@@ -49,10 +52,20 @@ typedef NS_ENUM(NSInteger, EBBadgesViewType) {
     EBBadgesViewTypeDetail
 };
 
+typedef NS_ENUM(NSInteger, EBTasksViewType) {
+    EBTasksViewTypeSmall,
+    EBTasksViewTypeDetail
+};
+
 typedef NS_ENUM(NSInteger, EBCandidateFilter) {
     EBCandidateFilterByPosition,
     EBCandidateFilterByTicket,
     EBCandidateFilterAll
+};
+
+typedef NS_ENUM(NSInteger, EBProfilePhotoType) {
+    EBProfilePhotoTypeBackground,
+    EBProfilePhotoTypeProfile
 };
 
 #endif

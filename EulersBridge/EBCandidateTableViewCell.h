@@ -12,6 +12,7 @@
 @interface EBCandidateTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet EBLabelMedium *nameLabel;
+@property (weak, nonatomic) IBOutlet EBLabelMedium *subtitleLabel;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
 @property (weak, nonatomic) IBOutlet UIImageView *candidateImageView;
 @property (weak, nonatomic) IBOutlet UIButton *showDetailButton;

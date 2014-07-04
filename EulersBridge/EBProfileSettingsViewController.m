@@ -7,8 +7,13 @@
 //
 
 #import "EBProfileSettingsViewController.h"
+#import "MyConstants.h"
+#import "GKImagePicker.h"
 
-@interface EBProfileSettingsViewController ()
+@interface EBProfileSettingsViewController () <GKImagePickerDelegate>
+
+@property (strong, nonatomic) GKImagePicker *gkImagePicker;
+@property EBProfilePhotoType changeProfilePhotoType;
 
 @end
 
@@ -31,10 +36,53 @@
     self.profileImageView.image = [UIImage imageNamed:@"selfHead.jpg"];
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark button actions
+- (IBAction)changeProfilePhoto:(id)sender
+{
+    self.changeProfilePhotoType = EBProfilePhotoTypeProfile;
+    [self showPicker:sender];
+}
+
+- (IBAction)changeCoverPhoto:(id)sender {
+    self.changeProfilePhotoType = EBProfilePhotoTypeBackground;
+    [self showPicker:sender];
+}
+
+#pragma image picker
+
+- (void)showPicker:(UIButton *)sender {
+    if (!self.gkImagePicker) {
+        self.gkImagePicker = [[GKImagePicker alloc] init];
+        self.gkImagePicker.delegate = self;
+        self.gkImagePicker.cropSize = CGSizeMake(320.0, 320.0);
+    }
+    [self.gkImagePicker showActionSheetOnViewController:self onPopoverFromView:sender];
+    
+}
+
+- (void)imagePicker:(GKImagePicker *)imagePicker pickedImage:(UIImage *)image{
+    if (self.changeProfilePhotoType == EBProfilePhotoTypeProfile) {
+        self.profileImageView.image = image;
+    } else if (self.changeProfilePhotoType == EBProfilePhotoTypeBackground) {
+        self.imageView.image = image;
+    }
+    
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.6);
+    NSUInteger imageSize = imageData.length;
+    NSLog(@"SIZE OF IMAGE: %lu ", (unsigned long)imageSize);
+    // Upload the photo
 }
 
 /*

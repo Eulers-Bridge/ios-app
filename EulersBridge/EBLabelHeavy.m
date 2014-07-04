@@ -15,6 +15,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        self.font = [UIFont fontWithName:@"MuseoSansRounded-700" size:self.font.pointSize];
     }
     return self;
 }

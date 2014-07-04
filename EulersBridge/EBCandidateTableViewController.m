@@ -39,46 +39,55 @@
     
     self.candidates = @[@{@"id": @"0",
                           @"positionId": @"0",
+                          @"positionTitle": @"President",
                           @"ticketId": @"0",
                           @"name": @"Lillian Adams",
                           @"description": @"This is a short description of the candidate."},
                         @{@"id": @"1",
                           @"positionId": @"0",
+                          @"positionTitle": @"President",
                           @"ticketId": @"1",
                           @"name": @"Juan Rivera",
                           @"description": @"This is a short description of the candidate."},
                         @{@"id": @"2",
                           @"positionId": @"1",
+                          @"positionTitle": @"Secretary",
                           @"ticketId": @"0",
                           @"name": @"Richard Gonzales",
                           @"description": @"This is a short description of the candidate."},
                         @{@"id": @"3",
                           @"positionId": @"1",
+                          @"positionTitle": @"Secretary",
                           @"ticketId": @"1",
                           @"name": @"Eva Menendez",
                           @"description": @"This is a short description of the candidate."},
                         @{@"id": @"4",
                           @"positionId": @"2",
+                          @"positionTitle": @"Women’s Officer",
                           @"ticketId": @"0",
                           @"name": @"Anthony Moore",
                           @"description": @"This is a short description of the candidate."},
                         @{@"id": @"5",
                           @"positionId": @"3",
+                          @"positionTitle": @"Queer Officer",
                           @"ticketId": @"1",
                           @"name": @"Lisa Bennett",
                           @"description": @"This is a short description of the candidate."},
                         @{@"id": @"6",
                           @"positionId": @"3",
+                          @"positionTitle": @"Queer Officer",
                           @"ticketId": @"2",
                           @"name": @"Emily Lee",
                           @"description": @"This is a short description of the candidate."},
                         @{@"id": @"7",
                           @"positionId": @"4",
+                          @"positionTitle": @"Clubs and Societies",
                           @"ticketId": @"2",
                           @"name": @"Robert Watson",
                           @"description": @"This is a short description of the candidate."},
                         @{@"id": @"8",
                           @"positionId": @"4",
+                          @"positionTitle": @"Clubs and Societies",
                           @"ticketId": @"2",
                           @"name": @"Jeffrey Young",
                           @"description": @"This is a short description of the candidate."}];
@@ -94,6 +103,10 @@
                                                                           action:@selector(dismissKeyboard)];
     tap.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:tap];
+    
+    if (self.candidateFilter == EBCandidateFilterByTicket || self.candidateFilter == EBCandidateFilterByPosition) {
+        [self.tableView setContentOffset:CGPointMake(0, 44)];
+    }
     
 }
 
@@ -145,14 +158,30 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    EBCandidateTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CandidateCell" forIndexPath:indexPath];
+    EBCandidateTableViewCell *cell;
+    if (self.candidateFilter == EBCandidateFilterByTicket || self.candidateFilter == EBCandidateFilterAll) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"CandidateCellSmall" forIndexPath:indexPath];
+        cell.subtitleLabel.text = self.matchingCandidates[indexPath.row][@"positionTitle"];
+    } else {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"CandidateCell" forIndexPath:indexPath];
+        cell.descriptionTextView.text = self.matchingCandidates[indexPath.row][@"description"];
+    }
+    
     cell.nameLabel.text = self.matchingCandidates[indexPath.row][@"name"];
-    cell.descriptionTextView.text = self.matchingCandidates[indexPath.row][@"description"];
+
     NSString *imageName = [NSString stringWithFormat:@"candidate%@.jpg", self.matchingCandidates[indexPath.row][@"id"]];
     cell.candidateImageView.image = [UIImage imageNamed:imageName];
     cell.index = indexPath.row;
     cell.delegate = self;
     return cell;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.candidateFilter == EBCandidateFilterByTicket || self.candidateFilter == EBCandidateFilterAll) {
+        return 44;
+    }
+    return 150;
 }
 
 #pragma mark cell selection by reveal button

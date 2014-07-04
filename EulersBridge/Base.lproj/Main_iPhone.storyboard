@@ -303,7 +303,7 @@
                                         <rect key="frame" x="0.0" y="226" width="320" height="342"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" id="El1-UO-m0e">
@@ -572,7 +572,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LpQ-4G-AJ1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1299" y="3675"/>
+            <point key="canvasLocation" x="-725" y="2019"/>
         </scene>
         <!--Find Friend View Controller-->
         <scene sceneID="4HU-cR-rrk">
@@ -632,7 +632,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N4J-gx-Gmd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1749" y="3675"/>
+            <point key="canvasLocation" x="-275" y="2019"/>
         </scene>
         <!--Signup Login View Controller - Sign Up-->
         <scene sceneID="UBg-rf-R3Y">
@@ -909,7 +909,7 @@ Here, you’ll find a host of information on your current student council, the n
 Every day there will be a new poll question from yours peers to help the candidates better understand their constituents and increase transparency within our elections.
  
 Ready, Set, Vote! </string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" id="8PF-QG-Zrd" customClass="EBTextViewGentium">
@@ -922,7 +922,7 @@ You can join events, get friends involved and express yourself through polls and
 
 We’ll remind you to vote, and show you how and when. 
 That it.   Let’s do this. </string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="d94-57-oPB" userLabel="Positions Collection View">
@@ -1336,6 +1336,20 @@ That it.   Let’s do this. </string>
             </objects>
             <point key="canvasLocation" x="2063" y="1069"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="Res-2q-Nha">
+            <objects>
+                <viewController id="UuN-sY-rpk" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MHJ-Fc-zCG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cxu-fe-cuR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2491" y="1074"/>
+        </scene>
         <!--Vote View Controller - Pledge-->
         <scene sceneID="iBl-yy-B90">
             <objects>
@@ -1588,7 +1602,7 @@ Create a reminder to vote, by selecting the date and time for your next student 
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F3N-Ry-2Cw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="773" y="3675"/>
+            <point key="canvasLocation" x="-1251" y="2019"/>
         </scene>
         <!--Election Position Detail View Controller - Position-->
         <scene sceneID="Azd-lh-c3N">
@@ -1621,7 +1635,7 @@ Create a reminder to vote, by selecting the date and time for your next student 
                                 <rect key="frame" x="0.0" y="117" width="320" height="402"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
@@ -1653,7 +1667,7 @@ Create a reminder to vote, by selecting the date and time for your next student 
                                         <rect key="frame" x="0.0" y="273" width="320" height="132"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <view contentMode="scaleToFill" id="jTd-z2-eO6">
@@ -1892,7 +1906,7 @@ Create a reminder to vote, by selecting the date and time for your next student 
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="e1d-vA-vJF">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="665"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" id="cw7-SW-4zk">
@@ -2012,6 +2026,9 @@ Create a reminder to vote, by selecting the date and time for your next student 
                                             <color key="titleColor" red="0.47450980390000003" green="0.47450980390000003" blue="0.56470588239999997" alpha="1" colorSpace="deviceRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="Z4y-3A-cCK" kind="push" identifier="TasksDetail" id="diQ-9A-OKM"/>
+                                        </connections>
                                     </button>
                                     <containerView contentMode="scaleToFill" id="HKk-GB-zZC">
                                         <rect key="frame" x="0.0" y="318" width="320" height="93"/>
@@ -2019,6 +2036,21 @@ Create a reminder to vote, by selecting the date and time for your next student 
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <connections>
                                             <segue destination="8gi-fI-SW9" kind="embed" identifier="BadgesEmbed" id="3DU-5j-le6"/>
+                                        </connections>
+                                    </containerView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No tasks completed yet!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="N6f-gd-TxT" customClass="EBLabelMedium">
+                                        <rect key="frame" x="62" y="472" width="197" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.47450980390000003" green="0.47450980390000003" blue="0.56470588239999997" alpha="1" colorSpace="deviceRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <containerView contentMode="scaleToFill" id="Ldz-sV-Y55">
+                                        <rect key="frame" x="0.0" y="445" width="320" height="220"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="yj0-Wk-K6S" kind="embed" identifier="TasksEmbed" id="eh2-Tf-C1m"/>
                                         </connections>
                                     </containerView>
                                     <view contentMode="scaleToFill" id="kam-JM-g0r" customClass="EBOnePixelLine">
@@ -2031,15 +2063,9 @@ Create a reminder to vote, by selecting the date and time for your next student 
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.79094434309999995" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No tasks completed yet!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="N6f-gd-TxT" customClass="EBLabelMedium">
-                                        <rect key="frame" x="62" y="472" width="197" height="24"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" red="0.47450980390000003" green="0.47450980390000003" blue="0.56470588239999997" alpha="1" colorSpace="deviceRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="contentInset" minX="0.0" minY="0.0" maxX="0.0" maxY="140"/>
                                 <connections>
                                     <outlet property="delegate" destination="bnL-fp-thk" id="LU1-P1-wpc"/>
                                 </connections>
@@ -2331,7 +2357,8 @@ Create a reminder to vote, by selecting the date and time for your next student 
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="Gb7-B0-4To">
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" text="" id="Gb7-B0-4To">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
@@ -2345,7 +2372,7 @@ Create a reminder to vote, by selecting the date and time for your next student 
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="H7x-B0-tVO" customClass="EBLabelMedium">
-                                            <rect key="frame" x="40" y="20" width="179" height="18"/>
+                                            <rect key="frame" x="90" y="20" width="179" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="0.20000000000000001" green="0.21960784310000001" blue="0.27058823529999998" alpha="1" colorSpace="deviceRGB"/>
@@ -2382,6 +2409,19 @@ Create a reminder to vote, by selecting the date and time for your next student 
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GRN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="brw-S7-saJ" customClass="EBLabelMedium">
+                                            <rect key="frame" x="40" y="18" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" red="0.37254901959999998" green="0.76470588240000004" blue="0.32549019610000002" alpha="1" colorSpace="deviceRGB"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="5"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
@@ -2391,6 +2431,71 @@ Create a reminder to vote, by selecting the date and time for your next student 
                                     <outlet property="showDetailButton" destination="0Kw-7I-nEu" id="5QX-kB-MRn"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CandidateCellSmall" rowHeight="44" id="Mop-Bu-DbK" customClass="EBCandidateTableViewCell">
+                                <rect key="frame" x="0.0" y="216" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mop-Bu-DbK" id="vy2-RE-dja">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Nbo-7o-srY">
+                                            <rect key="frame" x="8" y="10" width="24" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="backgroundColor" red="0.63677577549999997" green="0.63677577549999997" blue="0.63677577549999997" alpha="1" colorSpace="deviceRGB"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="12"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rIv-p6-Tsv" customClass="EBLabelMedium">
+                                            <rect key="frame" x="90" y="6" width="173" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.20000000000000001" green="0.21960784310000001" blue="0.27058823529999998" alpha="1" colorSpace="deviceRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GRN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="p9l-mG-Rn1" customClass="EBLabelMedium">
+                                            <rect key="frame" x="40" y="11" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" red="0.37254901959999998" green="0.76470588240000004" blue="0.32549019610000002" alpha="1" colorSpace="deviceRGB"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="5"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="LYb-yZ-7cZ">
+                                            <rect key="frame" x="278" y="11" width="32" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <state key="normal" image="Profile Reveal">
+                                                <color key="titleColor" red="0.47450980390000003" green="0.47450980390000003" blue="0.56470588239999997" alpha="1" colorSpace="deviceRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="highlighted" image="Profile Reveal Highlighted"/>
+                                            <connections>
+                                                <action selector="showDetail:" destination="Mop-Bu-DbK" eventType="touchUpInside" id="kjn-EM-AcQ"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sCP-23-Tty" customClass="EBLabelMedium">
+                                            <rect key="frame" x="90" y="23" width="173" height="13"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                            <color key="textColor" red="0.47450980390000003" green="0.47450980390000003" blue="0.56470588239999997" alpha="1" colorSpace="deviceRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="candidateImageView" destination="Nbo-7o-srY" id="kzX-kg-bCT"/>
+                                    <outlet property="nameLabel" destination="rIv-p6-Tsv" id="fql-0b-6Oa"/>
+                                    <outlet property="subtitleLabel" destination="sCP-23-Tty" id="Zb7-v9-pa6"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="5dt-O9-dRQ" id="ej5-SZ-geO"/>
@@ -2398,6 +2503,7 @@ Create a reminder to vote, by selecting the date and time for your next student 
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="hfz-lG-Gk9"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="candidateSearchBar" destination="Gb7-B0-4To" id="y9W-ax-y4i"/>
                         <segue destination="Ntx-HS-gIc" kind="push" identifier="showCandidateDetail" id="xxq-8D-RR7"/>
@@ -2464,7 +2570,7 @@ Create a reminder to vote, by selecting the date and time for your next student 
                                     <outlet property="backView" destination="ahW-Px-2Uk" id="yRx-oD-fhU"/>
                                     <outlet property="subtitleLabel" destination="L1k-ZT-ruc" id="LoZ-Lm-2af"/>
                                     <outlet property="titleLabel" destination="XCR-Xs-d56" id="gZf-Mp-9VR"/>
-                                    <segue destination="5dt-O9-dRQ" kind="push" identifier="ShowCandidateFromTicket" id="vhX-wv-fET"/>
+                                    <segue destination="e0y-T6-5Zg" kind="push" identifier="ShowTicketProfile" id="D8e-RX-VW6"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -2543,7 +2649,7 @@ Create a reminder to vote, by selecting the date and time for your next student 
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <view contentMode="scaleToFill" id="WSg-Ck-nVF" customClass="EBOnePixelLine">
@@ -2555,6 +2661,7 @@ Create a reminder to vote, by selecting the date and time for your next student 
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="eIu-eJ-Ek1"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="backgroundPhoto" destination="NkP-yk-tjI" id="66d-Jz-cwe"/>
                         <outlet property="institutionLabel" destination="hn0-cC-jea" id="3PO-m8-gbY"/>
@@ -2719,6 +2826,7 @@ Create a reminder to vote, by selecting the date and time for your next student 
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="8IS-zr-Pah"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="backgroundPhoto" destination="UTT-3d-2hd" id="77l-gk-kxx"/>
                         <outlet property="institutionLabel" destination="Qba-0N-KNI" id="GIB-Hg-l1q"/>
@@ -3036,6 +3144,9 @@ That it. Let’s do this. </string>
                                                 <color key="value" red="0.20000000000000001" green="0.21960784310000001" blue="0.27058823529999998" alpha="1" colorSpace="deviceRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="changeProfilePhoto:" destination="ajR-l0-AUw" eventType="touchUpInside" id="A6m-TT-yGR"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="no1-bJ-g3Q" customClass="EBButtonRoundedHeavy">
                                         <rect key="frame" x="169" y="183" width="115" height="30"/>
@@ -3055,6 +3166,9 @@ That it. Let’s do this. </string>
                                                 <color key="value" red="0.20000000000000001" green="0.21960784310000001" blue="0.27058823529999998" alpha="1" colorSpace="deviceRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="changeCoverPhoto:" destination="ajR-l0-AUw" eventType="touchUpInside" id="ye4-vy-841"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -3135,6 +3249,118 @@ That it. Let’s do this. </string>
             </objects>
             <point key="canvasLocation" x="3136" y="2400"/>
         </scene>
+        <!--Tasks Detail View Controller - Tasks-->
+        <scene sceneID="kzm-9a-6WR">
+            <objects>
+                <viewController id="Z4y-3A-cCK" customClass="EBTasksDetailViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9ez-X7-bbq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <containerView contentMode="scaleToFill" id="AYk-RR-gHo">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="yj0-Wk-K6S" kind="embed" identifier="TasksDetail" id="PgX-0X-Vxt"/>
+                                </connections>
+                            </containerView>
+                            <view contentMode="scaleToFill" id="z9O-e9-lrN">
+                                <rect key="frame" x="0.0" y="64" width="320" height="61"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <progressView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.5" id="hiI-8J-zn6">
+                                        <rect key="frame" x="16" y="12" width="288" height="3"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="progressTintColor" red="0.37254901959999998" green="0.76470588240000004" blue="0.32549019610000002" alpha="1" colorSpace="deviceRGB"/>
+                                        <color key="trackTintColor" red="0.47450980390000003" green="0.47450980390000003" blue="0.56470588239999997" alpha="1" colorSpace="deviceRGB"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <real key="value" value="1.5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </progressView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level 12" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CTo-lO-l8g" customClass="EBLabelMedium">
+                                        <rect key="frame" x="16" y="21" width="288" height="16"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2640 out of 4000 XP till the next level!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uRg-TP-uBk" customClass="EBLabelMedium">
+                                        <rect key="frame" x="16" y="34" width="288" height="12"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                        <color key="textColor" red="0.47450980390000003" green="0.47450980390000003" blue="0.56470588239999997" alpha="1" colorSpace="deviceRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.21960784310000001" blue="0.27058823529999998" alpha="1" colorSpace="deviceRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Tasks" id="bMi-jb-O3q"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e3m-k7-UQv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2617" y="3460"/>
+        </scene>
+        <!--Tasks Table View Controller-->
+        <scene sceneID="89W-jy-Z7Y">
+            <objects>
+                <tableViewController id="yj0-Wk-K6S" customClass="EBTasksTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="wZt-Jg-cIC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TaskCell" id="iWy-Q2-rDh" customClass="EBTaskTableViewCell">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iWy-Q2-rDh" id="Ehb-eH-YlV">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hSI-5f-KC7" customClass="EBLabelMedium">
+                                            <rect key="frame" x="40" y="11" width="216" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.20000000000000001" green="0.21960784310000001" blue="0.27058823529999998" alpha="1" colorSpace="deviceRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="n7i-KI-ybb">
+                                            <rect key="frame" x="6" y="10" width="24" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eLb-gI-YD5" customClass="EBLabelMedium">
+                                            <rect key="frame" x="265" y="10" width="47" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <color key="textColor" red="0.47450980390000003" green="0.47450980390000003" blue="0.56470588239999997" alpha="1" colorSpace="deviceRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="taskImageView" destination="n7i-KI-ybb" id="Ftg-zY-XcX"/>
+                                    <outlet property="titleLabel" destination="hSI-5f-KC7" id="zeA-LI-bVd"/>
+                                    <outlet property="xpValueLabel" destination="eLb-gI-YD5" id="516-Rd-Cjn"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="yj0-Wk-K6S" id="4OB-M9-Uvk"/>
+                            <outlet property="delegate" destination="yj0-Wk-K6S" id="cEa-uM-SDz"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="lZc-Sm-Zpu"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GWx-Bv-k97" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3189" y="3554"/>
+        </scene>
         <!--Badges Collection View Controller-->
         <scene sceneID="Osb-DU-VFp">
             <objects>
@@ -3171,6 +3397,121 @@ That it. Let’s do this. </string>
             </objects>
             <point key="canvasLocation" x="1847" y="3146"/>
         </scene>
+        <!--Ticket Profile View Controller-->
+        <scene sceneID="a8G-7F-pRJ">
+            <objects>
+                <viewController id="e0y-T6-5Zg" customClass="EBTicketProfileViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ukN-3B-nll">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" id="Wyn-4F-EWh">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="288"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="MqL-DM-N7x" customClass="EBBlurImageView">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="288"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Green Students" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jRZ-hC-SoZ" customClass="EBLabelLight">
+                                        <rect key="frame" x="22" y="161" width="280" height="39"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" id="D7X-Eh-Lkd">
+                                        <rect key="frame" x="18" y="225" width="288" height="0.0"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Hh4-ux-v4o" customClass="EBButtonRoundedHeavy">
+                                        <rect key="frame" x="235" y="241" width="71" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" title="Support">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="mainColor">
+                                                <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="textHighlightedColor">
+                                                <color key="value" red="0.20000000000000001" green="0.21960784310000001" blue="0.27058823529999998" alpha="1" colorSpace="deviceRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="University of Melbourne" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sCq-Jg-rrT" customClass="EBLabelHeavy">
+                                        <rect key="frame" x="22" y="197" width="280" height="13"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="sIH-1I-obi">
+                                        <rect key="frame" x="122" y="81" width="80" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="40"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1240" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="toQ-fK-oo2" customClass="EBLabelLight">
+                                        <rect key="frame" x="15" y="233" width="72" height="29"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Supporters" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ew7-zQ-inH" customClass="EBLabelMedium">
+                                        <rect key="frame" x="15" y="259" width="72" height="18"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Election Ticket" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lGZ-41-26K" customClass="EBLabelHeavy">
+                                <rect key="frame" x="10" y="291" width="109" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.47450980390000003" green="0.47450980390000003" blue="0.56470588239999997" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <containerView contentMode="scaleToFill" id="ffZ-ar-b97">
+                                <rect key="frame" x="0.0" y="317" width="320" height="251"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="5dt-O9-dRQ" kind="embed" identifier="CandidateFromTicketProfileEmbed" id="fI0-U5-CC9"/>
+                                </connections>
+                            </containerView>
+                            <view contentMode="scaleToFill" id="qXc-f4-mcW" customClass="EBOnePixelLine">
+                                <rect key="frame" x="0.0" y="317" width="320" height="1"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.79094434309999995" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ytf-tR-tuQ"/>
+                    <connections>
+                        <outlet property="backgroundPhoto" destination="MqL-DM-N7x" id="T2M-1m-yBA"/>
+                        <outlet property="institutionLabel" destination="sCq-Jg-rrT" id="dUd-kp-Bve"/>
+                        <outlet property="nameLabel" destination="jRZ-hC-SoZ" id="D4d-tD-yuS"/>
+                        <outlet property="profilePhoto" destination="sIH-1I-obi" id="R6J-av-6TG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KYg-dz-GXB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3362" y="124"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Election" width="25" height="25"/>
@@ -3199,7 +3540,8 @@ That it. Let’s do this. </string>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="fI0-U5-CC9"/>
         <segue reference="DSl-Hp-9ob"/>
-        <segue reference="vhX-wv-fET"/>
+        <segue reference="PgX-0X-Vxt"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -8,7 +8,7 @@
 
 #import "EBTicketsCollectionViewController.h"
 #import "EBTicketCollectionViewCell.h"
-#import "EBCandidateTableViewController.h"
+#import "EBTicketProfileViewController.h"
 
 @interface EBTicketsCollectionViewController ()
 
@@ -99,6 +99,7 @@
     UIColor *backColor = [UIColor colorWithRed:red/255.0 green:green/255.0 blue:blue/255.0 alpha:1.0];
 //    cell.backView.backgroundColor = [UIColor colorWithRed:red green:green blue:blue alpha:1.0];
     cell.backView.backgroundColor = backColor;
+    cell.ticketData = self.tickets[indexPath.item];
     return cell;
 }
 
@@ -108,12 +109,10 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"ShowCandidateFromTicket"]) {
-        EBCandidateTableViewController *tvc = (EBCandidateTableViewController *)[segue destinationViewController];
-        tvc.candidateFilter = EBCandidateFilterByTicket;
+    if ([segue.identifier isEqualToString:@"ShowTicketProfile"]) {
+        EBTicketProfileViewController *ticketProfile = (EBTicketProfileViewController *)[segue destinationViewController];
         EBTicketCollectionViewCell *cell = (EBTicketCollectionViewCell *)sender;
-        tvc.filterId = cell.ticketId;
-        tvc.filterTitle = cell.titleLabel.text;
+        ticketProfile.ticketData = cell.ticketData;
     }
 }
 
