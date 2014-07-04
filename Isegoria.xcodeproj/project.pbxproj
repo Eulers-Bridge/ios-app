@@ -120,6 +120,7 @@
 		049A4751196514AB00D363AE /* EBTasksDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049A4750196514AB00D363AE /* EBTasksDetailViewController.m */; };
 		049A475419652D8700D363AE /* EBTicketProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049A475319652D8700D363AE /* EBTicketProfileViewController.m */; };
 		049A47571966740B00D363AE /* EBPersonalityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049A47561966740B00D363AE /* EBPersonalityViewController.m */; };
+		049A475A19667FA000D363AE /* EBPersonalityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 049A475919667FA000D363AE /* EBPersonalityTableViewCell.m */; };
 		04B6556C196109EE0002E784 /* EBBadgeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B6556B196109EE0002E784 /* EBBadgeCollectionViewCell.m */; };
 		04B6556F196123610002E784 /* EBProfileSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B6556E196123610002E784 /* EBProfileSettingsViewController.m */; };
 		04B655731962B76E0002E784 /* EBTasksTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B655721962B76E0002E784 /* EBTasksTableViewController.m */; };
@@ -328,6 +329,8 @@
 		049A475319652D8700D363AE /* EBTicketProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBTicketProfileViewController.m; sourceTree = "<group>"; };
 		049A47551966740B00D363AE /* EBPersonalityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBPersonalityViewController.h; sourceTree = "<group>"; };
 		049A47561966740B00D363AE /* EBPersonalityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBPersonalityViewController.m; sourceTree = "<group>"; };
+		049A475819667FA000D363AE /* EBPersonalityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBPersonalityTableViewCell.h; sourceTree = "<group>"; };
+		049A475919667FA000D363AE /* EBPersonalityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBPersonalityTableViewCell.m; sourceTree = "<group>"; };
 		04B6556A196109EE0002E784 /* EBBadgeCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBBadgeCollectionViewCell.h; sourceTree = "<group>"; };
 		04B6556B196109EE0002E784 /* EBBadgeCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBBadgeCollectionViewCell.m; sourceTree = "<group>"; };
 		04B6556D196123610002E784 /* EBProfileSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBProfileSettingsViewController.h; sourceTree = "<group>"; };
@@ -804,6 +807,8 @@
 				04EC195C1941C0A90001FF72 /* EBPollAnswerTableViewCell.m */,
 				049A47551966740B00D363AE /* EBPersonalityViewController.h */,
 				049A47561966740B00D363AE /* EBPersonalityViewController.m */,
+				049A475819667FA000D363AE /* EBPersonalityTableViewCell.h */,
+				049A475919667FA000D363AE /* EBPersonalityTableViewCell.m */,
 			);
 			name = Poll;
 			sourceTree = "<group>";
@@ -1224,6 +1229,7 @@
 				04BB705F1911E9430059E93C /* EBFindFriendTableViewCell.m in Sources */,
 				048D01F3195D02B900E878DA /* EBCandidateTableViewController.m in Sources */,
 				04BB704E190D229D0059E93C /* EBProfileViewController.m in Sources */,
+				049A475A19667FA000D363AE /* EBPersonalityTableViewCell.m in Sources */,
 				04788EC81958076B0015FB06 /* UIImage+ImageWithColor.m in Sources */,
 				04FD41C11906554200AF17DC /* EBSignupLoginViewController.m in Sources */,
 				0425593F1935D6970030AA0A /* CALayer+XibConfiguration.m in Sources */,

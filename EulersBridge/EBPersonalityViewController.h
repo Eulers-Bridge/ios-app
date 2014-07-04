@@ -10,4 +10,6 @@
 
 @interface EBPersonalityViewController : UIViewController
 
+@property int pageIndex;
+
 @end

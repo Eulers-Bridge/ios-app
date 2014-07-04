@@ -8,6 +8,7 @@
 
 #import "EBPollViewController.h"
 #import "EBPollContentViewController.h"
+#import "EBPersonalityViewController.h"
 
 @interface EBPollViewController () <UIPageViewControllerDataSource>
 
@@ -41,7 +42,7 @@
     [self.pageViewController setViewControllers:@[self.contentViewControllers[0]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
     // Change the size of page view controller
-    self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 49);
+    self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     
     [self addChildViewController:self.pageViewController];
     [self.view addSubview:self.pageViewController.view];
@@ -52,7 +53,12 @@
 {
     int index = 0;
     NSMutableArray *viewControllers = [NSMutableArray arrayWithCapacity:self.maxPoll];
-    for (index = 0; index < self.maxPoll; index += 1) {
+    
+    EBPersonalityViewController *personalityViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PersonalityViewController"];
+    personalityViewController.pageIndex = 0;
+    [viewControllers addObject:personalityViewController];
+    
+    for (index = 1; index < self.maxPoll; index += 1) {
         EBPollContentViewController *pollContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PollContentViewController"];
         pollContentViewController.pageIndex = index;
 //        pollContentViewController.pageNumberLabel.text = [NSString stringWithFormat:@"Page: %d", index];
