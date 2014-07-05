@@ -65,10 +65,10 @@
     tabBarItem4.selectedImage = [UIImage imageNamed:@"Vote Higlighted"];
     tabBarItem5.selectedImage = [UIImage imageNamed:@"Profile Higlighted"];
     
-    UIPageControl *pageControl = [UIPageControl appearance];
-    pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
-    pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
-    pageControl.backgroundColor = [UIColor whiteColor];
+//    UIPageControl *pageControl = [UIPageControl appearance];
+//    pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
+//    pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
+//    pageControl.backgroundColor = [UIColor whiteColor];
     
 
 }

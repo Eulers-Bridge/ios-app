@@ -10,12 +10,14 @@
 #import "EBPollContentViewController.h"
 #import "EBPersonalityViewController.h"
 
-@interface EBPollViewController () <UIPageViewControllerDataSource>
+@interface EBPollViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 @property (strong, nonatomic) NSArray *contentViewControllers;
+@property (strong, nonatomic) EBLabelHeavy *titleLabel;
+@property (strong, nonatomic) UIPageControl *titlePageControl;
 @property int maxPoll;
-
+@property int nextViewControllerIndex;
 @end
 
 @implementation EBPollViewController
@@ -32,14 +34,38 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0]];
     self.maxPoll = 5;
+    self.nextViewControllerIndex = 0;
     
     self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PollPageViewController"];
     self.pageViewController.dataSource = self;
+    self.pageViewController.delegate = self;
+    
+    UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(50, 0, 200, 44)];
+    EBLabelHeavy *titleLabel = [[EBLabelHeavy alloc] initWithFrame:CGRectMake(0, 5, 200, 20)];
+    titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.text = @"Personality Questions";
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    
+    UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(70, 20, 50, 24)];
+    pageControl.numberOfPages = 5;
+    pageControl.currentPage = 0;
+//    pageControl.backgroundColor = [UIColor clearColor];
+//    pageControl.tintColor = [UIColor whiteColor];
+    pageControl.enabled = NO;
+    
+    [titleView addSubview:titleLabel];
+    [titleView addSubview:pageControl];
+    
+    self.titleLabel = titleLabel;
+    self.titlePageControl = pageControl;
+    self.navigationItem.titleView = titleView;
     
     [self setupContentViewControllers];
     
     [self.pageViewController setViewControllers:@[self.contentViewControllers[0]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    
     
     // Change the size of page view controller
     self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
@@ -47,6 +73,8 @@
     [self addChildViewController:self.pageViewController];
     [self.view addSubview:self.pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
+    
+    
 }
 
 - (void)setupContentViewControllers
@@ -65,7 +93,8 @@
         [viewControllers addObject:pollContentViewController];
     }
     self.contentViewControllers = [viewControllers copy];
-    
+    self.titlePageControl.numberOfPages = self.contentViewControllers.count;
+    self.titlePageControl.currentPage = 0;
 }
 
 - (void)didReceiveMemoryWarning
@@ -84,7 +113,6 @@
     if ((index == 0) || (index == NSNotFound)) {
         return nil;
     }
-    
     return self.contentViewControllers[index - 1];
 }
 
@@ -95,7 +123,6 @@
     if (index == NSNotFound || index + 1 >= self.maxPoll) {
         return nil;
     }
-    
     return self.contentViewControllers[index + 1];
 }
 
@@ -107,6 +134,12 @@
 - (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController
 {
     return 0;
+}
+
+- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed
+{
+    self.titlePageControl.currentPage = [pageViewController.viewControllers[0] pageIndex];
+
 }
 
 
