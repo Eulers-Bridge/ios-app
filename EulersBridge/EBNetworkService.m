@@ -10,4 +10,15 @@
 
 @implementation EBNetworkService
 
+- (void)signupWithEmailAddress:(NSString *)email password:(NSString *)password name:(NSString *)name institutionId:(NSString *)institutionId
+{
+    [self.signupDelegate signupFinishedWithSuccess:YES withUser:nil failureReason:nil];
+}
+
+- (void)resendVerificationEmailForUser:(EBUser *)user
+{
+    
+}
+
+
 @end

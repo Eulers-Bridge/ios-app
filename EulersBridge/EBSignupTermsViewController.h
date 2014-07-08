@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol EBSignupTermsDelegate <NSObject>
+
+@required
+- (void)signupTermsAgreed:(BOOL)agreed;
+
+@end
+
 @interface EBSignupTermsViewController : UIViewController
+
+@property (assign, nonatomic) id<EBSignupTermsDelegate> termsDelegate;
 
 @end

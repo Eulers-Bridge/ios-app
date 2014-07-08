@@ -7,11 +7,22 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "EBUser.h"
+
+@protocol EBSignupServiceDelegate <NSObject>
+@optional
+- (void)signupFinishedWithSuccess:(BOOL)success withUser:(EBUser *)user failureReason:(NSString *)reason;
+- (void)resendEmailFinishedWithSuccess:(BOOL)success withUser:(EBUser *)user failureReason:(NSString *)reason;
+
+@end
 
 @interface EBNetworkService : NSObject
 
+@property (assign, nonatomic) id<EBSignupServiceDelegate> signupDelegate;
 
 // TODO: Signup and login service
+- (void)signupWithEmailAddress:(NSString *)email password:(NSString *)password name:(NSString *)name institutionId:(NSString *)institutionId;
+- (void)resendVerificationEmailForUser:(EBUser *)user;
 
 // TODO: Content service
 

@@ -420,7 +420,7 @@
                                 <rect key="frame" x="0.0" y="78" width="320" height="392"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Isegoria" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gOJ-ri-tIB">
+                                    <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Isegoria" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gOJ-ri-tIB" customClass="EBLabelLight">
                                         <rect key="frame" x="20" y="96" width="280" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -432,7 +432,7 @@
                                         <rect key="frame" x="15" y="155" width="290" height="88"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" clearButtonMode="whileEditing" id="ILM-gE-h50">
+                                            <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" clearButtonMode="whileEditing" id="ILM-gE-h50" customClass="EBTextFieldMuseo">
                                                 <rect key="frame" x="10" y="0.0" width="280" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -441,7 +441,7 @@
                                                     <outlet property="delegate" destination="GJt-2I-ECl" id="jWK-Hq-0IW"/>
                                                 </connections>
                                             </textField>
-                                            <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" clearButtonMode="whileEditing" id="4xy-re-2w6">
+                                            <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" clearButtonMode="whileEditing" id="4xy-re-2w6" customClass="EBTextFieldMuseo">
                                                 <rect key="frame" x="10" y="44" width="280" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -463,7 +463,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Ziq-qk-js2" customClass="EBButton">
+                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Ziq-qk-js2" customClass="EBButtonHeavy">
                                         <rect key="frame" x="15" y="251" width="290" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.37254901959999998" green="0.76470588240000004" blue="0.32549019610000002" alpha="1" colorSpace="deviceRGB"/>
@@ -486,7 +486,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </button>
-                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="vha-CY-TA6" customClass="EBButton">
+                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="vha-CY-TA6" customClass="EBButtonHeavy">
                                         <rect key="frame" x="15" y="299" width="290" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.32156862749999998" green="0.50196078430000002" blue="0.83529411760000005" alpha="1" colorSpace="deviceRGB"/>
@@ -572,7 +572,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LpQ-4G-AJ1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-725" y="2019"/>
+            <point key="canvasLocation" x="-613" y="2795"/>
         </scene>
         <!--Find Friend View Controller-->
         <scene sceneID="4HU-cR-rrk">
@@ -632,7 +632,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N4J-gx-Gmd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-275" y="2019"/>
+            <point key="canvasLocation" x="-163" y="2795"/>
         </scene>
         <!--Signup Login View Controller - Sign Up-->
         <scene sceneID="UBg-rf-R3Y">
@@ -670,7 +670,7 @@
                                 <rect key="frame" x="15" y="208" width="290" height="264"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <textField clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="University" minimumFontSize="17" clearButtonMode="whileEditing" id="GB2-5c-cGX">
+                                    <textField clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="University" minimumFontSize="17" clearButtonMode="whileEditing" id="GB2-5c-cGX" customClass="EBTextFieldMuseo">
                                         <rect key="frame" x="10" y="220" width="280" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -679,7 +679,7 @@
                                             <outlet property="delegate" destination="AS6-Ue-LrR" id="4ey-dX-eiv"/>
                                         </connections>
                                     </textField>
-                                    <textField clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Country" minimumFontSize="17" clearButtonMode="whileEditing" id="hYI-M2-EDD">
+                                    <textField clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Country" minimumFontSize="17" clearButtonMode="whileEditing" id="hYI-M2-EDD" customClass="EBTextFieldMuseo">
                                         <rect key="frame" x="10" y="176" width="280" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -688,7 +688,7 @@
                                             <outlet property="delegate" destination="AS6-Ue-LrR" id="BMz-WN-Ta4"/>
                                         </connections>
                                     </textField>
-                                    <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="University Email" minimumFontSize="17" clearButtonMode="whileEditing" id="ZfG-Xv-07A">
+                                    <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="University Email" minimumFontSize="17" clearButtonMode="whileEditing" id="ZfG-Xv-07A" customClass="EBTextFieldMuseo">
                                         <rect key="frame" x="10" y="44" width="280" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -697,7 +697,7 @@
                                             <outlet property="delegate" destination="AS6-Ue-LrR" id="bYx-05-ZEc"/>
                                         </connections>
                                     </textField>
-                                    <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Full Name" minimumFontSize="17" clearButtonMode="whileEditing" id="RcE-Wc-b1D">
+                                    <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Full Name" minimumFontSize="17" clearButtonMode="whileEditing" id="RcE-Wc-b1D" customClass="EBTextFieldMuseo">
                                         <rect key="frame" x="10" y="0.0" width="280" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -706,7 +706,7 @@
                                             <outlet property="delegate" destination="AS6-Ue-LrR" id="e24-0z-UOg"/>
                                         </connections>
                                     </textField>
-                                    <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New Password" minimumFontSize="17" clearButtonMode="whileEditing" id="MGe-QO-5Qe">
+                                    <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New Password" minimumFontSize="17" clearButtonMode="whileEditing" id="MGe-QO-5Qe" customClass="EBTextFieldMuseo">
                                         <rect key="frame" x="10" y="88" width="280" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -715,7 +715,7 @@
                                             <outlet property="delegate" destination="AS6-Ue-LrR" id="DOp-Fz-Lm8"/>
                                         </connections>
                                     </textField>
-                                    <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" minimumFontSize="17" clearButtonMode="whileEditing" id="KEz-Hy-x5b">
+                                    <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" minimumFontSize="17" clearButtonMode="whileEditing" id="KEz-Hy-x5b" customClass="EBTextFieldMuseo">
                                         <rect key="frame" x="10" y="132" width="280" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -792,7 +792,7 @@
                     <navigationItem key="navigationItem" title="Sign Up" id="o83-Xg-4oS">
                         <barButtonItem key="rightBarButtonItem" title="Next" style="plain" id="RLo-xG-UlE">
                             <connections>
-                                <segue destination="i1h-Cc-saW" kind="push" id="wQD-GK-IhK"/>
+                                <action selector="signupAction:" destination="AS6-Ue-LrR" id="UTt-7K-Xx0"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -810,33 +810,27 @@
                         <outlet property="universityButton" destination="FaZ-XB-aI2" id="glb-Wm-uZI"/>
                         <outlet property="universityTextField" destination="GB2-5c-cGX" id="aga-KV-vuW"/>
                         <outlet property="uploadImageButton" destination="xfi-zt-O6e" id="tsJ-EV-r0d"/>
+                        <segue destination="i1h-Cc-saW" kind="push" identifier="SignupAction" id="N4E-ro-Kty"/>
+                        <segue destination="ETm-q7-KIY" kind="modal" identifier="PresentTerms" id="sGe-qg-qhy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gur-3p-9oT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-606" y="1209"/>
         </scene>
-        <!--Signup Terms View Controller - Sign Up-->
+        <!--Email Verification View Controller - Sign Up-->
         <scene sceneID="uPo-k2-j4O">
             <objects>
-                <viewController title="Sign Up" id="i1h-Cc-saW" customClass="EBSignupTermsViewController" sceneMemberID="viewController">
+                <viewController title="Sign Up" id="i1h-Cc-saW" customClass="EBEmailVerificationViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hZ1-Rq-HXc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="qYb-Ht-SxA">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="494"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cbd-to-cXW" customClass="EBButton">
+                            <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ddV-YG-bbg" customClass="EBButtonHeavy">
                                 <rect key="frame" x="15" y="508" width="290" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.37254901959999998" green="0.76470588240000004" blue="0.32549019610000002" alpha="1" colorSpace="deviceRGB"/>
-                                <state key="normal" title="Accept and Get Started!">
+                                <state key="normal" title="Resend Verification Email">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -847,31 +841,40 @@
                                     <userDefinedRuntimeAttribute type="color" keyPath="mainColor">
                                         <color key="value" red="0.37254901959999998" green="0.76470588240000004" blue="0.32549019610000002" alpha="1" colorSpace="deviceRGB"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedColor">
-                                        <color key="value" red="0.40879348560000001" green="0.83910241789999995" blue="0.35715641380000002" alpha="1" colorSpace="deviceRGB"/>
-                                    </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="textColor">
                                         <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedColor">
+                                        <color key="value" red="0.40879348560000001" green="0.83910241789999995" blue="0.35715641380000002" alpha="1" colorSpace="deviceRGB"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="accept:" destination="i1h-Cc-saW" eventType="touchUpInside" id="MKa-c3-rsH"/>
+                                    <action selector="resendEmail:" destination="i1h-Cc-saW" eventType="touchUpInside" id="1vc-Ix-8tB"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please check your inbox for the verification email, if you haven't receive it, please tap resend." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EAR-6M-Oen" customClass="EBLabelMedium">
+                                <rect key="frame" x="20" y="142" width="280" height="141"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.47450980390000003" green="0.47450980390000003" blue="0.56470588239999997" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Terms &amp; Conditions" id="7mO-bH-Ttv">
+                    <navigationItem key="navigationItem" title="Email Verification" id="7mO-bH-Ttv">
                         <barButtonItem key="backBarButtonItem" title="Back" id="xce-11-d9i"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="NxD-XU-tsj">
+                            <connections>
+                                <action selector="doneAction:" destination="i1h-Cc-saW" id="To7-Nc-j9l"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <connections>
-                        <outlet property="acceptButton" destination="cbd-to-cXW" id="Xxh-OZ-kme"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kN2-sE-0w4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-199" y="1209"/>
+            <point key="canvasLocation" x="-63" y="1209"/>
         </scene>
         <!--Election View Controller - Second-->
         <scene sceneID="ot8-2e-RuS">
@@ -1971,7 +1974,7 @@ Create a reminder to vote, by selecting the date and time for your next student 
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F3N-Ry-2Cw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1251" y="2019"/>
+            <point key="canvasLocation" x="-1139" y="2795"/>
         </scene>
         <!--Election Position Detail View Controller - Position-->
         <scene sceneID="Azd-lh-c3N">
@@ -3608,7 +3611,13 @@ That it. Let’s do this. </string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Settings" id="UFl-HU-wjy"/>
+                    <navigationItem key="navigationItem" title="Settings" id="UFl-HU-wjy">
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="3dS-hm-KOh">
+                            <connections>
+                                <action selector="logoutAction:" destination="ajR-l0-AUw" id="Vcd-ON-DOe"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="dI7-Vq-tRm" id="JrT-kJ-BfZ"/>
                         <outlet property="profileImageView" destination="mHi-mr-aDN" id="XfL-k9-PPa"/>
@@ -3880,6 +3889,58 @@ That it. Let’s do this. </string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KYg-dz-GXB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3362" y="124"/>
+        </scene>
+        <!--Signup Terms View Controller - Sign Up-->
+        <scene sceneID="vfz-5C-OYp">
+            <objects>
+                <viewController storyboardIdentifier="TermsViewController" title="Sign Up" id="ETm-q7-KIY" customClass="EBSignupTermsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vBG-Lk-VsS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" id="PiP-Jh-f47">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <inset key="contentInset" minX="0.0" minY="64" maxX="0.0" maxY="44"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <navigationBar contentMode="scaleToFill" id="S8M-eL-SlP">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Terms and Conditions" id="45E-4z-aWs"/>
+                                </items>
+                                <connections>
+                                    <outlet property="delegate" destination="ETm-q7-KIY" id="wxU-Ev-QGo"/>
+                                </connections>
+                            </navigationBar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Fby-CG-jQX">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="Disagree" style="plain" id="PAT-Is-3Hf">
+                                        <connections>
+                                            <action selector="disagreeAction:" destination="ETm-q7-KIY" id="5hF-BZ-jrD"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="4XN-BV-zMV"/>
+                                    <barButtonItem title="Agree" id="eeo-fr-nv9">
+                                        <connections>
+                                            <action selector="agreeAction:" destination="ETm-q7-KIY" id="rQi-SH-WVj"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S0E-jZ-8ls" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-63" y="1889"/>
         </scene>
     </scenes>
     <resources>

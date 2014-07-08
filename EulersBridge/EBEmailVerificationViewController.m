@@ -1,19 +1,19 @@
 //
-//  EBSignupTermsViewController.m
+//  EBEmailVerificationViewController.m
 //  Isegoria
 //
-//  Created by Alan Gao on 5/06/2014.
+//  Created by Alan Gao on 7/07/2014.
 //  Copyright (c) 2014 Eulers Bridge. All rights reserved.
 //
 
-#import "EBSignupTermsViewController.h"
+#import "EBEmailVerificationViewController.h"
+#import "EBNetworkService.h"
 
-@interface EBSignupTermsViewController () <UIBarPositioningDelegate>
-@property (weak, nonatomic) IBOutlet UIButton *acceptButton;
+@interface EBEmailVerificationViewController () <EBSignupServiceDelegate>
 
 @end
 
-@implementation EBSignupTermsViewController
+@implementation EBEmailVerificationViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,24 +27,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Font setup
-    self.acceptButton.titleLabel.font = [UIFont fontWithName:@"MuseoSansRounded-700" size:self.acceptButton.titleLabel.font.pointSize];
-    
-    // Navigation bar
-    
-    
-
-    
-    
+    [self.navigationController.navigationBar setBackgroundImage:nil
+                                                  forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = nil;
+    if (self.user.emailVerified) {
+        // open the app.
+    }
 }
 
--(void)viewWillDisappear:(BOOL)animated
+#pragma mark button actions
+- (IBAction)resendEmail:(EBButton *)sender
 {
-    [super viewWillDisappear:animated];
+    EBNetworkService *networkService = [[EBNetworkService alloc] init];
+    networkService.signupDelegate = self;
 }
 
-#pragma button action
-- (IBAction)accept:(UIButton *)sender
+- (IBAction)doneAction:(UIBarButtonItem *)sender
 {
     UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
     window.rootViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"tabBarView"];
@@ -62,30 +60,15 @@
     tabBarItem3.selectedImage = [UIImage imageNamed:@"Poll Higlighted"];
     tabBarItem4.selectedImage = [UIImage imageNamed:@"Vote Higlighted"];
     tabBarItem5.selectedImage = [UIImage imageNamed:@"Profile Higlighted"];
+
+}
+
+#pragma mark signup delegate
+- (void)resendEmailFinishedWithSuccess:(BOOL)success withUser:(EBUser *)user failureReason:(NSString *)reason
+{
     
-//    UIPageControl *pageControl = [UIPageControl appearance];
-//    pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
-//    pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
-//    pageControl.backgroundColor = [UIColor whiteColor];
-    
-
 }
 
-- (IBAction)disagreeAction:(UIBarButtonItem *)sender
-{
-    [self.termsDelegate signupTermsAgreed:NO];
-}
-
-- (IBAction)agreeAction:(UIBarButtonItem *)sender
-{
-    [self.termsDelegate signupTermsAgreed:YES];
-}
-
-#pragma mark nav bar delegate
--(UIBarPosition)positionForBar:(id<UIBarPositioning>)bar
-{
-    return UIBarPositionTopAttached;
-}
 
 - (void)didReceiveMemoryWarning
 {

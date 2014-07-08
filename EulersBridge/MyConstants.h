@@ -70,4 +70,9 @@ typedef NS_ENUM(NSInteger, EBProfilePhotoType) {
     EBProfilePhotoTypeProfile
 };
 
+typedef NS_ENUM(NSInteger, EBTaskType) {
+    EBTaskTypeRecurring,
+    EBTaskTypeOneOff
+};
+
 #endif

@@ -121,6 +121,13 @@
 		049A475419652D8700D363AE /* EBTicketProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049A475319652D8700D363AE /* EBTicketProfileViewController.m */; };
 		049A47571966740B00D363AE /* EBPersonalityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049A47561966740B00D363AE /* EBPersonalityViewController.m */; };
 		049A475A19667FA000D363AE /* EBPersonalityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 049A475919667FA000D363AE /* EBPersonalityTableViewCell.m */; };
+		049A475E196A5B5800D363AE /* EBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 049A475D196A5B5800D363AE /* EBUser.m */; };
+		049A4761196A5C8500D363AE /* EBBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = 049A4760196A5C8500D363AE /* EBBadge.m */; };
+		049A4764196A5E3800D363AE /* EBTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 049A4763196A5E3800D363AE /* EBTask.m */; };
+		049A4767196A5E5C00D363AE /* EBInstitution.m in Sources */ = {isa = PBXBuildFile; fileRef = 049A4766196A5E5C00D363AE /* EBInstitution.m */; };
+		049A476A196A630200D363AE /* EBElection.m in Sources */ = {isa = PBXBuildFile; fileRef = 049A4769196A630200D363AE /* EBElection.m */; };
+		049A476D196A803F00D363AE /* EBEmailVerificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049A476C196A803F00D363AE /* EBEmailVerificationViewController.m */; };
+		049A4770196B803E00D363AE /* EBTextFieldMuseo.m in Sources */ = {isa = PBXBuildFile; fileRef = 049A476F196B803E00D363AE /* EBTextFieldMuseo.m */; };
 		04B6556C196109EE0002E784 /* EBBadgeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B6556B196109EE0002E784 /* EBBadgeCollectionViewCell.m */; };
 		04B6556F196123610002E784 /* EBProfileSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B6556E196123610002E784 /* EBProfileSettingsViewController.m */; };
 		04B655731962B76E0002E784 /* EBTasksTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B655721962B76E0002E784 /* EBTasksTableViewController.m */; };
@@ -331,6 +338,20 @@
 		049A47561966740B00D363AE /* EBPersonalityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBPersonalityViewController.m; sourceTree = "<group>"; };
 		049A475819667FA000D363AE /* EBPersonalityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBPersonalityTableViewCell.h; sourceTree = "<group>"; };
 		049A475919667FA000D363AE /* EBPersonalityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBPersonalityTableViewCell.m; sourceTree = "<group>"; };
+		049A475C196A5B5800D363AE /* EBUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBUser.h; sourceTree = "<group>"; };
+		049A475D196A5B5800D363AE /* EBUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBUser.m; sourceTree = "<group>"; };
+		049A475F196A5C8500D363AE /* EBBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBBadge.h; sourceTree = "<group>"; };
+		049A4760196A5C8500D363AE /* EBBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBBadge.m; sourceTree = "<group>"; };
+		049A4762196A5E3800D363AE /* EBTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBTask.h; sourceTree = "<group>"; };
+		049A4763196A5E3800D363AE /* EBTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBTask.m; sourceTree = "<group>"; };
+		049A4765196A5E5C00D363AE /* EBInstitution.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBInstitution.h; sourceTree = "<group>"; };
+		049A4766196A5E5C00D363AE /* EBInstitution.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBInstitution.m; sourceTree = "<group>"; };
+		049A4768196A630200D363AE /* EBElection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBElection.h; sourceTree = "<group>"; };
+		049A4769196A630200D363AE /* EBElection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBElection.m; sourceTree = "<group>"; };
+		049A476B196A803F00D363AE /* EBEmailVerificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBEmailVerificationViewController.h; sourceTree = "<group>"; };
+		049A476C196A803F00D363AE /* EBEmailVerificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBEmailVerificationViewController.m; sourceTree = "<group>"; };
+		049A476E196B803E00D363AE /* EBTextFieldMuseo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBTextFieldMuseo.h; sourceTree = "<group>"; };
+		049A476F196B803E00D363AE /* EBTextFieldMuseo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBTextFieldMuseo.m; sourceTree = "<group>"; };
 		04B6556A196109EE0002E784 /* EBBadgeCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBBadgeCollectionViewCell.h; sourceTree = "<group>"; };
 		04B6556B196109EE0002E784 /* EBBadgeCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBBadgeCollectionViewCell.m; sourceTree = "<group>"; };
 		04B6556D196123610002E784 /* EBProfileSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBProfileSettingsViewController.h; sourceTree = "<group>"; };
@@ -691,6 +712,23 @@
 			name = Login;
 			sourceTree = "<group>";
 		};
+		049A475B196A2CF000D363AE /* Model Classes */ = {
+			isa = PBXGroup;
+			children = (
+				049A475C196A5B5800D363AE /* EBUser.h */,
+				049A475D196A5B5800D363AE /* EBUser.m */,
+				049A475F196A5C8500D363AE /* EBBadge.h */,
+				049A4760196A5C8500D363AE /* EBBadge.m */,
+				049A4762196A5E3800D363AE /* EBTask.h */,
+				049A4763196A5E3800D363AE /* EBTask.m */,
+				049A4765196A5E5C00D363AE /* EBInstitution.h */,
+				049A4766196A5E5C00D363AE /* EBInstitution.m */,
+				049A4768196A630200D363AE /* EBElection.h */,
+				049A4769196A630200D363AE /* EBElection.m */,
+			);
+			name = "Model Classes";
+			sourceTree = "<group>";
+		};
 		04B655691961099D0002E784 /* Badges */ = {
 			isa = PBXGroup;
 			children = (
@@ -738,6 +776,8 @@
 				04FD41C31906574900AF17DC /* EBWelcomeViewController.m */,
 				0407973F1940727F0097706C /* EBSignupTermsViewController.h */,
 				040797401940727F0097706C /* EBSignupTermsViewController.m */,
+				049A476B196A803F00D363AE /* EBEmailVerificationViewController.h */,
+				049A476C196A803F00D363AE /* EBEmailVerificationViewController.m */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -838,6 +878,8 @@
 				04EC195F194206150001FF72 /* EBTextViewMuseoLight.m */,
 				048D01C2195BB0A600E878DA /* EBBlurImageView.h */,
 				048D01C3195BB0A600E878DA /* EBBlurImageView.m */,
+				049A476E196B803E00D363AE /* EBTextFieldMuseo.h */,
+				049A476F196B803E00D363AE /* EBTextFieldMuseo.m */,
 			);
 			name = "Custom UI";
 			sourceTree = "<group>";
@@ -922,6 +964,7 @@
 				04BB7047190BE9470059E93C /* Vote */,
 				04BB704F190D22A70059E93C /* Profile */,
 				0493F3D5191F49F600853DBF /* Services */,
+				049A475B196A2CF000D363AE /* Model Classes */,
 				04BB7035190B83AC0059E93C /* Helpers */,
 				04FD418219062ECD00AF17DC /* Supporting Files */,
 				0495C509191B65CC00EAEAB5 /* Test concepts */,
@@ -1187,6 +1230,7 @@
 				04B6556C196109EE0002E784 /* EBBadgeCollectionViewCell.m in Sources */,
 				04EC195A1941B6BC0001FF72 /* EBTextViewGentium.m in Sources */,
 				048D01ED195CFE5500E878DA /* EBTicketsCollectionViewController.m in Sources */,
+				049A4767196A5E5C00D363AE /* EBInstitution.m in Sources */,
 				046D6462192DB28200C354F4 /* EBElectionViewController.m in Sources */,
 				048D01D3195BDC5400E878DA /* EBBadgesCollectionViewController.m in Sources */,
 				04EC197A194989E20001FF72 /* EBFriendsTableViewController.m in Sources */,
@@ -1198,8 +1242,10 @@
 				04EC19571941B4D10001FF72 /* EBLabelHeavy.m in Sources */,
 				04788ECB195A6C0C0015FB06 /* EBOnePixelLine.m in Sources */,
 				0425593C19346DA40030AA0A /* EBCandidateViewController.m in Sources */,
+				049A475E196A5B5800D363AE /* EBUser.m in Sources */,
 				04EC1966194214820001FF72 /* EBElectionPositionsDataSource.m in Sources */,
 				0493F3D4191F49EA00853DBF /* EBImageService.m in Sources */,
+				049A4770196B803E00D363AE /* EBTextFieldMuseo.m in Sources */,
 				049A47571966740B00D363AE /* EBPersonalityViewController.m in Sources */,
 				046D645E192D963400C354F4 /* UIImage+ImageEffects.m in Sources */,
 				04BB702D190891320059E93C /* EBFeedViewController.m in Sources */,
@@ -1215,6 +1261,7 @@
 				04FD418C19062ECD00AF17DC /* EBAppDelegate.m in Sources */,
 				04FD41C41906574900AF17DC /* EBWelcomeViewController.m in Sources */,
 				0495C50C191B661000EAEAB5 /* EBStackLayout.m in Sources */,
+				049A476D196A803F00D363AE /* EBEmailVerificationViewController.m in Sources */,
 				040797441940E5AA0097706C /* EBLabelLight.m in Sources */,
 				04EC19531941B48B0001FF72 /* EBLabelMedium.m in Sources */,
 				046D644F192C3D4000C354F4 /* EBVolunteerTableViewController.m in Sources */,
@@ -1228,6 +1275,7 @@
 				04BB703B190B8F7E0059E93C /* EBStopWatchInt.m in Sources */,
 				04BB705F1911E9430059E93C /* EBFindFriendTableViewCell.m in Sources */,
 				048D01F3195D02B900E878DA /* EBCandidateTableViewController.m in Sources */,
+				049A4764196A5E3800D363AE /* EBTask.m in Sources */,
 				04BB704E190D229D0059E93C /* EBProfileViewController.m in Sources */,
 				049A475A19667FA000D363AE /* EBPersonalityTableViewCell.m in Sources */,
 				04788EC81958076B0015FB06 /* UIImage+ImageWithColor.m in Sources */,
@@ -1243,7 +1291,9 @@
 				04BB7034190B83710059E93C /* EBStopWatch.m in Sources */,
 				04BB703E190BCEB50059E93C /* EBFeedDetailViewController.m in Sources */,
 				04EC197E19498FC20001FF72 /* EBFriendTableViewCell.m in Sources */,
+				049A4761196A5C8500D363AE /* EBBadge.m in Sources */,
 				04EC1960194206150001FF72 /* EBTextViewMuseoLight.m in Sources */,
+				049A476A196A630200D363AE /* EBElection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

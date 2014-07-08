@@ -1,21 +1,20 @@
 //
-//  EBButtonHeavy.m
+//  EBTextFieldMuseo.m
 //  Isegoria
 //
-//  Created by Alan Gao on 26/06/2014.
+//  Created by Alan Gao on 8/07/2014.
 //  Copyright (c) 2014 Eulers Bridge. All rights reserved.
 //
 
-#import "EBButtonHeavy.h"
+#import "EBTextFieldMuseo.h"
 
-@implementation EBButtonHeavy
+@implementation EBTextFieldMuseo
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        self.titleLabel.font = [UIFont fontWithName:@"MuseoSansRounded-700" size:self.titleLabel.font.pointSize];
     }
     return self;
 }
@@ -24,7 +23,7 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        self.titleLabel.font = [UIFont fontWithName:@"MuseoSansRounded-700" size:self.titleLabel.font.pointSize];
+        self.font = [UIFont fontWithName:@"MuseoSansRounded-500" size:self.font.pointSize];
     }
     return self;
 }

@@ -51,8 +51,6 @@
     UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(70, 20, 50, 24)];
     pageControl.numberOfPages = 5;
     pageControl.currentPage = 0;
-//    pageControl.backgroundColor = [UIColor clearColor];
-//    pageControl.tintColor = [UIColor whiteColor];
     pageControl.enabled = NO;
     
     [titleView addSubview:titleLabel];

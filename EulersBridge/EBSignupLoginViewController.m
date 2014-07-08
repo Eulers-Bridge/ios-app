@@ -7,10 +7,14 @@
 //
 
 #import "EBSignupLoginViewController.h"
+#import "EBEmailVerificationViewController.h"
+#import "EBSignupTermsViewController.h"
 #import "UIImage+ImageEffects.h"
 #import "GKImagePicker.h"
+#import "EBNetworkService.h"
+#import "EBUser.h"
 
-@interface EBSignupLoginViewController () <UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate, GKImagePickerDelegate, UINavigationControllerDelegate,UIActionSheetDelegate>
+@interface EBSignupLoginViewController () <UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate, GKImagePickerDelegate, UINavigationControllerDelegate,UIActionSheetDelegate, EBSignupServiceDelegate, EBSignupTermsDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *photoImageView;
@@ -34,6 +38,11 @@
 @property (strong, nonatomic) NSArray *pickerViewCurrentArray;
 
 @property (strong, nonatomic) GKImagePicker *gkImagePicker;
+
+@property (strong, nonatomic) NSString *institutionIdSelected;
+@property (strong, nonatomic) EBNetworkService *networkService;
+@property (strong, nonatomic) EBUser *signupedUser;
+@property BOOL termsAgreed;
 
 @end
 
@@ -60,13 +69,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Font setup
-    self.nameTextField.font = [UIFont fontWithName:@"MuseoSansRounded-500" size:self.nameTextField.font.pointSize];
-    self.emailTextField.font = [UIFont fontWithName:@"MuseoSansRounded-500" size:self.emailTextField.font.pointSize];
-    self.passwordTextField.font = [UIFont fontWithName:@"MuseoSansRounded-500" size:self.passwordTextField.font.pointSize];
-    self.confirmPasswordTextField.font = [UIFont fontWithName:@"MuseoSansRounded-500" size:self.confirmPasswordTextField.font.pointSize];
-    self.countryTextField.font = [UIFont fontWithName:@"MuseoSansRounded-500" size:self.countryTextField.font.pointSize];
-    self.universityTextField.font = [UIFont fontWithName:@"MuseoSansRounded-500" size:self.universityTextField.font.pointSize];
 
     // Image setup
     UIColor *tintColor = [UIColor colorWithRed:51.0/255.0 green:56.0/255.0 blue:69.0/255.0 alpha:0.5];
@@ -83,6 +85,10 @@
                                                                           action:@selector(tapAnywhere)];
     
     [self.view addGestureRecognizer:tap];
+    self.networkService = [[EBNetworkService alloc] init];
+    self.networkService.signupDelegate = self;
+    
+    self.termsAgreed = NO;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -156,6 +162,20 @@
     }
 
 }
+
+- (IBAction)signupAction:(UIBarButtonItem *)sender
+{
+    // Present terms and conditions.
+    EBSignupTermsViewController *termsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TermsViewController"];
+    termsViewController.modalPresentationCapturesStatusBarAppearance = YES;
+    termsViewController.modalPresentationStyle = UIModalTransitionStyleCoverVertical;
+    termsViewController.termsDelegate = self;
+    [self presentViewController:termsViewController animated:YES completion:^{
+        
+    }];
+
+}
+
 
 
 #pragma mark pickerView delegate
@@ -276,21 +296,60 @@
     // Upload the photo
 }
 
+#pragma mark signup delegate
+-(void)signupFinishedWithSuccess:(BOOL)success withUser:(EBUser *)user failureReason:(NSString *)reason
+{
+    // advance to next page or display the error.
+    if (success) {
+        self.signupedUser = user;
+        [self performSegueWithIdentifier:@"SignupAction" sender:self];
+    } else {
+        // Display error reason.
+    }
+}
+
+#pragma mark terms delegate
+-(void)signupTermsAgreed:(BOOL)agreed
+{
+    if (agreed) {
+        self.termsAgreed = YES;
+        [self dismissViewControllerAnimated:YES completion:^{
+            [self verifyFieldsAndSignup];
+        }];
+        
+    } else {
+        self.termsAgreed = NO;
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
+- (void)verifyFieldsAndSignup
+{
+    // Verify the fields.
+    [self.networkService signupWithEmailAddress:self.emailTextField.text
+                                       password:self.passwordTextField.text
+                                           name:self.nameTextField.text
+                                  institutionId:self.institutionIdSelected];
+    // Set the spinning wheel or equivelent.
+
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"SignupAction"]) {
+        EBEmailVerificationViewController *emailVerificationViewController = (EBEmailVerificationViewController *)[segue destinationViewController];
+        emailVerificationViewController.user = self.signupedUser;
+    }
 }
-*/
 
 @end

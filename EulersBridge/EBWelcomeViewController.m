@@ -37,11 +37,6 @@
 {
     [super viewDidLoad];
     // Font setup
-    self.titleLabel.font = [UIFont fontWithName:@"MuseoSansRounded-300" size:self.titleLabel.font.pointSize];
-    self.loginButton.titleLabel.font = [UIFont fontWithName:@"MuseoSansRounded-700" size:self.loginButton.titleLabel.font.pointSize];
-    self.signupButton.titleLabel.font = [UIFont fontWithName:@"MuseoSansRounded-700" size:self.signupButton.titleLabel.font.pointSize];
-    self.emailTextField.font = [UIFont fontWithName:@"MuseoSansRounded-500" size:self.emailTextField.font.pointSize];
-    self.passwordTextField.font = [UIFont fontWithName:@"MuseoSansRounded-500" size:self.passwordTextField.font.pointSize];
     self.learnMoreButton.titleLabel.font = [UIFont fontWithName:@"MuseoSansRounded-500" size:self.learnMoreButton.titleLabel.font.pointSize];
 
     

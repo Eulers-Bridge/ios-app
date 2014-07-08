@@ -10,7 +10,7 @@
 #import "MyConstants.h"
 #import "GKImagePicker.h"
 
-@interface EBProfileSettingsViewController () <GKImagePickerDelegate>
+@interface EBProfileSettingsViewController () <GKImagePickerDelegate, UIActionSheetDelegate>
 
 @property (strong, nonatomic) GKImagePicker *gkImagePicker;
 @property EBProfilePhotoType changeProfilePhotoType;
@@ -60,6 +60,11 @@
     [self showPicker:sender];
 }
 
+- (IBAction)logoutAction:(UIBarButtonItem *)sender
+{
+    [[[UIActionSheet alloc] initWithTitle:@"Are you sure to log out?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Log out" otherButtonTitles:nil, nil] showFromTabBar:self.tabBarController.tabBar];
+}
+
 #pragma image picker
 
 - (void)showPicker:(UIButton *)sender {
@@ -83,6 +88,15 @@
     NSUInteger imageSize = imageData.length;
     NSLog(@"SIZE OF IMAGE: %lu ", (unsigned long)imageSize);
     // Upload the photo
+}
+
+#pragma mark action sheet delegate
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
+        window.rootViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"loginView"];
+    }
 }
 
 /*
