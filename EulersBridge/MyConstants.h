@@ -41,6 +41,19 @@
 #define ISEGORIA_COLOR_GREEN [UIColor colorWithRed:76.0/255.0 green:217.0/255.0 blue:100.0/255.0 alpha:1.0]
 #define ONE_PIXEL_GREY [UIColor colorWithRed:212.0/255.0 green:212.0/255.0 blue:212.0/255.0 alpha:1.0]
 #define PERSONALITY_LABEL_GREY [UIColor colorWithRed:199.0/255.0 green:199.0/255.0 blue:204.0/255.0 alpha:1.0]
+#define ISEGORIA_DARK_GREY [UIColor colorWithRed:49.0/255.0 green:62.0/255.0 blue:77.0/255.0 alpha:1.0]
+#define ISEGORIA_LIGHT_GREY [UIColor colorWithRed:134.0/255.0 green:148.0/255.0 blue:163.0/255.0 alpha:1.0]
+#define ISEGORIA_ULTRA_LIGHT_GREY [UIColor colorWithRed:249.0/255.0 green:249.0/255.0 blue:249.0/255.0 alpha:1.0]
+#define ISEGORIA_BORDER_GREY [UIColor colorWithRed:199.0/255.0 green:199.0/255.0 blue:204.0/255.0 alpha:1.0]
+
+#define ISEGORIA_CELL_MASK_GREY [UIColor colorWithRed:49.0/255.0 green:62.0/255.0 blue:77.0/255.0 alpha:1.0]
+#define ISEGORIA_TEXT_BODY_GREY [UIColor colorWithRed:49.0/255.0 green:62.0/255.0 blue:77.0/255.0 alpha:1.0]
+
+typedef NS_ENUM(NSInteger, EBFeedCellType) {
+    EBFeedCellTypeSquare,
+    EBFeedCellTypeLarge,
+    EBFeedCellTypeSmall
+};
 
 typedef NS_ENUM(NSInteger, EBFeedDetail) {
     EBFeedDetailNews,

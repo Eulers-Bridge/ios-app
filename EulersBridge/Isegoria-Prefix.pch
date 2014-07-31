@@ -16,10 +16,12 @@
     #import "EBLabelLight.h"
     #import "EBLabelMedium.h"
     #import "EBLabelHeavy.h"
-    #import "EBTextViewMuseoLight.h"
+    #import "EBTextViewMuseoLightBody.h"
     #import "EBButton.h"
     #import "EBButtonRounded.h"
     #import "EBButtonRoundedHeavy.h"
     #import "EBOnePixelLine.h"
     #import "EBButtonHeavy.h"
+    #import "EBTextFieldMuseo.h"
+    #import "EBTextViewMuseoMedium.h"
 #endif

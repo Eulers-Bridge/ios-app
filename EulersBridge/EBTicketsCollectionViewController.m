@@ -9,6 +9,7 @@
 #import "EBTicketsCollectionViewController.h"
 #import "EBTicketCollectionViewCell.h"
 #import "EBTicketProfileViewController.h"
+#import "MyConstants.h"
 
 @interface EBTicketsCollectionViewController ()
 
@@ -30,37 +31,37 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.tickets = @[@{@"id": @"0",
-                       @"title": @"Stand Up!",
+                       @"title": @"Greens Students",
                        @"supporters": @"890",
                        @"colorRGB": @{@"R": @"255",
                                       @"G": @"59",
                                       @"B": @"48"}},
                      @{@"id": @"1",
-                       @"title": @"Activate",
+                       @"title": @"Liberty",
                        @"supporters": @"560",
                        @"colorRGB": @{@"R": @"82",
                                       @"G": @"128",
                                       @"B": @"213"}},
                      @{@"id": @"2",
-                       @"title": @"More Activities!",
+                       @"title": @"STAR",
                        @"supporters": @"480",
                        @"colorRGB": @{@"R": @"245",
                                       @"G": @"166",
                                       @"B": @"35"}},
                      @{@"id": @"3",
-                       @"title": @"Change.",
+                       @"title": @"Young Labor",
                        @"supporters": @"690",
                        @"colorRGB": @{@"R": @"76",
                                       @"G": @"217",
                                       @"B": @"100"}},
                      @{@"id": @"4",
-                       @"title": @"Indepnedent Media",
+                       @"title": @"Young Liberal",
                        @"supporters": @"520",
                        @"colorRGB": @{@"R": @"121",
                                       @"G": @"121",
                                       @"B": @"144"}},
                      @{@"id": @"5",
-                       @"title": @"F*ck the Cuts",
+                       @"title": @"Socialist Alternative",
                        @"supporters": @"390",
                        @"colorRGB": @{@"R": @"62",
                                       @"G": @"90",
@@ -98,7 +99,11 @@
     CGFloat blue = [color[@"B"] floatValue];
     UIColor *backColor = [UIColor colorWithRed:red/255.0 green:green/255.0 blue:blue/255.0 alpha:1.0];
 //    cell.backView.backgroundColor = [UIColor colorWithRed:red green:green blue:blue alpha:1.0];
-    cell.backView.backgroundColor = backColor;
+    cell.backView.backgroundColor = ISEGORIA_ULTRA_LIGHT_GREY;
+    cell.layer.borderWidth = 1.0;
+    cell.layer.borderColor = [backColor CGColor];
+    cell.titleLabel.textColor = ISEGORIA_DARK_GREY;
+    cell.subtitleLabel.textColor = backColor;
     cell.ticketData = self.tickets[indexPath.item];
     return cell;
 }

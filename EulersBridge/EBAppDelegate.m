@@ -7,6 +7,7 @@
 //
 
 #import "EBAppDelegate.h"
+#import "AFNetworkActivityIndicatorManager.h"
 
 @implementation EBAppDelegate
 
@@ -14,38 +15,36 @@
 {
     // Override point for customization after application launch.
     // Set Global tint color
-    self.window.tintColor = [UIColor colorWithRed:82.0/255.0 green:128.0/255.0 blue:213.0/255.0 alpha:1.0];
+    self.window.tintColor = [UIColor colorWithRed:74.0/255.0 green:144.0/255.0 blue:226.0/255.0 alpha:1.0];
     self.window.rootViewController = [self.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"loginView"];
 
         
     
     // Set tint color
-    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0]];
+    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:179.0/255.0 green:214.0/255.0 blue:255.0/255.0 alpha:1.0]];
 //    [[UIToolbar appearance] setTintColor:[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0]];
     
     // Set Top bar background color.
-    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:82/255.0 green:128.0/255.0 blue:213/255.0 alpha:1.0]];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:47.0/255.0 green:123.0/255.0 blue:212.0/255.0 alpha:1.0]];
 //    [[UIToolbar appearance] setBarTintColor:[UIColor colorWithRed:51.0/255.0 green:56.0/255.0 blue:69.0/255.0 alpha:1.0]];
     
     // Set Nav bar title color and font.
-    UIFont *navBarFont = [UIFont fontWithName:@"MuseoSansRounded-700" size:17.0];
+    UIFont *navBarFont = [UIFont fontWithName:@"MuseoSansRounded-500" size:17.0];
     NSDictionary *navBarAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor],
                                        NSFontAttributeName: navBarFont};
     
     // Back button font
+    UIFont *navBarBackButtonFont = [UIFont fontWithName:@"MuseoSansRounded-300" size:17.0];
     [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTitleTextAttributes:
-     @{NSFontAttributeName:navBarFont} forState:UIControlStateNormal];
+     @{NSFontAttributeName:navBarBackButtonFont} forState:UIControlStateNormal];
     
     [[UINavigationBar appearance] setTitleTextAttributes:navBarAttributes];
     
     // Status bar
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-
-    // UI label
-//    [[UILabel appearance] setFont:[UIFont fontWithName:@"MuseoSansRounded-500" size:10.0]];
     
     // Segmented control
-    UIFont *font = [UIFont fontWithName:@"MuseoSansRounded-700" size:14.0];
+    UIFont *font = [UIFont fontWithName:@"MuseoSansRounded-500" size:14.0];
     NSDictionary *attributes = [NSDictionary dictionaryWithObject:font
                                                            forKey:NSFontAttributeName];
     [[UISegmentedControl appearance] setTitleTextAttributes:attributes
@@ -58,6 +57,8 @@
     [[UITabBarItem appearance] setTitleTextAttributes:tabBarAttributes
                                                    forState:UIControlStateNormal];
     
+    // Enable network activity indicator
+    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     
     return YES;
 }

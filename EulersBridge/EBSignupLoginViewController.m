@@ -166,13 +166,15 @@
 - (IBAction)signupAction:(UIBarButtonItem *)sender
 {
     // Present terms and conditions.
-    EBSignupTermsViewController *termsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TermsViewController"];
-    termsViewController.modalPresentationCapturesStatusBarAppearance = YES;
-    termsViewController.modalPresentationStyle = UIModalTransitionStyleCoverVertical;
-    termsViewController.termsDelegate = self;
-    [self presentViewController:termsViewController animated:YES completion:^{
-        
-    }];
+    if (self.termsAgreed) {
+        [self verifyFieldsAndSignup];
+    } else {
+        EBSignupTermsViewController *termsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TermsViewController"];
+        termsViewController.modalPresentationCapturesStatusBarAppearance = YES;
+        termsViewController.modalPresentationStyle = UIModalTransitionStyleCoverVertical;
+        termsViewController.termsDelegate = self;
+        [self presentViewController:termsViewController animated:YES completion:nil];
+    }
 
 }
 

@@ -26,8 +26,8 @@
                              @"title": @"Women’s Officer",
                              @"description": @"The Women’s officer tends to the needs of the female-gendered."},
                            @{@"id": @"3",
-                             @"title": @"Queer Officer",
-                             @"description": @"The Queer officer looks out for the LGBT community at The University of Melbourne."},
+                             @"title": @"LGBT Officer",
+                             @"description": @"The LGBT officer looks out for the LGBT community at The University of Melbourne."},
                            @{@"id": @"4",
                              @"title": @"Clubs and Societies",
                              @"description": @"Responsible for managing the large number of clubs and societies at The University of Melbourne."},
@@ -61,7 +61,8 @@
              @"title": self.positions[indexPath.item][@"title"],
              @"id": self.positions[indexPath.item][@"id"],
              @"date": @"",
-             @"priority": @(0)};
+             @"priority": @(0),
+             @"hasImage": @"true"};
     
 
     cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"FeedCell" forIndexPath:indexPath];

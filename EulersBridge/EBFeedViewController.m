@@ -23,6 +23,7 @@
 @property (strong, nonatomic) NSArray *newsList;
 @property (strong, nonatomic) NSArray *newsDataList;
 @property (strong, nonatomic) NSArray *eventDataList;
+@property (strong, nonatomic) NSArray *photoDataList;
 
 
 @end
@@ -59,9 +60,9 @@
     [self.newsCollectionView addSubview:refreshControl];
     [self.eventsCollectionView addSubview:refreshControl];
     [self.photosCollectionView addSubview:refreshControl];
-    self.eventsCollectionView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
-    self.newsCollectionView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
-    self.photosCollectionView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
+    self.eventsCollectionView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0);
+    self.newsCollectionView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0);
+    self.photosCollectionView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0);
     
 //    [self fetchDataNews:nil];
     self.sampleDates = @[@"Yesterday, 9:00 AM",
@@ -69,6 +70,44 @@
                          @"Wednesday, 2:00 PM",
                          @"2nd May 2014, 8:00 AM",
                          @"28th April 2014, 10:00AM"];
+    self.photoDataList = @[@{@"title": @"Baillieu Library Refurbishment Unveiling",
+                             @"numberOfPhotos": @"20",
+                             @"date": @"28th April 2014, 10:00AM",
+                             @"prefix": @"bl"},
+                           @{@"title": @"Cocktail Party Numero Uno",
+                             @"numberOfPhotos": @"30",
+                             @"date": @"2nd May 2014, 8:00 AM",
+                             @"prefix": @"Num"},
+                           @{@"title": @"Head of the Yarra",
+                             @"numberOfPhotos": @"41",
+                             @"date": @"28th April 2014, 10:00AM",
+                             @"prefix": @"yarra"},
+                           @{@"title": @"Clubs & Societies Day Rocks!",
+                             @"numberOfPhotos": @"37",
+                             @"date": @"28th April 2014, 10:00AM",
+                             @"prefix": @"Club"},
+                           @{@"title": @"Clive Palmer Press Conference",
+                             @"numberOfPhotos": @"24",
+                             @"date": @"Wednesday, 2:00 PM",
+                             @"prefix": @"cp"},
+                           @{@"title": @"Slam Dunk Festival 2014",
+                             @"numberOfPhotos": @"33",
+                             @"date": @"28th April 2014, 10:00AM",
+                             @"prefix": @"slam"},
+                           @{@"title": @" Coffee at Lakeside Restaurant",
+                             @"numberOfPhotos": @"20",
+                             @"date": @"2nd May 2014, 8:00 AM",
+                             @"prefix": @"lake"},
+                           @{@"title": @"Flirt",
+                             @"numberOfPhotos": @"30",
+                             @"date": @"28th April 2014, 10:00AM",
+                             @"prefix": @"Flirt"},
+                           @{@"title": @"Polling Day",
+                             @"numberOfPhotos": @"20",
+                             @"date": @"28th April 2014, 10:00AM",
+                             @"prefix": @"poll"},
+                           
+                           ];
     [self setupSampleData];
 
 
@@ -97,7 +136,7 @@
     } else if (collectionView == self.eventsCollectionView) {
         return 8;
     } else if (collectionView == self.photosCollectionView) {
-        return 15;
+        return 9;
     }
     return 0;
 }
@@ -111,9 +150,13 @@
     } else if (collectionView == self.eventsCollectionView) {
         dict = self.eventDataList[indexPath.item];
     } else if (collectionView == self.photosCollectionView) {
-        dict = @{@"imageName": [NSString stringWithFormat:@"photo%ld.jpg", (long)indexPath.item],
-                 @"title": @"",
-                 @"date": @""};
+        NSString *subtitle = [NSString stringWithFormat:@"%d photos - %@", [self.photoDataList[indexPath.item][@"numberOfPhotos"] intValue], self.photoDataList[indexPath.item][@"date"]];
+        dict = @{@"imageName": [NSString stringWithFormat:@"idx%ld.jpg", (long)indexPath.item + 1],
+                 @"title": self.photoDataList[indexPath.item][@"title"],
+                 @"date": subtitle,
+                 @"numberOfPhotos": self.photoDataList[indexPath.item][@"numberOfPhotos"],
+                 @"prefix": self.photoDataList[indexPath.item][@"prefix"],
+                 @"hasImage": @"true"};
     }
 
     int priority = [dict[@"priority"] intValue];
@@ -122,8 +165,26 @@
     
     if (priority == 1) {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"FeedCellLarge" forIndexPath:indexPath];
+        cell.feedCellType = EBFeedCellTypeLarge;
+    } else if (collectionView == self.photosCollectionView) {
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"FeedCellSmall" forIndexPath:indexPath];
+        cell.feedCellType = EBFeedCellTypeSmall;
     } else {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"FeedCell" forIndexPath:indexPath];
+        cell.feedCellType = EBFeedCellTypeSquare;
+    }
+    
+    // Sample no image
+    if (indexPath.item == 3 && collectionView != self.photosCollectionView) {
+        NSMutableDictionary *mutableDict = [dict mutableCopy];
+        [mutableDict setObject:@"false" forKey:@"hasImage"];
+        dict = [mutableDict copy];
+    }
+    
+    // Sample large photo cell
+    if (indexPath.item == 4 && collectionView == self.photosCollectionView) {
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"FeedCellLarge" forIndexPath:indexPath];
+        cell.feedCellType = EBFeedCellTypeLarge;
     }
 
     
@@ -135,6 +196,7 @@
 //    cell.data = [dict copy];
     cell.layer.shouldRasterize = YES;
     cell.layer.rasterizationScale = [UIScreen mainScreen].scale;
+    cell.index = indexPath.item;
     [cell setup];
     
     
@@ -146,7 +208,11 @@
     if (collectionView == self.eventsCollectionView) {
         return CGSizeMake(307.0, 150.0);
     } else if (collectionView == self.photosCollectionView) {
-        return CGSizeMake(150.0, 150.0);
+        if (indexPath.item == 4) {
+            return CGSizeMake(307.0, 150.0);
+        } else {
+            return CGSizeMake(307.0, 50.0);
+        }
     } else {
         return indexPath.item % 3 == 0 ? CGSizeMake(307.0, 150.0) : CGSizeMake(150.0, 150.0);
     }
@@ -231,6 +297,9 @@
         [[segue destinationViewController] setFeedDetailType:EBFeedDetailNews];
     } else if ([segue.identifier isEqualToString:@"showEventDetail"]) {
         [[segue destinationViewController] setFeedDetailType:EBFeedDetailEvent];
+    } else if ([segue.identifier isEqualToString:@"showPhotoCollection"]) {
+        [[segue destinationViewController] setFeedDetailType:EBFeedDetailPhoto];
+        [[segue destinationViewController] setIndex:[sender index]];
     }
     [[segue destinationViewController] setData:[sender data]];
 }
@@ -260,6 +329,7 @@
         NSDictionary *data = @{@"priority"   : @(i % 3 == 0 ? 1 : 0),
                                @"title"      : newsTitleArray[i],
                                @"date"       : self.sampleDates[i%5],
+                               @"hasImage"   : @"true",
                                @"imageName"  : [NSString stringWithFormat:@"%@%ld.jpg", @"news", (long)i],
                                @"article"    : content
                                };
@@ -291,6 +361,7 @@
         NSDictionary *data = @{@"priority"   : @(1),
                                @"title"      : eventsTitleArray[i],
                                @"date"       : self.sampleDates[i%5],
+                               @"hasImage"   : @"true",
                                @"imageName"  : [NSString stringWithFormat:@"%@%ld.jpg", @"event", (long)i],
                                @"article"    : content
                                };

@@ -10,6 +10,6 @@
 
 @interface EBElectionPositionDetailViewController : UIViewController
 @property (weak, nonatomic) IBOutlet EBLabelHeavy *titleLabel;
-@property (weak, nonatomic) IBOutlet EBTextViewMuseoLight *descriptionTextView;
+@property (weak, nonatomic) IBOutlet EBTextViewMuseoLightBody *descriptionTextView;
 @property (strong, nonatomic) NSDictionary *data;
 @end

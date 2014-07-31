@@ -53,8 +53,8 @@
     // Setup the mask
     CAGradientLayer *gradient = [CAGradientLayer layer];
     gradient.frame = self.imageView.bounds;
-    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithWhite:0.0 alpha:1.0] CGColor], (id)[[UIColor colorWithWhite:0.0 alpha:0.2] CGColor], nil];
-    gradient.locations = @[@(0.35), @(1.0)];
+    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithWhite:0.0 alpha:0.35] CGColor], (id)[[UIColor colorWithWhite:0.0 alpha:0.35] CGColor], nil];
+    gradient.locations = @[@(0.0), @(1.0)];
     self.imageView.layer.mask = gradient;
     
     // Setup Font

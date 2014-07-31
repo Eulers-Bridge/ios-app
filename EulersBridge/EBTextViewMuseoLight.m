@@ -1,8 +1,8 @@
 //
-//  EBTextViewLight.m
+//  EBTextViewMuseoLight.m
 //  Isegoria
 //
-//  Created by Alan Gao on 6/06/2014.
+//  Created by Alan Gao on 29/07/2014.
 //  Copyright (c) 2014 Eulers Bridge. All rights reserved.
 //
 
@@ -23,7 +23,7 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        self.font = [UIFont fontWithName:@"MuseoSansRounded-500" size:self.font.pointSize];
+        self.font = [UIFont fontWithName:@"MuseoSansRounded-300" size:self.font.pointSize];
     }
     return self;
 }

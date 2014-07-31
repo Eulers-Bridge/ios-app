@@ -45,7 +45,7 @@
     UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(50, 0, 200, 44)];
     EBLabelHeavy *titleLabel = [[EBLabelHeavy alloc] initWithFrame:CGRectMake(0, 5, 200, 20)];
     titleLabel.textColor = [UIColor whiteColor];
-    titleLabel.text = @"Personality Questions";
+    titleLabel.text = @"Current Polls";
     titleLabel.textAlignment = NSTextAlignmentCenter;
     
     UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(70, 20, 50, 24)];
@@ -80,11 +80,11 @@
     int index = 0;
     NSMutableArray *viewControllers = [NSMutableArray arrayWithCapacity:self.maxPoll];
     
-    EBPersonalityViewController *personalityViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PersonalityViewController"];
-    personalityViewController.pageIndex = 0;
-    [viewControllers addObject:personalityViewController];
+//    EBPersonalityViewController *personalityViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PersonalityViewController"];
+//    personalityViewController.pageIndex = 0;
+//    [viewControllers addObject:personalityViewController];
     
-    for (index = 1; index < self.maxPoll; index += 1) {
+    for (index = 0; index < self.maxPoll; index += 1) {
         EBPollContentViewController *pollContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PollContentViewController"];
         pollContentViewController.pageIndex = index;
 //        pollContentViewController.pageNumberLabel.text = [NSString stringWithFormat:@"Page: %d", index];

@@ -10,11 +10,11 @@
 
 @interface EBPollAnswerTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIView *progressViewFrame;
 @property (weak, nonatomic) IBOutlet UIView *progressView;
-@property (weak, nonatomic) IBOutlet UIView *colorView;
 @property (weak, nonatomic) IBOutlet EBLabelMedium *answerTitleLabel;
-@property (weak, nonatomic) IBOutlet EBLabelMedium *answerSubtitleLabel;
 @property (weak, nonatomic) IBOutlet EBLabelHeavy *resultNumberLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *tickImageView;
 
 @property (strong, nonatomic) NSDictionary *result;
 @property (strong, nonatomic) NSDictionary *answer;

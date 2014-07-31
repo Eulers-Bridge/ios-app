@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MyConstants.h"
 
 @interface EBFeedCollectionViewCell : UICollectionViewCell
 
@@ -15,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (strong, nonatomic) NSDictionary *data;
 @property NSUInteger index;
+@property EBFeedCellType feedCellType;
 - (void)setup;
 
 

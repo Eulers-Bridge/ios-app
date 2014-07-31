@@ -36,6 +36,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.nameLabel.text = self.ticketData[@"title"];
+    self.backgroundPhoto.image = [UIImage imageNamed:@"Ticket Background"];
+    self.profilePhoto.image = [UIImage imageNamed:[NSString stringWithFormat:@"ticketicon%d", [self.ticketData[@"id"] intValue]]];
 }
 
 - (void)didReceiveMemoryWarning

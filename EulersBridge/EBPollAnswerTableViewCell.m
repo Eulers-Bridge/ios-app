@@ -27,11 +27,16 @@
 
 - (void)showResult
 {
+    if (self.voted) {
+        self.tickImageView.image = [UIImage imageNamed:@"Tick"];
+    } else {
+        self.tickImageView.image = [UIImage imageNamed:@"Tick Disabled"];
+    }
     double votes = [self.result[@"votes"] doubleValue] + (self.voted ? 1 : 0);
     double totalVotes = [self.result[@"totalVotes"] doubleValue] + (self.voted ? 1 : 0);
     CGFloat percentage = votes/totalVotes;
  
-    CGFloat width = percentage * 320;
+    CGFloat width = percentage * self.progressViewFrame.bounds.size.width;
     
     [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         CGRect frame = self.progressView.frame;
@@ -63,12 +68,10 @@
 - (void)refreshData
 {
     self.answerTitleLabel.text = self.answer[@"title"];
-    self.answerSubtitleLabel.text = self.answer[@"subtitle"];
+    self.progressViewFrame.backgroundColor = [UIColor clearColor];
+    self.progressViewFrame.layer.borderWidth = 1.0;
+    self.progressViewFrame.layer.borderColor = [self.baseColor CGColor];
     self.progressView.backgroundColor = self.baseColor;
-    self.colorView.backgroundColor = self.baseColor;
-    self.answerTitleLabel.textColor = self.baseColor;
-    self.answerSubtitleLabel.textColor = self.baseColor;
-    self.resultNumberLabel.backgroundColor = self.baseColor;
     
 }
 

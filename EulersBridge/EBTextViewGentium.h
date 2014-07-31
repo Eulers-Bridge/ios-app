@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EBTextViewGentium : UITextView
+@interface EBTextViewGentium : UITextView <NSLayoutManagerDelegate>
 
 @end
