@@ -71,8 +71,8 @@
     self.actionButton.layer.borderColor = [UIColor whiteColor].CGColor;
     
     // Image setup
-    self.profileImageView.image = [UIImage imageNamed:@"selfHead.jpg"];
-    self.imageView.image = [UIImage imageNamed:@"selfHeadBig.jpg"];
+    self.profileImageView.image = [UIImage imageNamed:@"julia-gillard-data.jpg"];
+    self.imageView.image = [UIImage imageNamed:@"julia-gillard-data.jpg"];
     self.scrollView.contentSize = CGSizeMake(WIDTH_OF_SCREEN, 665.0);
     
 }

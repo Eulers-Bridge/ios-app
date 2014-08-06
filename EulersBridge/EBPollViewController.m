@@ -14,7 +14,7 @@
 
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 @property (strong, nonatomic) NSArray *contentViewControllers;
-@property (strong, nonatomic) EBLabelHeavy *titleLabel;
+@property (strong, nonatomic) EBLabelMedium *titleLabel;
 @property (strong, nonatomic) UIPageControl *titlePageControl;
 @property int maxPoll;
 @property int nextViewControllerIndex;
@@ -34,7 +34,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0]];
+//    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0]];
     self.maxPoll = 5;
     self.nextViewControllerIndex = 0;
     
@@ -43,7 +43,7 @@
     self.pageViewController.delegate = self;
     
     UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(50, 0, 200, 44)];
-    EBLabelHeavy *titleLabel = [[EBLabelHeavy alloc] initWithFrame:CGRectMake(0, 5, 200, 20)];
+    EBLabelMedium *titleLabel = [[EBLabelMedium alloc] initWithFrame:CGRectMake(0, 5, 200, 20)];
     titleLabel.textColor = [UIColor whiteColor];
     titleLabel.text = @"Current Polls";
     titleLabel.textAlignment = NSTextAlignmentCenter;

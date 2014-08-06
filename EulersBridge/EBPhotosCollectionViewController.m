@@ -48,7 +48,15 @@
     
     NSString *imageName = [NSString stringWithFormat:@"%@%ld.jpg",self.data[@"prefix"], (long)indexPath.item + 1];
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 78, 78)];
-    imageView.image = [UIImage imageNamed:imageName];
+    
+    dispatch_queue_t imageReader = dispatch_queue_create("Image Reader", NULL);
+    dispatch_async(imageReader, ^{
+        UIImage *image = [UIImage imageNamed:imageName]; // may take time to load
+        dispatch_async(dispatch_get_main_queue(), ^{
+            imageView.image = image;
+        });
+    });
+    
     imageView.contentMode = UIViewContentModeScaleAspectFill;
     imageView.backgroundColor = [UIColor whiteColor];
     [cell.contentView addSubview:imageView];
@@ -72,11 +80,11 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"showFullImage"]) {
-        NSString *imageName = [NSString stringWithFormat:@"%@%ld.jpg",self.data[@"prefix"], (long)[self.collectionView indexPathForCell:sender].item + 1];
         
         EBPhotoDetailViewController *photovc = (EBPhotoDetailViewController *)segue.destinationViewController;
-        photovc.imageName = imageName;
+        photovc.index = [self.collectionView indexPathForCell:sender].item;
         photovc.titleName = self.data[@"title"];
+        photovc.data = self.data;
     }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.

@@ -32,8 +32,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.imageView.image = [UIImage imageNamed:@"selfHeadBig.jpg"];
-    self.profileImageView.image = [UIImage imageNamed:@"selfHead.jpg"];
+    self.imageView.image = [UIImage imageNamed:@"julia-gillard-data.jpg"];
+    self.profileImageView.image = [UIImage imageNamed:@"julia-gillard-data.jpg"];
 }
 
 -(void)viewWillAppear:(BOOL)animated

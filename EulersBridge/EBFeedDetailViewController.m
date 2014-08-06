@@ -109,7 +109,7 @@
     self.authorImageView.layer.cornerRadius = 12;
     self.textView.text = self.data[@"article"];
     self.likes = 205;
-    self.likesLabel.text = [NSString stringWithFormat:@"%d Likes", self.likes];
+    self.likesLabel.text = [NSString stringWithFormat:@"%d", self.likes];
 }
 
 - (void)setupEvent
@@ -235,9 +235,12 @@
 {
     [sender setSelected:!sender.selected];
     self.likes += (sender.selected?1:-1);
-    self.likesLabel.text = [NSString stringWithFormat:@"%d Likes", self.likes];
+    self.likesLabel.text = [NSString stringWithFormat:@"%d", self.likes];
 }
 
+- (IBAction)flag:(UIButton *)sender {
+    [sender setSelected:!sender.selected];
+}
 
 
 #pragma mark Scroll View Delegate
