@@ -16,6 +16,9 @@
 		042559331931C9FD0030AA0A /* Sentinel-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 042559321931C9FD0030AA0A /* Sentinel-Book.otf */; };
 		0425593C19346DA40030AA0A /* EBCandidateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0425593B19346DA40030AA0A /* EBCandidateViewController.m */; };
 		0425593F1935D6970030AA0A /* CALayer+XibConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0425593E1935D6970030AA0A /* CALayer+XibConfiguration.m */; };
+		04428E141998CE450061E2C5 /* EBSlidersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04428E131998CE450061E2C5 /* EBSlidersViewController.m */; };
+		04428E171999B8370061E2C5 /* EBPersonalitySlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 04428E161999B8370061E2C5 /* EBPersonalitySlider.m */; };
+		04428E1A199C6F5B0061E2C5 /* EBSliderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04428E19199C6F5B0061E2C5 /* EBSliderTableViewCell.m */; };
 		044BB0E91989DA6F00E0180F /* EBPhotosCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 044BB0E81989DA6F00E0180F /* EBPhotosCollectionViewController.m */; };
 		044BB0ED1989E89300E0180F /* EBPhotosHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 044BB0EC1989E89300E0180F /* EBPhotosHeaderView.m */; };
 		044BB0F01989F16C00E0180F /* EBPhotoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 044BB0EF1989F16C00E0180F /* EBPhotoDetailViewController.m */; };
@@ -500,6 +503,12 @@
 		0425593B19346DA40030AA0A /* EBCandidateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBCandidateViewController.m; sourceTree = "<group>"; };
 		0425593D1935D6970030AA0A /* CALayer+XibConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+XibConfiguration.h"; sourceTree = "<group>"; };
 		0425593E1935D6970030AA0A /* CALayer+XibConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+XibConfiguration.m"; sourceTree = "<group>"; };
+		04428E121998CE450061E2C5 /* EBSlidersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBSlidersViewController.h; sourceTree = "<group>"; };
+		04428E131998CE450061E2C5 /* EBSlidersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBSlidersViewController.m; sourceTree = "<group>"; };
+		04428E151999B8370061E2C5 /* EBPersonalitySlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBPersonalitySlider.h; sourceTree = "<group>"; };
+		04428E161999B8370061E2C5 /* EBPersonalitySlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBPersonalitySlider.m; sourceTree = "<group>"; };
+		04428E18199C6F5B0061E2C5 /* EBSliderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBSliderTableViewCell.h; sourceTree = "<group>"; };
+		04428E19199C6F5B0061E2C5 /* EBSliderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBSliderTableViewCell.m; sourceTree = "<group>"; };
 		044BB0E71989DA6F00E0180F /* EBPhotosCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBPhotosCollectionViewController.h; sourceTree = "<group>"; };
 		044BB0E81989DA6F00E0180F /* EBPhotosCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBPhotosCollectionViewController.m; sourceTree = "<group>"; };
 		044BB0EB1989E89300E0180F /* EBPhotosHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBPhotosHeaderView.h; sourceTree = "<group>"; };
@@ -1427,6 +1436,10 @@
 				040797401940727F0097706C /* EBSignupTermsViewController.m */,
 				049A476B196A803F00D363AE /* EBEmailVerificationViewController.h */,
 				049A476C196A803F00D363AE /* EBEmailVerificationViewController.m */,
+				04428E121998CE450061E2C5 /* EBSlidersViewController.h */,
+				04428E131998CE450061E2C5 /* EBSlidersViewController.m */,
+				04428E18199C6F5B0061E2C5 /* EBSliderTableViewCell.h */,
+				04428E19199C6F5B0061E2C5 /* EBSliderTableViewCell.m */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -1843,6 +1856,8 @@
 		04EC19541941B49B0001FF72 /* Custom UI */ = {
 			isa = PBXGroup;
 			children = (
+				04428E151999B8370061E2C5 /* EBPersonalitySlider.h */,
+				04428E161999B8370061E2C5 /* EBPersonalitySlider.m */,
 				04788EC9195A6C0C0015FB06 /* EBOnePixelLine.h */,
 				04788ECA195A6C0C0015FB06 /* EBOnePixelLine.m */,
 				048D01C5195BB6C900E878DA /* EBButtonHeavy.h */,
@@ -2522,6 +2537,7 @@
 				049A475E196A5B5800D363AE /* EBUser.m in Sources */,
 				04EC1966194214820001FF72 /* EBElectionPositionsDataSource.m in Sources */,
 				0493F3D4191F49EA00853DBF /* EBImageService.m in Sources */,
+				04428E171999B8370061E2C5 /* EBPersonalitySlider.m in Sources */,
 				049A4770196B803E00D363AE /* EBTextFieldMuseo.m in Sources */,
 				049A47571966740B00D363AE /* EBPersonalityViewController.m in Sources */,
 				046D645E192D963400C354F4 /* UIImage+ImageEffects.m in Sources */,
@@ -2555,11 +2571,13 @@
 				04EC197319488A730001FF72 /* EBButtonRoundedHeavy.m in Sources */,
 				04B655731962B76E0002E784 /* EBTasksTableViewController.m in Sources */,
 				044BB0F01989F16C00E0180F /* EBPhotoDetailViewController.m in Sources */,
+				04428E1A199C6F5B0061E2C5 /* EBSliderTableViewCell.m in Sources */,
 				04BB703B190B8F7E0059E93C /* EBStopWatchInt.m in Sources */,
 				04BB705F1911E9430059E93C /* EBFindFriendTableViewCell.m in Sources */,
 				048D01F3195D02B900E878DA /* EBCandidateTableViewController.m in Sources */,
 				049A4764196A5E3800D363AE /* EBTask.m in Sources */,
 				04BB704E190D229D0059E93C /* EBProfileViewController.m in Sources */,
+				04428E141998CE450061E2C5 /* EBSlidersViewController.m in Sources */,
 				049A475A19667FA000D363AE /* EBPersonalityTableViewCell.m in Sources */,
 				04788EC81958076B0015FB06 /* UIImage+ImageWithColor.m in Sources */,
 				04FD41C11906554200AF17DC /* EBSignupLoginViewController.m in Sources */,
@@ -2721,7 +2739,7 @@
 				GCC_PREFIX_HEADER = "EulersBridge/Isegoria-Prefix.pch";
 				INFOPLIST_FILE = "EulersBridge/Isegoria-Info.plist";
 				PRODUCT_NAME = Isegoria;
-				PROVISIONING_PROFILE = "4AE46551-22FD-4B3B-A4AD-DD5D57FC3C68";
+				PROVISIONING_PROFILE = "fcc31818-e079-48b5-aa7c-05f2d2407c02";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2739,7 +2757,7 @@
 				GCC_PREFIX_HEADER = "EulersBridge/Isegoria-Prefix.pch";
 				INFOPLIST_FILE = "EulersBridge/Isegoria-Info.plist";
 				PRODUCT_NAME = Isegoria;
-				PROVISIONING_PROFILE = "9A57CD6E-0ABE-411C-A279-65B558906839";
+				PROVISIONING_PROFILE = "d51c4ded-0e51-4898-ab2c-5e4b4a648544";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
