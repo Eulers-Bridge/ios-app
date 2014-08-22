@@ -57,30 +57,30 @@
     // first photo selected
     if (self.index == 0) {
         [self.photoScrollView setContentOffset:CGPointMake(0, 0)];
-        self.leftPhotoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, self.index + 1]];
+        self.leftPhotoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index + 1]];
         if (self.numberOfPhotos > 1) {
-            self.photoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, self.index + 2]];
+            self.photoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index + 2]];
         }
         if (self.numberOfPhotos > 2) {
-            self.rightPhotoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, self.index + 3]];
+            self.rightPhotoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index + 3]];
         }
     // last photo selected
     } else if (self.index + 1 == self.numberOfPhotos) {
         if (self.numberOfPhotos > 2) {
-            self.rightPhotoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, self.index + 1]];
-            self.photoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, self.index]];
-            self.leftPhotoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, self.index - 1]];
+            self.rightPhotoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index + 1]];
+            self.photoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index]];
+            self.leftPhotoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index - 1]];
             [self.photoScrollView setContentOffset:CGPointMake(WIDTH_OF_SCREEN * 2, 0)];
         } else {
-            self.photoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, self.index + 1]];
-            self.leftPhotoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, self.index]];
+            self.photoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index + 1]];
+            self.leftPhotoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index]];
             [self.photoScrollView setContentOffset:CGPointMake(WIDTH_OF_SCREEN, 0)];
         }
     // normal case
     } else {
-        self.leftPhotoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, self.index]];
-        self.photoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, self.index + 1]];
-        self.rightPhotoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, self.index + 2]];
+        self.leftPhotoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index]];
+        self.photoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index + 1]];
+        self.rightPhotoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index + 2]];
     }
 }
 
@@ -98,7 +98,7 @@
             [self.photoScrollView setContentOffset:CGPointMake(WIDTH_OF_SCREEN, 0)];
             self.rightPhotoImageView.image = self.photoImageView.image;
             self.photoImageView.image = self.leftPhotoImageView.image;
-            self.leftPhotoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, self.index]];
+            self.leftPhotoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index]];
         }
     } else if (scrollView.contentOffset.x - WIDTH_OF_SCREEN == self.lastContentOffset.x) {
         // swipe right
@@ -110,7 +110,7 @@
             [self.photoScrollView setContentOffset:CGPointMake(WIDTH_OF_SCREEN, 0)];
             self.leftPhotoImageView.image = self.photoImageView.image;
             self.photoImageView.image = self.rightPhotoImageView.image;
-            self.rightPhotoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, self.index + 2]];
+            self.rightPhotoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index + 2]];
         }
     }
 }
@@ -123,12 +123,14 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self.navigationController.navigationBar setBarTintColor:ISEGORIA_DARK_GREY];
     [self.tabBarController.tabBar setHidden:YES];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    [self.navigationController.navigationBar setBarTintColor:ISEGORIA_COLOR_BLUE];
     [self.tabBarController.tabBar setHidden:NO];
 }
 

@@ -94,7 +94,7 @@
                              @"numberOfPhotos": @"33",
                              @"date": @"28th April 2014, 10:00AM",
                              @"prefix": @"slam"},
-                           @{@"title": @" Coffee at Lakeside Restaurant",
+                           @{@"title": @"Coffee at Lakeside Restaurant",
                              @"numberOfPhotos": @"20",
                              @"date": @"2nd May 2014, 8:00 AM",
                              @"prefix": @"lake"},

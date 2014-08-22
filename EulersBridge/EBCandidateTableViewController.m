@@ -35,7 +35,7 @@
     
     self.candidateSearchBar.delegate = self;
     self.candidateSearchBar.showsCancelButton = YES;
-    self.tableView.contentOffset = CGPointMake(0, -108);
+    self.tableView.contentOffset = CGPointMake(0, -64);
     
     self.candidates = @[@{@"id": @"0",
                           @"positionId": @"0",
@@ -149,7 +149,7 @@
     if (self.candidateFilter == EBCandidateFilterByTicket || self.candidateFilter == EBCandidateFilterByPosition) {
         [self.tableView setContentOffset:CGPointMake(0, 44)];
     }
-    
+
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView

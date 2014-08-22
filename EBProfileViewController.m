@@ -54,21 +54,11 @@
 {
     [super viewDidLoad];
     // Font setup
-    self.nameLabel.font = [UIFont fontWithName:@"MuseoSansRounded-100" size:self.nameLabel.font.pointSize];
-    self.uniNameLabel.font = [UIFont fontWithName:@"MuseoSansRounded-700" size:self.uniNameLabel.font.pointSize];
-    self.numOfFriendsLabel.font = [UIFont fontWithName:@"MuseoSansRounded-100" size:self.numOfFriendsLabel.font.pointSize];
-    self.numOfXPLabel.font = [UIFont fontWithName:@"MuseoSansRounded-100" size:self.numOfXPLabel.font.pointSize];
-    self.friendsLabel.font = [UIFont fontWithName:@"MuseoSansRounded-500" size:self.friendsLabel.font.pointSize];
-    self.XPLevelLabel.font = [UIFont fontWithName:@"MuseoSansRounded-500" size:self.XPLevelLabel.font.pointSize];
     self.badgesLabel.font = [UIFont fontWithName:@"MuseoSansRounded-700" size:self.badgesLabel.font.pointSize];
     self.tasksLabel.font = [UIFont fontWithName:@"MuseoSansRounded-700" size:self.tasksLabel.font.pointSize];
     self.sampleTaskLabel.font = [UIFont fontWithName:@"MuseoSansRounded-500" size:self.sampleTaskLabel.font.pointSize];
     self.sampleXPLabel.font = [UIFont fontWithName:@"MuseoSansRounded-500" size:self.sampleXPLabel.font.pointSize];
     
-    
-    self.actionButton.titleLabel.font = [UIFont fontWithName:@"MuseoSansRounded-700" size:self.actionButton.titleLabel.font.pointSize];
-    self.actionButton.titleLabel.textColor = [UIColor whiteColor];
-    self.actionButton.layer.borderColor = [UIColor whiteColor].CGColor;
     
     // Image setup
     self.profileImageView.image = [UIImage imageNamed:@"julia-gillard-data.jpg"];

@@ -11,13 +11,14 @@
 #import "EBPollCommentTableViewCell.h"
 #import "MyConstants.h"
 
-@interface EBPollContentViewController () <UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
+@interface EBPollContentViewController () <UITableViewDataSource, UITableViewDelegate, UITextViewDelegate, UIScrollViewDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UILabel *authorLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLeftLabel;
 @property (weak, nonatomic) IBOutlet EBTextViewMuseoMedium *commentTextView;
 @property (weak, nonatomic) IBOutlet UIView *textFieldContainerView;
+@property (weak, nonatomic) IBOutlet EBOnePixelLine *divider;
 @property (strong, nonatomic) NSIndexPath *selectedIndexPath;
 @property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer;
 @property (strong, nonatomic) UIPanGestureRecognizer *panGestureRecognizer;
@@ -43,6 +44,7 @@
     self.voted = NO;
 //    self.profileImageView.image = [UIImage imageNamed:@"head1.jpg"];
     self.authorLabel.text = @"Asked by Eva Menendez";
+    self.divider.hidden = YES;
     self.pageNumberLabel.text = [NSString stringWithFormat:@"%d", self.pageIndex];
     self.results = @[@{@"votes": @(18),
                        @"totalVotes": @(100),
@@ -160,11 +162,25 @@
     return nil;
 }
 
+#pragma mark scroll view delegate
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (scrollView.contentOffset.y > 0) {
+        self.divider.hidden = NO;
+    } else {
+        self.divider.hidden = YES;
+    }
+}
+
 
 #pragma mark textField delegate
 
 - (BOOL)textViewShouldBeginEditing:(UITextField *)textField
 {
+    if ([textField.text isEqualToString:@"Enter a comment"]) {
+        textField.text = @"";
+    }
+    
     [self.view addGestureRecognizer:self.tapGestureRecognizer];
     [self.view addGestureRecognizer:self.panGestureRecognizer];
     [self pushContentUpWithCompletion:nil];
@@ -181,6 +197,9 @@
 
 - (void)tapAnywhere
 {
+    if ([self.commentTextView.text isEqualToString:@""]) {
+        self.commentTextView.text = @"Enter a comment";
+    }
     [self dismissKeyboard];
     [self pushContentDown];
 }

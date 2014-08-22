@@ -21,12 +21,14 @@
         
     
     // Set tint color
-    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:179.0/255.0 green:214.0/255.0 blue:255.0/255.0 alpha:1.0]];
+//    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:179.0/255.0 green:214.0/255.0 blue:255.0/255.0 alpha:1.0]];
+    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:0.5]];
 //    [[UIToolbar appearance] setTintColor:[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0]];
     
     // Set Top bar background color.
     [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:47.0/255.0 green:123.0/255.0 blue:212.0/255.0 alpha:1.0]];
 //    [[UIToolbar appearance] setBarTintColor:[UIColor colorWithRed:51.0/255.0 green:56.0/255.0 blue:69.0/255.0 alpha:1.0]];
+    [[UIBarButtonItem appearance] setTintColor:[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0]];
     
     // Set Nav bar title color and font.
     UIFont *navBarFont = [UIFont fontWithName:@"MuseoSansRounded-500" size:17.0];

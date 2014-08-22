@@ -77,7 +77,7 @@
 {
     if (self.tasksViewType == EBTasksViewTypeDetail) {
         UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH_OF_SCREEN, 32)];
-        headerView.backgroundColor = [UIColor whiteColor];
+        headerView.backgroundColor = ISEGORIA_ULTRA_LIGHT_GREY;
         
         EBOnePixelLine *upperLine = [[EBOnePixelLine alloc] initWithFrame:CGRectMake(0, 0, WIDTH_OF_SCREEN, 1)];
         EBOnePixelLine *lowerLine = [[EBOnePixelLine alloc] initWithFrame:CGRectMake(0, headerView.bounds.size.height, WIDTH_OF_SCREEN, 1)];
@@ -88,7 +88,7 @@
         
         EBLabelHeavy *title = [[EBLabelHeavy alloc] initWithFrame:CGRectMake(8, 0, WIDTH_OF_SCREEN, 32)];
         title.font = [title.font fontWithSize:15];
-        title.textColor = ISEGORIA_COLOR_GREY;
+        title.textColor = ISEGORIA_LIGHT_GREY;
         NSString *titleString = @"";
         switch (section) {
             case 0:

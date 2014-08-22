@@ -7,6 +7,7 @@
 //
 
 #import "EBSignupTermsViewController.h"
+#import "MyConstants.h"
 
 @interface EBSignupTermsViewController () <UIBarPositioningDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *acceptButton;
@@ -30,8 +31,8 @@
     // Font setup
     self.acceptButton.titleLabel.font = [UIFont fontWithName:@"MuseoSansRounded-700" size:self.acceptButton.titleLabel.font.pointSize];
     
-    // Navigation bar
     
+    [[UIBarButtonItem appearance] setTintColor:ISEGORIA_COLOR_BLUE];
     
 
     
@@ -41,6 +42,13 @@
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    [[UIBarButtonItem appearance] setTintColor:[UIColor whiteColor]];
+}
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
 }
 
 #pragma button action

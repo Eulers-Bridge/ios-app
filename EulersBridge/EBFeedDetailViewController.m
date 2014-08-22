@@ -52,9 +52,11 @@
     
     // Setup the mask
     CAGradientLayer *gradient = [CAGradientLayer layer];
-    gradient.frame = self.imageView.bounds;
+    gradient.frame = self.imageView.frame;
+    gradient.bounds = CGRectMake(0, 0, WIDTH_OF_SCREEN, 568);
     gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithWhite:0.0 alpha:0.35] CGColor], (id)[[UIColor colorWithWhite:0.0 alpha:0.35] CGColor], nil];
     gradient.locations = @[@(0.0), @(1.0)];
+    gradient.masksToBounds = YES;
     self.imageView.layer.mask = gradient;
     
     // Setup Font
@@ -248,14 +250,21 @@
     
     if (scrollView == self.detailScrollView) {
         CGRect frame = self.imageView.frame;
-        frame.origin.y = (scrollView.contentOffset.y + 64) * 0.2;
-        self.imageView.frame = frame;
-        if (scrollView.contentOffset.y <= -64) {
-            [scrollView setContentOffset:CGPointMake(0, -64) animated:NO];
-            return;
+        CGRect maskFrame = self.imageView.layer.mask.frame;
+        if (scrollView.contentOffset.y > -64) {
+            frame.origin.y = (scrollView.contentOffset.y + 64) * 0.2;
+        } else {
+            frame.origin.y = (scrollView.contentOffset.y + 64);
+            maskFrame.origin.y = (scrollView.contentOffset.y + 64);
+            frame.size.height = -(scrollView.contentOffset.y + 64) + 229;
+            maskFrame.size.height = -(scrollView.contentOffset.y + 64) + 229;
+
         }
-        
+        self.imageView.frame = frame;
+//        self.imageView.layer.mask.position = CGPointMake(frame.size.width/2, frame.origin.y +200 + frame.size.height/2);
+//        self.imageView.layer.mask.bounds = CGRectMake(0, 0, 150,800);
     }
+    
 }
 
 

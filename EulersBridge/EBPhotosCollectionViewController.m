@@ -29,6 +29,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+//    [self.collectionView setCollectionViewLayout:[[StickyHeaderFlowLayout alloc] init] animated:NO];
 }
 
 - (void)didReceiveMemoryWarning

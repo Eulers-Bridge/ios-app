@@ -11,6 +11,9 @@
 
 @interface EBTasksDetailViewController ()
 
+@property (weak, nonatomic) IBOutlet UIView *progressViewFrame;
+@property (weak, nonatomic) IBOutlet UIView *progressView;
+
 @end
 
 @implementation EBTasksDetailViewController
@@ -28,6 +31,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.progressViewFrame.backgroundColor = [UIColor clearColor];
+    self.progressViewFrame.layer.borderWidth = 1.0;
+    self.progressViewFrame.layer.borderColor = [self.progressView.backgroundColor CGColor];
 }
 
 - (void)didReceiveMemoryWarning
