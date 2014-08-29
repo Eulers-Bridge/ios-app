@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet EBButtonRoundedHeavy *attendButton;
 @property (weak, nonatomic) IBOutlet UIView *contactView;
 @property (weak, nonatomic) IBOutlet EBOnePixelLine *separator;
+@property (weak, nonatomic) IBOutlet UIView *darkBackgroundView;
 
 
 @end
@@ -250,17 +251,16 @@
     
     if (scrollView == self.detailScrollView) {
         CGRect frame = self.imageView.frame;
-        CGRect maskFrame = self.imageView.layer.mask.frame;
+        CGRect backFrame = self.darkBackgroundView.frame;
         if (scrollView.contentOffset.y > -64) {
             frame.origin.y = (scrollView.contentOffset.y + 64) * 0.2;
         } else {
             frame.origin.y = (scrollView.contentOffset.y + 64);
-            maskFrame.origin.y = (scrollView.contentOffset.y + 64);
             frame.size.height = -(scrollView.contentOffset.y + 64) + 229;
-            maskFrame.size.height = -(scrollView.contentOffset.y + 64) + 229;
-
+            backFrame.size.height = frame.size.height;
         }
         self.imageView.frame = frame;
+        self.darkBackgroundView.frame = backFrame;
 //        self.imageView.layer.mask.position = CGPointMake(frame.size.width/2, frame.origin.y +200 + frame.size.height/2);
 //        self.imageView.layer.mask.bounds = CGRectMake(0, 0, 150,800);
     }

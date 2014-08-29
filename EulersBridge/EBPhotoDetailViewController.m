@@ -115,6 +115,16 @@
     }
 }
 
+
+-(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+    return self.photoImageView;
+}
+
+-(void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale
+{
+    
+}
 //-(BOOL)hidesBottomBarWhenPushed
 //{
 //    return YES;

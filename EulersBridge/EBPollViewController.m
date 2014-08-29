@@ -10,7 +10,7 @@
 #import "EBPollContentViewController.h"
 #import "EBPersonalityViewController.h"
 
-@interface EBPollViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
+@interface EBPollViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate>
 
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 @property (strong, nonatomic) NSArray *contentViewControllers;
@@ -72,6 +72,15 @@
     [self.view addSubview:self.pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
     
+    
+    // Find the scroll view inside uipageviewcontroller
+    for (UIView *view in self.pageViewController.view.subviews) {
+        if ([view isKindOfClass:[UIScrollView class]])
+        {
+            UIScrollView *scrollView = (UIScrollView *)view;
+            scrollView.delegate = self;
+        }
+    }
     
 }
 
@@ -140,6 +149,23 @@
 
 }
 
+- (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray *)pendingViewControllers
+{
+    
+}
+
+// stop scrolling pass the ends
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (scrollView.contentOffset.x < 320 && self.titlePageControl.currentPage == 0) {
+        [scrollView setContentOffset:CGPointMake(320, 0) animated:NO];
+    }
+    
+    
+    if (scrollView.contentOffset.x > 320 && self.titlePageControl.currentPage == self.maxPoll - 1) {
+        [scrollView setContentOffset:CGPointMake(320, 0) animated:NO];
+    }
+}
 
 /*
 #pragma mark - Navigation

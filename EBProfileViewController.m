@@ -34,6 +34,8 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *actionButton;
 
+@property (weak, nonatomic) IBOutlet UIView *darkBackgroundView;
+
 
 
 
@@ -115,13 +117,18 @@
 
 #pragma mark Scroll View Delegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (scrollView.contentOffset.y <= 0) {
-        [scrollView setContentOffset:CGPointMake(0, 0) animated:NO];
-        return;
-    }
+    
+    
+    
     CGRect frame = self.imageView.frame;
-    frame.origin.y = scrollView.contentOffset.y * 0.2;
+    if (scrollView.contentOffset.y > 0) {
+        frame.origin.y = (scrollView.contentOffset.y + 0) * 0.2;
+    } else {
+        frame.origin.y = (scrollView.contentOffset.y + 0);
+        frame.size.height = -(scrollView.contentOffset.y + 0) + 288;
+    }
     self.imageView.frame = frame;
+
 }
 
 
