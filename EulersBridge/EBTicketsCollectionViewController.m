@@ -10,6 +10,7 @@
 #import "EBTicketCollectionViewCell.h"
 #import "EBTicketProfileViewController.h"
 #import "MyConstants.h"
+#import "EBHelper.h"
 
 @interface EBTicketsCollectionViewController ()
 
@@ -108,6 +109,11 @@
     return cell;
 }
 
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    CGFloat cellWidth = ([EBHelper getScreenSize].width - 3 * SPACING_FEED) / 2;
+    return CGSizeMake(cellWidth, cellWidth);
+}
 
 #pragma mark - Navigation
 

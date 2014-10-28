@@ -25,6 +25,11 @@
     // in storyboard during initWithCoder:
     // float sortaPixel = 1.0/self.contentScaleFactor;
     // instead, use mainScreen scale which works perfectly:
+    
+}
+
+- (void)setNeedsLayout
+{
     float sortaPixel = 1.0/[UIScreen mainScreen].scale;
     UIView *topSeparatorView = [[UIView alloc] initWithFrame:
                                 CGRectMake(0, 0, self.frame.size.width, sortaPixel)];

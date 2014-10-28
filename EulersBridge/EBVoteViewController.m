@@ -11,6 +11,7 @@
 @import EventKitUI;
 #import "CDZQRScanningViewController.h"
 #import "MyConstants.h"
+#import "EBHelper.h"
 
 @interface EBVoteViewController () <UIPickerViewDataSource, UIPickerViewDelegate, EKEventEditViewDelegate>
 
@@ -74,6 +75,11 @@
     // Hide the back button
     self.backButton.tintColor = [UIColor clearColor];
     self.backButton.enabled = NO;
+    
+    CGFloat width = [EBHelper getScreenSize].width;
+    CGFloat height = [EBHelper getScreenSize].height;
+    self.pledgeView.frame = CGRectMake(0, 0, width, height);
+    self.finishView.frame = CGRectMake(width, 0, width, height);
     
 }
 

@@ -11,6 +11,7 @@
 #import "EBFeedDetailViewController.h"
 #import "AFNetworking.h"
 #import "MyConstants.h"
+#import "EBHelper.h"
 
 @interface EBFeedViewController ()
 
@@ -48,7 +49,7 @@
     
     [self.segmentedControl addTarget:self action:@selector(changeSegment) forControlEvents:UIControlEventValueChanged];
     self.newsCollectionView.alwaysBounceVertical = YES;
-    self.customScrollView.contentSize = CGSizeMake(WIDTH_OF_SCREEN * 3, self.customScrollView.bounds.size.height - 150);
+    self.customScrollView.contentSize = CGSizeMake([EBHelper getScreenSize].width * 3, self.customScrollView.bounds.size.height - 150);
     self.customScrollView.pagingEnabled = YES;
     self.customScrollView.alwaysBounceVertical = NO;
     self.customScrollView.delegate = self;
@@ -63,6 +64,16 @@
     self.eventsCollectionView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0);
     self.newsCollectionView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0);
     self.photosCollectionView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0);
+    
+    CGRect frame0 = CGRectMake(0, 0, [EBHelper getScreenSize].width, [EBHelper getScreenSize].height);
+    CGRect frame1 = frame0;
+    CGRect frame2 = frame0;
+    frame1.origin.x = [EBHelper getScreenSize].width;
+    frame2.origin.x = [EBHelper getScreenSize].width * 2;
+    
+    self.newsCollectionView.frame = frame0;
+    self.photosCollectionView.frame = frame1;
+    self.eventsCollectionView.frame = frame2;
     
 //    [self fetchDataNews:nil];
     self.sampleDates = @[@"Yesterday, 9:00 AM",
@@ -109,7 +120,8 @@
                            
                            ];
     [self setupSampleData];
-
+    
+    NSLog(@"size: %f %f", [EBHelper getScreenSize].width, [EBHelper getScreenSize].height);
 
 }
 
@@ -117,13 +129,13 @@
 
 - (void)changeSegment
 {
-    [self.customScrollView setContentOffset:CGPointMake(self.segmentedControl.selectedSegmentIndex * WIDTH_OF_SCREEN, 0.0) animated:YES];
+    [self.customScrollView setContentOffset:CGPointMake(self.segmentedControl.selectedSegmentIndex * [EBHelper getScreenSize].width, 0.0) animated:YES];
 }
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     if (scrollView == self.customScrollView) {
-        self.segmentedControl.selectedSegmentIndex = scrollView.contentOffset.x / WIDTH_OF_SCREEN;
+        self.segmentedControl.selectedSegmentIndex = scrollView.contentOffset.x / [EBHelper getScreenSize].width;
     }
 }
 
@@ -205,16 +217,24 @@
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    CGFloat smallCellWidth = ([EBHelper getScreenSize].width - 3 * SPACING_FEED) / 2;
+    
+    CGFloat largeCellWidth = [EBHelper getScreenSize].width - 2 * SPACING_FEED;
+    
+    CGSize largeCellSize = CGSizeMake(largeCellWidth, smallCellWidth);
+    CGSize smallCellSize = CGSizeMake(smallCellWidth, smallCellWidth);
+    CGSize photoCellSize = CGSizeMake(largeCellWidth, 50.0);
+    
     if (collectionView == self.eventsCollectionView) {
-        return CGSizeMake(307.0, 150.0);
+        return largeCellSize;
     } else if (collectionView == self.photosCollectionView) {
         if (indexPath.item == 4) {
-            return CGSizeMake(307.0, 150.0);
+            return largeCellSize;
         } else {
-            return CGSizeMake(307.0, 50.0);
+            return photoCellSize;
         }
     } else {
-        return indexPath.item % 3 == 0 ? CGSizeMake(307.0, 150.0) : CGSizeMake(150.0, 150.0);
+        return indexPath.item % 3 == 0 ? largeCellSize : smallCellSize;
     }
 }
 

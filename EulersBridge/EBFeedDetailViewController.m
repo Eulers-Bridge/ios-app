@@ -54,7 +54,7 @@
     // Setup the mask
     CAGradientLayer *gradient = [CAGradientLayer layer];
     gradient.frame = self.imageView.frame;
-    gradient.bounds = CGRectMake(0, 0, WIDTH_OF_SCREEN, 568);
+    gradient.bounds = CGRectMake(0, 0, [EBHelper getScreenSize].width, [EBHelper getScreenSize].height);
     gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithWhite:0.0 alpha:0.35] CGColor], (id)[[UIColor colorWithWhite:0.0 alpha:0.35] CGColor], nil];
     gradient.locations = @[@(0.0), @(1.0)];
     gradient.masksToBounds = YES;
@@ -76,10 +76,10 @@
     
     
     
-    CGSize size = [self.textView sizeThatFits:CGSizeMake(WIDTH_OF_SCREEN, 200)];
+    CGSize size = [self.textView sizeThatFits:CGSizeMake([EBHelper getScreenSize].width, 200)];
     self.textView.frame = CGRectMake(0.0,
                                      self.imageView.bounds.size.height + offset,
-                                     WIDTH_OF_SCREEN,
+                                     [EBHelper getScreenSize].width,
                                      size.height);
     
     CGRect contactFrame = self.contactView.frame;
@@ -90,7 +90,7 @@
     separatorFrame.origin.y = contactFrame.origin.y + 25;
     self.separator.frame = separatorFrame;
     
-    self.detailScrollView.contentSize = CGSizeMake(WIDTH_OF_SCREEN,
+    self.detailScrollView.contentSize = CGSizeMake([EBHelper getScreenSize].width,
                                              self.imageView.bounds.size.height + self.textView.frame.size.height + offset + self.contactView.bounds.size.height);
 
     

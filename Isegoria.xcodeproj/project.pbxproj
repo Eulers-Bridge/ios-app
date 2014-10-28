@@ -23,6 +23,7 @@
 		044BB0ED1989E89300E0180F /* EBPhotosHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 044BB0EC1989E89300E0180F /* EBPhotosHeaderView.m */; };
 		044BB0F01989F16C00E0180F /* EBPhotoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 044BB0EF1989F16C00E0180F /* EBPhotoDetailViewController.m */; };
 		044BB0F31989FB3500E0180F /* EBButtonLightSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 044BB0F21989FB3500E0180F /* EBButtonLightSystem.m */; };
+		044CC81719F7F49C00C1E709 /* EBContentService.m in Sources */ = {isa = PBXBuildFile; fileRef = 044CC81619F7F49C00C1E709 /* EBContentService.m */; };
 		046D640B192B16F500C354F4 /* Sentinel-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 046D640A192B16F500C354F4 /* Sentinel-Medium.otf */; };
 		046D644C192B4A5100C354F4 /* head1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 046D644B192B4A5100C354F4 /* head1.jpg */; };
 		046D644F192C3D4000C354F4 /* EBVolunteerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D644E192C3D4000C354F4 /* EBVolunteerTableViewController.m */; };
@@ -97,6 +98,7 @@
 		04788EC81958076B0015FB06 /* UIImage+ImageWithColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 04788EC71958076B0015FB06 /* UIImage+ImageWithColor.m */; };
 		04788ECB195A6C0C0015FB06 /* EBOnePixelLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 04788ECA195A6C0C0015FB06 /* EBOnePixelLine.m */; };
 		04788ECE195A70460015FB06 /* EBButtonRounded.m in Sources */ = {isa = PBXBuildFile; fileRef = 04788ECD195A70460015FB06 /* EBButtonRounded.m */; };
+		047B87BB19B5495100586D05 /* TestScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047B87BA19B5495100586D05 /* TestScrollViewController.m */; };
 		048D01C1195BAEE600E878DA /* EBCandidateProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 048D01C0195BAEE600E878DA /* EBCandidateProfileViewController.m */; };
 		048D01C4195BB0A600E878DA /* EBBlurImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 048D01C3195BB0A600E878DA /* EBBlurImageView.m */; };
 		048D01C7195BB6C900E878DA /* EBButtonHeavy.m in Sources */ = {isa = PBXBuildFile; fileRef = 048D01C6195BB6C900E878DA /* EBButtonHeavy.m */; };
@@ -517,6 +519,8 @@
 		044BB0EF1989F16C00E0180F /* EBPhotoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBPhotoDetailViewController.m; sourceTree = "<group>"; };
 		044BB0F11989FB3500E0180F /* EBButtonLightSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBButtonLightSystem.h; sourceTree = "<group>"; };
 		044BB0F21989FB3500E0180F /* EBButtonLightSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBButtonLightSystem.m; sourceTree = "<group>"; };
+		044CC81519F7F49C00C1E709 /* EBContentService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBContentService.h; sourceTree = "<group>"; };
+		044CC81619F7F49C00C1E709 /* EBContentService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBContentService.m; sourceTree = "<group>"; };
 		046D640A192B16F500C354F4 /* Sentinel-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sentinel-Medium.otf"; sourceTree = "<group>"; };
 		046D644B192B4A5100C354F4 /* head1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = head1.jpg; sourceTree = "<group>"; };
 		046D644D192C3D4000C354F4 /* EBVolunteerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBVolunteerTableViewController.h; sourceTree = "<group>"; };
@@ -598,6 +602,8 @@
 		04788ECA195A6C0C0015FB06 /* EBOnePixelLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBOnePixelLine.m; sourceTree = "<group>"; };
 		04788ECC195A70460015FB06 /* EBButtonRounded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBButtonRounded.h; sourceTree = "<group>"; };
 		04788ECD195A70460015FB06 /* EBButtonRounded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBButtonRounded.m; sourceTree = "<group>"; };
+		047B87B919B5495100586D05 /* TestScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestScrollViewController.h; sourceTree = "<group>"; };
+		047B87BA19B5495100586D05 /* TestScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestScrollViewController.m; sourceTree = "<group>"; };
 		048D01BF195BAEE600E878DA /* EBCandidateProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBCandidateProfileViewController.h; sourceTree = "<group>"; };
 		048D01C0195BAEE600E878DA /* EBCandidateProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBCandidateProfileViewController.m; sourceTree = "<group>"; };
 		048D01C2195BB0A600E878DA /* EBBlurImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBBlurImageView.h; sourceTree = "<group>"; };
@@ -1284,6 +1290,8 @@
 				0493F3D0191F49C400853DBF /* EBNetworkService.m */,
 				0493F3D2191F49EA00853DBF /* EBImageService.h */,
 				0493F3D3191F49EA00853DBF /* EBImageService.m */,
+				044CC81519F7F49C00C1E709 /* EBContentService.h */,
+				044CC81619F7F49C00C1E709 /* EBContentService.m */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -1964,6 +1972,8 @@
 			isa = PBXGroup;
 			children = (
 				04FD418D19062ECD00AF17DC /* Main_iPhone.storyboard */,
+				047B87B919B5495100586D05 /* TestScrollViewController.h */,
+				047B87BA19B5495100586D05 /* TestScrollViewController.m */,
 				04FD419019062ECD00AF17DC /* Main_iPad.storyboard */,
 				04FD418A19062ECD00AF17DC /* EBAppDelegate.h */,
 				04FD418B19062ECD00AF17DC /* EBAppDelegate.m */,
@@ -2537,6 +2547,7 @@
 				049A475E196A5B5800D363AE /* EBUser.m in Sources */,
 				04EC1966194214820001FF72 /* EBElectionPositionsDataSource.m in Sources */,
 				0493F3D4191F49EA00853DBF /* EBImageService.m in Sources */,
+				044CC81719F7F49C00C1E709 /* EBContentService.m in Sources */,
 				04428E171999B8370061E2C5 /* EBPersonalitySlider.m in Sources */,
 				049A4770196B803E00D363AE /* EBTextFieldMuseo.m in Sources */,
 				049A47571966740B00D363AE /* EBPersonalityViewController.m in Sources */,
@@ -2546,6 +2557,7 @@
 				04B6556F196123610002E784 /* EBProfileSettingsViewController.m in Sources */,
 				04959B901987781B00D9E768 /* EBTextViewMuseoLight.m in Sources */,
 				049A475419652D8700D363AE /* EBTicketProfileViewController.m in Sources */,
+				047B87BB19B5495100586D05 /* TestScrollViewController.m in Sources */,
 				044BB0F31989FB3500E0180F /* EBButtonLightSystem.m in Sources */,
 				04EC194A19416F1E0001FF72 /* EBPollViewController.m in Sources */,
 				04BB7043190BD9920059E93C /* EBHelper.m in Sources */,
@@ -2733,13 +2745,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Yuan Gao (XFJ96J978W)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yuan Gao (XFJ96J978W)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EulersBridge/Isegoria-Prefix.pch";
 				INFOPLIST_FILE = "EulersBridge/Isegoria-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = Isegoria;
-				PROVISIONING_PROFILE = "fcc31818-e079-48b5-aa7c-05f2d2407c02";
+				PROVISIONING_PROFILE = "5a3ac31a-4c23-4d35-ac6c-be3fd220d67f";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2751,13 +2764,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Yuan Gao (L7PYF339KE)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: Yuan Gao (L7PYF339KE)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EulersBridge/Isegoria-Prefix.pch";
 				INFOPLIST_FILE = "EulersBridge/Isegoria-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = Isegoria;
-				PROVISIONING_PROFILE = "d51c4ded-0e51-4898-ab2c-5e4b4a648544";
+				PROVISIONING_PROFILE = "4b719545-22ee-4a12-8ae7-8f9e39d50fad";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

@@ -9,6 +9,8 @@
 #import "EBPhotosCollectionViewController.h"
 #import "EBPhotosHeaderView.h"
 #import "EBPhotoDetailViewController.h"
+#import "EBHelper.h"
+#import "MyConstants.h"
 
 @interface EBPhotosCollectionViewController ()
 
@@ -47,8 +49,10 @@
 {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PhotoCollectionCell" forIndexPath:indexPath];
     
+    CGFloat width = ([EBHelper getScreenSize].width - 5 * SPACING_PHOTO_GRID) / 4;
+    
     NSString *imageName = [NSString stringWithFormat:@"%@%ld.jpg",self.data[@"prefix"], (long)indexPath.item + 1];
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 78, 78)];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, width, width)];
     
     dispatch_queue_t imageReader = dispatch_queue_create("Image Reader", NULL);
     dispatch_async(imageReader, ^{
@@ -72,6 +76,12 @@
     header.subtitleLabel.text = self.data[@"date"];
     header.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"idx%ld.jpg", (long)self.index + 1]];
     return header;
+}
+
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    CGFloat width = ([EBHelper getScreenSize].width - 5 * SPACING_PHOTO_GRID) / 4;
+    return CGSizeMake(width, width);
 }
 
 

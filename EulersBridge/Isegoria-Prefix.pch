@@ -24,4 +24,5 @@
     #import "EBButtonHeavy.h"
     #import "EBTextFieldMuseo.h"
     #import "EBTextViewMuseoMedium.h"
+    #import "EBTextViewGentium.h"
 #endif

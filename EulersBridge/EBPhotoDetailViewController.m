@@ -7,6 +7,7 @@
 //
 
 #import "EBPhotoDetailViewController.h"
+#import "EBHelper.h"
 #import "MyConstants.h"
 
 @interface EBPhotoDetailViewController () <UIScrollViewDelegate>
@@ -37,9 +38,16 @@
     self.prefix = self.data[@"prefix"];
     
     self.titleLabel.text = self.titleName;
-    self.photoScrollView.contentSize = CGSizeMake(WIDTH_OF_SCREEN * 3, HEIGHT_OF_SCREEN);
-    [self.photoScrollView setContentOffset:CGPointMake(WIDTH_OF_SCREEN, 0)];
+    self.photoScrollView.contentSize = CGSizeMake([EBHelper getScreenSize].width * 3, [EBHelper getScreenSize].height);
+    [self.photoScrollView setContentOffset:CGPointMake([EBHelper getScreenSize].width, 0)];
     self.photoScrollView.delegate = self;
+    
+    CGFloat width = [EBHelper getScreenSize].width;
+    CGFloat height = [EBHelper getScreenSize].height;
+    
+    self.leftPhotoImageView.frame = CGRectMake(0, 0, width, height);
+    self.photoImageView.frame = CGRectMake(width, 0, width, height);
+    self.rightPhotoImageView.frame = CGRectMake(width * 2, 0, width, height);
     
     [self setupPhotos];
     self.lastContentOffset = self.photoScrollView.contentOffset;
@@ -51,7 +59,7 @@
 {
     // Corner case
     if (self.numberOfPhotos < 3) {
-        self.photoScrollView.contentSize = CGSizeMake(WIDTH_OF_SCREEN * self.numberOfPhotos, HEIGHT_OF_SCREEN);
+        self.photoScrollView.contentSize = CGSizeMake([EBHelper getScreenSize].width * self.numberOfPhotos, [EBHelper getScreenSize].height);
     }
     
     // first photo selected
@@ -70,11 +78,11 @@
             self.rightPhotoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index + 1]];
             self.photoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index]];
             self.leftPhotoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index - 1]];
-            [self.photoScrollView setContentOffset:CGPointMake(WIDTH_OF_SCREEN * 2, 0)];
+            [self.photoScrollView setContentOffset:CGPointMake([EBHelper getScreenSize].width * 2, 0)];
         } else {
             self.photoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index + 1]];
             self.leftPhotoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index]];
-            [self.photoScrollView setContentOffset:CGPointMake(WIDTH_OF_SCREEN, 0)];
+            [self.photoScrollView setContentOffset:CGPointMake([EBHelper getScreenSize].width, 0)];
         }
     // normal case
     } else {
@@ -88,37 +96,45 @@
 {
     if (self.lastContentOffset.x == scrollView.contentOffset.x) {
         return;
-    } else if (scrollView.contentOffset.x + WIDTH_OF_SCREEN == self.lastContentOffset.x) {
+    } else if (scrollView.contentOffset.x + [EBHelper getScreenSize].width == self.lastContentOffset.x) {
         // swipe left
         self.index -= 1;
         if (self.index == 0 || self.index + 2 == self.numberOfPhotos) {
             self.lastContentOffset = scrollView.contentOffset;
             return;
         } else {
-            [self.photoScrollView setContentOffset:CGPointMake(WIDTH_OF_SCREEN, 0)];
+            [self.photoScrollView setContentOffset:CGPointMake([EBHelper getScreenSize].width, 0)];
             self.rightPhotoImageView.image = self.photoImageView.image;
             self.photoImageView.image = self.leftPhotoImageView.image;
             self.leftPhotoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index]];
         }
-    } else if (scrollView.contentOffset.x - WIDTH_OF_SCREEN == self.lastContentOffset.x) {
+    } else if (scrollView.contentOffset.x - [EBHelper getScreenSize].width == self.lastContentOffset.x) {
         // swipe right
         self.index += 1;
         if (self.index + 1 == self.numberOfPhotos || self.index - 1 == 0) {
             self.lastContentOffset = scrollView.contentOffset;
             return;
         } else {
-            [self.photoScrollView setContentOffset:CGPointMake(WIDTH_OF_SCREEN, 0)];
+            [self.photoScrollView setContentOffset:CGPointMake([EBHelper getScreenSize].width, 0)];
             self.leftPhotoImageView.image = self.photoImageView.image;
             self.photoImageView.image = self.rightPhotoImageView.image;
             self.rightPhotoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index + 2]];
         }
     }
+    
+   
 }
 
 
 -(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
     return self.photoImageView;
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    // Set zoom scale to 1
+    
 }
 
 -(void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale

@@ -16,6 +16,11 @@
 #define SERVER_TOKEN @"6F87C408-98E2-403F-BD9F-D60DB6328BEP"
 #define SERVER_URL @"https://eulersbridge.meteor.com"
 
+#define TESTING_URL @"http://www.eulersbridge.com:8080/dbInterface/api"
+#define TESTING_USERNAME @"greg.newitt@unimelb.edu.au"
+#define TESTING_PASSWORD @"test123"
+#define TESTING_INSTITUTION_ID @"26"
+
 #define PERSON_NAME_PROPERTY @"name"
 #define PERSON_EMAILS_PROPERTY @"emails"
 #define PERSON_PHONES_PROPERTY @"phones"
@@ -37,6 +42,9 @@
 #define FONT_SIZE_VOLUNTEER_TITLE 15
 #define FONT_SIZE_VOLUNTEER_POSITION 14
 #define FONT_SIZE_VOLUNTEER_DESCRIPTION 14
+
+#define SPACING_FEED 8
+#define SPACING_PHOTO_GRID 2
 
 #define ISEGORIA_COLOR_BLUE [UIColor colorWithRed:47.0/255.0 green:123.0/255.0 blue:212.0/255.0 alpha:1.0]
 #define ISEGORIA_COLOR_GREY [UIColor colorWithRed:121.0/255.0 green:121.0/255.0 blue:144.0/255.0 alpha:1.0]

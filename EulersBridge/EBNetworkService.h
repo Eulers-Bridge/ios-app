@@ -13,6 +13,7 @@
 @optional
 - (void)signupFinishedWithSuccess:(BOOL)success withUser:(EBUser *)user failureReason:(NSString *)reason;
 - (void)resendEmailFinishedWithSuccess:(BOOL)success withUser:(EBUser *)user failureReason:(NSString *)reason;
+- (void)getNewsWithSuccess:(BOOL)success withUser:(EBUser *)user failureReason:(NSString *)reason;
 
 @end
 
@@ -23,7 +24,7 @@
 // TODO: Signup and login service
 - (void)signupWithEmailAddress:(NSString *)email password:(NSString *)password name:(NSString *)name institutionId:(NSString *)institutionId;
 - (void)resendVerificationEmailForUser:(EBUser *)user;
-
+- (void)getNewsWithInstitutionId:(NSString *)institutionId;
 // TODO: Content service
 
 // TODO: User action service

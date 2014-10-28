@@ -8,6 +8,7 @@
 
 #import "EBWelcomeViewController.h"
 #import "UIImage+ImageEffects.h"
+#import "EBNetworkService.h"
 
 @interface EBWelcomeViewController () <UITextViewDelegate>
 
@@ -49,6 +50,10 @@
                                                                           action:@selector(dismissKeyboard)];
     
     [self.view addGestureRecognizer:tap];
+    
+    // testing
+    EBNetworkService *service = [[EBNetworkService alloc] init];
+    [service getNewsWithInstitutionId:@"26"];
     
 }
 

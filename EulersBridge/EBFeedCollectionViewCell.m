@@ -23,6 +23,11 @@
 
 - (void)setup
 {
+    if ([self.data[@"hasImage"] isEqualToString:@"true"]) {
+        self.imageView.image = [UIImage imageNamed:self.data[@"imageName"]];
+    }
+
+    
     if ([self.data[@"hasImage"] isEqualToString:@"false"] || self.feedCellType == EBFeedCellTypeSmall) {
         self.titleLabel.textColor = ISEGORIA_DARK_GREY;
         self.dateLabel.textColor = ISEGORIA_LIGHT_GREY;
@@ -35,7 +40,7 @@
         self.titleLabel.textColor = [UIColor whiteColor];
         self.dateLabel.textColor = [UIColor whiteColor];
         CAGradientLayer *gradient = [CAGradientLayer layer];
-        gradient.frame = self.imageView.bounds;
+        gradient.frame = self.bounds;
         gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithWhite:0.0 alpha:0.35] CGColor], (id)[[UIColor colorWithWhite:0.0 alpha:0.35] CGColor], nil];
         gradient.locations = @[@(0.0), @(1.0)];
         self.imageView.layer.mask = gradient;
@@ -76,11 +81,6 @@
     self.titleLabel.text = self.data[@"title"];
     self.dateLabel.text = self.data[@"date"];
     
-    // Setup the image
-//    self.imageView.frame = self.bounds;
-    if ([self.data[@"hasImage"] isEqualToString:@"true"]) {
-        self.imageView.image = [UIImage imageNamed:self.data[@"imageName"]];
-    }
 
 //    [self.imageView setImageWithURL:[NSURL URLWithString:self.data[@"imageUrl"]]];
 }

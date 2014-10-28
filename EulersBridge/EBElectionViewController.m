@@ -8,6 +8,7 @@
 
 #import "EBElectionViewController.h"
 #import "MyConstants.h"
+#import "EBHelper.h"
 #import "EBElectionPositionsDataSource.h"
 #import "EBFeedCollectionViewCell.h"
 #import "EBElectionPositionDetailViewController.h"
@@ -20,6 +21,10 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *electionTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *electionDateLabel;
+
+@property (weak, nonatomic) IBOutlet EBTextViewGentium *overviewTextView;
+@property (weak, nonatomic) IBOutlet EBTextViewGentium *processTextView;
+
 
 @property (weak, nonatomic) IBOutlet UIView *candidateView;
 
@@ -45,10 +50,20 @@
     [super viewDidLoad];
     self.candidateView.hidden = YES;
     
-    self.electionScrollView.contentSize = CGSizeMake(3 * WIDTH_OF_SCREEN, self.electionScrollView.bounds.size.height);
+    self.electionScrollView.contentSize = CGSizeMake(3 * [EBHelper getScreenSize].width, self.electionScrollView.bounds.size.height);
     self.electionScrollView.pagingEnabled = YES;
     self.electionScrollView.alwaysBounceVertical = NO;
     self.electionScrollView.delegate = self;
+    
+    CGFloat width = [EBHelper getScreenSize].width;
+    CGFloat height = self.electionScrollView.bounds.size.height;
+    
+    self.overviewTextView.frame = CGRectMake(0, 0, width, height);
+    self.processTextView.frame = CGRectMake(width, 0, width, height);
+    self.positionsCollectionView.frame = CGRectMake(width * 2, 0, width, height);
+    self.overviewTextView.contentInset = UIEdgeInsetsMake(44.0, 0, 0, 0);
+    self.processTextView.contentInset = UIEdgeInsetsMake(44.0, 0, 0, 0);
+    self.positionsCollectionView.contentInset = UIEdgeInsetsMake(44.0, 0, 0, 0);
     
     [self.segmentedControl addTarget:self action:@selector(changeSegment) forControlEvents:UIControlEventValueChanged];
     [self.electionSegmentedControl addTarget:self action:@selector(electionChangeSegment) forControlEvents:UIControlEventValueChanged];
@@ -71,12 +86,12 @@
 
 - (void)electionChangeSegment
 {
-    [self.electionScrollView setContentOffset:CGPointMake(self.electionSegmentedControl.selectedSegmentIndex * WIDTH_OF_SCREEN, 0.0) animated:YES];
+    [self.electionScrollView setContentOffset:CGPointMake(self.electionSegmentedControl.selectedSegmentIndex * [EBHelper getScreenSize].width, 0.0) animated:YES];
 }
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    self.electionSegmentedControl.selectedSegmentIndex = self.electionScrollView.contentOffset.x / WIDTH_OF_SCREEN;
+    self.electionSegmentedControl.selectedSegmentIndex = self.electionScrollView.contentOffset.x / [EBHelper getScreenSize].width;
 }
 
 - (void)didReceiveMemoryWarning

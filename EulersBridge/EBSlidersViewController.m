@@ -41,13 +41,13 @@
                         @"Disorganized, careless",
                         @"Calm, emotionally stable",
                         @"Conventional, uncreative"];
-    self.degreeArray = @[@"Agree Strongly",
-                         @"Agree Moderately",
-                         @"Agree a Little",
-                         @"Neither",
-                         @"Disagree a little",
+    self.degreeArray = @[@"Disagree Strongly",
                          @"Disagree Moderately",
-                         @"Disagree Strongly"];
+                         @"Disagree a Little",
+                         @"Neither",
+                         @"Agree a little",
+                         @"Agree Moderately",
+                         @"Agree Strongly"];
     
     self.selectionArray = [NSMutableArray array];
     for (int i = 0; i < 10; i += 1) {

@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *profilePhoto;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *institutionLabel;
+@property (weak, nonatomic) IBOutlet UIScrollView *detailScrollView;
 
 @end
 

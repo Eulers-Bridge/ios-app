@@ -8,6 +8,7 @@
 
 #import "EBNetworkService.h"
 #import "AFNetworking.h"
+#import "MyConstants.h"
 
 @implementation EBNetworkService
 
@@ -57,6 +58,27 @@
 
 - (void)resendVerificationEmailForUser:(EBUser *)user
 {
+
+}
+
+- (void)getNewsWithInstitutionId:(NSString *)institutionId
+{
+    
+    institutionId = TESTING_INSTITUTION_ID;
+    NSString *urlString = [NSString stringWithFormat:@"%@/newsArticles/%@", TESTING_URL, TESTING_INSTITUTION_ID];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    [manager setRequestSerializer:[AFHTTPRequestSerializer serializer]];
+    [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:TESTING_USERNAME password:TESTING_PASSWORD];
+    
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/hal+json"];
+    
+    [manager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
     
 }
 

@@ -8,6 +8,7 @@
 
 #import "EBTasksTableViewController.h"
 #import "EBTaskTableViewCell.h"
+#import "EBHelper.h"
 
 @interface EBTasksTableViewController ()
 
@@ -76,17 +77,17 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     if (self.tasksViewType == EBTasksViewTypeDetail) {
-        UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH_OF_SCREEN, 32)];
+        UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [EBHelper getScreenSize].width, 32)];
         headerView.backgroundColor = ISEGORIA_ULTRA_LIGHT_GREY;
         
-        EBOnePixelLine *upperLine = [[EBOnePixelLine alloc] initWithFrame:CGRectMake(0, 0, WIDTH_OF_SCREEN, 1)];
-        EBOnePixelLine *lowerLine = [[EBOnePixelLine alloc] initWithFrame:CGRectMake(0, headerView.bounds.size.height, WIDTH_OF_SCREEN, 1)];
+        EBOnePixelLine *upperLine = [[EBOnePixelLine alloc] initWithFrame:CGRectMake(0, 0, [EBHelper getScreenSize].width, 1)];
+        EBOnePixelLine *lowerLine = [[EBOnePixelLine alloc] initWithFrame:CGRectMake(0, headerView.bounds.size.height, [EBHelper getScreenSize].width, 1)];
         upperLine.backgroundColor = ONE_PIXEL_GREY;
         lowerLine.backgroundColor = ONE_PIXEL_GREY;
         [headerView addSubview:upperLine];
         [headerView addSubview:lowerLine];
         
-        EBLabelHeavy *title = [[EBLabelHeavy alloc] initWithFrame:CGRectMake(8, 0, WIDTH_OF_SCREEN, 32)];
+        EBLabelHeavy *title = [[EBLabelHeavy alloc] initWithFrame:CGRectMake(8, 0, [EBHelper getScreenSize].width, 32)];
         title.font = [title.font fontWithSize:15];
         title.textColor = ISEGORIA_LIGHT_GREY;
         NSString *titleString = @"";

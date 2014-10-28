@@ -9,6 +9,7 @@
 #import "EBElectionPositionsDataSource.h"
 #import "EBFeedCollectionViewCell.h"
 #import "EBElectionPositionDetailViewController.h"
+#import "EBHelper.h"
 
 @implementation EBElectionPositionsDataSource
 
@@ -80,7 +81,8 @@
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(150.0, 150.0);
+    CGFloat cellWidth = ([EBHelper getScreenSize].width - 3 * SPACING_FEED) / 2;
+    return CGSizeMake(cellWidth, cellWidth);
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

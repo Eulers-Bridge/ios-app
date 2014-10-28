@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "MyConstants.h"
+#import "EBAppDelegate.h"
 @import AddressBook;
 
 @interface EBHelper : NSObject
@@ -18,4 +19,9 @@
 + (NSArray *)contactsWithAddressBookRef:(ABAddressBookRef)addressBookRef;
 
 + (UIColor *)greenColor;
+
++ (EBAppDelegate *)getAppDelegate;
+
++ (CGSize)getScreenSize;
+
 @end

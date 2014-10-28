@@ -11,5 +11,6 @@
 @interface EBAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property CGSize screenSize;
 
 @end
