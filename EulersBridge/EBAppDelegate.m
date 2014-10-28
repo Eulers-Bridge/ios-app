@@ -16,7 +16,7 @@
     // Override point for customization after application launch.
     // Set Global tint color
     self.window.tintColor = [UIColor colorWithRed:74.0/255.0 green:144.0/255.0 blue:226.0/255.0 alpha:1.0];
-//    self.window.rootViewController = [self.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"loginView"];
+    self.window.rootViewController = [self.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"loginView"];
     
     // Set screen size
     self.screenSize = [UIScreen mainScreen].bounds.size;

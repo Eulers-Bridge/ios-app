@@ -128,7 +128,8 @@
 
 -(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
-    return self.photoImageView;
+    // change to return the current photo
+    return nil;
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView

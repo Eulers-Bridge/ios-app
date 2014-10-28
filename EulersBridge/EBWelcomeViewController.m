@@ -21,6 +21,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UIButton *learnMoreButton;
 
+@property BOOL contentPushedUp;
+
 @end
 
 @implementation EBWelcomeViewController
@@ -55,6 +57,8 @@
     EBNetworkService *service = [[EBNetworkService alloc] init];
     [service getNewsWithInstitutionId:@"26"];
     
+    self.contentPushedUp = NO;
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -77,13 +81,17 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    [UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        CGRect frame = self.containerView.frame;
-        frame.origin.y = 0;
-        self.containerView.frame = frame;
-    } completion:^(BOOL finished) {
-        
-    }];
+    if (!self.contentPushedUp) {
+        [UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            CGRect frame = self.containerView.frame;
+            frame.origin.y -= 78;
+            self.containerView.frame = frame;
+            
+        } completion:^(BOOL finished) {
+            
+        }];
+        self.contentPushedUp = YES;
+    }
     return YES;
 }
 
@@ -102,14 +110,16 @@
 
 - (void)pushContentDown
 {
-    [UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        CGRect frame = self.containerView.frame;
-        frame.origin.y = 78;
-        self.containerView.frame = frame;
-    } completion:^(BOOL finished) {
-        
-    }];
-
+    if (self.contentPushedUp) {
+        [UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            CGRect frame = self.containerView.frame;
+            frame.origin.y += 78;
+            self.containerView.frame = frame;
+        } completion:^(BOOL finished) {
+            
+        }];
+        self.contentPushedUp = NO;
+    }
 }
 
 - (void)didReceiveMemoryWarning

@@ -43,6 +43,7 @@
 @property (strong, nonatomic) EBNetworkService *networkService;
 @property (strong, nonatomic) EBUser *signupedUser;
 @property BOOL termsAgreed;
+@property BOOL contentPushedUp;
 
 @end
 
@@ -89,6 +90,7 @@
     self.networkService.signupDelegate = self;
     
     self.termsAgreed = NO;
+    self.contentPushedUp = NO;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -256,24 +258,31 @@
 #pragma mark animation
 - (void)pushContentUpWithCompletion:(void (^)(BOOL finished))completion
 {
-    [UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        CGRect frame = self.textFieldContainerView.frame;
-        frame.origin.y = 70;
-        self.textFieldContainerView.frame = frame;
-        self.photoImageView.alpha = 0.0;
-    } completion:completion];
+    if (!self.contentPushedUp) {
+        [UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            CGRect frame = self.textFieldContainerView.frame;
+            frame.origin.y -= 138;
+            self.textFieldContainerView.frame = frame;
+            self.photoImageView.alpha = 0.0;
+        } completion:completion];
+        self.contentPushedUp = YES;
+    }
+    
 }
 
 - (void)pushContentDown
 {
-    [UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        CGRect frame = self.textFieldContainerView.frame;
-        frame.origin.y = 208;
-        self.textFieldContainerView.frame = frame;
-        self.photoImageView.alpha = 1.0;
-    } completion:^(BOOL finished) {
-        
-    }];
+    if (self.contentPushedUp) {
+        [UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            CGRect frame = self.textFieldContainerView.frame;
+            frame.origin.y += 138;
+            self.textFieldContainerView.frame = frame;
+            self.photoImageView.alpha = 1.0;
+        } completion:^(BOOL finished) {
+            
+        }];
+        self.contentPushedUp = NO;
+    }
     
 }
 
