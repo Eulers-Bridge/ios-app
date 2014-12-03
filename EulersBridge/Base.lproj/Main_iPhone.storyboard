@@ -1,98 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8YX-ce-x5E">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B23" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8YX-ce-x5E">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
-        <!--Photo-->
-        <scene sceneID="qMT-ef-am4">
-            <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="whp-b5-FJz" customClass="EBPhotoDetailViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="E44-1S-3C9">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" bounces="NO" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" maximumZoomScale="1.5" id="Dqr-cv-ghw">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="jrs-oW-yDE">
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="nRw-jC-gaN">
-                                        <rect key="frame" x="640" y="0.0" width="320" height="568"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="yAw-qG-Rcv">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="heC-Jl-omC">
-                                <rect key="frame" x="57" y="453" width="22" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <state key="normal" image="Favourite 3">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="selected" image="Favourite 2"/>
-                                <state key="highlighted" image="Favourite 2"/>
-                                <connections>
-                                    <action selector="like:" destination="77v-bU-2BT" eventType="touchUpInside" id="lsE-Qg-Qdw"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="205" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="050-wW-QJR" customClass="EBLabelLight">
-                                <rect key="frame" x="20" y="457" width="39" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="HTw-Ji-HPd">
-                                <rect key="frame" x="89" y="453" width="22" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <state key="normal" image="Flag">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="selected" image="Flag Active"/>
-                                <state key="highlighted" image="Flag Active"/>
-                            </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1v8-dP-3ew" customClass="EBLabelLight">
-                                <rect key="frame" x="20" y="474" width="258" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20th Marth 2014" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="B7Z-N0-FBA" customClass="EBLabelMedium">
-                                <rect key="frame" x="20" y="527" width="97" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Photo" id="Ixr-aV-QN7">
-                        <barButtonItem key="rightBarButtonItem" image="Share White" id="QGZ-4e-vvB"/>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="leftPhotoImageView" destination="yAw-qG-Rcv" id="3nc-YF-Lht"/>
-                        <outlet property="photoImageView" destination="jrs-oW-yDE" id="CQG-rH-9Gl"/>
-                        <outlet property="photoScrollView" destination="Dqr-cv-ghw" id="gdc-7t-DD6"/>
-                        <outlet property="rightPhotoImageView" destination="nRw-jC-gaN" id="Tap-jb-CQW"/>
-                        <outlet property="titleLabel" destination="1v8-dP-3ew" id="aa8-oe-lwX"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="btK-LQ-LWB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1299" y="-2434"/>
-        </scene>
         <!--Photos-->
         <scene sceneID="9CH-Kv-MwJ">
             <objects>
@@ -118,7 +30,7 @@
                                 </view>
                                 <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="deviceRGB"/>
                                 <connections>
-                                    <segue destination="whp-b5-FJz" kind="push" identifier="showFullImage" id="Ync-qo-0fZ"/>
+                                    <segue destination="Ag8-Il-Pdj" kind="push" identifier="showFullImage" id="nuj-Fo-0Ti"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -379,7 +291,7 @@
                                                             <size key="shadowOffset" width="0.0" height="1"/>
                                                         </label>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pkl-3h-hbf" customClass="EBLabelMedium">
-                                                            <rect key="frame" x="18" y="86" width="115" height="12"/>
+                                                            <rect key="frame" x="8" y="86" width="134" height="12"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -661,7 +573,7 @@
                                         <subviews>
                                             <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" clearButtonMode="whileEditing" id="ILM-gE-h50" customClass="EBTextFieldMuseo">
                                                 <rect key="frame" x="10" y="0.0" width="280" height="44"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                                 <connections>
@@ -670,13 +582,21 @@
                                             </textField>
                                             <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" clearButtonMode="whileEditing" id="4xy-re-2w6" customClass="EBTextFieldMuseo">
                                                 <rect key="frame" x="10" y="44" width="280" height="44"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="go" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="GJt-2I-ECl" id="bul-YE-EbF"/>
                                                 </connections>
                                             </textField>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Tto-ig-vad">
+                                                <rect key="frame" x="260" y="11" width="22" height="22"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="TEg-64-vwf">
+                                                <rect key="frame" x="260" y="55" width="22" height="22"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                            </imageView>
                                             <view contentMode="scaleToFill" id="Hf9-u3-T4d" customClass="EBOnePixelLine">
                                                 <rect key="frame" x="0.0" y="44" width="450" height="1"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
@@ -712,6 +632,9 @@
                                                 <color key="value" red="0.40879348560164824" green="0.83910241788321172" blue="0.3571564137673629" alpha="1" colorSpace="deviceRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="loginAction:" destination="GJt-2I-ECl" eventType="touchUpInside" id="x1N-R5-z43"/>
+                                        </connections>
                                     </button>
                                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="vha-CY-TA6" customClass="EBButtonHeavy">
                                         <rect key="frame" x="15" y="299" width="290" height="40"/>
@@ -751,22 +674,40 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" id="vOY-jM-bQS">
+                                        <rect key="frame" x="150" y="372" width="20" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1Fh-qs-okN" customClass="EBButtonLightSystem">
+                                <rect key="frame" x="266" y="518" width="31" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                <state key="normal" title="Skip">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="skipToMainContent:" destination="GJt-2I-ECl" eventType="touchUpInside" id="7Ba-AP-2wM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="1Ri-PJ-Ihi"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="vOY-jM-bQS" id="rGz-YB-7Ku"/>
                         <outlet property="backgroundImageView" destination="G6y-ab-0tP" id="55E-5o-bbb"/>
                         <outlet property="containerView" destination="7rg-Fa-DU1" id="B2D-Te-3sK"/>
                         <outlet property="emailTextField" destination="ILM-gE-h50" id="Wsq-2b-6a1"/>
+                        <outlet property="emailValidIndicator" destination="Tto-ig-vad" id="aSU-qK-WBD"/>
                         <outlet property="loginButton" destination="Ziq-qk-js2" id="GpV-Ee-Bhh"/>
                         <outlet property="passwordTextField" destination="4xy-re-2w6" id="d0Y-uN-AcS"/>
+                        <outlet property="passwordValidIndicator" destination="TEg-64-vwf" id="2Bl-pg-6Pm"/>
                         <outlet property="signupButton" destination="vha-CY-TA6" id="D0c-Wp-xlj"/>
                         <outlet property="titleLabel" destination="gOJ-ri-tIB" id="eVU-Fk-6gh"/>
+                        <segue destination="i1h-Cc-saW" kind="push" identifier="LoginEmailUnverified" id="THe-Rv-3qE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lrq-o8-M07" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1019,6 +960,30 @@
                                             <action selector="chooseCountry:" destination="AS6-Ue-LrR" eventType="touchUpInside" id="kh3-uc-Z9S"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="REi-77-HRY">
+                                        <rect key="frame" x="260" y="11" width="22" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="yhF-FC-h9c">
+                                        <rect key="frame" x="260" y="55" width="22" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="4q2-mL-NKN">
+                                        <rect key="frame" x="260" y="99" width="22" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="XwN-RS-EKV">
+                                        <rect key="frame" x="260" y="143" width="22" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="e2u-Ll-LlV">
+                                        <rect key="frame" x="260" y="187" width="22" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="h9w-c8-WsJ">
+                                        <rect key="frame" x="260" y="231" width="22" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                     <view contentMode="scaleToFill" id="Cba-y5-fC7" customClass="EBOnePixelLine">
                                         <rect key="frame" x="0.0" y="44" width="290" height="1"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -1061,6 +1026,20 @@
                                     <outlet property="delegate" destination="AS6-Ue-LrR" id="MGB-zZ-RCt"/>
                                 </connections>
                             </pickerView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" id="rFV-Ty-xAQ">
+                                <rect key="frame" x="150" y="480" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bbb-TE-Ctc" customClass="EBButtonLightSystem">
+                                <rect key="frame" x="274" y="62" width="31" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Skip">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="i1h-Cc-saW" kind="push" id="Z83-OW-woT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -1072,18 +1051,25 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="rFV-Ty-xAQ" id="ZJw-63-Pas"/>
                         <outlet property="backgroundImageView" destination="1k9-yQ-Tvz" id="mjW-C5-eJT"/>
                         <outlet property="confirmPasswordTextField" destination="KEz-Hy-x5b" id="ymL-rb-ZlQ"/>
+                        <outlet property="confirmPasswordValidIndicator" destination="XwN-RS-EKV" id="RSo-oX-Thi"/>
                         <outlet property="countryButton" destination="UCb-GX-CEH" id="djq-Fx-hUT"/>
                         <outlet property="countryTextField" destination="hYI-M2-EDD" id="FQA-xe-fTr"/>
+                        <outlet property="countryValidIndicator" destination="e2u-Ll-LlV" id="OPG-iY-yCk"/>
                         <outlet property="emailTextField" destination="ZfG-Xv-07A" id="0BA-2F-y3S"/>
+                        <outlet property="emailValidIndicator" destination="yhF-FC-h9c" id="O3Y-nR-dKW"/>
                         <outlet property="nameTextField" destination="RcE-Wc-b1D" id="Cos-fv-09f"/>
+                        <outlet property="nameValidIndicator" destination="REi-77-HRY" id="ixy-ue-Uua"/>
                         <outlet property="passwordTextField" destination="MGe-QO-5Qe" id="S7y-YI-Cgw"/>
+                        <outlet property="passwordValidIndicator" destination="4q2-mL-NKN" id="IW5-iV-g0U"/>
                         <outlet property="photoImageView" destination="n4e-N0-QuJ" id="jhT-Ag-Ymd"/>
                         <outlet property="pickerView" destination="Rwc-R5-ZGI" id="izt-9U-AbC"/>
                         <outlet property="textFieldContainerView" destination="ge1-bF-dNV" id="Sfw-CF-RmH"/>
                         <outlet property="universityButton" destination="FaZ-XB-aI2" id="glb-Wm-uZI"/>
                         <outlet property="universityTextField" destination="GB2-5c-cGX" id="aga-KV-vuW"/>
+                        <outlet property="universityValidIndicator" destination="h9w-c8-WsJ" id="ZE0-dR-nBf"/>
                         <outlet property="uploadImageButton" destination="xfi-zt-O6e" id="tsJ-EV-r0d"/>
                         <segue destination="i1h-Cc-saW" kind="push" identifier="SignupAction" id="N4E-ro-Kty"/>
                         <segue destination="ETm-q7-KIY" kind="modal" identifier="PresentTerms" id="sGe-qg-qhy"/>
@@ -1144,7 +1130,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Email Verification" id="7mO-bH-Ttv">
                         <barButtonItem key="backBarButtonItem" title="Back" id="xce-11-d9i"/>
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="NxD-XU-tsj">
+                        <barButtonItem key="rightBarButtonItem" title="Skip" id="NxD-XU-tsj">
                             <connections>
                                 <segue destination="TWT-11-E3N" kind="push" id="ZsR-TX-ElH"/>
                             </connections>
@@ -2482,9 +2468,9 @@ Create a reminder to vote, by selecting the date and time for your next student 
                                                 </connections>
                                             </button>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JFc-XI-i2c">
-                                                <rect key="frame" x="16" y="192" width="173" height="13"/>
+                                                <rect key="frame" x="16" y="192" width="179" height="13"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -2601,6 +2587,10 @@ Create a reminder to vote, by selecting the date and time for your next student 
                         <outlet property="darkBackgroundView" destination="f9H-L9-H4h" id="Scu-hs-wrT"/>
                         <outlet property="dateLabel" destination="JFc-XI-i2c" id="Zk0-99-IQ3"/>
                         <outlet property="detailScrollView" destination="SFU-we-N4p" id="ko8-R2-eR3"/>
+                        <outlet property="eventContactDetail" destination="7TT-eN-yxH" id="2Zo-z8-DgK"/>
+                        <outlet property="eventContactName" destination="jLV-4Q-hqu" id="Ssp-jL-HEl"/>
+                        <outlet property="eventLocationLabel" destination="mR7-Xy-D0y" id="2rr-rh-f7b"/>
+                        <outlet property="eventLocationSecondLabel" destination="Pm2-5m-nDK" id="WRv-HQ-DsX"/>
                         <outlet property="imageView" destination="lPu-JY-DF6" id="5Fw-0g-Kgp"/>
                         <outlet property="separator" destination="jUR-gr-Hnu" id="zap-sT-kLh"/>
                         <outlet property="textView" destination="Np6-IL-LMo" id="rL2-9m-XXY"/>
@@ -4695,7 +4685,14 @@ That it. Let’s do this. </string>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="contentInset" minX="0.0" minY="64" maxX="0.0" maxY="44"/>
-                                <mutableString key="text">Please read the following statement carefully.The project is being conducted by researchers in CIS at the University of Melbourne to observe how personality traits influence interaction with online information during political campaigns.Should you participate, you will be asked to fill in demographic information and use the app on your phone for 5 weeks. Participation in this research is voluntary and confidential. However, this confidentiality is subject to legal limitations. You may cease involvement at any time by updating your consent status in the user profile tab. Research papers resulting from the project will only have aggregate data and will be made public. Results are available on request by email: campaignapp@gmail.com. If you are in a dependent relationship with any of the researchers (e.g., being taught by a researcher) the researcher will be unable to access your raw data and therefore your participation will not affect any ongoing assessment.Data is collected and stored in accordance with University policy and disposed 5 years after final publication. There are no risks to individuals participating in this study beyond those that exist in daily life.This project has been approved by the University of Melbourne's Human Research Ethics Committee (HREC Reference ID 1441638).If participants have any concerns about the conduct of this research project they can contact the Executive Officer, Human Research Ethics, The University of Melbourne, ph: 03 8344 2073; fax: 03 9347 6739; email: HumanEthics-Enquiries@unimelb.edu.au	If you have any further questions about the research itself, please contact the researchers: Miguel Wood (m.wood@student.unimelb.edu.au), Prof. Graeme Shanks (gshanks@unimelb.edu.au or 03 8344 1577), and A/Prof Simon Milton (smilton@unimelb.edu.au or 03 8344 1528).1st January 2015</mutableString>
+                                <string key="text">Please read the following statement carefully.
+The project is being conducted by researchers in CIS at the University of Melbourne to observe how personality traits influence interaction with online information during political campaigns.
+Should you participate, you will be asked to fill in demographic information and use the app on your phone for 5 weeks. Participation in this research is voluntary and confidential. However, this confidentiality is subject to legal limitations. You may cease involvement at any time by updating your consent status in the user profile tab. Research papers resulting from the project will only have aggregate data and will be made public. Results are available on request by email: campaignapp@gmail.com. If you are in a dependent relationship with any of the researchers (e.g., being taught by a researcher) the researcher will be unable to access your raw data and therefore your participation will not affect any ongoing assessment.
+Data is collected and stored in accordance with University policy and disposed 5 years after final publication. There are no risks to individuals participating in this study beyond those that exist in daily life.
+This project has been approved by the University of Melbourne's Human Research Ethics Committee (HREC Reference ID 1441638).If participants have any concerns about the conduct of this research project they can contact the Executive Officer, Human Research Ethics, The University of Melbourne, ph: 03 8344 2073; fax: 03 9347 6739; email: HumanEthics-Enquiries@unimelb.edu.au	
+If you have any further questions about the research itself, please contact the researchers: Miguel Wood (m.wood@student.unimelb.edu.au), Prof. Graeme Shanks (gshanks@unimelb.edu.au or 03 8344 1577), and A/Prof Simon Milton (smilton@unimelb.edu.au or 03 8344 1528).
+1st January 2015
+</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -4867,6 +4864,93 @@ That it. Let’s do this. </string>
             </objects>
             <point key="canvasLocation" x="316" y="1889"/>
         </scene>
+        <!--Photo-->
+        <scene sceneID="006-Lt-b37">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Ag8-Il-Pdj" customClass="EBPhotoDetailViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="idi-yH-ufV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="lns-77-2Yb">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" maximumZoomScale="3" id="5Sd-Ss-vtO">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </scrollView>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" maximumZoomScale="3" id="alT-bH-5RT">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </scrollView>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" maximumZoomScale="3" id="3Bj-GF-vDv">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </scrollView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="QZN-W5-T6D">
+                                <rect key="frame" x="57" y="453" width="22" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <state key="normal" image="Favourite 3">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" image="Favourite 2"/>
+                                <state key="highlighted" image="Favourite 2"/>
+                                <connections>
+                                    <action selector="like:" destination="77v-bU-2BT" eventType="touchUpInside" id="bme-zC-BL4"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="205" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xke-Sb-qs6" customClass="EBLabelLight">
+                                <rect key="frame" x="20" y="457" width="39" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="kB7-AC-vcf">
+                                <rect key="frame" x="89" y="453" width="22" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <state key="normal" image="Flag">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" image="Flag Active"/>
+                                <state key="highlighted" image="Flag Active"/>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Mmu-Vr-bnl" customClass="EBLabelLight">
+                                <rect key="frame" x="20" y="474" width="258" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20th Marth 2014" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ar0-UE-2ry" customClass="EBLabelMedium">
+                                <rect key="frame" x="20" y="527" width="97" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Photo" id="Scm-es-uRB">
+                        <barButtonItem key="rightBarButtonItem" image="Share White" id="G0q-Hz-vvB"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="centrePhotoScrollView" destination="alT-bH-5RT" id="icI-fV-vV2"/>
+                        <outlet property="leftPhotoScrollView" destination="5Sd-Ss-vtO" id="110-Xf-tzq"/>
+                        <outlet property="photoScrollView" destination="lns-77-2Yb" id="aV9-vY-yDd"/>
+                        <outlet property="rightPhotoScrollView" destination="3Bj-GF-vDv" id="8PG-9y-7gT"/>
+                        <outlet property="titleLabel" destination="Mmu-Vr-bnl" id="Hi9-LI-OLg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TRY-3b-N9u" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1638" y="-2440"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Chevron 2" width="8" height="12"/>
@@ -4904,10 +4988,11 @@ That it. Let’s do this. </string>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="MLg-g7-d55"/>
+        <segue reference="THe-Rv-3qE"/>
         <segue reference="qFq-PZ-pc4"/>
         <segue reference="ia5-OM-CWB"/>
         <segue reference="PgX-0X-Vxt"/>
+        <segue reference="DSl-Hp-9ob"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.2901960784" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="deviceRGB"/>
 </document>

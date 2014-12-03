@@ -13,8 +13,10 @@
 #import "GKImagePicker.h"
 #import "EBNetworkService.h"
 #import "EBUser.h"
+#import "MyConstants.h"
+#import "EBHelper.h"
 
-@interface EBSignupLoginViewController () <UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate, GKImagePickerDelegate, UINavigationControllerDelegate,UIActionSheetDelegate, EBSignupServiceDelegate, EBSignupTermsDelegate>
+@interface EBSignupLoginViewController () <UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate, GKImagePickerDelegate, UINavigationControllerDelegate,UIActionSheetDelegate, EBSignupServiceDelegate, EBSignupTermsDelegate, EBContentServiceDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *photoImageView;
@@ -31,6 +33,15 @@
 @property (weak, nonatomic) IBOutlet UIButton *countryButton;
 @property (weak, nonatomic) IBOutlet UIButton *universityButton;
 
+@property (weak, nonatomic) IBOutlet UIImageView *nameValidIndicator;
+@property (weak, nonatomic) IBOutlet UIImageView *emailValidIndicator;
+@property (weak, nonatomic) IBOutlet UIImageView *passwordValidIndicator;
+@property (weak, nonatomic) IBOutlet UIImageView *confirmPasswordValidIndicator;
+@property (weak, nonatomic) IBOutlet UIImageView *countryValidIndicator;
+@property (weak, nonatomic) IBOutlet UIImageView *universityValidIndicator;
+
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
 
 @property (strong, nonatomic) NSArray *countries;
@@ -42,6 +53,8 @@
 @property (strong, nonatomic) NSString *institutionIdSelected;
 @property (strong, nonatomic) EBNetworkService *networkService;
 @property (strong, nonatomic) EBUser *signupedUser;
+
+@property NSInteger countrySelected;
 @property BOOL termsAgreed;
 @property BOOL contentPushedUp;
 
@@ -76,9 +89,16 @@
     self.backgroundImageView.image = [self.backgroundImageView.image applyBlurWithRadius:10 tintColor:tintColor saturationDeltaFactor:1.8 maskImage:nil];
     
     // Sample Data setup
-    self.countries = @[@"Australia", @"China", @"USA"];
-    self.universities = @[@"University of Melbourne", @"Curtin University", @"RMIT"];
+    if (SAMPLE_DATA) {
+        self.countries = @[@"Australia", @"China", @"USA"];
+        self.universities = @[@"University of Melbourne", @"Curtin University", @"RMIT"];
+    } else {
+        self.countries = @[];
+        self.universities = @[];
+
+    }
     
+    self.countryButton.enabled = NO;
     self.pickerView.hidden = YES;
     
     // Gesture Recognizer
@@ -88,9 +108,16 @@
     [self.view addGestureRecognizer:tap];
     self.networkService = [[EBNetworkService alloc] init];
     self.networkService.signupDelegate = self;
+    self.networkService.contentDelegate = self;
+    
+    [self.networkService getGeneralInfo];
     
     self.termsAgreed = NO;
     self.contentPushedUp = NO;
+    self.countrySelected = 0;
+    self.universityButton.enabled = NO;
+    
+    self.institutionIdSelected = @"";
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -137,6 +164,7 @@
 - (IBAction)chooseCountry:(UIButton *)sender
 {
     [self dismissKeyboard];
+    self.pickerView.hidden = NO;
     [self pushContentUpWithCompletion:^(BOOL finished) {
         self.pickerView.hidden = NO;
     }];
@@ -144,10 +172,14 @@
     self.pickerViewCurrentArray = self.countries;
     [self.pickerView reloadAllComponents];
     
+    [self.pickerView selectRow:self.countrySelected inComponent:0 animated:NO];
+    
     if ([self.countryTextField.text isEqualToString:@""]) {
         self.countryTextField.text = self.pickerViewCurrentArray[[self.pickerView selectedRowInComponent:0]];
+        self.countrySelected = 0;
     }
-    
+    self.universityButton.enabled = YES;
+    self.universityTextField.text = @"";
 }
 
 - (IBAction)chooseUniversity:(UIButton *)sender
@@ -156,13 +188,15 @@
     [self pushContentUpWithCompletion:^(BOOL finished) {
         self.pickerView.hidden = NO;
     }];
-    self.pickerViewCurrentArray = self.universities;
+    self.pickerViewCurrentArray = self.universities[self.countrySelected];
     [self.pickerView reloadAllComponents];
+    [self.pickerView selectRow:0 inComponent:0 animated:NO];
     
     if ([self.universityTextField.text isEqualToString:@""]) {
         self.universityTextField.text = self.pickerViewCurrentArray[[self.pickerView selectedRowInComponent:0]];
+        self.institutionIdSelected = self.generalInfo[@"countrys"][self.countrySelected][@"institutions"][0][@"institutionId"];
     }
-
+    
 }
 
 - (IBAction)signupAction:(UIBarButtonItem *)sender
@@ -203,10 +237,12 @@
 {
     if (self.pickerViewCurrentArray == self.countries) {
         self.countryTextField.text = self.countries[row];
+        self.countrySelected = row;
     }
     
-    if (self.pickerViewCurrentArray == self.universities) {
-        self.universityTextField.text = self.universities[row];
+    if (self.pickerViewCurrentArray == self.universities[self.countrySelected]) {
+        self.universityTextField.text = self.universities[self.countrySelected][row];
+        self.institutionIdSelected = self.generalInfo[@"countrys"][self.countrySelected][@"institutions"][row][@"institutionId"];
     }
 }
 
@@ -258,6 +294,7 @@
 #pragma mark animation
 - (void)pushContentUpWithCompletion:(void (^)(BOOL finished))completion
 {
+    [self restoreFields];
     if (!self.contentPushedUp) {
         [UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             CGRect frame = self.textFieldContainerView.frame;
@@ -307,9 +344,34 @@
     // Upload the photo
 }
 
+#pragma mark content delegate
+
+- (void)getGeneralInfoFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
+{
+    if (success) {
+        self.generalInfo = info;
+        NSMutableArray *countries = [NSMutableArray array];
+        NSMutableArray *institutions = [NSMutableArray array];
+        for (NSDictionary *country in info[@"countrys"]) {
+            [countries addObject:country[@"countryName"]];
+            NSMutableArray *institutionsInOneCountry = [NSMutableArray array];
+            for (NSDictionary *institution in country[@"institutions"]) {
+                [institutionsInOneCountry addObject:institution[@"institutionName"]];
+            }
+            [institutions addObject:[institutionsInOneCountry copy]];
+        }
+        self.countries = [countries copy];
+        self.universities = [institutions copy];
+        self.countryButton.enabled = YES;
+    } else {
+        // Display error reason.
+    }
+}
+
 #pragma mark signup delegate
 -(void)signupFinishedWithSuccess:(BOOL)success withUser:(EBUser *)user failureReason:(NSString *)reason
 {
+    [self.activityIndicator stopAnimating];
     // advance to next page or display the error.
     if (success) {
         self.signupedUser = user;
@@ -336,13 +398,98 @@
 
 - (void)verifyFieldsAndSignup
 {
+    [self tapAnywhere];
     // Verify the fields.
+    if ([self verifyFields]) {
     [self.networkService signupWithEmailAddress:self.emailTextField.text
                                        password:self.passwordTextField.text
                                            name:self.nameTextField.text
                                   institutionId:self.institutionIdSelected];
     // Set the spinning wheel or equivelent.
+    [self.activityIndicator startAnimating];
+    }
+}
 
+- (BOOL)verifyFields
+{
+    BOOL allGood = YES;
+    UIImage *tick = [UIImage imageNamed:@"Tick"];
+    UIImage *cross = [UIImage imageNamed:@"Cross"];
+    
+    if ([self.nameTextField.text length] == 0) {
+        self.nameTextField.textColor = ISEGORIA_COLOR_SIGNUP_RED;
+        self.nameValidIndicator.image = cross;
+        allGood = NO;
+    } else {
+        self.nameTextField.textColor = ISEGORIA_COLOR_SIGNUP_GREEN;
+        self.nameValidIndicator.image = tick;
+    }
+    
+    if ([EBHelper NSStringIsValidEmail:self.emailTextField.text]) {
+        self.emailTextField.textColor = ISEGORIA_COLOR_SIGNUP_GREEN;
+        self.emailValidIndicator.image = tick;
+    } else {
+        self.emailTextField.textColor = ISEGORIA_COLOR_SIGNUP_RED;
+        self.emailValidIndicator.image = cross;
+        allGood = NO;
+    }
+    
+    self.confirmPasswordTextField.enabled = NO;
+    if ([self.passwordTextField.text isEqualToString:self.confirmPasswordTextField.text] && [self.passwordTextField.text length] >= 6) {
+        self.passwordTextField.textColor = ISEGORIA_COLOR_SIGNUP_GREEN;
+        self.confirmPasswordTextField.textColor = ISEGORIA_COLOR_SIGNUP_GREEN;
+        self.passwordValidIndicator.image = tick;
+        self.confirmPasswordValidIndicator.image = tick;
+    } else {
+        self.passwordTextField.textColor = ISEGORIA_COLOR_SIGNUP_RED;
+        self.confirmPasswordTextField.textColor = ISEGORIA_COLOR_SIGNUP_RED;
+        self.passwordValidIndicator.image = cross;
+        self.confirmPasswordValidIndicator.image = cross;
+        allGood = NO;
+    }
+    
+    if ([self.countryTextField.text length] == 0) {
+        // show cross
+        self.countryValidIndicator.image = cross;
+        allGood = NO;
+    } else {
+        self.countryTextField.textColor = ISEGORIA_COLOR_SIGNUP_GREEN;
+        self.countryValidIndicator.image = tick;
+    }
+    
+    if ([self.universityTextField.text length] == 0) {
+        // show cross
+        self.universityValidIndicator.image = cross;
+        allGood = NO;
+    } else {
+        self.universityTextField.textColor = ISEGORIA_COLOR_SIGNUP_GREEN;
+        self.universityValidIndicator.image = tick;
+    }
+    return allGood;
+}
+
+- (void)restoreFields
+{
+    self.nameTextField.enabled = YES;
+    self.nameTextField.textColor = [UIColor blackColor];
+    self.nameValidIndicator.image = nil;
+    self.emailTextField.enabled = YES;
+    self.emailTextField.textColor = [UIColor blackColor];
+    self.emailValidIndicator.image = nil;
+    self.passwordTextField.enabled = YES;
+    self.passwordTextField.textColor = [UIColor blackColor];
+    self.passwordValidIndicator.image = nil;
+    self.confirmPasswordTextField.enabled = YES;
+    self.confirmPasswordTextField.textColor = [UIColor blackColor];
+    self.confirmPasswordValidIndicator.image = nil;
+    self.countryButton.enabled = YES;
+    self.countryTextField.backgroundColor = [UIColor whiteColor];
+    self.countryTextField.textColor = [UIColor blackColor];
+    self.countryValidIndicator.image = nil;
+    self.universityButton.enabled = YES;
+    self.universityTextField.backgroundColor = [UIColor whiteColor];
+    self.universityTextField.textColor = [UIColor blackColor];
+    self.universityValidIndicator.image = nil;
 }
 
 - (void)didReceiveMemoryWarning

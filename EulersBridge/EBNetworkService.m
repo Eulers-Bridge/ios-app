@@ -14,26 +14,24 @@
 
 - (void)signupWithEmailAddress:(NSString *)email password:(NSString *)password name:(NSString *)name institutionId:(NSString *)institutionId
 {
-    [self.signupDelegate signupFinishedWithSuccess:YES withUser:nil failureReason:nil];
-
-    return;
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/hal+json"];
-    NSDictionary *parameters = @{@"email": @"test@test.com",
-                                 @"firstName": @"gao",
-                                 @"lastName": @"",
-                                 @"gender": @"Male",
-                                 @"nationality": @"Chinese",
-                                 @"yearOfBirth": @"1988",
-                                 @"personality": @"none",
-                                 @"password": @"abc",
-                                 @"institutionId": @"27"};
+    NSDictionary *parameters = @{@"email": email,
+                                 @"givenName": name,
+                                 @"familyName": @"",
+                                 @"gender": @"",
+                                 @"nationality": @"",
+                                 @"yearOfBirth": @"",
+                                 @"password": password,
+                                 @"institutionId": institutionId};
     [manager POST:@"http://eulersbridge.com:8080/dbInterface/api/signUp" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
+//        NSLog(@"JSON: %@", responseObject);
+        [self.signupDelegate signupFinishedWithSuccess:YES withUser:nil failureReason:nil];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
+        [self.signupDelegate signupFinishedWithSuccess:NO withUser:nil failureReason:error];
+//        NSLog(@"Error: %@", error);
     }];
     
 //    [manager GET:@"http://www.eulersbridge.com:8080/dbInterface/api/user/gao@eulersbridge.com/" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -61,6 +59,27 @@
 
 }
 
+- (void)loginWithEmailAddress:(NSString *)email password:(NSString *)password
+{
+    NSString *urlString = [NSString stringWithFormat:@"%@/login", TESTING_URL];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    [manager setRequestSerializer:[AFHTTPRequestSerializer serializer]];
+    [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:email password:password];
+    
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/hal+json"];
+    
+    [manager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//        NSLog(@"JSON: %@", responseObject);
+        [self.signupDelegate loginFinishedWithSuccess:YES withUser:nil failureReason:nil errorString:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        NSLog(@"Error: %@", error);
+        [self.signupDelegate loginFinishedWithSuccess:NO withUser:nil failureReason:error errorString:[operation responseString]];
+    }];
+
+}
+
 - (void)getNewsWithInstitutionId:(NSString *)institutionId
 {
     
@@ -75,11 +94,55 @@
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/hal+json"];
     
     [manager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
+//        NSLog(@"JSON: %@", responseObject);
+        [self.contentDelegate getNewsFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
+        [self.contentDelegate getNewsFinishedWithSuccess:NO withInfo:nil failureReason:error];
+//        NSLog(@"Error: %@", error);
     }];
     
+}
+
+- (void)getEventsWithInstitutionId:(NSString *)institutionId
+{
+    
+    institutionId = TESTING_INSTITUTION_ID;
+    NSString *urlString = [NSString stringWithFormat:@"%@/events/%@", TESTING_URL, TESTING_INSTITUTION_ID];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    [manager setRequestSerializer:[AFHTTPRequestSerializer serializer]];
+    [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:TESTING_USERNAME password:TESTING_PASSWORD];
+    
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/hal+json"];
+    
+    [manager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        //        NSLog(@"JSON: %@", responseObject);
+        [self.contentDelegate getEventsFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.contentDelegate getEventsFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        //        NSLog(@"Error: %@", error);
+    }];
+    
+}
+
+- (void)getGeneralInfo
+{
+    NSString *urlString = [NSString stringWithFormat:@"%@/general-info", TESTING_URL];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    [manager setRequestSerializer:[AFHTTPRequestSerializer serializer]];
+    
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/hal+json"];
+    
+    [manager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary *info = (NSDictionary *)responseObject;
+        [self.contentDelegate getGeneralInfoFinishedWithSuccess:YES withInfo:info failureReason:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.contentDelegate getGeneralInfoFinishedWithSuccess:NO withInfo:nil failureReason:error];
+    }];
+
 }
 
 

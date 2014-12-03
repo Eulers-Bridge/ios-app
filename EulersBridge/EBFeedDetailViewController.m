@@ -27,6 +27,10 @@
 @property (weak, nonatomic) IBOutlet EBOnePixelLine *separator;
 @property (weak, nonatomic) IBOutlet UIView *darkBackgroundView;
 
+@property (weak, nonatomic) IBOutlet EBLabelMedium *eventLocationLabel;
+@property (weak, nonatomic) IBOutlet EBLabelMedium *eventLocationSecondLabel;
+@property (weak, nonatomic) IBOutlet EBLabelMedium *eventContactName;
+@property (weak, nonatomic) IBOutlet EBLabelMedium *eventContactDetail;
 
 @end
 
@@ -107,7 +111,11 @@
     self.titleLabel.text = self.data[@"title"];
     self.authorLabel.text = @"Eva Menendez";
     self.dateLabel.text = self.data[@"date"];
-    self.imageView.image = [UIImage imageNamed:self.data[@"imageName"]];
+    if (!self.image) {
+        self.imageView.image = [UIImage imageNamed:self.data[@"imageName"]];
+    } else {
+        self.imageView.image = self.image;
+    }
     self.authorImageView.image = [UIImage imageNamed:@"head1.jpg"];
     self.authorImageView.layer.cornerRadius = 12;
     self.textView.text = self.data[@"article"];
@@ -120,8 +128,17 @@
     self.dateLabel.font = [UIFont fontWithName:@"MuseoSansRounded-300" size:FONT_SIZE_EVENT_DATE];
     self.titleLabel.text = self.data[@"title"];
     self.dateLabel.text = self.data[@"date"];
-    self.imageView.image = [UIImage imageNamed:self.data[@"imageName"]];
+    if (!self.image) {
+        self.imageView.image = [UIImage imageNamed:self.data[@"imageName"]];
+    } else {
+        self.imageView.image = self.image;
+        self.eventLocationLabel.text = self.data[@"location"];
+        self.eventLocationSecondLabel.text = self.data[@"location"];
+        self.eventContactName.text = self.data[@"organizer"];
+        self.eventContactDetail.text = self.data[@"organizerEmail"];
+    }
     self.textView.text = self.data[@"article"];
+    
 }
 
 - (void)setupData

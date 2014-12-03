@@ -12,6 +12,7 @@
 @interface EBFeedDetailViewController : UIViewController
 
 @property EBFeedDetail feedDetailType;
+@property (strong, nonatomic) UIImage *image;
 @property (strong, nonatomic) NSDictionary *data;
 @property int likes;
 

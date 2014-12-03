@@ -24,4 +24,6 @@
 
 + (CGSize)getScreenSize;
 
++ (BOOL)NSStringIsValidEmail:(NSString *)checkString;
+
 @end

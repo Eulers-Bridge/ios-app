@@ -9,17 +9,21 @@
 #import "EBFeedViewController.h"
 #import "EBFeedCollectionViewCell.h"
 #import "EBFeedDetailViewController.h"
-#import "AFNetworking.h"
 #import "MyConstants.h"
 #import "EBHelper.h"
+#import "EBNetworkService.h"
+#import "DateTools.h"
 
-@interface EBFeedViewController ()
+@interface EBFeedViewController () <EBContentServiceDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *newsCollectionView;
 @property (weak, nonatomic) IBOutlet UICollectionView *eventsCollectionView;
 @property (weak, nonatomic) IBOutlet UICollectionView *photosCollectionView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 @property (weak, nonatomic) IBOutlet UIScrollView *customScrollView;
+@property (strong, nonatomic) UIRefreshControl *newsRefreshControl;
+@property (strong, nonatomic) UIRefreshControl *eventRefreshControl;
+@property (strong, nonatomic) UIRefreshControl *photoRefreshControl;
 @property (strong, nonatomic) NSArray *sampleDates;
 @property (strong, nonatomic) NSArray *newsList;
 @property (strong, nonatomic) NSArray *newsDataList;
@@ -55,12 +59,26 @@
     self.customScrollView.delegate = self;
 
     // Add refresh control
-    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
-    [refreshControl addTarget:self action:@selector(fetchDataNews:)
+    UIRefreshControl *newsControl = [[UIRefreshControl alloc] init];
+    [newsControl addTarget:self action:@selector(fetchDataNews:)
              forControlEvents:UIControlEventValueChanged];
-    [self.newsCollectionView addSubview:refreshControl];
-    [self.eventsCollectionView addSubview:refreshControl];
-    [self.photosCollectionView addSubview:refreshControl];
+    
+    UIRefreshControl *eventControl = [[UIRefreshControl alloc] init];
+    [eventControl addTarget:self action:@selector(fetchDataEvent:)
+                     forControlEvents:UIControlEventValueChanged];
+    
+    UIRefreshControl *photoControl = [[UIRefreshControl alloc] init];
+    [photoControl addTarget:self action:@selector(fetchDataPhoto:)
+                     forControlEvents:UIControlEventValueChanged];
+
+    [self.newsCollectionView addSubview:newsControl];
+    [self.eventsCollectionView addSubview:eventControl];
+    [self.photosCollectionView addSubview:photoControl];
+    self.newsRefreshControl = newsControl;
+    self.eventRefreshControl = eventControl;
+    self.photoRefreshControl = photoControl;
+
+    
     self.eventsCollectionView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0);
     self.newsCollectionView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0);
     self.photosCollectionView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0);
@@ -142,9 +160,8 @@
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-//    return [self.newsList count];
     if (collectionView == self.newsCollectionView) {
-        return 15;
+        return [self.newsDataList count];
     } else if (collectionView == self.eventsCollectionView) {
         return 8;
     } else if (collectionView == self.photosCollectionView) {
@@ -246,55 +263,91 @@
 
 - (void)fetchDataNews:(UIRefreshControl *)refreshControl
 {
-//    if (self.currentUser) {
-        // Get my polls
-        NSString *urlString = [SERVER_URL stringByAppendingFormat:@"/news-list"];
-        NSURL *url = [NSURL URLWithString:urlString];
-        
-        NSDictionary *info = @{@"token": SERVER_TOKEN};
-        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:info options:NSJSONWritingPrettyPrinted error:nil];
-        
-        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-        [request setHTTPMethod:@"POST"];
-        [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-        [request setHTTPBody: jsonData];
+    EBNetworkService *service = [[EBNetworkService alloc] init];
+    service.contentDelegate = self;
+    [service getNewsWithInstitutionId:TESTING_INSTITUTION_ID];
     
-        
-        AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-        operation.responseSerializer = [AFJSONResponseSerializer serializer];
-        [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-            self.newsList = responseObject;
-            [refreshControl endRefreshing];
-//            NSLog(@"%@", responseObject);
-            //            NSLog(@"got data");
-            self.navigationController.tabBarItem.badgeValue = nil;
-            [self.newsCollectionView reloadData];
-            
-            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            if (error) {
-                [refreshControl endRefreshing];
-                [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil) message:[error localizedDescription] delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
-            }
-        }];
-        [operation start];
-    
-    
-    
-//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-//    NSDictionary *parameters = @{@"token": SERVER_TOKEN};
-//    NSString *URLString = [SERVER_URL stringByAppendingFormat:@"/news-list"];
-//    NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:URLString parameters:parameters error:nil];
-//    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-//    [manager HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        NSLog(@"JSON: %@", responseObject);
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        NSLog(@"Error: %@", error);
-//    }];
-    
+}
 
+- (void)fetchDataEvent:(UIRefreshControl *)refreshControl
+{
+    EBNetworkService *service = [[EBNetworkService alloc] init];
+    service.contentDelegate = self;
+    [service getEventsWithInstitutionId:TESTING_INSTITUTION_ID];
+}
+
+- (void)fetchDataPhoto:(UIRefreshControl *)refreshControl
+{
     
-//    }
+}
+
+- (void)getNewsFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
+{
+    if (success) {
+        NSArray *newsList = info[@"articles"];
+        NSMutableArray *newsDataList = [NSMutableArray array];
+        int i = 0;
+        for (NSDictionary *newsItem in newsList) {
+            
+            NSDate *date = [NSDate dateWithTimeIntervalSince1970:[newsItem[@"date"] integerValue] / 1000];
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:@"dd MMMM yyyy, h:mm a"];
+            NSString *dateAndTime = [dateFormatter stringFromDate:date];
+//            NSString *ago = [date timeAgoSinceNow];
+            NSArray *photoList = newsItem[@"picture"];
+            
+            NSDictionary *data = @{@"priority"   : @(i % 3 == 0 ? 1 : 0),
+                                   @"title"      : newsItem[@"title"],
+                                   @"date"       : dateAndTime,
+                                   @"hasImage"   : [photoList count] == 0 ? @"false" : @"true",
+                                   @"imageName"  : [NSString stringWithFormat:@"%@%ld.jpg", @"news", (long)i],
+                                   @"imageUrl"   : [photoList count] == 0 ? @"" : [photoList firstObject],
+                                   @"article"    : newsItem[@"content"]
+                                   };
+            [newsDataList addObject:data];
+            i++;
+        }
+        self.newsDataList = [newsDataList copy];
+        [self.newsCollectionView reloadData];
+
+    }
+    [self.newsRefreshControl endRefreshing];
+}
+
+- (void)getEventsFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
+{
+    if (success) {
+        NSArray *eventsList = info[@"events"];
+        NSMutableArray *eventsDataList = [NSMutableArray array];
+        int i = 0;
+        for (NSDictionary *eventItem in eventsList) {
+            
+            NSDate *date = [NSDate dateWithTimeIntervalSince1970:[eventItem[@"starts"] integerValue] / 1000];
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:@"dd MMMM yyyy 'at' h:mm a"];
+            NSString *dateAndTime = [dateFormatter stringFromDate:date];
+            NSArray *photoList = eventItem[@"picture"];
+            
+            NSDictionary *data = @{@"priority"      : @(1),
+                                   @"title"         : eventItem[@"name"],
+                                   @"date"          : dateAndTime,
+                                   @"hasImage"      : [photoList count] == 0 ? @"false" : @"true",
+                                   @"imageName"     : [NSString stringWithFormat:@"%@%ld.jpg", @"event", (long)i],
+                                   @"imageUrl"      : [photoList count] == 0 ? @"" : [photoList firstObject],
+                                   @"article"       : eventItem[@"description"],
+                                   @"location"      : eventItem[@"location"],
+                                   @"organizer"     : eventItem[@"organizer"],
+                                   @"organizerEmail": eventItem[@"organizerEmail"]
+                                   };
+            [eventsDataList addObject:data];
+            i++;
+        }
+        self.eventDataList = [eventsDataList copy];
+        [self.eventsCollectionView reloadData];
+        
+    }
+    [self.eventRefreshControl endRefreshing];
+
 }
 
 
@@ -315,8 +368,12 @@
     // Pass the selected object to the new view controller.
     if ([segue.identifier isEqualToString:@"showNewsDetail"]) {
         [[segue destinationViewController] setFeedDetailType:EBFeedDetailNews];
+        EBFeedCollectionViewCell *cell = (EBFeedCollectionViewCell *)sender;
+        [[segue destinationViewController] setImage:cell.imageView.image];
     } else if ([segue.identifier isEqualToString:@"showEventDetail"]) {
         [[segue destinationViewController] setFeedDetailType:EBFeedDetailEvent];
+        EBFeedCollectionViewCell *cell = (EBFeedCollectionViewCell *)sender;
+        [[segue destinationViewController] setImage:cell.imageView.image];
     } else if ([segue.identifier isEqualToString:@"showPhotoCollection"]) {
         [[segue destinationViewController] setFeedDetailType:EBFeedDetailPhoto];
         [[segue destinationViewController] setIndex:[sender index]];

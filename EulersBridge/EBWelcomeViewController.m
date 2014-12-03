@@ -9,8 +9,10 @@
 #import "EBWelcomeViewController.h"
 #import "UIImage+ImageEffects.h"
 #import "EBNetworkService.h"
+#import "EBAppDelegate.h"
+#import "EBHelper.h"
 
-@interface EBWelcomeViewController () <UITextViewDelegate>
+@interface EBWelcomeViewController () <UITextViewDelegate, EBSignupServiceDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
@@ -20,6 +22,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UIButton *learnMoreButton;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (weak, nonatomic) IBOutlet UIImageView *emailValidIndicator;
+@property (weak, nonatomic) IBOutlet UIImageView *passwordValidIndicator;
 
 @property BOOL contentPushedUp;
 
@@ -54,10 +59,12 @@
     [self.view addGestureRecognizer:tap];
     
     // testing
-    EBNetworkService *service = [[EBNetworkService alloc] init];
-    [service getNewsWithInstitutionId:@"26"];
+//    EBNetworkService *service = [[EBNetworkService alloc] init];
+//    [service getNewsWithInstitutionId:@"26"];
+//    [service getGeneralInfo];
     
     self.contentPushedUp = NO;
+    self.activityIndicator.hidesWhenStopped = YES;
     
 }
 
@@ -72,6 +79,92 @@
     [super viewWillDisappear:animated];
 }
 
+- (IBAction)loginAction:(id)sender
+{
+    [self dismissKeyboard];
+    if ([self verifyFields]) {
+        [self.activityIndicator startAnimating];
+        self.emailTextField.enabled = NO;
+        self.passwordTextField.enabled = NO;
+        self.loginButton.enabled = NO;
+        self.signupButton.enabled = NO;
+        
+        EBNetworkService *service = [[EBNetworkService alloc] init];
+        service.signupDelegate = self;
+        [service loginWithEmailAddress:self.emailTextField.text password:self.passwordTextField.text];
+    }
+    
+}
+
+- (void)loginFinishedWithSuccess:(BOOL)success withUser:(EBUser *)user failureReason:(NSError *)error errorString:(NSString *)errorString
+{
+    [self.activityIndicator stopAnimating];
+    self.emailTextField.enabled = YES;
+    self.passwordTextField.enabled = YES;
+    self.loginButton.enabled = YES;
+    self.signupButton.enabled = YES;
+    
+    if (success) {
+        EBAppDelegate *delegate = (EBAppDelegate *)[[UIApplication sharedApplication] delegate];
+        [delegate instantiateTabBarController];
+    } else {
+        if ([errorString isEqualToString:LOGIN_ERROR_BAD_CREDENTIALS]) {
+            [self highlightFields];
+        } else if ([errorString isEqualToString:LOGIN_ERROR_USER_UNVERIFIED]) {
+            [self performSegueWithIdentifier:@"LoginEmailUnverified" sender:self];
+        }
+    }
+}
+
+- (void)highlightFields
+{
+    self.emailTextField.textColor = ISEGORIA_COLOR_SIGNUP_RED;
+    self.emailValidIndicator.image = [UIImage imageNamed:@"Cross"];
+    self.passwordTextField.textColor = ISEGORIA_COLOR_SIGNUP_RED;
+    self.passwordValidIndicator.image = [UIImage imageNamed:@"Cross"];
+}
+
+- (BOOL)verifyFields
+{
+    BOOL allGood = YES;
+    UIImage *tick = [UIImage imageNamed:@"Tick"];
+    UIImage *cross = [UIImage imageNamed:@"Cross"];
+    
+    if ([EBHelper NSStringIsValidEmail:self.emailTextField.text]) {
+        self.emailTextField.textColor = ISEGORIA_COLOR_SIGNUP_GREEN;
+        self.emailValidIndicator.image = tick;
+    } else {
+        self.emailTextField.textColor = ISEGORIA_COLOR_SIGNUP_RED;
+        self.emailValidIndicator.image = cross;
+        allGood = NO;
+    }
+    
+    if ([self.passwordTextField.text length] >= 6) {
+        self.passwordTextField.textColor = ISEGORIA_COLOR_SIGNUP_GREEN;
+        self.passwordValidIndicator.image = tick;
+    } else {
+        self.passwordTextField.textColor = ISEGORIA_COLOR_SIGNUP_RED;
+        self.passwordValidIndicator.image = cross;
+        allGood = NO;
+    }
+    return allGood;
+}
+
+- (void)restoreFields
+{
+    self.emailTextField.textColor = [UIColor blackColor];
+    self.emailValidIndicator.image = nil;
+    self.passwordTextField.textColor = [UIColor blackColor];
+    self.passwordValidIndicator.image = nil;
+}
+
+- (IBAction)skipToMainContent:(id)sender
+{
+    EBAppDelegate *delegate = (EBAppDelegate *)[[UIApplication sharedApplication] delegate];
+    [delegate instantiateTabBarController];
+}
+
+
 
 -(void)dismissKeyboard {
     [self.emailTextField resignFirstResponder];
@@ -81,6 +174,7 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
+    [self restoreFields];
     if (!self.contentPushedUp) {
         [UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             CGRect frame = self.containerView.frame;

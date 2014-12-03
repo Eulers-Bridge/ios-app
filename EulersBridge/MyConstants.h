@@ -10,13 +10,14 @@
 #define EulersBridge_MyConstants_h
 
 
+#define SAMPLE_DATA NO
 #define WIDTH_OF_SCREEN 320
 #define HEIGHT_OF_SCREEN 568
 
 #define SERVER_TOKEN @"6F87C408-98E2-403F-BD9F-D60DB6328BEP"
 #define SERVER_URL @"https://eulersbridge.meteor.com"
 
-#define TESTING_URL @"http://www.eulersbridge.com:8080/dbInterface/api"
+#define TESTING_URL @"http://eulersbridge.com:8080/dbInterface/api"
 #define TESTING_USERNAME @"greg.newitt@unimelb.edu.au"
 #define TESTING_PASSWORD @"test123"
 #define TESTING_INSTITUTION_ID @"26"
@@ -24,6 +25,9 @@
 #define PERSON_NAME_PROPERTY @"name"
 #define PERSON_EMAILS_PROPERTY @"emails"
 #define PERSON_PHONES_PROPERTY @"phones"
+
+#define LOGIN_ERROR_BAD_CREDENTIALS @"HTTP Status 401 - Bad credentials\n"
+#define LOGIN_ERROR_USER_UNVERIFIED @"HTTP Status 401 - User is disabled\n"
 
 
 #define FONT_SIZE_CELL_TITLE_LARGE 18
@@ -46,9 +50,13 @@
 #define SPACING_FEED 8
 #define SPACING_PHOTO_GRID 2
 
+#define SPACING_PHOTO_DETAIL 20
+
 #define ISEGORIA_COLOR_BLUE [UIColor colorWithRed:47.0/255.0 green:123.0/255.0 blue:212.0/255.0 alpha:1.0]
 #define ISEGORIA_COLOR_GREY [UIColor colorWithRed:121.0/255.0 green:121.0/255.0 blue:144.0/255.0 alpha:1.0]
 #define ISEGORIA_COLOR_GREEN [UIColor colorWithRed:76.0/255.0 green:217.0/255.0 blue:100.0/255.0 alpha:1.0]
+#define ISEGORIA_COLOR_SIGNUP_GREEN [UIColor colorWithRed:96.0/255.0 green:153.0/255.0 blue:83.0/255.0 alpha:1.0]
+#define ISEGORIA_COLOR_SIGNUP_RED [UIColor colorWithRed:255.0/255.0 green:109.0/255.0 blue:101.0/255.0 alpha:1.0]
 #define ONE_PIXEL_GREY [UIColor colorWithRed:212.0/255.0 green:212.0/255.0 blue:212.0/255.0 alpha:1.0]
 #define PERSONALITY_LABEL_GREY [UIColor colorWithRed:199.0/255.0 green:199.0/255.0 blue:204.0/255.0 alpha:1.0]
 #define ISEGORIA_DARK_GREY [UIColor colorWithRed:49.0/255.0 green:62.0/255.0 blue:77.0/255.0 alpha:1.0]

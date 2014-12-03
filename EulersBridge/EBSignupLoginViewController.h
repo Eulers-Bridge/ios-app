@@ -10,4 +10,6 @@
 
 @interface EBSignupLoginViewController : UIViewController
 
+@property (strong, nonatomic) NSDictionary *generalInfo;
+
 @end

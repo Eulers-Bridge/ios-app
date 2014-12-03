@@ -10,9 +10,14 @@
 
 @interface EBPhotoDetailViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UIImageView *photoImageView;
-@property (weak, nonatomic) IBOutlet UIImageView *leftPhotoImageView;
-@property (weak, nonatomic) IBOutlet UIImageView *rightPhotoImageView;
+@property (strong, nonatomic) UIImageView *photoImageView;
+@property (strong, nonatomic) UIImageView *leftPhotoImageView;
+@property (strong, nonatomic) UIImageView *rightPhotoImageView;
+
+@property (weak, nonatomic) IBOutlet UIScrollView *leftPhotoScrollView;
+@property (weak, nonatomic) IBOutlet UIScrollView *centrePhotoScrollView;
+@property (weak, nonatomic) IBOutlet UIScrollView *rightPhotoScrollView;
+
 
 @property (weak, nonatomic) IBOutlet EBLabelLight *titleLabel;
 @property (strong, nonatomic) NSString *imageName;

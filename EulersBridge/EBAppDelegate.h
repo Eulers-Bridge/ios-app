@@ -13,4 +13,6 @@
 @property (strong, nonatomic) UIWindow *window;
 @property CGSize screenSize;
 
+- (void)instantiateTabBarController;
+
 @end

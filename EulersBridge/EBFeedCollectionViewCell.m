@@ -25,6 +25,10 @@
 {
     if ([self.data[@"hasImage"] isEqualToString:@"true"]) {
         self.imageView.image = [UIImage imageNamed:self.data[@"imageName"]];
+        if (self.data[@"imageUrl"]) {
+            [self.imageView setImageWithURL:[NSURL URLWithString:self.data[@"imageUrl"]]];
+        }
+
     }
 
     
@@ -45,44 +49,11 @@
         gradient.locations = @[@(0.0), @(1.0)];
         self.imageView.layer.mask = gradient;
     }
-    // Setup the frame according to content priority
-//    self.frame = CGRectMake(self.frame.origin.x,
-//                            self.frame.origin.y,
-//                            [self.data[@"priority"] intValue] == 1 ? 307.0 : 150.0,
-//                            self.frame.size.height);
 
-    
-    
-    // Define Shadow object
-//    NSShadow *shadow = [[NSShadow alloc] init];
-//    [shadow setShadowColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.65]];
-//    [shadow setShadowBlurRadius:1.5];
-//    [shadow setShadowOffset:CGSizeMake(0, 0.5)];
-    
-    // The font
-//    UIFont *fontTitle = [UIFont fontWithName:@"MuseoSansRounded-300" size:[self.data[@"priority"] intValue] == 1 ? FONT_SIZE_CELL_TITLE_LARGE : FONT_SIZE_CELL_TITLE_SMALL];
-//    UIFont *fontDate = [UIFont fontWithName:@"MuseoSansRounded-300" size:[self.data[@"priority"] intValue] == 1 ? FONT_SIZE_CELL_DATE_LARGE : FONT_SIZE_CELL_DATE_SMALL];
-    // The color
-//    UIColor *color = [UIColor whiteColor];
-//    NSDictionary *attributes = @{NSFontAttributeName: font,
-//                                 NSShadowAttributeName: shadow,
-//                                 NSForegroundColorAttributeName: color};
-//    if ([self.data[@"priority"] intValue] == 1) {
-//        CGRect frame = self.titleLabel.frame;
-//        frame.size.width = 295;
-//        self.titleLabel.frame = frame;
-//        CGRect dateframe = self.dateLabel.frame;
-//        dateframe.size.width = 295;
-//        self.dateLabel.frame = dateframe;
-//    }
-
-//    self.titleLabel.font = fontTitle;
-//    self.dateLabel.font = fontDate;
     self.titleLabel.text = self.data[@"title"];
     self.dateLabel.text = self.data[@"date"];
     
-
-//    [self.imageView setImageWithURL:[NSURL URLWithString:self.data[@"imageUrl"]]];
+    
 }
 
 - (void)prepareForReuse

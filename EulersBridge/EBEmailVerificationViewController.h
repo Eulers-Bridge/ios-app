@@ -12,5 +12,6 @@
 @interface EBEmailVerificationViewController : UIViewController
 
 @property (strong, nonatomic) EBUser *user;
+@property BOOL userVerified;
 
 @end
