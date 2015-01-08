@@ -20,10 +20,12 @@
 
 
 @property (weak, nonatomic) IBOutlet EBLabelLight *titleLabel;
+@property (strong, nonatomic) NSArray *photoDataList;
 @property (strong, nonatomic) NSString *imageName;
 @property (strong, nonatomic) NSString *titleName;
 
 @property (strong, nonatomic) NSDictionary *data;
 @property NSUInteger index;
+@property NSUInteger numberOfPhotos;
 
 @end

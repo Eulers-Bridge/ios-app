@@ -23,7 +23,8 @@
 - (void)getGeneralInfoFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 - (void)getNewsFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 - (void)getEventsFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
-
+- (void)getPhotoAlbumsFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
+- (void)getPhotosFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 @end
 
 @interface EBNetworkService : NSObject
@@ -41,6 +42,8 @@
 - (void)resendVerificationEmailForUser:(EBUser *)user;
 - (void)getNewsWithInstitutionId:(NSString *)institutionId;
 - (void)getEventsWithInstitutionId:(NSString *)institutionId;
+- (void)getPhotoAlbumsWithInstitutionId:(NSString *)institutionId;
+- (void)getPhotosWithAlbumId:(NSString *)albumId;
 // TODO: Content service
 
 // TODO: User action service

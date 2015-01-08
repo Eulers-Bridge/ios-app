@@ -138,6 +138,7 @@
                            
                            ];
     [self setupSampleData];
+    [self fetchDataPhoto:self.photoRefreshControl];
     
     NSLog(@"size: %f %f", [EBHelper getScreenSize].width, [EBHelper getScreenSize].height);
 
@@ -179,13 +180,7 @@
     } else if (collectionView == self.eventsCollectionView) {
         dict = self.eventDataList[indexPath.item];
     } else if (collectionView == self.photosCollectionView) {
-        NSString *subtitle = [NSString stringWithFormat:@"%d photos - %@", [self.photoDataList[indexPath.item][@"numberOfPhotos"] intValue], self.photoDataList[indexPath.item][@"date"]];
-        dict = @{@"imageName": [NSString stringWithFormat:@"idx%ld.jpg", (long)indexPath.item + 1],
-                 @"title": self.photoDataList[indexPath.item][@"title"],
-                 @"date": subtitle,
-                 @"numberOfPhotos": self.photoDataList[indexPath.item][@"numberOfPhotos"],
-                 @"prefix": self.photoDataList[indexPath.item][@"prefix"],
-                 @"hasImage": @"true"};
+        dict = self.photoDataList[indexPath.item];
     }
 
     int priority = [dict[@"priority"] intValue];
@@ -278,7 +273,9 @@
 
 - (void)fetchDataPhoto:(UIRefreshControl *)refreshControl
 {
-    
+    EBNetworkService *service = [[EBNetworkService alloc] init];
+    service.contentDelegate = self;
+    [service getPhotoAlbumsWithInstitutionId:TESTING_INSTITUTION_ID];
 }
 
 - (void)getNewsFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
@@ -350,6 +347,39 @@
 
 }
 
+-(void)getPhotoAlbumsFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
+{
+    if (success) {
+        NSArray *photoAlbumsList = info[@"photoAlbums"];
+        NSMutableArray *photoAlbumsDataList = [NSMutableArray array];
+        int i = 0;
+        for (NSDictionary *photoAlbumItem in photoAlbumsList) {
+            
+            NSDate *date = [NSDate dateWithTimeIntervalSince1970:[photoAlbumItem[@"modified"] integerValue]];
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:@"dd MMMM yyyy 'at' h:mm a"];
+            NSString *dateAndTime = [dateFormatter stringFromDate:date];
+
+//            NSString *subtitle = [NSString stringWithFormat:@"%d photos - %@", [self.photoDataList[indexPath.item][@"numberOfPhotos"] intValue], self.photoDataList[indexPath.item][@"date"]];
+            NSDictionary *data = @{@"imageName": @"",
+                                   @"imageUrl": photoAlbumItem[@"thumbNailUrl"],
+                                   @"title": photoAlbumItem[@"description"],
+                                   @"date": dateAndTime,
+                                   @"numberOfPhotos": @"0",
+                                   @"prefix": @"",
+                                   @"hasImage": @"true",
+                                   @"albumId": photoAlbumItem[@"nodeId"]};
+
+            [photoAlbumsDataList addObject:data];
+            i++;
+        }
+        self.photoDataList = [photoAlbumsDataList copy];
+        [self.photosCollectionView reloadData];
+        
+    }
+    [self.photoRefreshControl endRefreshing];
+
+}
 
 - (void)didReceiveMemoryWarning
 {

@@ -9,11 +9,12 @@
 #import "EBPhotoDetailViewController.h"
 #import "EBHelper.h"
 #import "MyConstants.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface EBPhotoDetailViewController () <UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *photoScrollView;
-@property int numberOfPhotos;
+
 @property NSString *prefix;
 @property CGPoint lastContentOffset;
 
@@ -34,7 +35,6 @@
 {
     [super viewDidLoad];
     
-    self.numberOfPhotos = [self.data[@"numberOfPhotos"] intValue];
     self.prefix = self.data[@"prefix"];
     
     CGFloat width = [EBHelper getScreenSize].width;
@@ -79,6 +79,7 @@
 
 - (void)setupPhotos
 {
+    UIImage *placeholder = [UIImage imageNamed:@"ImagePlaceholder"];
     // Corner case
     if (self.numberOfPhotos < 3) {
         self.photoScrollView.contentSize = CGSizeMake([EBHelper getScreenSize].width * self.numberOfPhotos + SPACING_PHOTO_DETAIL, [EBHelper getScreenSize].height);
@@ -87,36 +88,60 @@
     // first photo selected
     if (self.index == 0) {
         [self.photoScrollView setContentOffset:CGPointMake(0, 0)];
-        self.leftPhotoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index + 1]];
+        NSString *imageUrl = self.photoDataList[self.index][@"url"];
+        [self.leftPhotoImageView setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:placeholder];
+//        self.leftPhotoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index + 1]];
         if (self.numberOfPhotos > 1) {
-            self.photoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index + 2]];
+            NSString *imageUrl1 = self.photoDataList[self.index + 1][@"url"];
+            [self.photoImageView setImageWithURL:[NSURL URLWithString:imageUrl1] placeholderImage:placeholder];
+//            self.photoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index + 2]];
         }
         if (self.numberOfPhotos > 2) {
-            self.rightPhotoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index + 3]];
+            NSString *imageUrl2 = self.photoDataList[self.index + 2][@"url"];
+            [self.rightPhotoImageView setImageWithURL:[NSURL URLWithString:imageUrl2] placeholderImage:placeholder];
+//            self.rightPhotoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index + 3]];
         }
     // last photo selected
     } else if (self.index + 1 == self.numberOfPhotos) {
         if (self.numberOfPhotos > 2) {
-            self.rightPhotoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index + 1]];
-            self.photoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index]];
-            self.leftPhotoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index - 1]];
+            NSString *imageUrl = self.photoDataList[self.index][@"url"];
+            [self.rightPhotoImageView setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:placeholder];
+            NSString *imageUrl1 = self.photoDataList[self.index - 1][@"url"];
+            [self.photoImageView setImageWithURL:[NSURL URLWithString:imageUrl1] placeholderImage:placeholder];
+            NSString *imageUrl2 = self.photoDataList[self.index - 2][@"url"];
+            [self.leftPhotoImageView setImageWithURL:[NSURL URLWithString:imageUrl2] placeholderImage:placeholder];
+//            self.rightPhotoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index + 1]];
+//            self.photoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index]];
+//            self.leftPhotoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index - 1]];
             [self.photoScrollView setContentOffset:CGPointMake([EBHelper getScreenSize].width * 2 + 2 * SPACING_PHOTO_DETAIL, 0)];
         } else {
-            self.photoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index + 1]];
-            self.leftPhotoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index]];
+            NSString *imageUrl = self.photoDataList[self.index][@"url"];
+            [self.photoImageView setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:placeholder];
+            NSString *imageUrl1 = self.photoDataList[self.index - 1][@"url"];
+            [self.leftPhotoImageView setImageWithURL:[NSURL URLWithString:imageUrl1] placeholderImage:placeholder];
+//            self.photoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index + 1]];
+//            self.leftPhotoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index]];
             [self.photoScrollView setContentOffset:CGPointMake([EBHelper getScreenSize].width + SPACING_PHOTO_DETAIL, 0)];
         }
     // normal case
     } else {
-        self.leftPhotoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index]];
-        self.photoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index + 1]];
-        self.rightPhotoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index + 2]];
+        NSString *imageUrl = self.photoDataList[self.index - 1][@"url"];
+        [self.leftPhotoImageView setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:placeholder];
+        NSString *imageUrl1 = self.photoDataList[self.index][@"url"];
+        [self.photoImageView setImageWithURL:[NSURL URLWithString:imageUrl1] placeholderImage:placeholder];
+        NSString *imageUrl2 = self.photoDataList[self.index + 1][@"url"];
+        [self.rightPhotoImageView setImageWithURL:[NSURL URLWithString:imageUrl2] placeholderImage:placeholder];
+        
+//        self.leftPhotoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index]];
+//        self.photoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index + 1]];
+//        self.rightPhotoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index + 2]];
     }
     [self fitImageView];
 }
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
+    UIImage *placeholder = [UIImage imageNamed:@"ImagePlaceholder"];
     if (scrollView == self.photoScrollView) {
         if (self.lastContentOffset.x != scrollView.contentOffset.x) {
         // Set content zoom scale to 1
@@ -137,7 +162,9 @@
                 [self.photoScrollView setContentOffset:CGPointMake([EBHelper getScreenSize].width + SPACING_PHOTO_DETAIL, 0)];
                 self.rightPhotoImageView.image = self.photoImageView.image;
                 self.photoImageView.image = self.leftPhotoImageView.image;
-                self.leftPhotoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index]];
+                NSString *imageUrl = self.photoDataList[self.index - 1][@"url"];
+                [self.leftPhotoImageView setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:placeholder];
+//                self.leftPhotoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index]];
             }
         } else if (scrollView.contentOffset.x - ([EBHelper getScreenSize].width + SPACING_PHOTO_DETAIL) == self.lastContentOffset.x) {
             // swipe right
@@ -149,7 +176,9 @@
                 [self.photoScrollView setContentOffset:CGPointMake([EBHelper getScreenSize].width + SPACING_PHOTO_DETAIL, 0)];
                 self.leftPhotoImageView.image = self.photoImageView.image;
                 self.photoImageView.image = self.rightPhotoImageView.image;
-                self.rightPhotoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index + 2]];
+                NSString *imageUrl = self.photoDataList[self.index + 1][@"url"];
+                [self.rightPhotoImageView setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:placeholder];
+//                self.rightPhotoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index + 2]];
             }
         }
     }

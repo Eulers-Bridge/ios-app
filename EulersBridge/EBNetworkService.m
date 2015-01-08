@@ -126,6 +126,49 @@
     
 }
 
+- (void)getPhotoAlbumsWithInstitutionId:(NSString *)institutionId;
+{
+    institutionId = TESTING__PHOTO_INSTITUTION_ID;
+    NSString *urlString = [NSString stringWithFormat:@"%@/photoAlbums/%@", TESTING_URL, TESTING__PHOTO_INSTITUTION_ID];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    [manager setRequestSerializer:[AFHTTPRequestSerializer serializer]];
+    [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:TESTING_USERNAME password:TESTING_PASSWORD];
+    
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/hal+json"];
+    
+    [manager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        //        NSLog(@"JSON: %@", responseObject);
+        [self.contentDelegate getPhotoAlbumsFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.contentDelegate getPhotoAlbumsFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        //        NSLog(@"Error: %@", error);
+    }];
+
+}
+
+- (void)getPhotosWithAlbumId:(NSString *)albumId;
+{
+    NSString *urlString = [NSString stringWithFormat:@"%@/photos/%@", TESTING_URL, albumId];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    [manager setRequestSerializer:[AFHTTPRequestSerializer serializer]];
+    [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:TESTING_USERNAME password:TESTING_PASSWORD];
+    
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/hal+json"];
+    
+    [manager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        //        NSLog(@"JSON: %@", responseObject);
+        [self.contentDelegate getPhotosFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.contentDelegate getPhotosFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        //        NSLog(@"Error: %@", error);
+    }];
+    
+}
+
 - (void)getGeneralInfo
 {
     NSString *urlString = [NSString stringWithFormat:@"%@/general-info", TESTING_URL];

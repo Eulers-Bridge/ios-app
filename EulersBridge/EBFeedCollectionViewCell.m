@@ -24,9 +24,11 @@
 - (void)setup
 {
     if ([self.data[@"hasImage"] isEqualToString:@"true"]) {
-        self.imageView.image = [UIImage imageNamed:self.data[@"imageName"]];
+
         if (self.data[@"imageUrl"]) {
             [self.imageView setImageWithURL:[NSURL URLWithString:self.data[@"imageUrl"]]];
+        } else {
+            self.imageView.image = [UIImage imageNamed:self.data[@"imageName"]];            
         }
 
     }

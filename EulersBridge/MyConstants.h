@@ -21,6 +21,7 @@
 #define TESTING_USERNAME @"greg.newitt@unimelb.edu.au"
 #define TESTING_PASSWORD @"test123"
 #define TESTING_INSTITUTION_ID @"26"
+#define TESTING__PHOTO_INSTITUTION_ID @"7449"
 
 #define PERSON_NAME_PROPERTY @"name"
 #define PERSON_EMAILS_PROPERTY @"emails"
