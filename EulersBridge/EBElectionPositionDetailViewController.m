@@ -26,7 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.titleLabel.text = self.data[@"title"];
+    self.titleLabel.text = self.data[@"name"];
     self.descriptionTextView.text = self.data[@"description"];
 }
 

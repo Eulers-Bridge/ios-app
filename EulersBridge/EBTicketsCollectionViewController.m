@@ -11,8 +11,9 @@
 #import "EBTicketProfileViewController.h"
 #import "MyConstants.h"
 #import "EBHelper.h"
+#import "EBNetworkService.h"
 
-@interface EBTicketsCollectionViewController ()
+@interface EBTicketsCollectionViewController () <EBContentServiceDelegate>
 
 @end
 
@@ -124,6 +125,23 @@
         EBTicketProfileViewController *ticketProfile = (EBTicketProfileViewController *)[segue destinationViewController];
         EBTicketCollectionViewCell *cell = (EBTicketCollectionViewCell *)sender;
         ticketProfile.ticketData = cell.ticketData;
+    }
+}
+
+- (void)fetchData
+{
+    EBNetworkService *service = [[EBNetworkService alloc] init];
+    service.contentDelegate = self;
+    [service getTicketsInfoWithElectionId:TESTING_ELETION_ID];
+}
+
+-(void)getTicketsInfoFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
+{
+    if (success) {
+        self.tickets = (NSArray *)info;
+        [self.collectionView reloadData];
+    } else {
+        NSLog(@"%@", error);
     }
 }
 

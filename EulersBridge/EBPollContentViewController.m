@@ -9,11 +9,13 @@
 #import "EBPollContentViewController.h"
 #import "EBPollAnswerTableViewCell.h"
 #import "EBPollCommentTableViewCell.h"
+#import "EBNetworkService.h"
 #import "MyConstants.h"
 
-@interface EBPollContentViewController () <UITableViewDataSource, UITableViewDelegate, UITextViewDelegate, UIScrollViewDelegate>
+@interface EBPollContentViewController () <UITableViewDataSource, UITableViewDelegate, UITextViewDelegate, UIScrollViewDelegate, EBContentServiceDelegate, EBUserActionServiceDelegate>
 
 
+@property (weak, nonatomic) IBOutlet EBTextViewMuseoMedium *questionTextView;
 @property (weak, nonatomic) IBOutlet UILabel *authorLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLeftLabel;
 @property (weak, nonatomic) IBOutlet EBTextViewMuseoMedium *commentTextView;
@@ -23,6 +25,7 @@
 @property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer;
 @property (strong, nonatomic) UIPanGestureRecognizer *panGestureRecognizer;
 @property BOOL voted;
+@property NSUInteger voteIndex;
 
 @end
 
@@ -46,33 +49,35 @@
     self.authorLabel.text = @"Asked by Eva Menendez";
     self.divider.hidden = YES;
     self.pageNumberLabel.text = [NSString stringWithFormat:@"%d", self.pageIndex];
-    self.results = @[@{@"votes": @(18),
-                       @"totalVotes": @(100),
-                       @"change": @(-4)},
-                     @{@"votes": @(29),
-                       @"totalVotes": @(100),
-                       @"change": @(2)},
-                     @{@"votes": @(16),
-                       @"totalVotes": @(100),
-                       @"change": @(-5)},
-                     @{@"votes": @(37),
-                       @"totalVotes": @(100),
-                       @"change": @(23)},];
+//    self.results = @[@{@"votes": @(18),
+//                       @"totalVotes": @(100),
+//                       @"change": @(-4)},
+//                     @{@"votes": @(29),
+//                       @"totalVotes": @(100),
+//                       @"change": @(2)},
+//                     @{@"votes": @(16),
+//                       @"totalVotes": @(100),
+//                       @"change": @(-5)},
+//                     @{@"votes": @(37),
+//                       @"totalVotes": @(100),
+//                       @"change": @(23)},];
     
-    self.answers = @[@{@"title": @"Liberal Party",
-                       @"subtitle": @"Tony Abbot"},
-                     @{@"title": @"Australian Labor Party",
-                       @"subtitle": @"Bill Shorten"},
-                     @{@"title": @"The Greens",
-                       @"subtitle": @"Christine Milne"},
-                     @{@"title": @"Other",
-                       @"subtitle": @"Other"}];
-    
+//    self.answers = @[@{@"title": @"Liberal Party",
+//                       @"subtitle": @"Tony Abbot"},
+//                     @{@"title": @"Australian Labor Party",
+//                       @"subtitle": @"Bill Shorten"},
+//                     @{@"title": @"The Greens",
+//                       @"subtitle": @"Christine Milne"},
+//                     @{@"title": @"Other",
+//                       @"subtitle": @"Other"}];
+//    
     self.baseColors = @[
                         [UIColor colorWithRed:62.0/255.0 green:90.0/255.0 blue:215.0/255.0 alpha:1.0],
                         [UIColor colorWithRed:255.0/255.0 green:64.0/255.0 blue:99.0/255.0 alpha:1.0],
                         [UIColor colorWithRed:76.0/255.0 green:217.0/255.0 blue:100.0/255.0 alpha:1.0],
-                        [UIColor colorWithRed:124.0/255.0 green:124.0/255.0 blue:134.0/255.0 alpha:1.0]
+                        [UIColor colorWithRed:124.0/255.0 green:124.0/255.0 blue:134.0/255.0 alpha:1.0],
+                        [UIColor colorWithRed:76.0/255.0 green:217.0/255.0 blue:100.0/255.0 alpha:1.0],
+                        [UIColor colorWithRed:62.0/255.0 green:90.0/255.0 blue:215.0/255.0 alpha:1.0],
                         ];
     
     
@@ -84,7 +89,64 @@
     self.tapGestureRecognizer = tap;
     self.panGestureRecognizer = pan;
     
+    
+    // Setup data
+    self.questionTextView.text = self.info[@"question"];
+    NSString *answers = self.info[@"answers"];
+    self.answers = [answers componentsSeparatedByString:@","];
 }
+
+- (void)getPollResults
+{
+    EBNetworkService *service = [[EBNetworkService alloc] init];
+    service.contentDelegate = self;
+    [service getPollResultsWithPollId:self.info[@"nodeId"]];
+}
+
+- (void)getPollResultsFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
+{
+    if (success) {
+        self.results = [self parseResults:(NSArray *)info[@"answers"]];
+//        self.results = [self updateResults:[self parseResults:(NSArray *)info[@"answers"]] withVoteIndex:self.voteIndex];
+        self.voted = YES;
+        [self.answerTableView reloadData];
+    } else {
+        
+    }
+}
+
+- (NSArray *)parseResults:(NSArray *)results
+{
+    NSMutableArray *parsedResults = [NSMutableArray arrayWithCapacity:[results count]];
+    int total = 0;
+    for (NSDictionary *result in results) {
+        total += [result[@"count"] integerValue];
+    }
+    for (NSDictionary *result in results) {
+        NSDictionary *newResult = @{@"votes": result[@"count"],
+                                    @"totalVotes": @(total),
+                                    @"change": @(30)};
+        [parsedResults insertObject:newResult atIndex:[result[@"answer"] integerValue]];
+    }
+    return [parsedResults copy];
+}
+
+- (void)voteWithAnswerIndex:(NSUInteger)answerIndex
+{
+    EBNetworkService *service = [[EBNetworkService alloc] init];
+    service.userActionDelegate = self;
+    [service voteWithPollId:self.info[@"nodeId"] answerIndex:answerIndex];
+}
+
+-(void)votePollFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
+{
+    if (success) {
+        [self getPollResults];
+    } else {
+        
+    }
+}
+
 
 #pragma mark table view delegate and data source
 
@@ -97,7 +159,7 @@
 {
     switch (section) {
         case 0:
-            return 4;
+            return self.answers.count;
             break;
         case 1:
             return 5;
@@ -113,7 +175,6 @@
     if (indexPath.section == 0) {
         EBPollAnswerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PollAnswerCell" forIndexPath:indexPath];
         cell.resultNumberLabel.hidden = YES;
-        cell.result = self.results[indexPath.row];
         cell.answer = self.answers[indexPath.row];
         cell.baseColor = self.baseColors[indexPath.row];
         [cell refreshData];
@@ -123,6 +184,7 @@
             cell.voted = NO;
         }
         if (self.voted) {
+            cell.result = self.results[indexPath.row];
             cell.resultNumberLabel.hidden = NO;
             [cell showResult];
         }
@@ -153,13 +215,32 @@
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-        self.voted = YES;
         self.selectedIndexPath = indexPath;
-        [self.answerTableView reloadData];
-        
+        self.voteIndex = indexPath.row;
+        [self voteWithAnswerIndex:indexPath.row];
         return indexPath;
     }
     return nil;
+}
+
+- (NSArray *)updateResults:(NSArray *)results withVoteIndex:(NSUInteger)index
+{
+    NSMutableArray *changedResults = [NSMutableArray arrayWithCapacity:results.count];
+    for (int i = 0; i < results.count; i += 1) {
+        NSInteger total = [results[i][@"totalVotes"] integerValue] + 1;
+        int inc = 0;
+        if (index == i) {
+            inc = 1;
+        } else {
+            inc = 0;
+        }
+        NSInteger votes = [results[i][@"votes"] integerValue] + inc;
+        NSDictionary *newResult = @{@"votes": @(votes),
+                                    @"totalVotes": @(total),
+                                    @"change": @(30)};
+        [changedResults addObject:newResult];
+    }
+    return [changedResults copy];
 }
 
 #pragma mark scroll view delegate

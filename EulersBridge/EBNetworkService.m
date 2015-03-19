@@ -7,52 +7,38 @@
 //
 
 #import "EBNetworkService.h"
+#import "EBUserService.h"
 #import "AFNetworking.h"
 #import "MyConstants.h"
+#import "EBUser.h"
 
 @implementation EBNetworkService
 
-- (void)signupWithEmailAddress:(NSString *)email password:(NSString *)password name:(NSString *)name institutionId:(NSString *)institutionId
+- (void)signupWithEmailAddress:(NSString *)email password:(NSString *)password givenName:(NSString *)givenName familyName:(NSString *)familyName institutionId:(NSString *)institutionId
 {
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/hal+json"];
     NSDictionary *parameters = @{@"email": email,
-                                 @"givenName": name,
-                                 @"familyName": @"",
+                                 @"givenName": givenName,
+                                 @"familyName": familyName,
                                  @"gender": @"",
                                  @"nationality": @"",
                                  @"yearOfBirth": @"",
                                  @"password": password,
                                  @"institutionId": institutionId};
-    [manager POST:@"http://eulersbridge.com:8080/dbInterface/api/signUp" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        NSLog(@"JSON: %@", responseObject);
-        [self.signupDelegate signupFinishedWithSuccess:YES withUser:nil failureReason:nil];
+    [manager POST:@"http://eulersbridge.com:8080/dbInterface/api/signUp" parameters:parameters success:^(AFHTTPRequestOperation *operation, id res) {
+        
+        EBUser *user = [self createAndSaveUser:res userId:nil];
+        
+        [self.signupDelegate signupFinishedWithSuccess:YES withUser:user failureReason:nil];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [self.signupDelegate signupFinishedWithSuccess:NO withUser:nil failureReason:error];
-//        NSLog(@"Error: %@", error);
+        
     }];
     
-//    [manager GET:@"http://www.eulersbridge.com:8080/dbInterface/api/user/gao@eulersbridge.com/" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        NSLog(@"JSON: %@", responseObject);
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        NSLog(@"Error: %@", error);
-//    }];
-    
-//    NSURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:@"http://10.0.0.23:8080/api/displayParams" parameters:@{@"abc":@"abc"} error:nil];
-//    NSMutableURLRequest *mutableRequest = [request mutableCopy];
-//    [mutableRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-//    [mutableRequest setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-//    request = [mutableRequest copy];
-//    
-//    [[manager HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        NSLog(@"JSON: %@", responseObject);
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        NSLog(@"Error: %@", error);
-//    }] start];
-    
-    }
+}
 
 - (void)resendVerificationEmailForUser:(EBUser *)user
 {
@@ -70,15 +56,51 @@
     
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/hal+json"];
     
-    [manager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id res) {
 //        NSLog(@"JSON: %@", responseObject);
-        [self.signupDelegate loginFinishedWithSuccess:YES withUser:nil failureReason:nil errorString:nil];
+        EBUser *user = [self createAndSaveUser:res[@"user"] userId:res[@"userId"]];
+        [self.signupDelegate loginFinishedWithSuccess:YES withUser:user failureReason:nil errorString:nil];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 //        NSLog(@"Error: %@", error);
+        if ([[operation responseString] isEqualToString:LOGIN_ERROR_USER_UNVERIFIED]) {
+            
+            // Create the user object.
+            EBUser *user = [[EBUser alloc] initWithEmail:email givenName:@"" password:password accountVerified:@"0" institutionId:@"" userId:@""];
+            
+            // Save the user in the system.
+            EBUserService *userService = [[EBUserService alloc] init];
+            [userService saveUser:user];
+            
+        }
         [self.signupDelegate loginFinishedWithSuccess:NO withUser:nil failureReason:error errorString:[operation responseString]];
     }];
 
 }
+
+- (void)voteWithPollId:(NSString *)pollId answerIndex:(NSUInteger)answerIndex
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:TESTING_USERNAME password:TESTING_PASSWORD];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/hal+json"];
+    double date = [[NSDate date] timeIntervalSince1970] / 1000;
+    NSString *dateString = [NSString stringWithFormat:@"%.0f", date];
+
+    NSDictionary *parameters = @{@"answerIndex": [NSString stringWithFormat:@"%lu", answerIndex],
+                                 @"timeStamp": dateString,
+                                 @"answererId": [NSString stringWithFormat:@"%d", 8807],
+                                 @"pollId": pollId};
+    
+    NSString *urlString = [NSString stringWithFormat:@"%@/poll/%@/answer", TESTING_URL, pollId];
+    [manager PUT:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id res) {
+        
+        [self.userActionDelegate votePollFinishedWithSuccess:YES withInfo:res failureReason:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.userActionDelegate votePollFinishedWithSuccess:NO withInfo:nil failureReason:error];
+    }];
+
+}
+
 
 - (void)getNewsWithInstitutionId:(NSString *)institutionId
 {
@@ -86,21 +108,11 @@
     institutionId = TESTING_INSTITUTION_ID;
     NSString *urlString = [NSString stringWithFormat:@"%@/newsArticles/%@", TESTING_URL, TESTING_INSTITUTION_ID];
     
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    
-    [manager setRequestSerializer:[AFHTTPRequestSerializer serializer]];
-    [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:TESTING_USERNAME password:TESTING_PASSWORD];
-    
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/hal+json"];
-    
-    [manager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        NSLog(@"JSON: %@", responseObject);
+    [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self.contentDelegate getNewsFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [self.contentDelegate getNewsFinishedWithSuccess:NO withInfo:nil failureReason:error];
-//        NSLog(@"Error: %@", error);
     }];
-    
 }
 
 - (void)getEventsWithInstitutionId:(NSString *)institutionId
@@ -109,82 +121,142 @@
     institutionId = TESTING_INSTITUTION_ID;
     NSString *urlString = [NSString stringWithFormat:@"%@/events/%@", TESTING_URL, TESTING_INSTITUTION_ID];
     
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    
-    [manager setRequestSerializer:[AFHTTPRequestSerializer serializer]];
-    [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:TESTING_USERNAME password:TESTING_PASSWORD];
-    
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/hal+json"];
-    
-    [manager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        //        NSLog(@"JSON: %@", responseObject);
+    [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self.contentDelegate getEventsFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [self.contentDelegate getEventsFinishedWithSuccess:NO withInfo:nil failureReason:error];
-        //        NSLog(@"Error: %@", error);
     }];
-    
 }
 
 - (void)getPhotoAlbumsWithInstitutionId:(NSString *)institutionId;
 {
-    institutionId = TESTING__PHOTO_INSTITUTION_ID;
-    NSString *urlString = [NSString stringWithFormat:@"%@/photoAlbums/%@", TESTING_URL, TESTING__PHOTO_INSTITUTION_ID];
+    institutionId = TESTING_PHOTO_INSTITUTION_ID;
+    NSString *urlString = [NSString stringWithFormat:@"%@/photoAlbums/%@", TESTING_URL, TESTING_PHOTO_INSTITUTION_ID];
     
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    
-    [manager setRequestSerializer:[AFHTTPRequestSerializer serializer]];
-    [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:TESTING_USERNAME password:TESTING_PASSWORD];
-    
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/hal+json"];
-    
-    [manager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        //        NSLog(@"JSON: %@", responseObject);
+    [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self.contentDelegate getPhotoAlbumsFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [self.contentDelegate getPhotoAlbumsFinishedWithSuccess:NO withInfo:nil failureReason:error];
-        //        NSLog(@"Error: %@", error);
     }];
-
 }
 
 - (void)getPhotosWithAlbumId:(NSString *)albumId;
 {
-    NSString *urlString = [NSString stringWithFormat:@"%@/photos/%@", TESTING_URL, albumId];
+    NSString *urlString = [NSString stringWithFormat:@"%@/photos/%@?pageSize=100", TESTING_URL, albumId];
     
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    
-    [manager setRequestSerializer:[AFHTTPRequestSerializer serializer]];
-    [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:TESTING_USERNAME password:TESTING_PASSWORD];
-    
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/hal+json"];
-    
-    [manager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        //        NSLog(@"JSON: %@", responseObject);
+    [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self.contentDelegate getPhotosFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [self.contentDelegate getPhotosFinishedWithSuccess:NO withInfo:nil failureReason:error];
-        //        NSLog(@"Error: %@", error);
+    }];
+}
+
+- (void)getElectionInfoWithElectionId:(NSString *)electionId
+{
+    NSString *urlString = [NSString stringWithFormat:@"%@/election/%@", TESTING_URL, electionId];
+    
+    [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.contentDelegate getElectionInfoFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.contentDelegate getElectionInfoFinishedWithSuccess:NO withInfo:nil failureReason:error];
+    }];
+}
+
+- (void)getPositionsInfoWithElectionId:(NSString *)electionId
+{
+    NSString *urlString = [NSString stringWithFormat:@"%@/positions/%@", TESTING_URL, electionId];
+    
+    [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.contentDelegate getPositionsInfoFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.contentDelegate getPositionsInfoFinishedWithSuccess:NO withInfo:nil failureReason:error];
+    }];
+}
+
+- (void)getCandidatesInfoWithElectionId:(NSString *)electionId
+{
+    NSString *urlString = [NSString stringWithFormat:@"%@/candidates/%@", TESTING_URL, electionId];
+    
+    [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.contentDelegate getCandidatesInfoFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.contentDelegate getCandidatesInfoFinishedWithSuccess:NO withInfo:nil failureReason:error];
+    }];
+
+}
+
+- (void)getTicketsInfoWithElectionId:(NSString *)electionId
+{
+    NSString *urlString = [NSString stringWithFormat:@"%@/tickets/%@", TESTING_URL, electionId];
+    
+    [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.contentDelegate getTicketsInfoFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.contentDelegate getTicketsInfoFinishedWithSuccess:NO withInfo:nil failureReason:error];
     }];
     
 }
+
+- (void)getPollsWithInstitutionId:(NSString *)institutionId
+{
+    NSString *urlString = [NSString stringWithFormat:@"%@/polls/%@", TESTING_URL, institutionId];
+    
+    [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.contentDelegate getPollsFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.contentDelegate getPollsFinishedWithSuccess:NO withInfo:nil failureReason:error];
+    }];
+}
+
+- (void)getPollResultsWithPollId:(NSString *)pollId
+{
+    NSString *urlString = [NSString stringWithFormat:@"%@/poll/%@/results", TESTING_URL, pollId];
+    
+    [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.contentDelegate getPollResultsFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.contentDelegate getPollResultsFinishedWithSuccess:NO withInfo:nil failureReason:error];
+    }];
+}
+
 
 - (void)getGeneralInfo
 {
     NSString *urlString = [NSString stringWithFormat:@"%@/general-info", TESTING_URL];
     
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    
-    [manager setRequestSerializer:[AFHTTPRequestSerializer serializer]];
-    
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/hal+json"];
-    
-    [manager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *info = (NSDictionary *)responseObject;
         [self.contentDelegate getGeneralInfoFinishedWithSuccess:YES withInfo:info failureReason:nil];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [self.contentDelegate getGeneralInfoFinishedWithSuccess:NO withInfo:nil failureReason:error];
     }];
+}
+
+- (void)getContentWithUrlString:(NSString *)urlString
+                        success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+                        failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    [manager setRequestSerializer:[AFHTTPRequestSerializer serializer]];
+    [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:TESTING_USERNAME password:TESTING_PASSWORD];
+    
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/hal+json"];
+    
+    [manager GET:urlString parameters:nil success:success failure:failure];
+    
+}
+
+- (EBUser *)createAndSaveUser:(NSDictionary *)res userId:(NSString *)userId
+{
+    // Create the user object.
+    EBUser *user = [[EBUser alloc] initWithEmail:res[@"email"] givenName:res[@"givenName"] password:res[@"password"] accountVerified:res[@"accountVerified"] institutionId:res[@"institutionId"] userId:userId];
+    
+    // Save the user in the system.
+    EBUserService *userService = [[EBUserService alloc] init];
+    [userService saveUser:user];
+    
+    return user;
 
 }
 

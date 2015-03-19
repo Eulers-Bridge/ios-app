@@ -48,6 +48,11 @@
 {
 
 }
+- (IBAction)verifiedAction:(EBButton *)sender
+{
+    UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
+    window.rootViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"loginView"];
+}
 
 #pragma mark signup delegate
 - (void)resendEmailFinishedWithSuccess:(BOOL)success withUser:(EBUser *)user failureReason:(NSString *)reason

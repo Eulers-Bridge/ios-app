@@ -12,8 +12,9 @@
 #import "EBElectionPositionsDataSource.h"
 #import "EBFeedCollectionViewCell.h"
 #import "EBElectionPositionDetailViewController.h"
+#import "EBNetworkService.h"
 
-@interface EBElectionViewController () <UIScrollViewDelegate>
+@interface EBElectionViewController () <UIScrollViewDelegate, EBContentServiceDelegate, EBElectionPositionsDataSourceDelegate>
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *electionSegmentedControl;
@@ -71,6 +72,10 @@
     self.positionsDataSource = [[EBElectionPositionsDataSource alloc] init];
     self.positionsCollectionView.dataSource = self.positionsDataSource;
     self.positionsCollectionView.delegate = self.positionsDataSource;
+    self.positionsDataSource.delegate = self;
+    [self.positionsDataSource fetchData];
+    
+    [self getElectionInfo];
 }
 
 - (void)changeSegment
@@ -100,6 +105,28 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)getElectionInfo
+{
+    EBNetworkService *service = [[EBNetworkService alloc] init];
+    service.contentDelegate = self;
+    [service getElectionInfoWithElectionId:TESTING_ELETION_ID];
+}
+
+- (void)getElectionInfoFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
+{
+    if (success) {
+        self.electionTitleLabel.text = info[@"title"];
+        self.overviewTextView.text = info[@"introduction"];
+        self.processTextView.text = info[@"process"];
+    } else {
+        NSLog(@"%@", error);
+    }
+}
+
+- (void)electionPositionsFetchDataCompleteWithSuccess:(BOOL)success
+{
+    [self.positionsCollectionView reloadData];
+}
 
 
 #pragma mark - Navigation
@@ -107,9 +134,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"ShowPositionDetail"]) {
-        EBFeedCollectionViewCell *cell = (EBFeedCollectionViewCell *)sender;
-        EBElectionPositionDetailViewController *detail = (EBElectionPositionDetailViewController *)[segue destinationViewController];
-        detail.data = self.positionsDataSource.positions[cell.index];
+        [self.positionsDataSource prepareForSegue:segue sender:sender];
     }
 }
 

@@ -25,6 +25,7 @@
 
 
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *familyNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *confirmPasswordTextField;
@@ -34,6 +35,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *universityButton;
 
 @property (weak, nonatomic) IBOutlet UIImageView *nameValidIndicator;
+@property (weak, nonatomic) IBOutlet UIImageView *familyNameValidIndicator;
 @property (weak, nonatomic) IBOutlet UIImageView *emailValidIndicator;
 @property (weak, nonatomic) IBOutlet UIImageView *passwordValidIndicator;
 @property (weak, nonatomic) IBOutlet UIImageView *confirmPasswordValidIndicator;
@@ -257,6 +259,9 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     if (textField == self.nameTextField) {
+        [self.familyNameTextField becomeFirstResponder];
+        return NO;
+    } else if (textField == self.familyNameTextField) {
         [self.emailTextField becomeFirstResponder];
         return NO;
     } else if (textField == self.emailTextField) {
@@ -285,6 +290,7 @@
 
 -(void)dismissKeyboard {
     [self.nameTextField resignFirstResponder];
+    [self.familyNameTextField resignFirstResponder];
     [self.emailTextField resignFirstResponder];
     [self.passwordTextField resignFirstResponder];
     [self.confirmPasswordTextField resignFirstResponder];
@@ -403,7 +409,8 @@
     if ([self verifyFields]) {
     [self.networkService signupWithEmailAddress:self.emailTextField.text
                                        password:self.passwordTextField.text
-                                           name:self.nameTextField.text
+                                      givenName:self.nameTextField.text
+                                       familyName:self.familyNameTextField.text
                                   institutionId:self.institutionIdSelected];
     // Set the spinning wheel or equivelent.
     [self.activityIndicator startAnimating];
@@ -424,6 +431,16 @@
         self.nameTextField.textColor = ISEGORIA_COLOR_SIGNUP_GREEN;
         self.nameValidIndicator.image = tick;
     }
+    
+    if ([self.familyNameTextField.text length] == 0) {
+        self.familyNameTextField.textColor = ISEGORIA_COLOR_SIGNUP_RED;
+        self.familyNameValidIndicator.image = cross;
+        allGood = NO;
+    } else {
+        self.familyNameTextField.textColor = ISEGORIA_COLOR_SIGNUP_GREEN;
+        self.familyNameValidIndicator.image = tick;
+    }
+
     
     if ([EBHelper NSStringIsValidEmail:self.emailTextField.text]) {
         self.emailTextField.textColor = ISEGORIA_COLOR_SIGNUP_GREEN;
@@ -472,6 +489,8 @@
 {
     self.nameTextField.enabled = YES;
     self.nameTextField.textColor = [UIColor blackColor];
+    self.familyNameTextField.enabled = YES;
+    self.familyNameTextField.textColor = [UIColor blackColor];
     self.nameValidIndicator.image = nil;
     self.emailTextField.enabled = YES;
     self.emailTextField.textColor = [UIColor blackColor];

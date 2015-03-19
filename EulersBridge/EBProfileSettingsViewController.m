@@ -94,6 +94,8 @@
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 0) {
+        [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"userEmail"];
+        [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"userPassword"];
         UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
         window.rootViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"loginView"];
     }

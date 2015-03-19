@@ -12,17 +12,23 @@
 #import "EBElectionCandidateTableDataSource.h"
 #import "EBCandidateProfileViewController.h"
 #import "EBCandidateTableViewController.h"
+#import "EBTicketsCollectionViewController.h"
 #import "MyConstants.h"
 #import "EBHelper.h"
 
-@interface EBCandidateViewController () <UIScrollViewDelegate, UISearchBarDelegate, UICollectionViewDelegate>
+@interface EBCandidateViewController () <UIScrollViewDelegate, UISearchBarDelegate, UICollectionViewDelegate, EBElectionPositionsDataSourceDelegate, EBContentServiceDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *customScrollView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 @property (weak, nonatomic) IBOutlet UICollectionView *positionsCollectionView;
 @property (weak, nonatomic) IBOutlet UIView *ticketsCollectionView;
 @property (weak, nonatomic) IBOutlet UIView *candidateTableView;
 
+@property (strong, nonatomic) NSArray *candidates;
+
 @property (strong, nonatomic) EBElectionPositionsDataSource *positionsDataSource;
+
+@property (weak, nonatomic) EBCandidateTableViewController *allCandidateTableViewController;
+@property (weak, nonatomic) EBTicketsCollectionViewController *ticketsCollectionViewController;
 
 
 @end
@@ -40,6 +46,9 @@
 
 - (void)viewDidLoad
 {
+    // Design: Disable controls until candidates are returned from the server. Pass candidates data
+    //         to Embeded views and positions collection view.
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.customScrollView.contentSize = CGSizeMake([EBHelper getScreenSize].width * 3, self.customScrollView.bounds.size.height);
@@ -55,8 +64,16 @@
     self.positionsDataSource = [[EBElectionPositionsDataSource alloc] init];
     self.positionsCollectionView.delegate = self.positionsDataSource;
     self.positionsCollectionView.dataSource = self.positionsDataSource;
+    self.positionsDataSource.delegate = self;
+    [self.positionsDataSource fetchData];
     self.positionsCollectionView.contentInset = UIEdgeInsetsMake(108, 0, 49, 0);
-
+    
+    // Disable controls until data returned from server.
+    self.segmentedControl.enabled = NO;
+    self.positionsCollectionView.userInteractionEnabled = NO;
+    
+    [self fetchCandidateData];
+    [self fetchTicketData];
 }
 
 - (void)changeSegment
@@ -75,6 +92,54 @@
     }
 }
 
+-(void)electionPositionsFetchDataCompleteWithSuccess:(BOOL)success
+{
+    if (success) {
+        [self.positionsCollectionView reloadData];
+    }
+}
+
+- (void)fetchCandidateData
+{
+    EBNetworkService *service = [[EBNetworkService alloc] init];
+    service.contentDelegate = self;
+    [service getCandidatesInfoWithElectionId:TESTING_ELETION_ID];
+}
+
+- (void)fetchTicketData
+{
+    EBNetworkService *service = [[EBNetworkService alloc] init];
+    service.contentDelegate = self;
+    [service getTicketsInfoWithElectionId:TESTING_ELETION_ID];
+}
+
+-(void)getCandidatesInfoFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
+{
+    if (success) {
+        // Enable controls after data returned from server.
+        self.segmentedControl.enabled = YES;
+        self.positionsCollectionView.userInteractionEnabled = YES;
+        self.allCandidateTableViewController.candidates = (NSArray *)info;
+        self.candidates = (NSArray *)info;
+        [self.allCandidateTableViewController setup];
+    } else {
+        NSLog(@"%@", error);
+    }
+}
+
+-(void)getTicketsInfoFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
+{
+    if (success) {
+        // Enable controls after data returned from server.
+        self.segmentedControl.enabled = YES;
+        self.positionsCollectionView.userInteractionEnabled = YES;
+        self.allCandidateTableViewController.candidates = (NSArray *)info;
+        self.candidates = (NSArray *)info;
+        [self.allCandidateTableViewController setup];
+    } else {
+        NSLog(@"%@", error);
+    }
+}
 
 /*
 #pragma mark position collection view delegate
@@ -115,7 +180,12 @@
 {
     if ([segue.identifier isEqualToString:@"CandidateTableEmbed"]) {
         EBCandidateTableViewController *tvc = (EBCandidateTableViewController *)[segue destinationViewController];
+        self.allCandidateTableViewController = tvc;
         tvc.candidateFilter = EBCandidateFilterAll;
+    }
+    if ([segue.identifier isEqualToString:@"TicketsCollectionEmbed"]) {
+        EBTicketsCollectionViewController *tvc = (EBTicketsCollectionViewController *)[segue destinationViewController];
+        self.ticketsCollectionViewController = tvc;
     }
     if ([segue.identifier isEqualToString:@"ShowCandidateFromPosition"]) {
         EBCandidateTableViewController *tvc = (EBCandidateTableViewController *)[segue destinationViewController];
@@ -123,6 +193,7 @@
         EBFeedCollectionViewCell *cell = (EBFeedCollectionViewCell *)sender;
         tvc.filterId = [cell.data[@"id"] intValue];
         tvc.filterTitle = cell.titleLabel.text;
+        tvc.candidates = self.candidates;
     }
 }
 

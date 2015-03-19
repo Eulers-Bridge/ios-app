@@ -12,11 +12,15 @@
 
 @interface EBUser : NSObject
 
-@property (strong, nonatomic) NSString *id;
+@property (strong, nonatomic) NSString *userId;
 @property (strong, nonatomic) NSString *email;
-@property BOOL emailVerified;
+@property (strong, nonatomic) NSString *givenName;
+@property (strong, nonatomic) NSString *password;
+@property (strong, nonatomic) NSString *emailVerified;
 @property (strong, nonatomic) NSString *institutionId;
 @property (strong, nonatomic) NSArray *badgesEarned;
 @property (strong, nonatomic) NSArray *tasksCompleted;
+
+-(EBUser *)initWithEmail:(NSString *)email givenName:(NSString *)givenName password:(NSString *)password accountVerified:(NSString *)accountVerified institutionId:(NSString *)institutionId userId:(NSString *)userId;
 
 @end

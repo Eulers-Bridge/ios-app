@@ -12,7 +12,7 @@
 
 @property (strong, nonatomic) NSString *id;
 @property (strong, nonatomic) NSString *name;
-@property (strong, nonatomic) NSString *description;
+@property (strong, nonatomic) NSString *badgeDescription;
 @property (strong, nonatomic) NSString *imageName;
 
 @end

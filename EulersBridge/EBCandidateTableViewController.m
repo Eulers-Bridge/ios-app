@@ -10,8 +10,10 @@
 #import "EBCandidateTableViewCell.h"
 #import "EBCandidateCellDelegate.h"
 #import "EBCandidateProfileViewController.h"
+#import "EBNetworkService.h"
+#import "EBHelper.h"
 
-@interface EBCandidateTableViewController () <UISearchBarDelegate, EBCandidateCellDelegate, UIScrollViewDelegate>
+@interface EBCandidateTableViewController () <UISearchBarDelegate, EBCandidateCellDelegate, UIScrollViewDelegate, EBContentServiceDelegate>
 
 @property (weak, nonatomic) IBOutlet UISearchBar *candidateSearchBar;
 @property NSUInteger selectedCellIndex;
@@ -37,106 +39,106 @@
     self.candidateSearchBar.showsCancelButton = YES;
     self.tableView.contentOffset = CGPointMake(0, -64);
     
-    self.candidates = @[@{@"id": @"0",
-                          @"positionId": @"0",
-                          @"positionTitle": @"President",
-                          @"ticketId": @"0",
-                          @"name": @"Lillian Adams",
-                          @"description": @"This is a short description of the candidate."},
-                        @{@"id": @"1",
-                          @"positionId": @"0",
-                          @"positionTitle": @"President",
-                          @"ticketId": @"1",
-                          @"name": @"Juan Rivera",
-                          @"description": @"This is a short description of the candidate."},
-                        @{@"id": @"2",
-                          @"positionId": @"1",
-                          @"positionTitle": @"Secretary",
-                          @"ticketId": @"0",
-                          @"name": @"Richard Gonzales",
-                          @"description": @"This is a short description of the candidate."},
-                        @{@"id": @"3",
-                          @"positionId": @"2",
-                          @"positionTitle": @"Women’s Officer",
-                          @"ticketId": @"1",
-                          @"name": @"Eva Menendez",
-                          @"description": @"This is a short description of the candidate."},
-                        @{@"id": @"4",
-                          @"positionId": @"1",
-                          @"positionTitle": @"Secretary",
-                          @"ticketId": @"0",
-                          @"name": @"Anthony Moore",
-                          @"description": @"This is a short description of the candidate."},
-                        @{@"id": @"5",
-                          @"positionId": @"3",
-                          @"positionTitle": @"LGBT Officer",
-                          @"ticketId": @"1",
-                          @"name": @"Lisa Bennett",
-                          @"description": @"This is a short description of the candidate."},
-                        @{@"id": @"6",
-                          @"positionId": @"3",
-                          @"positionTitle": @"LGBT Officer",
-                          @"ticketId": @"2",
-                          @"name": @"Emily Lee",
-                          @"description": @"This is a short description of the candidate."},
-                        @{@"id": @"7",
-                          @"positionId": @"4",
-                          @"positionTitle": @"Clubs and Societies",
-                          @"ticketId": @"2",
-                          @"name": @"Robert Watson",
-                          @"description": @"This is a short description of the candidate."},
-                        @{@"id": @"8",
-                          @"positionId": @"4",
-                          @"positionTitle": @"Clubs and Societies",
-                          @"ticketId": @"2",
-                          @"name": @"Jeffrey Young",
-                          @"description": @"This is a short description of the candidate."},
-                        @{@"id": @"9",
-                          @"positionId": @"5",
-                          @"positionTitle": @"Environmental Officer",
-                          @"ticketId": @"3",
-                          @"name": @"Christine Robinson",
-                          @"description": @"This is a short description of the candidate."},
-                        @{@"id": @"10",
-                          @"positionId": @"5",
-                          @"positionTitle": @"Environmental Officer",
-                          @"ticketId": @"4",
-                          @"name": @"Sandra Taylor",
-                          @"description": @"This is a short description of the candidate."},
-                        @{@"id": @"11",
-                          @"positionId": @"6",
-                          @"positionTitle": @"Welfare Officer",
-                          @"ticketId": @"5",
-                          @"name": @"Elizabeth Henderson",
-                          @"description": @"This is a short description of the candidate."},
-                        @{@"id": @"12",
-                          @"positionId": @"6",
-                          @"positionTitle": @"Welfare Officer",
-                          @"ticketId": @"3",
-                          @"name": @"Sara Stewart",
-                          @"description": @"This is a short description of the candidate."},
-                        @{@"id": @"13",
-                          @"positionId": @"7",
-                          @"positionTitle": @"Creative Arts Officer",
-                          @"ticketId": @"4",
-                          @"name": @"Lin Xiao",
-                          @"description": @"This is a short description of the candidate."},
-                        @{@"id": @"14",
-                          @"positionId": @"7",
-                          @"positionTitle": @"Creative Arts Officer",
-                          @"ticketId": @"5",
-                          @"name": @"David Johnson",
-                          @"description": @"This is a short description of the candidate."},
-                        @{@"id": @"15",
-                          @"positionId": @"8",
-                          @"positionTitle": @"Faculty Liaison",
-                          @"ticketId": @"6",
-                          @"name": @"Martha Sanchez",
-                          @"description": @"This is a short description of the candidate."}];
-    
+//    self.candidates = @[@{@"id": @"0",
+//                          @"positionId": @"0",
+//                          @"positionTitle": @"President",
+//                          @"ticketId": @"0",
+//                          @"name": @"Lillian Adams",
+//                          @"description": @"This is a short description of the candidate."},
+//                        @{@"id": @"1",
+//                          @"positionId": @"0",
+//                          @"positionTitle": @"President",
+//                          @"ticketId": @"1",
+//                          @"name": @"Juan Rivera",
+//                          @"description": @"This is a short description of the candidate."},
+//                        @{@"id": @"2",
+//                          @"positionId": @"1",
+//                          @"positionTitle": @"Secretary",
+//                          @"ticketId": @"0",
+//                          @"name": @"Richard Gonzales",
+//                          @"description": @"This is a short description of the candidate."},
+//                        @{@"id": @"3",
+//                          @"positionId": @"2",
+//                          @"positionTitle": @"Women’s Officer",
+//                          @"ticketId": @"1",
+//                          @"name": @"Eva Menendez",
+//                          @"description": @"This is a short description of the candidate."},
+//                        @{@"id": @"4",
+//                          @"positionId": @"1",
+//                          @"positionTitle": @"Secretary",
+//                          @"ticketId": @"0",
+//                          @"name": @"Anthony Moore",
+//                          @"description": @"This is a short description of the candidate."},
+//                        @{@"id": @"5",
+//                          @"positionId": @"3",
+//                          @"positionTitle": @"LGBT Officer",
+//                          @"ticketId": @"1",
+//                          @"name": @"Lisa Bennett",
+//                          @"description": @"This is a short description of the candidate."},
+//                        @{@"id": @"6",
+//                          @"positionId": @"3",
+//                          @"positionTitle": @"LGBT Officer",
+//                          @"ticketId": @"2",
+//                          @"name": @"Emily Lee",
+//                          @"description": @"This is a short description of the candidate."},
+//                        @{@"id": @"7",
+//                          @"positionId": @"4",
+//                          @"positionTitle": @"Clubs and Societies",
+//                          @"ticketId": @"2",
+//                          @"name": @"Robert Watson",
+//                          @"description": @"This is a short description of the candidate."},
+//                        @{@"id": @"8",
+//                          @"positionId": @"4",
+//                          @"positionTitle": @"Clubs and Societies",
+//                          @"ticketId": @"2",
+//                          @"name": @"Jeffrey Young",
+//                          @"description": @"This is a short description of the candidate."},
+//                        @{@"id": @"9",
+//                          @"positionId": @"5",
+//                          @"positionTitle": @"Environmental Officer",
+//                          @"ticketId": @"3",
+//                          @"name": @"Christine Robinson",
+//                          @"description": @"This is a short description of the candidate."},
+//                        @{@"id": @"10",
+//                          @"positionId": @"5",
+//                          @"positionTitle": @"Environmental Officer",
+//                          @"ticketId": @"4",
+//                          @"name": @"Sandra Taylor",
+//                          @"description": @"This is a short description of the candidate."},
+//                        @{@"id": @"11",
+//                          @"positionId": @"6",
+//                          @"positionTitle": @"Welfare Officer",
+//                          @"ticketId": @"5",
+//                          @"name": @"Elizabeth Henderson",
+//                          @"description": @"This is a short description of the candidate."},
+//                        @{@"id": @"12",
+//                          @"positionId": @"6",
+//                          @"positionTitle": @"Welfare Officer",
+//                          @"ticketId": @"3",
+//                          @"name": @"Sara Stewart",
+//                          @"description": @"This is a short description of the candidate."},
+//                        @{@"id": @"13",
+//                          @"positionId": @"7",
+//                          @"positionTitle": @"Creative Arts Officer",
+//                          @"ticketId": @"4",
+//                          @"name": @"Lin Xiao",
+//                          @"description": @"This is a short description of the candidate."},
+//                        @{@"id": @"14",
+//                          @"positionId": @"7",
+//                          @"positionTitle": @"Creative Arts Officer",
+//                          @"ticketId": @"5",
+//                          @"name": @"David Johnson",
+//                          @"description": @"This is a short description of the candidate."},
+//                        @{@"id": @"15",
+//                          @"positionId": @"8",
+//                          @"positionTitle": @"Faculty Liaison",
+//                          @"ticketId": @"6",
+//                          @"name": @"Martha Sanchez",
+//                          @"description": @"This is a short description of the candidate."}];
+//    
 
     [self setup];
-    self.matchingCandidates = self.candidates;
+//    self.matchingCandidates = self.candidates;
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissKeyboard) name:@"CandidateCancelSearch" object:nil];
     
@@ -164,6 +166,8 @@
 {
     if (self.candidateFilter == EBCandidateFilterAll) {
         self.tableView.contentInset = UIEdgeInsetsMake(108.0, 0.0, 49.0, 0.0);
+        self.matchingCandidates = self.candidates;
+        [self.tableView reloadData];
         return;
     }
     self.tableView.contentInset = UIEdgeInsetsMake(0.0, 0.0, 49.0, 0.0);
@@ -183,6 +187,8 @@
         }
     }
     self.candidates = [matchingCandidates copy];
+    self.matchingCandidates = self.candidates;
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -203,16 +209,16 @@
     EBCandidateTableViewCell *cell;
     if (self.candidateFilter == EBCandidateFilterByTicket || self.candidateFilter == EBCandidateFilterAll) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"CandidateCellSmall" forIndexPath:indexPath];
-        cell.subtitleLabel.text = self.matchingCandidates[indexPath.row][@"positionTitle"];
+//        cell.subtitleLabel.text = self.matchingCandidates[indexPath.row][@"positionTitle"];
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:@"CandidateCell" forIndexPath:indexPath];
-        cell.descriptionTextView.text = self.matchingCandidates[indexPath.row][@"description"];
+        cell.descriptionTextView.text = self.matchingCandidates[indexPath.row][@"policyStatement"];
     }
     
-    cell.nameLabel.text = self.matchingCandidates[indexPath.row][@"name"];
+    cell.nameLabel.text = [EBHelper fullNameWithUserObject:self.matchingCandidates[indexPath.row]];
 
-    NSString *imageName = [NSString stringWithFormat:@"candidate%@.jpg", self.matchingCandidates[indexPath.row][@"id"]];
-    cell.candidateImageView.image = [UIImage imageNamed:imageName];
+//    NSString *imageName = [NSString stringWithFormat:@"candidate%@.jpg", self.matchingCandidates[indexPath.row][@"id"]];
+//    cell.candidateImageView.image = [UIImage imageNamed:imageName];
     cell.index = indexPath.row;
     cell.delegate = self;
     return cell;
@@ -260,7 +266,7 @@
     } else {
         NSMutableArray *matchingCandidates = [NSMutableArray array];
         for (NSDictionary *candidate in self.candidates) {
-            NSString *name = [candidate[@"name"] lowercaseString];
+            NSString *name = [[EBHelper fullNameWithUserObject:candidate] lowercaseString];
             if ([name rangeOfString:[searchText lowercaseString]].location == NSNotFound) {
                 
             } else {
@@ -270,6 +276,8 @@
         self.matchingCandidates = [matchingCandidates copy];
     }
 }
+
+
 
 
 
@@ -317,7 +325,7 @@
 {
     if ([segue.identifier isEqualToString:@"showCandidateDetail"]) {
         EBCandidateProfileViewController *detail = (EBCandidateProfileViewController *)[segue destinationViewController];
-        detail.name = self.matchingCandidates[self.selectedCellIndex][@"name"];
+        detail.name = [EBHelper fullNameWithUserObject:self.matchingCandidates[self.selectedCellIndex][@"name"]];
         detail.imageName = [NSString stringWithFormat:@"candidate%@.jpg", self.matchingCandidates[self.selectedCellIndex][@"id"]];
     }
 }

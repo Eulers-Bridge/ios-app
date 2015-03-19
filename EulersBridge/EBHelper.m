@@ -91,4 +91,11 @@
     return [emailTest evaluateWithObject:checkString];
 }
 
++ (NSString *)fullNameWithUserObject:(NSDictionary *)userObject
+{
+    NSString *givenName = (NSString *)userObject[@"givenName"];
+    NSString *familyName = (NSString *)userObject[@"familyName"];
+    return [NSString stringWithFormat:@"%@ %@", givenName, familyName];
+}
+
 @end

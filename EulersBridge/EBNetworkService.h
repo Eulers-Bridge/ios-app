@@ -25,27 +25,49 @@
 - (void)getEventsFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 - (void)getPhotoAlbumsFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 - (void)getPhotosFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
+- (void)getElectionInfoFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
+- (void)getPositionsInfoFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
+- (void)getCandidatesInfoFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
+- (void)getTicketsInfoFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
+
+- (void)getPollsFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
+- (void)getPollResultsFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
+@end
+
+@protocol EBUserActionServiceDelegate <NSObject>
+@optional
+
+- (void)votePollFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 @end
 
 @interface EBNetworkService : NSObject
 
 @property (assign, nonatomic) id<EBSignupServiceDelegate> signupDelegate;
 @property (assign, nonatomic) id<EBContentServiceDelegate> contentDelegate;
+@property (assign, nonatomic) id<EBUserActionServiceDelegate> userActionDelegate;
 
 - (void)getGeneralInfo;
 
 // TODO: Signup and login service
-- (void)signupWithEmailAddress:(NSString *)email password:(NSString *)password name:(NSString *)name institutionId:(NSString *)institutionId;
+- (void)signupWithEmailAddress:(NSString *)email password:(NSString *)password givenName:(NSString *)givenName familyName:(NSString *)familyName institutionId:(NSString *)institutionId;
 
 - (void)loginWithEmailAddress:(NSString *)email password:(NSString *)password;
-
 - (void)resendVerificationEmailForUser:(EBUser *)user;
+
+// Content services
 - (void)getNewsWithInstitutionId:(NSString *)institutionId;
 - (void)getEventsWithInstitutionId:(NSString *)institutionId;
 - (void)getPhotoAlbumsWithInstitutionId:(NSString *)institutionId;
 - (void)getPhotosWithAlbumId:(NSString *)albumId;
-// TODO: Content service
+- (void)getElectionInfoWithElectionId:(NSString *)electionId;
+- (void)getPositionsInfoWithElectionId:(NSString *)electionId;
+- (void)getCandidatesInfoWithElectionId:(NSString *)electionId;
+- (void)getTicketsInfoWithElectionId:(NSString *)electionId;
 
-// TODO: User action service
+- (void)getPollsWithInstitutionId:(NSString *)institutionId;
+- (void)getPollResultsWithPollId:(NSString *)pollId;
+
+// User action service
+- (void)voteWithPollId:(NSString *)pollId answerIndex:(NSUInteger)answerIndex;
 
 @end

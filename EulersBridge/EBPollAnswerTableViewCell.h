@@ -17,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *tickImageView;
 
 @property (strong, nonatomic) NSDictionary *result;
-@property (strong, nonatomic) NSDictionary *answer;
+@property (strong, nonatomic) NSString *answer;
 @property (strong, nonatomic) UIColor *baseColor;
 @property BOOL voted;
 

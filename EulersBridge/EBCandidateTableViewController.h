@@ -17,4 +17,6 @@
 @property int filterId;
 @property (strong, nonatomic) NSString *filterTitle;
 
+- (void)setup;
+
 @end

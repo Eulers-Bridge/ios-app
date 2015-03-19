@@ -26,4 +26,6 @@
 
 + (BOOL)NSStringIsValidEmail:(NSString *)checkString;
 
++ (NSString *)fullNameWithUserObject:(NSDictionary *)userObject;
+
 @end

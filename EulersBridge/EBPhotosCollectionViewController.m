@@ -74,9 +74,11 @@
     CGFloat width = ([EBHelper getScreenSize].width - 5 * SPACING_PHOTO_GRID) / 4;
     
 //    NSString *imageName = [NSString stringWithFormat:@"%@%ld.jpg",self.data[@"prefix"], (long)indexPath.item + 1];
-    NSString *imageThumbnailUrl = self.photoDataList[indexPath.item][@"thumbNailUrl"];
+    NSString *imageThumbnailUrl = self.photoDataList[indexPath.item][@"url"];
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, width, width)];
-    [imageView setImageWithURL:[NSURL URLWithString:imageThumbnailUrl]];
+    imageView.contentMode = UIViewContentModeScaleAspectFill;
+    
+    [imageView setImageWithURL:[NSURL URLWithString:imageThumbnailUrl] placeholderImage:[UIImage imageNamed:@"ImagePlaceholder"]];
 //    dispatch_queue_t imageReader = dispatch_queue_create("Image Reader", NULL);
 //    dispatch_async(imageReader, ^{
 //        UIImage *image = [UIImage imageNamed:imageName]; // may take time to load
@@ -85,7 +87,7 @@
 //        });
 //    });
     
-    imageView.contentMode = UIViewContentModeScaleAspectFill;
+
     imageView.backgroundColor = [UIColor whiteColor];
     [cell.contentView addSubview:imageView];
     

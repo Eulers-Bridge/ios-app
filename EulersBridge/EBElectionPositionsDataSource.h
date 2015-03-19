@@ -7,9 +7,22 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "EBNetworkService.h"
 
-@interface EBElectionPositionsDataSource : NSObject <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+@protocol EBElectionPositionsDataSourceDelegate <NSObject>
+
+- (void)electionPositionsFetchDataCompleteWithSuccess:(BOOL)success;
+
+@end
+
+
+@interface EBElectionPositionsDataSource : NSObject <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, EBContentServiceDelegate>
+
+@property (assign, nonatomic) id<EBElectionPositionsDataSourceDelegate> delegate;
 
 @property (strong, nonatomic) NSArray *positions;
+
+- (void)fetchData;
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender;
 
 @end

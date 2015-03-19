@@ -282,7 +282,8 @@
     
     // present the view controller full-screen on iPhone; in a form sheet on iPad:
     scanningNavVC.modalPresentationStyle = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ? UIModalPresentationFullScreen : UIModalPresentationFormSheet;
-    [self presentViewController:scanningNavVC animated:YES completion:nil];}
+    [self presentViewController:scanningNavVC animated:YES completion:nil];
+}
 
 
 

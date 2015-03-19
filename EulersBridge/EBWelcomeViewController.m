@@ -66,6 +66,14 @@
     self.contentPushedUp = NO;
     self.activityIndicator.hidesWhenStopped = YES;
     
+    // relogin the user if possible
+    NSString *email = [[NSUserDefaults standardUserDefaults] objectForKey:@"userEmail"];
+    NSString *password = [[NSUserDefaults standardUserDefaults] objectForKey:@"userPassword"];
+    if (email && password) {
+        self.emailTextField.text = email;
+        self.passwordTextField.text = password;
+        [self loginAction:self.loginButton];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated

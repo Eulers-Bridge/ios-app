@@ -9,13 +9,17 @@
 #import "EBPollViewController.h"
 #import "EBPollContentViewController.h"
 #import "EBPersonalityViewController.h"
+#import "EBNetworkService.h"
+#import "MyConstants.h"
+#import "EBHelper.h"
 
-@interface EBPollViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate>
+@interface EBPollViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate, EBContentServiceDelegate>
 
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 @property (strong, nonatomic) NSArray *contentViewControllers;
 @property (strong, nonatomic) EBLabelMedium *titleLabel;
 @property (strong, nonatomic) UIPageControl *titlePageControl;
+@property (strong, nonatomic) NSArray *polls;
 @property int maxPoll;
 @property int nextViewControllerIndex;
 @end
@@ -35,7 +39,31 @@
 {
     [super viewDidLoad];
 //    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0]];
-    self.maxPoll = 5;
+    [self fetchData];
+    
+}
+
+- (void)fetchData
+{
+    EBNetworkService *service = [[EBNetworkService alloc] init];
+    service.contentDelegate = self;
+    [service getPollsWithInstitutionId:TESTING_PHOTO_INSTITUTION_ID];
+}
+
+- (void)getPollsFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
+{
+    if (success) {
+        NSArray *polls = (NSArray *)info[@"polls"];
+        self.polls = polls;
+        [self setupWithNumberOfPages:(int)[polls count]];
+    } else {
+        
+    }
+}
+
+- (void)setupWithNumberOfPages:(int)numberOfPages
+{
+    self.maxPoll = numberOfPages;
     self.nextViewControllerIndex = 0;
     
     self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PollPageViewController"];
@@ -49,7 +77,7 @@
     titleLabel.textAlignment = NSTextAlignmentCenter;
     
     UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(70, 20, 50, 24)];
-    pageControl.numberOfPages = 5;
+    pageControl.numberOfPages = numberOfPages;
     pageControl.currentPage = 0;
     pageControl.enabled = NO;
     
@@ -81,7 +109,7 @@
             scrollView.delegate = self;
         }
     }
-    
+
 }
 
 - (void)setupContentViewControllers
@@ -96,6 +124,7 @@
     for (index = 0; index < self.maxPoll; index += 1) {
         EBPollContentViewController *pollContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PollContentViewController"];
         pollContentViewController.pageIndex = index;
+        pollContentViewController.info = self.polls[index];
 //        pollContentViewController.pageNumberLabel.text = [NSString stringWithFormat:@"Page: %d", index];
         [viewControllers addObject:pollContentViewController];
     }
@@ -157,13 +186,14 @@
 // stop scrolling pass the ends
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    if (scrollView.contentOffset.x < 320 && self.titlePageControl.currentPage == 0) {
-        [scrollView setContentOffset:CGPointMake(320, 0) animated:NO];
+    int width = [EBHelper getScreenSize].width;
+    if (scrollView.contentOffset.x < width && self.titlePageControl.currentPage == 0) {
+        [scrollView setContentOffset:CGPointMake(width, 0) animated:NO];
     }
     
     
-    if (scrollView.contentOffset.x > 320 && self.titlePageControl.currentPage == self.maxPoll - 1) {
-        [scrollView setContentOffset:CGPointMake(320, 0) animated:NO];
+    if (scrollView.contentOffset.x > width && self.titlePageControl.currentPage == self.maxPoll - 1) {
+        [scrollView setContentOffset:CGPointMake(width, 0) animated:NO];
     }
 }
 
