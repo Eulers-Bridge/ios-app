@@ -25,4 +25,5 @@
     #import "EBTextFieldMuseo.h"
     #import "EBTextViewMuseoMedium.h"
     #import "EBTextViewGentium.h"
+    #import "EBCircleProgressBar.h"
 #endif

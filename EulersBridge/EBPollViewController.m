@@ -47,7 +47,7 @@
 {
     EBNetworkService *service = [[EBNetworkService alloc] init];
     service.contentDelegate = self;
-    [service getPollsWithInstitutionId:TESTING_PHOTO_INSTITUTION_ID];
+    [service getPollsWithInstitutionId:TESTING_INSTITUTION_ID];
 }
 
 - (void)getPollsFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error

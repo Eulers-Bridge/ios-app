@@ -118,6 +118,10 @@
 		048D01ED195CFE5500E878DA /* EBTicketsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 048D01EC195CFE5500E878DA /* EBTicketsCollectionViewController.m */; };
 		048D01F0195CFE6A00E878DA /* EBTicketCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 048D01EF195CFE6A00E878DA /* EBTicketCollectionViewCell.m */; };
 		048D01F3195D02B900E878DA /* EBCandidateTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 048D01F2195D02B900E878DA /* EBCandidateTableViewController.m */; };
+		04937C981AC11992002209AA /* EBCircleProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 04937C971AC11992002209AA /* EBCircleProgressBar.m */; };
+		04937C991AC11992002209AA /* EBCircleProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 04937C971AC11992002209AA /* EBCircleProgressBar.m */; };
+		04937C9C1AC17E8B002209AA /* EBOnePixelLineVertical.m in Sources */ = {isa = PBXBuildFile; fileRef = 04937C9B1AC17E8B002209AA /* EBOnePixelLineVertical.m */; };
+		04937C9D1AC17E8B002209AA /* EBOnePixelLineVertical.m in Sources */ = {isa = PBXBuildFile; fileRef = 04937C9B1AC17E8B002209AA /* EBOnePixelLineVertical.m */; };
 		0493F3D1191F49C400853DBF /* EBNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0493F3D0191F49C400853DBF /* EBNetworkService.m */; };
 		0493F3D4191F49EA00853DBF /* EBImageService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0493F3D3191F49EA00853DBF /* EBImageService.m */; };
 		0494A4BB1920AA6300602CB9 /* MuseoSansRounded-100.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0494A4B91920AA6300602CB9 /* MuseoSansRounded-100.otf */; };
@@ -369,6 +373,10 @@
 		048D01EF195CFE6A00E878DA /* EBTicketCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBTicketCollectionViewCell.m; sourceTree = "<group>"; };
 		048D01F1195D02B900E878DA /* EBCandidateTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBCandidateTableViewController.h; sourceTree = "<group>"; };
 		048D01F2195D02B900E878DA /* EBCandidateTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBCandidateTableViewController.m; sourceTree = "<group>"; };
+		04937C961AC11992002209AA /* EBCircleProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBCircleProgressBar.h; sourceTree = "<group>"; };
+		04937C971AC11992002209AA /* EBCircleProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBCircleProgressBar.m; sourceTree = "<group>"; };
+		04937C9A1AC17E8B002209AA /* EBOnePixelLineVertical.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBOnePixelLineVertical.h; sourceTree = "<group>"; };
+		04937C9B1AC17E8B002209AA /* EBOnePixelLineVertical.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBOnePixelLineVertical.m; sourceTree = "<group>"; };
 		0493F3CF191F49C400853DBF /* EBNetworkService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBNetworkService.h; sourceTree = "<group>"; };
 		0493F3D0191F49C400853DBF /* EBNetworkService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBNetworkService.m; sourceTree = "<group>"; };
 		0493F3D2191F49EA00853DBF /* EBImageService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBImageService.h; sourceTree = "<group>"; };
@@ -993,6 +1001,8 @@
 				04428E161999B8370061E2C5 /* EBPersonalitySlider.m */,
 				04788EC9195A6C0C0015FB06 /* EBOnePixelLine.h */,
 				04788ECA195A6C0C0015FB06 /* EBOnePixelLine.m */,
+				04937C9A1AC17E8B002209AA /* EBOnePixelLineVertical.h */,
+				04937C9B1AC17E8B002209AA /* EBOnePixelLineVertical.m */,
 				048D01C5195BB6C900E878DA /* EBButtonHeavy.h */,
 				048D01C6195BB6C900E878DA /* EBButtonHeavy.m */,
 				04959B911988C8DD00D9E768 /* EBButtonHeavySystem.h */,
@@ -1023,6 +1033,8 @@
 				048D01C3195BB0A600E878DA /* EBBlurImageView.m */,
 				049A476E196B803E00D363AE /* EBTextFieldMuseo.h */,
 				049A476F196B803E00D363AE /* EBTextFieldMuseo.m */,
+				04937C961AC11992002209AA /* EBCircleProgressBar.h */,
+				04937C971AC11992002209AA /* EBCircleProgressBar.m */,
 			);
 			name = "Custom UI";
 			sourceTree = "<group>";
@@ -1416,6 +1428,7 @@
 				04BB702D190891320059E93C /* EBFeedViewController.m in Sources */,
 				044BB0E91989DA6F00E0180F /* EBPhotosCollectionViewController.m in Sources */,
 				04B6556F196123610002E784 /* EBProfileSettingsViewController.m in Sources */,
+				04937C9C1AC17E8B002209AA /* EBOnePixelLineVertical.m in Sources */,
 				04959B901987781B00D9E768 /* EBTextViewMuseoLight.m in Sources */,
 				049A475419652D8700D363AE /* EBTicketProfileViewController.m in Sources */,
 				047B87BB19B5495100586D05 /* TestScrollViewController.m in Sources */,
@@ -1451,6 +1464,7 @@
 				048D01F3195D02B900E878DA /* EBCandidateTableViewController.m in Sources */,
 				049A4764196A5E3800D363AE /* EBTask.m in Sources */,
 				04BB704E190D229D0059E93C /* EBProfileViewController.m in Sources */,
+				04937C981AC11992002209AA /* EBCircleProgressBar.m in Sources */,
 				04428E141998CE450061E2C5 /* EBSlidersViewController.m in Sources */,
 				049A475A19667FA000D363AE /* EBPersonalityTableViewCell.m in Sources */,
 				04788EC81958076B0015FB06 /* UIImage+ImageWithColor.m in Sources */,
@@ -1480,6 +1494,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				04FD41AD19062ECD00AF17DC /* EulersBridgeTests.m in Sources */,
+				04937C9D1AC17E8B002209AA /* EBOnePixelLineVertical.m in Sources */,
+				04937C991AC11992002209AA /* EBCircleProgressBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

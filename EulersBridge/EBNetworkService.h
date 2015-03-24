@@ -17,6 +17,13 @@
 
 @end
 
+@protocol EBFriendServiceDelegate <NSObject>
+
+- (void)findFriendFinishedWithSuccess:(BOOL)success withContact:(NSDictionary *)contact failureReason:(NSError *)error;
+
+@end
+
+
 @protocol EBContentServiceDelegate <NSObject>
 @optional
 
@@ -45,6 +52,7 @@
 @property (assign, nonatomic) id<EBSignupServiceDelegate> signupDelegate;
 @property (assign, nonatomic) id<EBContentServiceDelegate> contentDelegate;
 @property (assign, nonatomic) id<EBUserActionServiceDelegate> userActionDelegate;
+@property (assign, nonatomic) id<EBFriendServiceDelegate> friendDelegate;
 
 - (void)getGeneralInfo;
 
@@ -53,6 +61,9 @@
 
 - (void)loginWithEmailAddress:(NSString *)email password:(NSString *)password;
 - (void)resendVerificationEmailForUser:(EBUser *)user;
+
+// Friend services
+- (void)findFriendWithContactDetail:(NSString *)contactDetail originalContact:(NSDictionary *)contact;
 
 // Content services
 - (void)getNewsWithInstitutionId:(NSString *)institutionId;

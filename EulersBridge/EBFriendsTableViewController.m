@@ -9,11 +9,13 @@
 #import "EBFriendsTableViewController.h"
 #import "EBFriendTableViewCell.h"
 #import "EBHelper.h"
+#import "EBNetworkService.h"
 @import AddressBook;
 
-@interface EBFriendsTableViewController () <EBFindFriendCellDelegate, UISearchBarDelegate>
+@interface EBFriendsTableViewController () <EBFindFriendCellDelegate, UISearchBarDelegate, EBFriendServiceDelegate>
 
 @property (strong, nonatomic) NSArray *contacts;
+@property (strong, nonatomic) NSMutableSet *validatedContacts;
 @property (strong, nonatomic) NSArray *firstLetters;
 @property (strong, nonatomic) NSMutableArray *parsedContacts;
 @property (strong, nonatomic) NSArray *matchingContacts;
@@ -37,6 +39,7 @@
     [super viewDidLoad];
     
     self.contacts = [NSArray array];
+    self.validatedContacts = [NSMutableSet set];
     [self getAddressBookContacts];
     self.tableView.sectionIndexMinimumDisplayRowCount = 3;
     
@@ -90,11 +93,40 @@
 {
     ABAddressBookRef addressBookRef = ABAddressBookCreateWithOptions(NULL, nil);
     self.contacts = [[EBHelper contactsWithAddressBookRef:addressBookRef] copy];
-    [self parseContacts:self.contacts];
+    [self validateContactsWithServer:self.contacts];
+//    [self parseContacts:self.contacts];
 //    NSLog(@"%@", self.contacts);
 }
 
-- (void)parseContacts:(NSArray *)contacts
+- (void)validateContactsWithServer:(NSArray *)contacts
+{
+    for (NSDictionary *contact in contacts) {
+        for (NSString *email in contact[PERSON_EMAILS_PROPERTY]) {
+            EBNetworkService *service = [[EBNetworkService alloc] init];
+            service.friendDelegate = self;
+            [service findFriendWithContactDetail:email originalContact:contact];
+        }
+        for (NSString *phoneNumber in contact[PERSON_PHONES_PROPERTY]) {
+            EBNetworkService *service = [[EBNetworkService alloc] init];
+            service.friendDelegate = self;
+            NSString *sanitizedPhoneNumber = [[[phoneNumber componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] componentsJoinedByString:@""] stringByReplacingOccurrencesOfString:@"-" withString:@""];
+            [service findFriendWithContactDetail:sanitizedPhoneNumber originalContact:contact];
+        }
+    }
+}
+
+- (void)findFriendFinishedWithSuccess:(BOOL)success withContact:(NSDictionary *)contact failureReason:(NSError *)error
+{
+    if (success) {
+        [self.validatedContacts addObject:contact];
+        self.parsedContacts = [self parseContacts:[[self.validatedContacts allObjects] copy]];
+        [self.tableView reloadData];
+    } else {
+        
+    }
+}
+
+- (NSMutableArray *)parseContacts:(NSArray *)contacts
 {
     NSMutableSet *mutableSet = [NSMutableSet set];
     for (NSDictionary *person in contacts) {
@@ -119,7 +151,7 @@
             
         }
     }
-    self.parsedContacts = mutableArray;
+    return mutableArray;
     
 //    self.parsedContacts = [@[@[self.contacts[0]], @[self.contacts[1]], @[self.contacts[2]]] mutableCopy];
 }

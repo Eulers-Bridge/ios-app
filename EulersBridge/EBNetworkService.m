@@ -77,6 +77,24 @@
 
 }
 
+#pragma mark Friend Services
+
+- (void)findFriendWithContactDetail:(NSString *)contactDetail originalContact:(NSDictionary *)contact
+{
+    NSString *urlString = [NSString stringWithFormat:@"%@/contact/%@/", TESTING_URL, contactDetail];
+    
+    [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.friendDelegate findFriendFinishedWithSuccess:YES withContact:contact failureReason:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.friendDelegate findFriendFinishedWithSuccess:NO withContact:nil failureReason:error];
+    }];
+}
+
+
+
+
+#pragma mark User Action Services
+
 - (void)voteWithPollId:(NSString *)pollId answerIndex:(NSUInteger)answerIndex
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -86,7 +104,7 @@
     double date = [[NSDate date] timeIntervalSince1970] / 1000;
     NSString *dateString = [NSString stringWithFormat:@"%.0f", date];
 
-    NSDictionary *parameters = @{@"answerIndex": [NSString stringWithFormat:@"%lu", answerIndex],
+    NSDictionary *parameters = @{@"answerIndex": [NSString stringWithFormat:@"%lu", (unsigned long)answerIndex],
                                  @"timeStamp": dateString,
                                  @"answererId": [NSString stringWithFormat:@"%d", 8807],
                                  @"pollId": pollId};
@@ -101,6 +119,9 @@
 
 }
 
+
+
+#pragma mark Content Services
 
 - (void)getNewsWithInstitutionId:(NSString *)institutionId
 {

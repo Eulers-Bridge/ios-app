@@ -111,12 +111,18 @@
     UITabBarItem *tabBarItem2 = [tabBar.items objectAtIndex:1];
     UITabBarItem *tabBarItem3 = [tabBar.items objectAtIndex:2];
     UITabBarItem *tabBarItem4 = [tabBar.items objectAtIndex:3];
-    UITabBarItem *tabBarItem5 = [tabBar.items objectAtIndex:4];
+    
+    CGFloat inset = 5.0;
+    
+    tabBarItem1.imageInsets = UIEdgeInsetsMake(inset, 0, -inset, 0);
+    tabBarItem2.imageInsets = UIEdgeInsetsMake(inset, 0, -inset, 0);
+    tabBarItem3.imageInsets = UIEdgeInsetsMake(inset, 0, -inset, 0);
+    tabBarItem4.imageInsets = UIEdgeInsetsMake(inset, 0, -inset, 0);
+    
     tabBarItem1.selectedImage = [UIImage imageNamed:@"Feed Higlighted"];
     tabBarItem2.selectedImage = [UIImage imageNamed:@"Election Higlighted"];
     tabBarItem3.selectedImage = [UIImage imageNamed:@"Poll Higlighted"];
-    tabBarItem4.selectedImage = [UIImage imageNamed:@"Vote Higlighted"];
-    tabBarItem5.selectedImage = [UIImage imageNamed:@"Profile Higlighted"];
+    tabBarItem4.selectedImage = [UIImage imageNamed:@"Profile Higlighted"];
 }
 
 //-(BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url

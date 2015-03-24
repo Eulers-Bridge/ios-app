@@ -69,6 +69,8 @@
 #define ISEGORIA_CELL_MASK_GREY [UIColor colorWithRed:49.0/255.0 green:62.0/255.0 blue:77.0/255.0 alpha:1.0]
 #define ISEGORIA_TEXT_BODY_GREY [UIColor colorWithRed:49.0/255.0 green:62.0/255.0 blue:77.0/255.0 alpha:1.0]
 
+#define ISEGORIA_CIRCLE_PROGRESS_GREY [UIColor colorWithRed:227.0/255.0 green:227.0/255.0 blue:227.0/255.0 alpha:1.0]
+
 typedef NS_ENUM(NSInteger, EBFeedCellType) {
     EBFeedCellTypeSquare,
     EBFeedCellTypeLarge,

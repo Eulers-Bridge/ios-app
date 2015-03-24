@@ -37,6 +37,11 @@
 @property (weak, nonatomic) IBOutlet UIView *darkBackgroundView;
 
 
+@property (weak, nonatomic) IBOutlet EBCircleProgressBar *progressBar1;
+@property (weak, nonatomic) IBOutlet EBCircleProgressBar *progressBar2;
+@property (weak, nonatomic) IBOutlet EBCircleProgressBar *progressBar3;
+@property (weak, nonatomic) IBOutlet EBCircleProgressBar *progressBar4;
+
 
 
 @end
@@ -67,6 +72,15 @@
     self.imageView.image = [UIImage imageNamed:@"julia-gillard-data.jpg"];
     self.scrollView.contentSize = CGSizeMake(WIDTH_OF_SCREEN, 665.0);
     
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.progressBar1 animate];
+    [self.progressBar2 animate];
+    [self.progressBar3 animate];
+    [self.progressBar4 animate];
 }
 
 
