@@ -11,6 +11,6 @@
 @interface EBCandidateProfileViewController : UIViewController
 
 @property (strong, nonatomic) NSString *name;
-@property (strong, nonatomic) NSString *imageName;
+@property (strong, nonatomic) NSString *imageUrl;
 
 @end

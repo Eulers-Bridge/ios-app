@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSDictionary *info;
 @property (strong, nonatomic) NSArray *results;
 @property (strong, nonatomic) NSArray *answers;
+@property (strong, nonatomic) NSArray *comments;
 @property (strong, nonatomic) NSArray *baseColors;
 
 

@@ -12,5 +12,5 @@
 
 @property (weak, nonatomic) IBOutlet EBLabelMedium *authorLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
-
+@property (weak, nonatomic) IBOutlet UITextView *contentTextView;
 @end

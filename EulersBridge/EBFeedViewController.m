@@ -93,54 +93,55 @@
     self.photosCollectionView.frame = frame1;
     self.eventsCollectionView.frame = frame2;
     
-//    [self fetchDataNews:nil];
     self.sampleDates = @[@"Yesterday, 9:00 AM",
                          @"Friday, 1:00 PM",
                          @"Wednesday, 2:00 PM",
                          @"2nd May 2014, 8:00 AM",
                          @"28th April 2014, 10:00AM"];
-    self.photoDataList = @[@{@"title": @"Baillieu Library Refurbishment Unveiling",
-                             @"numberOfPhotos": @"20",
-                             @"date": @"28th April 2014, 10:00AM",
-                             @"prefix": @"bl"},
-                           @{@"title": @"Cocktail Party Numero Uno",
-                             @"numberOfPhotos": @"30",
-                             @"date": @"2nd May 2014, 8:00 AM",
-                             @"prefix": @"Num"},
-                           @{@"title": @"Head of the Yarra",
-                             @"numberOfPhotos": @"41",
-                             @"date": @"28th April 2014, 10:00AM",
-                             @"prefix": @"yarra"},
-                           @{@"title": @"Clubs & Societies Day Rocks!",
-                             @"numberOfPhotos": @"37",
-                             @"date": @"28th April 2014, 10:00AM",
-                             @"prefix": @"Club"},
-                           @{@"title": @"Clive Palmer Press Conference",
-                             @"numberOfPhotos": @"24",
-                             @"date": @"Wednesday, 2:00 PM",
-                             @"prefix": @"cp"},
-                           @{@"title": @"Slam Dunk Festival 2014",
-                             @"numberOfPhotos": @"33",
-                             @"date": @"28th April 2014, 10:00AM",
-                             @"prefix": @"slam"},
-                           @{@"title": @"Coffee at Lakeside Restaurant",
-                             @"numberOfPhotos": @"20",
-                             @"date": @"2nd May 2014, 8:00 AM",
-                             @"prefix": @"lake"},
-                           @{@"title": @"Flirt",
-                             @"numberOfPhotos": @"30",
-                             @"date": @"28th April 2014, 10:00AM",
-                             @"prefix": @"Flirt"},
-                           @{@"title": @"Polling Day",
-                             @"numberOfPhotos": @"20",
-                             @"date": @"28th April 2014, 10:00AM",
-                             @"prefix": @"poll"},
-                           
-                           ];
-    [self setupSampleData];
+//    self.photoDataList = @[@{@"title": @"Baillieu Library Refurbishment Unveiling",
+//                             @"numberOfPhotos": @"20",
+//                             @"date": @"28th April 2014, 10:00AM",
+//                             @"prefix": @"bl"},
+//                           @{@"title": @"Cocktail Party Numero Uno",
+//                             @"numberOfPhotos": @"30",
+//                             @"date": @"2nd May 2014, 8:00 AM",
+//                             @"prefix": @"Num"},
+//                           @{@"title": @"Head of the Yarra",
+//                             @"numberOfPhotos": @"41",
+//                             @"date": @"28th April 2014, 10:00AM",
+//                             @"prefix": @"yarra"},
+//                           @{@"title": @"Clubs & Societies Day Rocks!",
+//                             @"numberOfPhotos": @"37",
+//                             @"date": @"28th April 2014, 10:00AM",
+//                             @"prefix": @"Club"},
+//                           @{@"title": @"Clive Palmer Press Conference",
+//                             @"numberOfPhotos": @"24",
+//                             @"date": @"Wednesday, 2:00 PM",
+//                             @"prefix": @"cp"},
+//                           @{@"title": @"Slam Dunk Festival 2014",
+//                             @"numberOfPhotos": @"33",
+//                             @"date": @"28th April 2014, 10:00AM",
+//                             @"prefix": @"slam"},
+//                           @{@"title": @"Coffee at Lakeside Restaurant",
+//                             @"numberOfPhotos": @"20",
+//                             @"date": @"2nd May 2014, 8:00 AM",
+//                             @"prefix": @"lake"},
+//                           @{@"title": @"Flirt",
+//                             @"numberOfPhotos": @"30",
+//                             @"date": @"28th April 2014, 10:00AM",
+//                             @"prefix": @"Flirt"},
+//                           @{@"title": @"Polling Day",
+//                             @"numberOfPhotos": @"20",
+//                             @"date": @"28th April 2014, 10:00AM",
+//                             @"prefix": @"poll"},
+//                           
+//                           ];
+//    [self setupSampleData];
+    [self fetchDataNews:self.newsRefreshControl];
     [self fetchDataPhoto:self.photoRefreshControl];
+    [self fetchDataEvent:self.eventRefreshControl];
     
-    NSLog(@"size: %f %f", [EBHelper getScreenSize].width, [EBHelper getScreenSize].height);
+//    NSLog(@"size: %f %f", [EBHelper getScreenSize].width, [EBHelper getScreenSize].height);
 
 }
 
@@ -164,9 +165,9 @@
     if (collectionView == self.newsCollectionView) {
         return [self.newsDataList count];
     } else if (collectionView == self.eventsCollectionView) {
-        return 8;
+        return [self.eventDataList count];
     } else if (collectionView == self.photosCollectionView) {
-        return 9;
+        return [self.photoDataList count];
     }
     return 0;
 }
@@ -281,7 +282,7 @@
 - (void)getNewsFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
 {
     if (success) {
-        NSArray *newsList = info[@"articles"];
+        NSArray *newsList = info[@"foundObjects"];
         NSMutableArray *newsDataList = [NSMutableArray array];
         int i = 0;
         for (NSDictionary *newsItem in newsList) {
@@ -291,14 +292,14 @@
             [dateFormatter setDateFormat:@"dd MMMM yyyy, h:mm a"];
             NSString *dateAndTime = [dateFormatter stringFromDate:date];
 //            NSString *ago = [date timeAgoSinceNow];
-            NSArray *photoList = newsItem[@"picture"];
+            NSArray *photoList = newsItem[@"photos"];
             
             NSDictionary *data = @{@"priority"   : @(i % 3 == 0 ? 1 : 0),
                                    @"title"      : newsItem[@"title"],
                                    @"date"       : dateAndTime,
                                    @"hasImage"   : [photoList count] == 0 ? @"false" : @"true",
                                    @"imageName"  : [NSString stringWithFormat:@"%@%ld.jpg", @"news", (long)i],
-                                   @"imageUrl"   : [photoList count] == 0 ? @"" : [photoList firstObject],
+                                   @"imageUrl"   : [photoList count] == 0 ? @"" : [photoList firstObject][@"url"],
                                    @"article"    : newsItem[@"content"]
                                    };
             [newsDataList addObject:data];
@@ -314,7 +315,7 @@
 - (void)getEventsFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
 {
     if (success) {
-        NSArray *eventsList = info[@"events"];
+        NSArray *eventsList = info[@"foundObjects"];
         NSMutableArray *eventsDataList = [NSMutableArray array];
         int i = 0;
         for (NSDictionary *eventItem in eventsList) {
@@ -323,14 +324,14 @@
             NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
             [dateFormatter setDateFormat:@"dd MMMM yyyy 'at' h:mm a"];
             NSString *dateAndTime = [dateFormatter stringFromDate:date];
-            NSArray *photoList = eventItem[@"picture"];
+            NSArray *photoList = eventItem[@"photos"];
             
             NSDictionary *data = @{@"priority"      : @(1),
                                    @"title"         : eventItem[@"name"],
                                    @"date"          : dateAndTime,
                                    @"hasImage"      : [photoList count] == 0 ? @"false" : @"true",
                                    @"imageName"     : [NSString stringWithFormat:@"%@%ld.jpg", @"event", (long)i],
-                                   @"imageUrl"      : [photoList count] == 0 ? @"" : [photoList firstObject],
+                                   @"imageUrl"      : [photoList count] == 0 ? @"" : [photoList firstObject][@"url"],
                                    @"article"       : eventItem[@"description"],
                                    @"location"      : eventItem[@"location"],
                                    @"organizer"     : eventItem[@"organizer"],
@@ -350,7 +351,7 @@
 -(void)getPhotoAlbumsFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
 {
     if (success) {
-        NSArray *photoAlbumsList = info[@"photoAlbums"];
+        NSArray *photoAlbumsList = info[@"foundObjects"];
         NSMutableArray *photoAlbumsDataList = [NSMutableArray array];
         int i = 0;
         for (NSDictionary *photoAlbumItem in photoAlbumsList) {

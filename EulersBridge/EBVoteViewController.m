@@ -15,7 +15,7 @@
 
 @interface EBVoteViewController () <UIPickerViewDataSource, UIPickerViewDelegate, EKEventEditViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *backButton;
+@property (weak, nonatomic) IBOutlet UIButton *backButton;
 
 @property (weak, nonatomic) IBOutlet UIPickerView *picker;
 @property (weak, nonatomic) IBOutlet UILabel *scanResultLabel;
@@ -73,7 +73,7 @@
     [self.view addGestureRecognizer:tap];
     
     // Hide the back button
-    self.backButton.tintColor = [UIColor clearColor];
+    self.backButton.hidden = YES;
     self.backButton.enabled = NO;
     
     CGFloat width = [EBHelper getScreenSize].width;
@@ -120,9 +120,8 @@
     }
 }
 
-- (IBAction)back:(UIBarButtonItem *)sender
-{
-    self.backButton.tintColor = [UIColor clearColor];
+- (IBAction)backToReminder:(id)sender {
+    self.backButton.hidden = YES;
     self.backButton.enabled = NO;
     [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         CGRect pledgeFrame = self.pledgeView.frame;
@@ -135,8 +134,8 @@
     } completion:^(BOOL finished) {
         
     }];
-}
 
+}
 
 #pragma mark pickerView delegate
 
@@ -242,7 +241,7 @@
 {
     [self dismissViewControllerAnimated:YES completion:nil];
     if (action == EKEventEditViewActionSaved) {
-        self.backButton.tintColor = [UIColor whiteColor];
+        self.backButton.hidden = NO;
         self.backButton.enabled = YES;
         [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             CGRect pledgeFrame = self.pledgeView.frame;

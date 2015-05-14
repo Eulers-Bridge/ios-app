@@ -11,6 +11,7 @@
 #import "EBBlurImageView.h"
 #import "EBHelper.h"
 #import "MyConstants.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface EBCandidateProfileViewController () <UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet EBBlurImageView *backgroundPhoto;
@@ -38,8 +39,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.backgroundPhoto.image = [UIImage imageNamed:self.imageName];
-    self.profilePhoto.image = [UIImage imageNamed:self.imageName];
+    [self.backgroundPhoto setImageWithURL:[NSURL URLWithString:self.imageUrl]];
+    [self.profilePhoto setImageWithURL:[NSURL URLWithString:self.imageUrl]];
     self.nameLabel.text = self.name;
     self.navigationItem.title = self.name;
     
@@ -93,7 +94,7 @@
     if ([segue.identifier isEqualToString:@"viewFullProfile"]) {
         EBFriendProfileViewController *dest = (EBFriendProfileViewController *)[segue destinationViewController];
         dest.name = self.name;
-        dest.imageName = self.imageName;
+        dest.imageUrl = self.imageUrl;
     }
 }
 

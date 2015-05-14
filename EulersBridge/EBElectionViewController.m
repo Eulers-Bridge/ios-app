@@ -14,23 +14,15 @@
 #import "EBElectionPositionDetailViewController.h"
 #import "EBNetworkService.h"
 
-@interface EBElectionViewController () <UIScrollViewDelegate, EBContentServiceDelegate, EBElectionPositionsDataSourceDelegate>
+@interface EBElectionViewController () <UIScrollViewDelegate, EBContentServiceDelegate>
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *electionSegmentedControl;
-@property (weak, nonatomic) IBOutlet UIScrollView *electionScrollView;
 
 @property (weak, nonatomic) IBOutlet UILabel *electionTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *electionDateLabel;
 
-@property (weak, nonatomic) IBOutlet EBTextViewGentium *overviewTextView;
-@property (weak, nonatomic) IBOutlet EBTextViewGentium *processTextView;
-
 
 @property (weak, nonatomic) IBOutlet UIView *candidateView;
-
-@property (weak, nonatomic) IBOutlet UICollectionView *positionsCollectionView;
-@property (strong, nonatomic) EBElectionPositionsDataSource *positionsDataSource;
 
 
 @end
@@ -50,30 +42,7 @@
 {
     [super viewDidLoad];
     self.candidateView.hidden = YES;
-    
-    self.electionScrollView.contentSize = CGSizeMake(3 * [EBHelper getScreenSize].width, self.electionScrollView.bounds.size.height);
-    self.electionScrollView.pagingEnabled = YES;
-    self.electionScrollView.alwaysBounceVertical = NO;
-    self.electionScrollView.delegate = self;
-    
-    CGFloat width = [EBHelper getScreenSize].width;
-    CGFloat height = self.electionScrollView.bounds.size.height;
-    
-    self.overviewTextView.frame = CGRectMake(0, 0, width, height);
-    self.processTextView.frame = CGRectMake(width, 0, width, height);
-    self.positionsCollectionView.frame = CGRectMake(width * 2, 0, width, height);
-    self.overviewTextView.contentInset = UIEdgeInsetsMake(44.0, 0, 0, 0);
-    self.processTextView.contentInset = UIEdgeInsetsMake(44.0, 0, 0, 0);
-    self.positionsCollectionView.contentInset = UIEdgeInsetsMake(44.0, 0, 0, 0);
-    
     [self.segmentedControl addTarget:self action:@selector(changeSegment) forControlEvents:UIControlEventValueChanged];
-    [self.electionSegmentedControl addTarget:self action:@selector(electionChangeSegment) forControlEvents:UIControlEventValueChanged];
-    
-    self.positionsDataSource = [[EBElectionPositionsDataSource alloc] init];
-    self.positionsCollectionView.dataSource = self.positionsDataSource;
-    self.positionsCollectionView.delegate = self.positionsDataSource;
-    self.positionsDataSource.delegate = self;
-    [self.positionsDataSource fetchData];
     
     [self getElectionInfo];
 }
@@ -89,15 +58,6 @@
 
 }
 
-- (void)electionChangeSegment
-{
-    [self.electionScrollView setContentOffset:CGPointMake(self.electionSegmentedControl.selectedSegmentIndex * [EBHelper getScreenSize].width, 0.0) animated:YES];
-}
-
--(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-{
-    self.electionSegmentedControl.selectedSegmentIndex = self.electionScrollView.contentOffset.x / [EBHelper getScreenSize].width;
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -116,26 +76,18 @@
 {
     if (success) {
         self.electionTitleLabel.text = info[@"title"];
-        self.overviewTextView.text = info[@"introduction"];
-        self.processTextView.text = info[@"process"];
     } else {
         NSLog(@"%@", error);
     }
 }
 
-- (void)electionPositionsFetchDataCompleteWithSuccess:(BOOL)success
-{
-    [self.positionsCollectionView reloadData];
-}
 
 
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"ShowPositionDetail"]) {
-        [self.positionsDataSource prepareForSegue:segue sender:sender];
-    }
+    
 }
 
 

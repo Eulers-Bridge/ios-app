@@ -12,11 +12,16 @@
 #import "EBCandidateProfileViewController.h"
 #import "EBNetworkService.h"
 #import "EBHelper.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface EBCandidateTableViewController () <UISearchBarDelegate, EBCandidateCellDelegate, UIScrollViewDelegate, EBContentServiceDelegate>
 
 @property (weak, nonatomic) IBOutlet UISearchBar *candidateSearchBar;
 @property NSUInteger selectedCellIndex;
+
+@property BOOL positionDataReady;
+@property BOOL ticketDataReady;
+@property BOOL candidateDataReady;
 
 @end
 
@@ -34,7 +39,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+        
     self.candidateSearchBar.delegate = self;
     self.candidateSearchBar.showsCancelButton = YES;
     self.tableView.contentOffset = CGPointMake(0, -64);
@@ -137,10 +142,22 @@
 //                          @"description": @"This is a short description of the candidate."}];
 //    
 
-    [self setup];
 //    self.matchingCandidates = self.candidates;
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissKeyboard) name:@"CandidateCancelSearch" object:nil];
+    
+    if (self.candidateFilter == EBCandidateFilterAll) {
+        
+        self.candidateDataReady = NO;
+        self.ticketDataReady = NO;
+        self.positionDataReady = NO;
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshCandidateData:) name:@"CandidatesReturnedFromServer" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTicketData:) name:@"TicketsReturnedFromServer" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshPositionData:) name:@"PositionsReturnedFromServer" object:nil];
+
+    }
+    
     
     // Gesture Recognizer
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
@@ -149,9 +166,35 @@
     [self.view addGestureRecognizer:tap];
     
     if (self.candidateFilter == EBCandidateFilterByTicket || self.candidateFilter == EBCandidateFilterByPosition) {
+        self.candidateDataReady = YES;
+        self.ticketDataReady = YES;
+        self.positionDataReady = YES;
         [self.tableView setContentOffset:CGPointMake(0, 44)];
     }
+    
+    [self setup];
 
+}
+
+- (void)refreshCandidateData:(NSNotification *)notification
+{
+    self.candidates = (NSArray *)notification.userInfo[@"foundObjects"];
+    self.candidateDataReady = YES;
+    [self setup];
+}
+
+- (void)refreshTicketData:(NSNotification *)notification
+{
+    self.tickets = (NSArray *)notification.userInfo[@"foundObjects"];
+    self.ticketDataReady = YES;
+    [self setup];
+}
+
+- (void)refreshPositionData:(NSNotification *)notification
+{
+    self.positions = (NSArray *)notification.userInfo[@"foundObjects"];
+    self.positionDataReady = YES;
+    [self setup];
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -166,10 +209,18 @@
 {
     if (self.candidateFilter == EBCandidateFilterAll) {
         self.tableView.contentInset = UIEdgeInsetsMake(108.0, 0.0, 49.0, 0.0);
-        self.matchingCandidates = self.candidates;
-        [self.tableView reloadData];
+        if (self.positionDataReady && self.ticketDataReady && self.candidateDataReady) {
+            self.candidates = [self processCandidateDataWithCandidates:self.candidates Positions:self.positions Tickets:self.tickets];
+            self.matchingCandidates = self.candidates;
+            [self.tableView reloadData];
+        } else {
+            return;
+        }
+        
         return;
     }
+    
+    self.candidates = [self processCandidateDataWithCandidates:self.candidates Positions:self.positions Tickets:self.tickets];
     self.tableView.contentInset = UIEdgeInsetsMake(0.0, 0.0, 49.0, 0.0);
     self.navigationItem.title = self.filterTitle;
 
@@ -178,9 +229,9 @@
     for (NSDictionary *candidate in self.candidates) {
         NSString *id = @"";
         if (self.candidateFilter == EBCandidateFilterByPosition) {
-            id = candidate[@"positionId"];
+            id = candidate[@"candidateData"][@"positionId"];
         } else if (self.candidateFilter == EBCandidateFilterByTicket) {
-            id = candidate[@"ticketId"];
+            id = candidate[@"candidateData"][@"ticketId"];
         }
         if ([id intValue] == self.filterId) {
             [matchingCandidates addObject:candidate];
@@ -189,6 +240,32 @@
     self.candidates = [matchingCandidates copy];
     self.matchingCandidates = self.candidates;
     [self.tableView reloadData];
+}
+
+- (NSArray *)processCandidateDataWithCandidates:(NSArray *)candidates Positions:(NSArray *)positions Tickets:(NSArray *)tickets
+{
+    NSMutableArray *newCandidates = [NSMutableArray arrayWithCapacity:candidates.count];
+    for (NSDictionary *candidate in candidates) {
+        NSDictionary *positionData = @{};
+        NSDictionary *ticketData = @{};
+        NSDictionary *candidateData = [candidate copy];
+        // Find position and ticket data
+        for (NSDictionary *position in positions) {
+            if ([position[@"positionId"] integerValue] == [candidate[@"positionId"] integerValue]) {
+                positionData = [position copy];
+            }
+        }
+        for (NSDictionary *ticket in tickets) {
+            if ([ticket[@"ticketId"] integerValue] == [candidate[@"ticketId"] integerValue]) {
+                ticketData = [ticket copy];
+            }
+        }
+        NSDictionary *newCandidate = @{@"candidateData": candidateData,
+                                       @"positionData": positionData,
+                                       @"ticketData": ticketData};
+        [newCandidates addObject:newCandidate];
+    }
+    return [newCandidates copy];
 }
 
 - (void)didReceiveMemoryWarning
@@ -207,18 +284,29 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     EBCandidateTableViewCell *cell;
+    NSDictionary *data = self.matchingCandidates[indexPath.row];
     if (self.candidateFilter == EBCandidateFilterByTicket || self.candidateFilter == EBCandidateFilterAll) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"CandidateCellSmall" forIndexPath:indexPath];
-//        cell.subtitleLabel.text = self.matchingCandidates[indexPath.row][@"positionTitle"];
+        cell.subtitleLabel.text = data[@"positionData"][@"name"];
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:@"CandidateCell" forIndexPath:indexPath];
-        cell.descriptionTextView.text = self.matchingCandidates[indexPath.row][@"policyStatement"];
+        cell.descriptionTextView.text = data[@"candidateData"][@"policyStatement"];
     }
     
-    cell.nameLabel.text = [EBHelper fullNameWithUserObject:self.matchingCandidates[indexPath.row]];
+    cell.nameLabel.text = [EBHelper fullNameWithUserObject:data[@"candidateData"]];
+    cell.codeLabel.text = data[@"ticketData"][@"code"];
+    if (data[@"colour"] != [NSNull null]) {
+        cell.codeLabel.backgroundColor = UIColorFromRGB([EBHelper hexFromString:[data[@"ticketData"][@"colour"] substringFromIndex:1]]);
+    } else {
+        cell.codeLabel.backgroundColor = [UIColor grayColor];
+    }
+    
+    
 
 //    NSString *imageName = [NSString stringWithFormat:@"candidate%@.jpg", self.matchingCandidates[indexPath.row][@"id"]];
-//    cell.candidateImageView.image = [UIImage imageNamed:imageName];
+
+    NSString *urlString = self.matchingCandidates[indexPath.row][@"candidateData"][@"photos"][0][@"url"];
+    [cell.candidateImageView setImageWithURL:[NSURL URLWithString:urlString]];
     cell.index = indexPath.row;
     cell.delegate = self;
     return cell;
@@ -266,7 +354,7 @@
     } else {
         NSMutableArray *matchingCandidates = [NSMutableArray array];
         for (NSDictionary *candidate in self.candidates) {
-            NSString *name = [[EBHelper fullNameWithUserObject:candidate] lowercaseString];
+            NSString *name = [[EBHelper fullNameWithUserObject:candidate[@"candidateData"]] lowercaseString];
             if ([name rangeOfString:[searchText lowercaseString]].location == NSNotFound) {
                 
             } else {
@@ -325,8 +413,9 @@
 {
     if ([segue.identifier isEqualToString:@"showCandidateDetail"]) {
         EBCandidateProfileViewController *detail = (EBCandidateProfileViewController *)[segue destinationViewController];
-        detail.name = [EBHelper fullNameWithUserObject:self.matchingCandidates[self.selectedCellIndex][@"name"]];
-        detail.imageName = [NSString stringWithFormat:@"candidate%@.jpg", self.matchingCandidates[self.selectedCellIndex][@"id"]];
+        detail.name = [EBHelper fullNameWithUserObject:self.matchingCandidates[self.selectedCellIndex][@"candidateData"]];
+        // fix the photo names.
+        detail.imageUrl = self.matchingCandidates[self.selectedCellIndex][@"candidateData"][@"photos"][0][@"url"];
     }
 }
 

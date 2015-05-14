@@ -98,4 +98,14 @@
     return [NSString stringWithFormat:@"%@ %@", givenName, familyName];
 }
 
++ (unsigned)hexFromString:(NSString *)string
+{
+    
+    unsigned hex = 0;
+    
+    [[NSScanner scannerWithString:string] scanHexInt:&hex];
+    
+    return hex;
+}
+
 @end

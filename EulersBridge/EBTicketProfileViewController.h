@@ -11,5 +11,8 @@
 @interface EBTicketProfileViewController : UIViewController
 
 @property (strong, nonatomic) NSDictionary *ticketData;
+@property (strong, nonatomic) NSArray *candidates;
+@property (strong, nonatomic) NSArray *tickets;
+@property (strong, nonatomic) NSArray *positions;
 
 @end

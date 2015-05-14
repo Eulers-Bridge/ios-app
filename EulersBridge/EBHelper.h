@@ -28,4 +28,6 @@
 
 + (NSString *)fullNameWithUserObject:(NSDictionary *)userObject;
 
++ (unsigned)hexFromString:(NSString *)string;
+
 @end

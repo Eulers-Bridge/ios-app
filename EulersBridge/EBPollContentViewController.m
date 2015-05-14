@@ -21,6 +21,8 @@
 @property (weak, nonatomic) IBOutlet EBTextViewMuseoMedium *commentTextView;
 @property (weak, nonatomic) IBOutlet UIView *textFieldContainerView;
 @property (weak, nonatomic) IBOutlet EBOnePixelLine *divider;
+@property (weak, nonatomic) IBOutlet EBButtonRoundedHeavy *postCommentButton;
+@property (weak, nonatomic) IBOutlet EBLabelMedium *commentStatusLabel;
 @property (strong, nonatomic) NSIndexPath *selectedIndexPath;
 @property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer;
 @property (strong, nonatomic) UIPanGestureRecognizer *panGestureRecognizer;
@@ -49,6 +51,9 @@
     self.authorLabel.text = @"Asked by Eva Menendez";
     self.divider.hidden = YES;
     self.pageNumberLabel.text = [NSString stringWithFormat:@"%d", self.pageIndex];
+    self.commentTextView.editable = NO;
+    self.postCommentButton.enabled = NO;
+    self.commentStatusLabel.text = @"Please Vote to view comments.";
 //    self.results = @[@{@"votes": @(18),
 //                       @"totalVotes": @(100),
 //                       @"change": @(-4)},
@@ -103,6 +108,16 @@
     [service getPollResultsWithPollId:self.info[@"nodeId"]];
 }
 
+- (void)getPollComments
+{
+    self.comments = [NSArray array];
+    [self.answerTableView reloadData];
+    self.commentStatusLabel.text = @"Please wait while the comments are loading...";
+    EBNetworkService *service = [[EBNetworkService alloc] init];
+    service.contentDelegate = self;
+    [service getPollCommentsWithPollId:self.info[@"nodeId"]];
+}
+
 - (void)getPollResultsFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
 {
     if (success) {
@@ -114,6 +129,20 @@
         
     }
 }
+
+- (void)getPollCommentsFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
+{
+    if (success) {
+        self.commentStatusLabel.text = @"";
+        self.comments = (NSArray *)info;
+        self.commentTextView.editable = YES;
+        self.postCommentButton.enabled = YES;
+        [self.answerTableView reloadData];
+    } else {
+        
+    }
+}
+
 
 - (NSArray *)parseResults:(NSArray *)results
 {
@@ -142,11 +171,28 @@
 {
     if (success) {
         [self getPollResults];
+        [self getPollComments];
     } else {
         
     }
 }
 
+- (IBAction)postPollComment:(EBButtonRoundedHeavy *)sender
+{
+    [self tapAnywhere];
+    EBNetworkService *service = [[EBNetworkService alloc] init];
+    service.userActionDelegate = self;
+    [service postPollCommentWithPollId:self.info[@"nodeId"] comment:self.commentTextView.text];
+}
+
+-(void)postPollCommentFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
+{
+    if (success) {
+        [self getPollComments];
+    } else {
+        
+    }
+}
 
 #pragma mark table view delegate and data source
 
@@ -162,7 +208,7 @@
             return self.answers.count;
             break;
         case 1:
-            return 5;
+            return self.comments.count;
             
         default:
             return 4;
@@ -192,6 +238,8 @@
         return cell;
     } else if (indexPath.section == 1) {
         EBPollCommentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommentCell" forIndexPath:indexPath];
+        cell.authorLabel.text = self.comments[indexPath.row][@"userName"];
+        cell.contentTextView.text = self.comments[indexPath.row][@"content"];
         return cell;
     }
     return nil;

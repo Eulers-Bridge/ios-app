@@ -39,12 +39,14 @@
 
 - (void)getPollsFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 - (void)getPollResultsFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
+- (void)getPollCommentsFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 @end
 
 @protocol EBUserActionServiceDelegate <NSObject>
 @optional
 
 - (void)votePollFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
+- (void)postPollCommentFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 @end
 
 @interface EBNetworkService : NSObject
@@ -77,8 +79,10 @@
 
 - (void)getPollsWithInstitutionId:(NSString *)institutionId;
 - (void)getPollResultsWithPollId:(NSString *)pollId;
+- (void)getPollCommentsWithPollId:(NSString *)pollId;
 
 // User action service
 - (void)voteWithPollId:(NSString *)pollId answerIndex:(NSUInteger)answerIndex;
+- (void)postPollCommentWithPollId:(NSString *)pollId comment:(NSString *)comment;
 
 @end

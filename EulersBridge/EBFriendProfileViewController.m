@@ -9,6 +9,7 @@
 #import "EBFriendProfileViewController.h"
 #import "EBBadgesCollectionViewController.h"
 #import "MyConstants.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface EBFriendProfileViewController () <UIScrollViewDelegate>
 
@@ -35,8 +36,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.backgroundPhoto.image = [UIImage imageNamed:self.imageName];
-    self.profilePhoto.image = [UIImage imageNamed:self.imageName];
+    [self.backgroundPhoto setImageWithURL:[NSURL URLWithString:self.imageUrl]];
+    [self.profilePhoto setImageWithURL:[NSURL URLWithString:self.imageUrl]];
     self.nameLabel.text = self.name;
     self.navigationItem.title = self.name;
     

@@ -12,6 +12,8 @@
 @interface EBCandidateTableViewController : UITableViewController
 
 @property (strong, nonatomic) NSArray *candidates;
+@property (strong, nonatomic) NSArray *tickets;
+@property (strong, nonatomic) NSArray *positions;
 @property (strong, nonatomic) NSArray *matchingCandidates;
 @property EBCandidateFilter candidateFilter;
 @property int filterId;

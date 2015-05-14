@@ -119,6 +119,31 @@
 
 }
 
+- (void)postPollCommentWithPollId:(NSString *)pollId comment:(NSString *)comment
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:TESTING_USERNAME password:TESTING_PASSWORD];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/hal+json"];
+    double date = [[NSDate date] timeIntervalSince1970] / 1000;
+    NSString *dateString = [NSString stringWithFormat:@"%.0f", date];
+    
+    NSDictionary *parameters = @{@"userName": @"iOS Test",
+                                 @"timestamp": dateString,
+                                 @"userEmail": [[NSUserDefaults standardUserDefaults] objectForKey:@"userEmail"],
+                                 @"targetId": pollId,
+                                 @"content": comment};
+    
+    NSString *urlString = [NSString stringWithFormat:@"%@/comment", TESTING_URL];
+    [manager POST:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id res) {
+        
+        [self.userActionDelegate postPollCommentFinishedWithSuccess:YES withInfo:res failureReason:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.userActionDelegate postPollCommentFinishedWithSuccess:NO withInfo:nil failureReason:error];
+    }];
+
+}
+
 
 
 #pragma mark Content Services
@@ -240,6 +265,16 @@
     }];
 }
 
+- (void)getPollCommentsWithPollId:(NSString *)pollId
+{
+    NSString *urlString = [NSString stringWithFormat:@"%@/comments/%@", TESTING_URL, pollId];
+    
+    [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.contentDelegate getPollCommentsFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.contentDelegate getPollCommentsFinishedWithSuccess:NO withInfo:nil failureReason:error];
+    }];
+}
 
 - (void)getGeneralInfo
 {

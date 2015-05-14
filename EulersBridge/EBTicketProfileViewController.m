@@ -10,6 +10,7 @@
 #import "EBBlurImageView.h"
 #import "EBCandidateTableViewController.h"
 #import "EBTicketCollectionViewCell.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface EBTicketProfileViewController ()
 
@@ -36,9 +37,12 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.nameLabel.text = self.ticketData[@"title"];
+    self.nameLabel.text = self.ticketData[@"name"];
     self.backgroundPhoto.image = [UIImage imageNamed:@"Ticket Background"];
-    self.profilePhoto.image = [UIImage imageNamed:[NSString stringWithFormat:@"ticketicon%d", [self.ticketData[@"id"] intValue]]];
+    if ([self.ticketData[@"photos"] count] != 0) {
+        [self.profilePhoto setImageWithURL:[NSURL URLWithString:self.ticketData[@"photos"][0][@"url"]]];
+    }
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -56,8 +60,11 @@
     if ([segue.identifier isEqualToString:@"CandidateFromTicketProfileEmbed"]) {
         EBCandidateTableViewController *tvc = (EBCandidateTableViewController *)[segue destinationViewController];
         tvc.candidateFilter = EBCandidateFilterByTicket;
-        tvc.filterId = [self.ticketData[@"id"] intValue];
-        tvc.filterTitle = self.ticketData[@"title"];
+        tvc.filterId = [self.ticketData[@"ticketId"] intValue];
+        tvc.filterTitle = self.ticketData[@"name"];
+        tvc.candidates = self.candidates;
+        tvc.tickets = self.tickets;
+        tvc.positions = self.positions;
     }
 }
 

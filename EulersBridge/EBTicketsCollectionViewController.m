@@ -15,6 +15,12 @@
 
 @interface EBTicketsCollectionViewController () <EBContentServiceDelegate>
 
+@property BOOL ticketDataReady;
+@property BOOL positionDataReady;
+@property BOOL candidateDataReady;
+
+@property (strong, nonatomic) NSArray *sampleTickets;
+
 @end
 
 @implementation EBTicketsCollectionViewController
@@ -32,12 +38,20 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.tickets = @[@{@"id": @"0",
+   
+    // Reigster for notification
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTicketData:) name:@"TicketsReturnedFromServer" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshPositionData:) name:@"PositionsReturnedFromServer" object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshCandidateData:) name:@"CandidatesReturnedFromServer" object:nil];
+    
+    self.sampleTickets = @[@{@"id": @"0",
                        @"title": @"Greens Students",
                        @"supporters": @"1240",
-                       @"colorRGB": @{@"R": @"76",
-                                      @"G": @"217",
-                                      @"B": @"100"}},
+                       @"colorRGB": @{@"R": @"248",
+                                      @"G": @"118",
+                                      @"B": @"118"}},
                      @{@"id": @"1",
                        @"title": @"Liberty",
                        @"supporters": @"1240",
@@ -71,11 +85,43 @@
                      @{@"id": @"6",
                        @"title": @"Voice",
                        @"supporters": @"1240",
-                       @"colorRGB": @{@"R": @"248",
-                                      @"G": @"118",
-                                      @"B": @"118"}},
+                       @"colorRGB": @{@"R": @"76",
+                                      @"G": @"217",
+                                      @"B": @"100"}},
                      ];
+    
+    
+    
+    self.ticketDataReady = NO;
+    self.positionDataReady = NO;
+    self.candidateDataReady = NO;
 }
+
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
+
+- (void)refreshTicketData:(NSNotification *)notification
+{
+    self.tickets = (NSArray *)notification.userInfo[@"foundObjects"];
+    self.ticketDataReady = YES;
+    [self.collectionView reloadData];
+}
+
+- (void)refreshPositionData:(NSNotification *)notification
+{
+    self.positions = (NSArray *)notification.userInfo[@"foundObjects"];
+    self.positionDataReady = YES;
+}
+
+- (void)refreshCandidateData:(NSNotification *)notification
+{
+    self.candidates = (NSArray *)notification.userInfo[@"foundObjects"];
+    self.candidateDataReady = YES;
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -85,26 +131,33 @@
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 6;
+    return [self.tickets count];
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     EBTicketCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TicketCell" forIndexPath:indexPath];
     NSDictionary *data = self.tickets[indexPath.item];
-    cell.ticketId = [data[@"id"] intValue];
-    cell.titleLabel.text = data[@"title"];
-    cell.subtitleLabel.text = [data[@"supporters"] stringByAppendingString:@" supporters"];
-    NSDictionary *color = data[@"colorRGB"];
-    CGFloat red = [color[@"R"] floatValue];
-    CGFloat green = [color[@"G"] floatValue];
-    CGFloat blue = [color[@"B"] floatValue];
-    UIColor *backColor = [UIColor colorWithRed:red/255.0 green:green/255.0 blue:blue/255.0 alpha:1.0];
-//    cell.backView.backgroundColor = [UIColor colorWithRed:red green:green blue:blue alpha:1.0];
+    cell.ticketId = [data[@"ticketId"] intValue];
+    cell.titleLabel.text = data[@"name"];
+    cell.subtitleLabel.text = [[data[@"numberOfSupporters"] stringValue] stringByAppendingString:@" supporters"];
+    
+    UIColor *backColor;
+    if (data[@"colour"] != [NSNull null]) {
+        backColor = UIColorFromRGB([EBHelper hexFromString:[data[@"colour"] substringFromIndex:1]]);
+    } else {
+        backColor = [UIColor grayColor];
+    }
+    // Temp fix.
+//    NSDictionary *color = self.sampleTickets[indexPath.item][@"colorRGB"];
+//    CGFloat red = [color[@"R"] floatValue];
+//    CGFloat green = [color[@"G"] floatValue];
+//    CGFloat blue = [color[@"B"] floatValue];
+//    UIColor *backColor = [UIColor colorWithRed:red/255 green:green/255 blue:blue/255 alpha:1.0];
     cell.backView.backgroundColor = ISEGORIA_ULTRA_LIGHT_GREY;
     cell.layer.borderWidth = 1.0;
     cell.layer.borderColor = [backColor CGColor];
-    cell.titleLabel.textColor = ISEGORIA_DARK_GREY;
+    cell.titleLabel.textColor = backColor;
     cell.subtitleLabel.textColor = backColor;
     cell.ticketData = self.tickets[indexPath.item];
     return cell;
@@ -118,6 +171,16 @@
 
 #pragma mark - Navigation
 
+-(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
+    if ([identifier isEqualToString:@"ShowTicketProfile"] && self.ticketDataReady && self.candidateDataReady && self.positionDataReady) {
+        return YES;
+    } else {
+        [[[UIAlertView alloc] initWithTitle:@"Data not ready" message:@"Please wait while we are getting data from the server." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
+        return NO;
+    }
+}
+
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -125,6 +188,10 @@
         EBTicketProfileViewController *ticketProfile = (EBTicketProfileViewController *)[segue destinationViewController];
         EBTicketCollectionViewCell *cell = (EBTicketCollectionViewCell *)sender;
         ticketProfile.ticketData = cell.ticketData;
+        ticketProfile.candidates = self.candidates;
+        ticketProfile.tickets = self.tickets;
+        ticketProfile.positions = self.positions;
+
     }
 }
 

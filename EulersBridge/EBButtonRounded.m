@@ -27,7 +27,7 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        self.layer.cornerRadius = self.bounds.size.height / 2;
+        self.layer.cornerRadius = self.bounds.size.height / 6;
         self.layer.borderWidth = 1.0;
         self.titleLabel.font = [UIFont fontWithName:@"MuseoSansRounded-500" size:self.titleLabel.font.pointSize];
     }

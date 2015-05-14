@@ -12,7 +12,7 @@
 #import <EventKitUI/EventKitUI.h>
 #import <Social/Social.h>
 
-@interface EBFeedDetailViewController () <EKEventEditViewDelegate, UIScrollViewDelegate>
+@interface EBFeedDetailViewController () <EKEventEditViewDelegate, UIScrollViewDelegate, NSLayoutManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *detailScrollView;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
@@ -26,8 +26,9 @@
 @property (weak, nonatomic) IBOutlet UIView *contactView;
 @property (weak, nonatomic) IBOutlet EBOnePixelLine *separator;
 @property (weak, nonatomic) IBOutlet UIView *darkBackgroundView;
+@property (weak, nonatomic) IBOutlet UIView *whiteBackgroundView;
 
-@property (weak, nonatomic) IBOutlet EBLabelMedium *eventLocationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *eventLocationLabel;
 @property (weak, nonatomic) IBOutlet EBLabelMedium *eventLocationSecondLabel;
 @property (weak, nonatomic) IBOutlet EBLabelMedium *eventContactName;
 @property (weak, nonatomic) IBOutlet EBLabelMedium *eventContactDetail;
@@ -48,6 +49,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.textView.layoutManager.delegate = self;
     // Do any additional setup after loading the view.
     self.view.layer.shouldRasterize = YES;
     self.view.layer.rasterizationScale = [UIScreen mainScreen].scale;
@@ -72,6 +74,7 @@
         [self setupNews];
         self.likes = 205;
         self.separator.hidden = YES;
+        offset = 50;
     } else if (self.feedDetailType == EBFeedDetailEvent) {
         [self setupEvent];
         offset = 44.0;
@@ -80,11 +83,12 @@
     
     
     
-    CGSize size = [self.textView sizeThatFits:CGSizeMake([EBHelper getScreenSize].width, 200)];
-    self.textView.frame = CGRectMake(0.0,
+    CGSize size = [self.textView sizeThatFits:CGSizeMake([EBHelper getScreenSize].width, 100)];
+    self.textView.frame = CGRectMake(15,
                                      self.imageView.bounds.size.height + offset,
-                                     [EBHelper getScreenSize].width,
+                                     [EBHelper getScreenSize].width - 30,
                                      size.height);
+    self.whiteBackgroundView.frame = CGRectMake(0, self.whiteBackgroundView.frame.origin.y, [EBHelper getScreenSize].width, size.height);
     
     CGRect contactFrame = self.contactView.frame;
     contactFrame.origin.y = self.imageView.bounds.size.height + self.textView.frame.size.height + offset;
@@ -95,11 +99,16 @@
     self.separator.frame = separatorFrame;
     
     self.detailScrollView.contentSize = CGSizeMake([EBHelper getScreenSize].width,
-                                             self.imageView.bounds.size.height + self.textView.frame.size.height + offset + self.contactView.bounds.size.height);
+                                             self.imageView.bounds.size.height + self.textView.frame.size.height + offset + self.contactView.bounds.size.height + 40);
 
     
 
     
+}
+
+- (CGFloat)layoutManager:(NSLayoutManager *)layoutManager lineSpacingAfterGlyphAtIndex:(NSUInteger)glyphIndex withProposedLineFragmentRect:(CGRect)rect
+{
+    return 4;
 }
 
 
