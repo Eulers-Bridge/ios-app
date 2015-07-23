@@ -8,6 +8,7 @@
 
 #import "EBBlurImageView.h"
 #import "UIImage+ImageEffects.h"
+#import "MyConstants.h"
 
 @implementation EBBlurImageView
 
@@ -22,10 +23,14 @@
 
 -(void)setImage:(UIImage *)image
 {
+    [self setImage:image withBlurRadius:DEFAULT_BLUR_RADIUS];
+}
+
+- (void)setImage:(UIImage *)image withBlurRadius:(float)blurRadius
+{
     UIColor *tintColor = [UIColor colorWithRed:51.0/255.0 green:56.0/255.0 blue:69.0/255.0 alpha:0.5];
-    UIImage *finishedImage = [image applyBlurWithRadius:20 tintColor:tintColor saturationDeltaFactor:1.8 maskImage:nil];
+    UIImage *finishedImage = [image applyBlurWithRadius:blurRadius tintColor:tintColor saturationDeltaFactor:1.8 maskImage:nil];
     [super setImage:finishedImage];
-    
 }
 
 

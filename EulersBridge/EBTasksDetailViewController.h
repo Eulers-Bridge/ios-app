@@ -10,4 +10,6 @@
 
 @interface EBTasksDetailViewController : UIViewController
 
+@property (strong, nonatomic) NSArray *tasks;
+
 @end

@@ -51,6 +51,7 @@
     if ([segue.identifier isEqualToString:@"TasksDetail"]) {
         EBTasksTableViewController *tasksViewController = (EBTasksTableViewController *)[segue destinationViewController];
         tasksViewController.tasksViewType = EBTasksViewTypeDetail;
+        tasksViewController.tasks = self.tasks;
     }
 }
 

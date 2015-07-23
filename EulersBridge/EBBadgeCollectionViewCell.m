@@ -7,6 +7,7 @@
 //
 
 #import "EBBadgeCollectionViewCell.h"
+#import "UIImageView+AFNetworking.h"
 
 @implementation EBBadgeCollectionViewCell
 
@@ -17,6 +18,38 @@
         // Initialization code
     }
     return self;
+}
+
+- (void)setup
+{
+    self.service = [[EBNetworkService alloc] init];
+    self.service.contentDelegate = self;
+    [self.service getPhotosWithAlbumId:self.info[@"badgeId"]];
+    
+    self.badgeDescriptionLabel.text = self.info[@"description"];
+    self.badgeNameLabel.text = self.info[@"name"];
+}
+
+- (void)getPhotosFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
+{
+    if (success) {
+        [self.badgeImageView setImageWithURL:[NSURL URLWithString:[info[@"photos"] firstObject][@"url"]]];
+    } else {
+        
+    }
+}
+
+- (void)prepareForReuse
+{
+    self.service.contentDelegate = nil;
+    self.badgeImageView.image = nil;
+    self.badgeDescriptionLabel.text = @"";
+    self.badgeNameLabel.text = @"";
+}
+
+- (void)dealloc
+{
+    self.service.contentDelegate = nil;
 }
 
 /*

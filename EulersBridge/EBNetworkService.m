@@ -42,7 +42,25 @@
 
 - (void)resendVerificationEmailForUser:(EBUser *)user
 {
+}
 
+- (void)addPersonalityForUser:(EBUser *)user withParameters:(NSDictionary *)parameters
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:TESTING_USERNAME password:TESTING_PASSWORD];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/hal+json"];
+    
+    NSString *urlString = [NSString stringWithFormat:@"http://eulersbridge.com:8080/dbInterface/api/user/greg.newitt@unimelb.edu.au/personality"];
+    [manager PUT:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id res) {
+        
+        [self.signupDelegate addPersonalityForUserFinishedWithSuccess:YES withUser:user failureReason:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.signupDelegate addPersonalityForUserFinishedWithSuccess:NO withUser:nil failureReason:error];
+        
+    }];
+    
+    
 }
 
 - (void)loginWithEmailAddress:(NSString *)email password:(NSString *)password
@@ -152,7 +170,7 @@
 {
     
     institutionId = TESTING_INSTITUTION_ID;
-    NSString *urlString = [NSString stringWithFormat:@"%@/newsArticles/%@", TESTING_URL, TESTING_INSTITUTION_ID];
+    NSString *urlString = [NSString stringWithFormat:@"%@/newsArticles/%@?pageSize=100", TESTING_URL, TESTING_INSTITUTION_ID];
     
     [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self.contentDelegate getNewsFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
@@ -165,7 +183,7 @@
 {
     
     institutionId = TESTING_INSTITUTION_ID;
-    NSString *urlString = [NSString stringWithFormat:@"%@/events/%@", TESTING_URL, TESTING_INSTITUTION_ID];
+    NSString *urlString = [NSString stringWithFormat:@"%@/events/%@?pageSize=100", TESTING_URL, TESTING_INSTITUTION_ID];
     
     [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self.contentDelegate getEventsFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
@@ -177,7 +195,7 @@
 - (void)getPhotoAlbumsWithInstitutionId:(NSString *)institutionId;
 {
     institutionId = TESTING_PHOTO_INSTITUTION_ID;
-    NSString *urlString = [NSString stringWithFormat:@"%@/photoAlbums/%@", TESTING_URL, TESTING_PHOTO_INSTITUTION_ID];
+    NSString *urlString = [NSString stringWithFormat:@"%@/photoAlbums/%@?pageSize=100", TESTING_URL, TESTING_PHOTO_INSTITUTION_ID];
     
     [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self.contentDelegate getPhotoAlbumsFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
@@ -273,6 +291,39 @@
         [self.contentDelegate getPollCommentsFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [self.contentDelegate getPollCommentsFinishedWithSuccess:NO withInfo:nil failureReason:error];
+    }];
+}
+
+- (void)getCompleteBadgesWithUserId:(NSString *)userId
+{
+    NSString *urlString = [NSString stringWithFormat:@"%@/badges/complete/%@?pageSize=100", TESTING_URL, userId];
+    
+    [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.contentDelegate getCompleteBadgesFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.contentDelegate getCompleteBadgesFinishedWithSuccess:NO withInfo:nil failureReason:error];
+    }];
+}
+
+- (void)getRemainingBadgesWithUserId:(NSString *)userId
+{
+    NSString *urlString = [NSString stringWithFormat:@"%@/badges/remaining/%@?pageSize=100", TESTING_URL, userId];
+    
+    [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.contentDelegate getRemainingBadgesFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.contentDelegate getRemainingBadgesFinishedWithSuccess:NO withInfo:nil failureReason:error];
+    }];
+}
+
+- (void)getTasks
+{
+    NSString *urlString = [NSString stringWithFormat:@"%@/tasks?pageSize=100", TESTING_URL];
+    
+    [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.contentDelegate getTasksFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.contentDelegate getTasksFinishedWithSuccess:NO withInfo:nil failureReason:error];
     }];
 }
 

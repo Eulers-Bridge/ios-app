@@ -15,6 +15,7 @@
 #import "EBUser.h"
 #import "MyConstants.h"
 #import "EBHelper.h"
+#import "EBPersonalityDescriptionViewController.h"
 
 @interface EBSignupLoginViewController () <UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate, GKImagePickerDelegate, UINavigationControllerDelegate,UIActionSheetDelegate, EBSignupServiceDelegate, EBSignupTermsDelegate, EBContentServiceDelegate>
 
@@ -381,7 +382,7 @@
     // advance to next page or display the error.
     if (success) {
         self.signupedUser = user;
-        [self performSegueWithIdentifier:@"SignupAction" sender:self];
+        [self performSegueWithIdentifier:@"ShowPersonalityDescription" sender:self];
     } else {
         // Display error reason.
     }
@@ -523,9 +524,9 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"SignupAction"]) {
-        EBEmailVerificationViewController *emailVerificationViewController = (EBEmailVerificationViewController *)[segue destinationViewController];
-        emailVerificationViewController.user = self.signupedUser;
+    if ([segue.identifier isEqualToString:@"ShowPersonalityDescription"]) {
+        EBPersonalityDescriptionViewController *personalityDescriptionViewController = (EBPersonalityDescriptionViewController *)[segue destinationViewController];
+        personalityDescriptionViewController.user = self.signupedUser;
     }
 }
 

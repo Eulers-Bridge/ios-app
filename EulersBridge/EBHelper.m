@@ -108,4 +108,9 @@
     return hex;
 }
 
++ (NSString *)getUserId
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:@"userId"];
+}
+
 @end

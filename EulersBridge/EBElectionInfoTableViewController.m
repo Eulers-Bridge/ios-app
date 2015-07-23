@@ -53,6 +53,11 @@
         self.electionTitleLabel.text = info[@"title"];
         self.overviewTextView.text = info[@"introduction"];
         self.processTextView.text = info[@"process"];
+        NSDate *date = [NSDate dateWithTimeIntervalSince1970:[info[@"startVoting"] integerValue] / 1000];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"dd MMMM yyyy, 'Ballot opens' h:mm a"];
+        NSString *dateAndTime = [dateFormatter stringFromDate:date];
+        self.electionDateLabel.text = dateAndTime;
     } else {
         
     }

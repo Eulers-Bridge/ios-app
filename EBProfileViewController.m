@@ -12,9 +12,13 @@
 #import "EBBlurImageView.h"
 #import "EBBadgesCollectionViewController.h"
 #import "EBTasksTableViewController.h"
+#import "EBTasksDetailViewController.h"
 #import "EBProfileSettingsViewController.h"
+#import "EBNetworkService.h"
+#import "EBHelper.h"
+#import "EBButtonHeavySystem.h"
 
-@interface EBProfileViewController () <ABPeoplePickerNavigationControllerDelegate, UIScrollViewDelegate>
+@interface EBProfileViewController () <ABPeoplePickerNavigationControllerDelegate, UIScrollViewDelegate, EBContentServiceDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet EBBlurImageView *imageView;
@@ -27,10 +31,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *friendsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *XPLevelLabel;
-@property (weak, nonatomic) IBOutlet UILabel *badgesLabel;
-@property (weak, nonatomic) IBOutlet UILabel *tasksLabel;
-@property (weak, nonatomic) IBOutlet UILabel *sampleTaskLabel;
-@property (weak, nonatomic) IBOutlet UILabel *sampleXPLabel;
 
 @property (weak, nonatomic) IBOutlet UIButton *actionButton;
 
@@ -41,6 +41,20 @@
 @property (weak, nonatomic) IBOutlet EBCircleProgressBar *progressBar2;
 @property (weak, nonatomic) IBOutlet EBCircleProgressBar *progressBar3;
 @property (weak, nonatomic) IBOutlet EBCircleProgressBar *progressBar4;
+
+@property (weak, nonatomic) IBOutlet EBLabelLight *completedBadgesLabel;
+@property (weak, nonatomic) IBOutlet EBLabelHeavy *remainingBadgesLabel;
+
+
+@property (strong, nonatomic) NSArray *completedBadges;
+@property (strong, nonatomic) NSArray *remainingBadges;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *badgesLoadingIndicator;
+@property (weak, nonatomic) IBOutlet UIButton *viewBadgesButton;
+
+@property (strong, nonatomic) NSArray *tasks;
+@property (weak, nonatomic) IBOutlet EBButtonHeavySystem *showProgressButton;
+@property (weak, nonatomic) IBOutlet EBLabelMedium *tasksLoadingLabel;
+@property (weak, nonatomic) IBOutlet UIView *tasksContainerView;
 
 
 
@@ -60,19 +74,25 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Font setup
-    self.badgesLabel.font = [UIFont fontWithName:@"MuseoSansRounded-700" size:self.badgesLabel.font.pointSize];
-    self.tasksLabel.font = [UIFont fontWithName:@"MuseoSansRounded-700" size:self.tasksLabel.font.pointSize];
-    self.sampleTaskLabel.font = [UIFont fontWithName:@"MuseoSansRounded-500" size:self.sampleTaskLabel.font.pointSize];
-    self.sampleXPLabel.font = [UIFont fontWithName:@"MuseoSansRounded-500" size:self.sampleXPLabel.font.pointSize];
     
+    self.viewBadgesButton.enabled = NO;
+    self.badgesLoadingIndicator.hidden = YES;
+    self.progressBar2.progress = 0.0;
+    
+    self.showProgressButton.enabled = NO;
+    self.tasksContainerView.hidden = YES;
     
     // Image setup
     self.profileImageView.image = [UIImage imageNamed:@"julia-gillard-data.jpg"];
     self.imageView.image = [UIImage imageNamed:@"julia-gillard-data.jpg"];
     self.scrollView.contentSize = CGSizeMake(WIDTH_OF_SCREEN, 665.0);
     
+    // Get Badges and tasks
+    [self getBadges];
+    [self getTasks];
+    
 }
+
 
 -(void)viewDidAppear:(BOOL)animated
 {
@@ -126,8 +146,79 @@
 }
 
 
+#pragma mark Badges
 
+- (void)getBadges
+{
+    self.badgesLoadingIndicator.hidden = NO;
+    [self.badgesLoadingIndicator startAnimating];
+    self.completedBadgesLabel.hidden = YES;
+    self.remainingBadgesLabel.hidden = YES;
+    
+    EBNetworkService *service = [[EBNetworkService alloc] init];
+    service.contentDelegate = self;
+    [service getCompleteBadgesWithUserId:[EBHelper getUserId]];
+    [service getRemainingBadgesWithUserId:[EBHelper getUserId]];
+}
 
+- (void)getTasks
+{
+    EBNetworkService *service = [[EBNetworkService alloc] init];
+    service.contentDelegate = self;
+    [service getTasks];
+}
+
+-(void)getCompleteBadgesFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
+{
+    if (success) {
+        self.completedBadges = info[@"foundObjects"];
+        [self updateBadges];
+    } else {
+        
+    }
+}
+
+- (void)getRemainingBadgesFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
+{
+    if (success) {
+        self.remainingBadges = info[@"foundObjects"];
+        [self updateBadges];
+    }
+}
+
+- (void)getTasksFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
+{
+    if (success) {
+        self.tasks = info[@"foundObjects"];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"TasksReturnedFromServer" object:nil userInfo:info];
+        [self updateTasks];
+    }
+}
+
+- (void)updateBadges
+{
+    if (self.completedBadges && self.remainingBadges) {
+        [self.badgesLoadingIndicator stopAnimating];
+        self.badgesLoadingIndicator.hidden = YES;
+        self.completedBadgesLabel.hidden = NO;
+        self.remainingBadgesLabel.hidden = NO;
+        self.progressBar2.progress = (float)[self.completedBadges count] / ((float)[self.completedBadges count] + (float)[self.remainingBadges count]);
+        [self.progressBar2 animate];
+        self.completedBadgesLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)[self.completedBadges count]];
+        self.remainingBadgesLabel.text = [NSString stringWithFormat:@"/%lu", (unsigned long)[self.remainingBadges count]];;
+        self.viewBadgesButton.enabled = YES;
+    }
+}
+
+- (void)updateTasks
+{
+    if (self.tasks) {
+        self.showProgressButton.enabled = YES;
+        self.tasksLoadingLabel.hidden = YES;
+        self.tasksContainerView.hidden = NO;
+        
+    }
+}
 
 #pragma mark Scroll View Delegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -169,6 +260,8 @@
     if ([segue.identifier isEqualToString:@"BadgesDetail"]) {
         EBBadgesCollectionViewController *badgesViewController = (EBBadgesCollectionViewController *)[segue destinationViewController];
         badgesViewController.badgesViewType = EBBadgesViewTypeDetail;
+        badgesViewController.completedBadges = self.completedBadges;
+        badgesViewController.remainingBadges = self.remainingBadges;
     }
     if ([segue.identifier isEqualToString:@"ProfileSettings"]) {
         EBProfileSettingsViewController *settingsViewController = (EBProfileSettingsViewController *)[segue destinationViewController];
@@ -177,6 +270,10 @@
     if ([segue.identifier isEqualToString:@"TasksEmbed"]) {
         EBTasksTableViewController *tasksViewController = (EBTasksTableViewController *)[segue destinationViewController];
         tasksViewController.tasksViewType = EBTasksViewTypeSmall;
+    }
+    if ([segue.identifier isEqualToString:@"TasksDetail"]) {
+        EBTasksDetailViewController *tasksViewController = (EBTasksDetailViewController *)[segue destinationViewController];
+        tasksViewController.tasks = self.tasks;
     }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.

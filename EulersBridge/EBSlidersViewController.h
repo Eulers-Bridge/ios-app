@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EBUser.h"
 
 @interface EBSlidersViewController : UIViewController
+
+@property (strong, nonatomic) EBUser *user;
 
 @end

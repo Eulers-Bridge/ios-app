@@ -9,12 +9,15 @@
 #import "EBSlidersViewController.h"
 #import "EBSliderTableViewCell.h"
 #import "EBAppDelegate.h"
+#import "EBNetworkService.h"
+#import "EBEmailVerificationViewController.h"
 
-@interface EBSlidersViewController () <UITableViewDataSource, UITableViewDelegate, EBPersonalitySelectionDelegate>
+@interface EBSlidersViewController () <UITableViewDataSource, UITableViewDelegate, EBPersonalitySelectionDelegate, EBSignupServiceDelegate>
 
 @property (strong, nonatomic) NSArray *titleArray;
 @property (strong, nonatomic) NSArray *degreeArray;
 @property (strong, nonatomic) NSMutableArray *selectionArray;
+
 
 @end
 
@@ -54,6 +57,11 @@
     for (int i = 0; i < 10; i += 1) {
         [self.selectionArray addObject:@(3)];
     }
+    
+    self.navigationController.navigationBarHidden = NO;
+    [self.navigationController.navigationBar setBackgroundImage:nil
+                                                  forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = nil;
 
 }
 
@@ -81,10 +89,34 @@
 }
 
 - (IBAction)doneAction:(UIBarButtonItem *)sender {
+//    [self performSegueWithIdentifier:@"ShowEmailFromPersonality" sender:self];
+    NSMutableArray *a = [NSMutableArray arrayWithCapacity:self.selectionArray.count];
+    for (NSNumber *number in self.selectionArray) {
+        NSDecimalNumber *decimal = [NSDecimalNumber decimalNumberWithDecimal:[number decimalValue]];
+        [a addObject:[decimal decimalNumberByAdding:[NSDecimalNumber one]]];
+    }
+    NSDictionary *parameters = @{
+        @"extroversion" : @(([a[0] floatValue] + (8 - [a[5] floatValue])) / 2),
+        @"agreeableness" : @(([a[6] floatValue] + (8 - [a[1] floatValue])) / 2),
+        @"conscientiousness" : @(([a[2] floatValue] + (8 - [a[7] floatValue])) / 2),
+        @"emotionalStability" : @(([a[8] floatValue] + (8 - [a[3] floatValue])) / 2),
+        @"openess" : @(([a[4] floatValue] + (8 - [a[9] floatValue])) / 2)
+    };
+    
+    
+    EBNetworkService *service = [[EBNetworkService alloc] init];
+    service.signupDelegate = self;
+    [service addPersonalityForUser:self.user withParameters:parameters];
+}
 
-    EBAppDelegate *delegate = (EBAppDelegate *)[[UIApplication sharedApplication] delegate];
-    [delegate instantiateTabBarController];
-
+-(void)addPersonalityForUserFinishedWithSuccess:(BOOL)success withUser:(EBUser *)user failureReason:(NSError *)error
+{
+    if (success) {
+        EBAppDelegate *delegate = (EBAppDelegate *)[[UIApplication sharedApplication] delegate];
+        [delegate instantiateTabBarController];
+    } else {
+        
+    }
 }
 
 
@@ -94,15 +126,16 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"ShowEmailFromPersonality"]) {
+        EBEmailVerificationViewController *email = (EBEmailVerificationViewController *)[segue destinationViewController];
+        email.user = self.user;
+    }
 }
-*/
 
 @end

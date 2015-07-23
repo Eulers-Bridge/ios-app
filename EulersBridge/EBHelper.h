@@ -30,4 +30,6 @@
 
 + (unsigned)hexFromString:(NSString *)string;
 
++ (NSString *)getUserId;
+
 @end

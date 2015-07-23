@@ -37,6 +37,11 @@
 {
     [super awakeFromNib];
     
+}
+
+- (void)animate
+{
+    
     CGFloat thickness = 5.0;
     
     float start_angle = 2*M_PI*0-M_PI_2;
@@ -79,11 +84,6 @@
     
     // Add the animation to the circle
     [circle addAnimation:drawAnimation forKey:@"drawCircleAnimation"];
-
-}
-
-- (void)animate
-{
 
 }
 

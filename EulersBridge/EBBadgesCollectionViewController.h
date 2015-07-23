@@ -12,4 +12,7 @@
 
 @property EBBadgesViewType badgesViewType;
 
+@property (strong, nonatomic) NSArray *completedBadges;
+@property (strong, nonatomic) NSArray *remainingBadges;
+
 @end

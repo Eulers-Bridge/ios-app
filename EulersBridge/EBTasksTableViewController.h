@@ -13,4 +13,6 @@
 
 @property EBTasksViewType tasksViewType;
 
+@property (strong, nonatomic) NSArray *tasks;
+
 @end

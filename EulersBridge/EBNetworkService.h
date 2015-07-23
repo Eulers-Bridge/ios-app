@@ -14,7 +14,7 @@
 - (void)signupFinishedWithSuccess:(BOOL)success withUser:(EBUser *)user failureReason:(NSError *)error;
 - (void)loginFinishedWithSuccess:(BOOL)success withUser:(EBUser *)user failureReason:(NSError *)error errorString:(NSString *)errorString;
 - (void)resendEmailFinishedWithSuccess:(BOOL)success withUser:(EBUser *)user failureReason:(NSError *)error;
-
+- (void)addPersonalityForUserFinishedWithSuccess:(BOOL)success withUser:(EBUser *)user failureReason:(NSError *)error;
 @end
 
 @protocol EBFriendServiceDelegate <NSObject>
@@ -40,6 +40,10 @@
 - (void)getPollsFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 - (void)getPollResultsFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 - (void)getPollCommentsFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
+- (void)getCompleteBadgesFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
+- (void)getRemainingBadgesFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
+- (void)getTasksFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
+
 @end
 
 @protocol EBUserActionServiceDelegate <NSObject>
@@ -58,11 +62,12 @@
 
 - (void)getGeneralInfo;
 
-// TODO: Signup and login service
+// Signup and login service
 - (void)signupWithEmailAddress:(NSString *)email password:(NSString *)password givenName:(NSString *)givenName familyName:(NSString *)familyName institutionId:(NSString *)institutionId;
 
 - (void)loginWithEmailAddress:(NSString *)email password:(NSString *)password;
 - (void)resendVerificationEmailForUser:(EBUser *)user;
+- (void)addPersonalityForUser:(EBUser *)user withParameters:(NSDictionary *)parameters;
 
 // Friend services
 - (void)findFriendWithContactDetail:(NSString *)contactDetail originalContact:(NSDictionary *)contact;
@@ -80,6 +85,10 @@
 - (void)getPollsWithInstitutionId:(NSString *)institutionId;
 - (void)getPollResultsWithPollId:(NSString *)pollId;
 - (void)getPollCommentsWithPollId:(NSString *)pollId;
+
+- (void)getCompleteBadgesWithUserId:(NSString *)userId;
+- (void)getRemainingBadgesWithUserId:(NSString *)userId;
+- (void)getTasks;
 
 // User action service
 - (void)voteWithPollId:(NSString *)pollId answerIndex:(NSUInteger)answerIndex;

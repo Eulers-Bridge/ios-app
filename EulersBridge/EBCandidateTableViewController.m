@@ -320,6 +320,12 @@
     return 150;
 }
 
+#pragma mark cell selection by cell selection
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self candidateShowDetailWithIndex:indexPath.row];
+}
+
 #pragma mark cell selection by reveal button
 -(void)candidateShowDetailWithIndex:(NSUInteger)index
 {

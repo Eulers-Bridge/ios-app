@@ -7,10 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EBNetworkService.h"
 
-@interface EBBadgeCollectionViewCell : UICollectionViewCell
+@interface EBBadgeCollectionViewCell : UICollectionViewCell <EBContentServiceDelegate>
+
 @property (weak, nonatomic) IBOutlet UIImageView *badgeImageView;
 @property (weak, nonatomic) IBOutlet EBLabelHeavy *badgeNameLabel;
 @property (weak, nonatomic) IBOutlet EBLabelHeavy *badgeDescriptionLabel;
+@property (strong, nonatomic) NSDictionary *info;
+@property (strong, nonatomic) NSString *iconUrl;
+@property BOOL completed;
+
+@property (strong, nonatomic) EBNetworkService *service;
+
+- (void)setup;
 
 @end

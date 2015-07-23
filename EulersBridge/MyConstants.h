@@ -14,6 +14,8 @@
 #define WIDTH_OF_SCREEN 320
 #define HEIGHT_OF_SCREEN 568
 
+#define DEFAULT_BLUR_RADIUS 20.0
+
 #define SERVER_TOKEN @"6F87C408-98E2-403F-BD9F-D60DB6328BEP"
 #define SERVER_URL @"https://eulersbridge.meteor.com"
 

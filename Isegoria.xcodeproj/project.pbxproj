@@ -19,6 +19,7 @@
 		04428E141998CE450061E2C5 /* EBSlidersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04428E131998CE450061E2C5 /* EBSlidersViewController.m */; };
 		04428E171999B8370061E2C5 /* EBPersonalitySlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 04428E161999B8370061E2C5 /* EBPersonalitySlider.m */; };
 		04428E1A199C6F5B0061E2C5 /* EBSliderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04428E19199C6F5B0061E2C5 /* EBSliderTableViewCell.m */; };
+		0449533F1B1215270036F080 /* EBPersonalityDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0449533E1B1215270036F080 /* EBPersonalityDescriptionViewController.m */; };
 		044BB0E91989DA6F00E0180F /* EBPhotosCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 044BB0E81989DA6F00E0180F /* EBPhotosCollectionViewController.m */; };
 		044BB0ED1989E89300E0180F /* EBPhotosHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 044BB0EC1989E89300E0180F /* EBPhotosHeaderView.m */; };
 		044BB0F01989F16C00E0180F /* EBPhotoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 044BB0EF1989F16C00E0180F /* EBPhotoDetailViewController.m */; };
@@ -255,6 +256,8 @@
 		04428E161999B8370061E2C5 /* EBPersonalitySlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBPersonalitySlider.m; sourceTree = "<group>"; };
 		04428E18199C6F5B0061E2C5 /* EBSliderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBSliderTableViewCell.h; sourceTree = "<group>"; };
 		04428E19199C6F5B0061E2C5 /* EBSliderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBSliderTableViewCell.m; sourceTree = "<group>"; };
+		0449533D1B1215270036F080 /* EBPersonalityDescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBPersonalityDescriptionViewController.h; sourceTree = "<group>"; };
+		0449533E1B1215270036F080 /* EBPersonalityDescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBPersonalityDescriptionViewController.m; sourceTree = "<group>"; };
 		044BB0E71989DA6F00E0180F /* EBPhotosCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBPhotosCollectionViewController.h; sourceTree = "<group>"; };
 		044BB0E81989DA6F00E0180F /* EBPhotosCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBPhotosCollectionViewController.m; sourceTree = "<group>"; };
 		044BB0EB1989E89300E0180F /* EBPhotosHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBPhotosHeaderView.h; sourceTree = "<group>"; };
@@ -928,6 +931,8 @@
 				04428E131998CE450061E2C5 /* EBSlidersViewController.m */,
 				04428E18199C6F5B0061E2C5 /* EBSliderTableViewCell.h */,
 				04428E19199C6F5B0061E2C5 /* EBSliderTableViewCell.m */,
+				0449533D1B1215270036F080 /* EBPersonalityDescriptionViewController.h */,
+				0449533E1B1215270036F080 /* EBPersonalityDescriptionViewController.m */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -1226,6 +1231,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Eulers Bridge";
 				TargetAttributes = {
+					04FD417719062ECD00AF17DC = {
+						DevelopmentTeam = L7PYF339KE;
+					};
 					04FD419E19062ECD00AF17DC = {
 						TestTargetID = 04FD417719062ECD00AF17DC;
 					};
@@ -1482,6 +1490,7 @@
 				049A4764196A5E3800D363AE /* EBTask.m in Sources */,
 				04BB704E190D229D0059E93C /* EBProfileViewController.m in Sources */,
 				04937C981AC11992002209AA /* EBCircleProgressBar.m in Sources */,
+				0449533F1B1215270036F080 /* EBPersonalityDescriptionViewController.m in Sources */,
 				04428E141998CE450061E2C5 /* EBSlidersViewController.m in Sources */,
 				04D6981F1ADCB3620096AD56 /* EBElectionInfoTableViewController.m in Sources */,
 				049A475A19667FA000D363AE /* EBPersonalityTableViewCell.m in Sources */,
@@ -1648,7 +1657,7 @@
 				INFOPLIST_FILE = "EulersBridge/Isegoria-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = Isegoria;
-				PROVISIONING_PROFILE = "29f6e029-7a37-4664-b07a-b4d22647bab0";
+				PROVISIONING_PROFILE = "d3d5c4fd-ada7-4e39-a80e-f422825d10e5";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1660,14 +1669,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Yuan Gao (L7PYF339KE)";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: Yuan Gao (L7PYF339KE)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EulersBridge/Isegoria-Prefix.pch";
 				INFOPLIST_FILE = "EulersBridge/Isegoria-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = Isegoria;
-				PROVISIONING_PROFILE = "cd7b39d6-7189-4745-a7ee-77eb2fb828b7";
+				PROVISIONING_PROFILE = "a2819124-c3b7-4e9d-b7a3-57b4aba6a3ab";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

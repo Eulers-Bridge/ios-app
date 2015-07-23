@@ -7,6 +7,7 @@
 //
 
 #import "EBTaskTableViewCell.h"
+#import "UIImageView+AFNetworking.h"
 
 @implementation EBTaskTableViewCell
 
@@ -22,6 +23,38 @@
 - (void)awakeFromNib
 {
     // Initialization code
+}
+
+- (void)setup
+{
+    self.service = [[EBNetworkService alloc] init];
+    self.service.contentDelegate = self;
+    [self.service getPhotosWithAlbumId:self.info[@"taskId"]];
+    
+    self.xpValueLabel.text = [[self.info[@"xpValue"] stringValue] stringByAppendingString:@" XP"];
+    self.titleLabel.text = self.info[@"action"];
+}
+
+- (void)getPhotosFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
+{
+    if (success) {
+        [self.taskImageView setImageWithURL:[NSURL URLWithString:[info[@"photos"] lastObject][@"url"]]];
+    } else {
+        
+    }
+}
+
+- (void)prepareForReuse
+{
+    self.service.contentDelegate = nil;
+    self.taskImageView.image = nil;
+    self.xpValueLabel.text = @"";
+    self.titleLabel.text = @"";
+}
+
+- (void)dealloc
+{
+    self.service.contentDelegate = nil;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

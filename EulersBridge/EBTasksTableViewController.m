@@ -30,10 +30,17 @@
     [super viewDidLoad];
     if (self.tasksViewType == EBTasksViewTypeSmall) {
         self.tableView.scrollEnabled = NO;
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTasksData:) name:@"TasksReturnedFromServer" object:nil];
     } else if (self.tasksViewType == EBTasksViewTypeDetail) {
         self.tableView.scrollEnabled = YES;
         self.tableView.contentInset = UIEdgeInsetsMake(61, 0, 0, 0);
     }
+}
+
+- (void)refreshTasksData:(NSNotification *)notification
+{
+    self.tasks = notification.userInfo[@"foundObjects"];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -57,17 +64,16 @@
 {
     // Return the number of rows in the section.
     if (self.tasksViewType == EBTasksViewTypeSmall) {
-        return 5;
+        return [self.tasks count];
     }
-    return 5;
+    return [self.tasks count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     EBTaskTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell" forIndexPath:indexPath];
-    cell.titleLabel.text = @"Invite 5 Friends";
-    cell.xpValueLabel.text = @"120 XP";
-    cell.taskImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"task%lds", (long)indexPath.row]];
+    cell.info = self.tasks[indexPath.row];
+    [cell setup];
     
     
     return cell;

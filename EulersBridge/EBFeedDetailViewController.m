@@ -8,6 +8,7 @@
 
 #import "EBFeedDetailViewController.h"
 #import "EBHelper.h"
+#import "EBBlurImageView.h"
 #import <EventKit/EventKit.h>
 #import <EventKitUI/EventKitUI.h>
 #import <Social/Social.h>
@@ -16,7 +17,7 @@
 
 @property (weak, nonatomic) IBOutlet UIScrollView *detailScrollView;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet EBBlurImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIImageView *authorImageView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *authorLabel;
@@ -99,7 +100,7 @@
     self.separator.frame = separatorFrame;
     
     self.detailScrollView.contentSize = CGSizeMake([EBHelper getScreenSize].width,
-                                             self.imageView.bounds.size.height + self.textView.frame.size.height + offset + self.contactView.bounds.size.height + 40);
+                                             self.imageView.bounds.size.height + self.textView.frame.size.height + offset + self.contactView.bounds.size.height + 46);
 
     
 
@@ -114,7 +115,6 @@
 
 - (void)setupNews
 {
-    self.dateLabel.font = [UIFont fontWithName:@"MuseoSansRounded-300" size:FONT_SIZE_ARTICLE_DATE];
     self.authorLabel.font = [UIFont fontWithName:@"MuseoSansRounded-300" size:FONT_SIZE_ARTICLE_AUTHOR];
     
     self.titleLabel.text = self.data[@"title"];
@@ -140,7 +140,7 @@
     if (!self.image) {
         self.imageView.image = [UIImage imageNamed:self.data[@"imageName"]];
     } else {
-        self.imageView.image = self.image;
+        self.imageView.image = [self.image copy];
         self.eventLocationLabel.text = self.data[@"location"];
         self.eventLocationSecondLabel.text = self.data[@"location"];
         self.eventContactName.text = self.data[@"organizer"];
@@ -284,6 +284,10 @@
             frame.origin.y = (scrollView.contentOffset.y + 64);
             frame.size.height = -(scrollView.contentOffset.y + 64) + 229;
             backFrame.size.height = frame.size.height;
+            CGFloat newBlurRadius = (DEFAULT_BLUR_RADIUS + (scrollView.contentOffset.y + 64) * DEFAULT_BLUR_RADIUS / 206);
+            NSLog(@"%f",newBlurRadius);
+            [self.imageView setImage:[self.image copy] withBlurRadius:(DEFAULT_BLUR_RADIUS + (scrollView.contentOffset.y + 64) * DEFAULT_BLUR_RADIUS / 130)];
+            NSLog(@"%f",scrollView.contentOffset.y);
         }
         self.imageView.frame = frame;
         self.darkBackgroundView.frame = backFrame;

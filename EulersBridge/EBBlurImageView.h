@@ -10,4 +10,6 @@
 
 @interface EBBlurImageView : UIImageView
 
+- (void)setImage:(UIImage *)image withBlurRadius:(float)blurRadius;
+
 @end
