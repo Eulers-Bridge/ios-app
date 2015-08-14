@@ -15,6 +15,7 @@
 - (void)loginFinishedWithSuccess:(BOOL)success withUser:(EBUser *)user failureReason:(NSError *)error errorString:(NSString *)errorString;
 - (void)resendEmailFinishedWithSuccess:(BOOL)success withUser:(EBUser *)user failureReason:(NSError *)error;
 - (void)addPersonalityForUserFinishedWithSuccess:(BOOL)success withUser:(EBUser *)user failureReason:(NSError *)error;
+- (void)getUserWithUserEmailFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 @end
 
 @protocol EBFriendServiceDelegate <NSObject>
@@ -36,6 +37,7 @@
 - (void)getPositionsInfoFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 - (void)getCandidatesInfoFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 - (void)getTicketsInfoFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
+- (void)getNewsLikesFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 
 - (void)getPollsFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 - (void)getPollResultsFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
@@ -51,6 +53,7 @@
 
 - (void)votePollFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 - (void)postPollCommentFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
+- (void)likeContentFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 @end
 
 @interface EBNetworkService : NSObject
@@ -62,12 +65,13 @@
 
 - (void)getGeneralInfo;
 
-// Signup and login service
+// Signup, login and user service
 - (void)signupWithEmailAddress:(NSString *)email password:(NSString *)password givenName:(NSString *)givenName familyName:(NSString *)familyName institutionId:(NSString *)institutionId;
 
 - (void)loginWithEmailAddress:(NSString *)email password:(NSString *)password;
 - (void)resendVerificationEmailForUser:(EBUser *)user;
 - (void)addPersonalityForUser:(EBUser *)user withParameters:(NSDictionary *)parameters;
+- (void)getUserWithUserEmail:(NSString *)email;
 
 // Friend services
 - (void)findFriendWithContactDetail:(NSString *)contactDetail originalContact:(NSDictionary *)contact;
@@ -81,6 +85,7 @@
 - (void)getPositionsInfoWithElectionId:(NSString *)electionId;
 - (void)getCandidatesInfoWithElectionId:(NSString *)electionId;
 - (void)getTicketsInfoWithElectionId:(NSString *)electionId;
+- (void)getNewsLikesWithArticleId:(NSString *)articleId;
 
 - (void)getPollsWithInstitutionId:(NSString *)institutionId;
 - (void)getPollResultsWithPollId:(NSString *)pollId;
@@ -93,5 +98,5 @@
 // User action service
 - (void)voteWithPollId:(NSString *)pollId answerIndex:(NSUInteger)answerIndex;
 - (void)postPollCommentWithPollId:(NSString *)pollId comment:(NSString *)comment;
-
+- (void)likeContentWithLike:(BOOL)like contentType:(EBContentViewType)contentType contentId:(NSString *)contentId;
 @end

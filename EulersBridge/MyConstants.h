@@ -14,7 +14,7 @@
 #define WIDTH_OF_SCREEN 320
 #define HEIGHT_OF_SCREEN 568
 
-#define DEFAULT_BLUR_RADIUS 20.0
+#define DEFAULT_BLUR_RADIUS 5.0
 
 #define SERVER_TOKEN @"6F87C408-98E2-403F-BD9F-D60DB6328BEP"
 #define SERVER_URL @"https://eulersbridge.meteor.com"
@@ -33,6 +33,9 @@
 #define LOGIN_ERROR_BAD_CREDENTIALS @"HTTP Status 401 - Bad credentials\n"
 #define LOGIN_ERROR_USER_UNVERIFIED @"HTTP Status 401 - User is disabled\n"
 
+#define SECTION_TITLE_VIEW_HEIGHT 32
+#define SECTION_TITLE_VIEW_TITLE_X_OFFSET 10
+#define SECTION_TITLE_VIEW_TITLE_Y_OFFSET 3
 
 #define FONT_SIZE_CELL_TITLE_LARGE 18
 #define FONT_SIZE_CELL_TITLE_SMALL 14
@@ -56,6 +59,8 @@
 
 #define SPACING_PHOTO_DETAIL 20
 
+#define TEXT_BODY_INSET 15
+
 #define ISEGORIA_COLOR_BLUE [UIColor colorWithRed:47.0/255.0 green:123.0/255.0 blue:212.0/255.0 alpha:1.0]
 #define ISEGORIA_COLOR_GREY [UIColor colorWithRed:121.0/255.0 green:121.0/255.0 blue:144.0/255.0 alpha:1.0]
 #define ISEGORIA_COLOR_GREEN [UIColor colorWithRed:76.0/255.0 green:217.0/255.0 blue:100.0/255.0 alpha:1.0]
@@ -70,6 +75,7 @@
 
 #define ISEGORIA_CELL_MASK_GREY [UIColor colorWithRed:49.0/255.0 green:62.0/255.0 blue:77.0/255.0 alpha:1.0]
 #define ISEGORIA_TEXT_BODY_GREY [UIColor colorWithRed:49.0/255.0 green:62.0/255.0 blue:77.0/255.0 alpha:1.0]
+#define ISEGORIA_TEXT_TITLE_GREY [UIColor colorWithRed:107.0/255.0 green:122.0/255.0 blue:138.0/255.0 alpha:1.0]
 
 #define ISEGORIA_CIRCLE_PROGRESS_GREY [UIColor colorWithRed:227.0/255.0 green:227.0/255.0 blue:227.0/255.0 alpha:1.0]
 
@@ -83,6 +89,14 @@ typedef NS_ENUM(NSInteger, EBFeedDetail) {
     EBFeedDetailNews,
     EBFeedDetailEvent,
     EBFeedDetailPhoto
+};
+
+typedef NS_ENUM(NSInteger, EBContentViewType) {
+    EBContentViewTypeNews,
+    EBContentViewTypeEvent,
+    EBContentViewTypeCandidateDescription,
+    EBContentViewTypeTicketProfile,
+    EBContentViewTypeProfile
 };
 
 typedef NS_ENUM(NSInteger, EBBadgesViewType) {

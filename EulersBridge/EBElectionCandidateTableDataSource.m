@@ -51,7 +51,7 @@
     NSString *imageName = [NSString stringWithFormat:@"candidate%ld.jpg", (long)indexPath.row];
     cell.candidateImageView.image = [UIImage imageNamed:imageName];
     cell.index = indexPath.row;
-    cell.delegate = self.cellDelegate;
+//    cell.delegate = self.cellDelegate;
     return cell;
 }
 

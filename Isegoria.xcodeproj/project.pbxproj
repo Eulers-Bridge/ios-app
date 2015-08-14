@@ -153,6 +153,7 @@
 		049A476A196A630200D363AE /* EBElection.m in Sources */ = {isa = PBXBuildFile; fileRef = 049A4769196A630200D363AE /* EBElection.m */; };
 		049A476D196A803F00D363AE /* EBEmailVerificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049A476C196A803F00D363AE /* EBEmailVerificationViewController.m */; };
 		049A4770196B803E00D363AE /* EBTextFieldMuseo.m in Sources */ = {isa = PBXBuildFile; fileRef = 049A476F196B803E00D363AE /* EBTextFieldMuseo.m */; };
+		04A2380D1B65F4AE00377499 /* EBTextViewHelvetica.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A2380C1B65F4AE00377499 /* EBTextViewHelvetica.m */; };
 		04B177621ACBA98D00008293 /* TestPathViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B177611ACBA98D00008293 /* TestPathViewController.m */; };
 		04B177651ACBAB5000008293 /* TestPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B177641ACBAB5000008293 /* TestPathView.m */; };
 		04B6556C196109EE0002E784 /* EBBadgeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B6556B196109EE0002E784 /* EBBadgeCollectionViewCell.m */; };
@@ -175,6 +176,7 @@
 		04BB7053190D22EE0059E93C /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BB7051190D22EE0059E93C /* AddressBookUI.framework */; };
 		04BB70561911C01F0059E93C /* EBFindFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BB70551911C01F0059E93C /* EBFindFriendViewController.m */; };
 		04BB705F1911E9430059E93C /* EBFindFriendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BB705E1911E9430059E93C /* EBFindFriendTableViewCell.m */; };
+		04BEB8A81B6F596E000A0F9B /* EBEventDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BEB8A71B6F596E000A0F9B /* EBEventDetailTableViewController.m */; };
 		04D6981F1ADCB3620096AD56 /* EBElectionInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D6981E1ADCB3620096AD56 /* EBElectionInfoTableViewController.m */; };
 		04D698221ADD23AB0096AD56 /* EBPositionsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D698211ADD23AB0096AD56 /* EBPositionsCollectionViewController.m */; };
 		04D82588198B1D4700715E0A /* candidate9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04D82581198B1D4700715E0A /* candidate9.jpg */; };
@@ -188,7 +190,12 @@
 		04D82598198B2B6400715E0A /* juliaBig.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04D82596198B2B6400715E0A /* juliaBig.jpg */; };
 		04D82599198B2B6400715E0A /* juliaSmall.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04D82597198B2B6400715E0A /* juliaSmall.jpg */; };
 		04D8259B198B2C4100715E0A /* julia-gillard-data.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04D8259A198B2C4100715E0A /* julia-gillard-data.jpg */; };
+		04DA53C61B7D8CA80090AD6B /* EBProfileDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DA53C51B7D8CA80090AD6B /* EBProfileDescriptionViewController.m */; };
+		04DA53C91B7DADF50090AD6B /* EBDarkImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DA53C81B7DADF50090AD6B /* EBDarkImageView.m */; };
 		04DBD30F1A6CCFE0008752E4 /* EBUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DBD30E1A6CCFE0008752E4 /* EBUserService.m */; };
+		04DE972B1B660662000091A8 /* EBTextBodyLayoutManagerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DE972A1B660662000091A8 /* EBTextBodyLayoutManagerDelegate.m */; };
+		04DE97301B66260F000091A8 /* EBContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DE972F1B66260F000091A8 /* EBContentViewController.m */; };
+		04DE97331B672188000091A8 /* EBArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DE97321B672188000091A8 /* EBArticleViewController.m */; };
 		04EC194A19416F1E0001FF72 /* EBPollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EC194919416F1E0001FF72 /* EBPollViewController.m */; };
 		04EC19501941A4930001FF72 /* EBPollContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EC194F1941A4930001FF72 /* EBPollContentViewController.m */; };
 		04EC19531941B48B0001FF72 /* EBLabelMedium.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EC19521941B48B0001FF72 /* EBLabelMedium.m */; };
@@ -431,6 +438,8 @@
 		049A476C196A803F00D363AE /* EBEmailVerificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBEmailVerificationViewController.m; sourceTree = "<group>"; };
 		049A476E196B803E00D363AE /* EBTextFieldMuseo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBTextFieldMuseo.h; sourceTree = "<group>"; };
 		049A476F196B803E00D363AE /* EBTextFieldMuseo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBTextFieldMuseo.m; sourceTree = "<group>"; };
+		04A2380B1B65F4AE00377499 /* EBTextViewHelvetica.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBTextViewHelvetica.h; sourceTree = "<group>"; };
+		04A2380C1B65F4AE00377499 /* EBTextViewHelvetica.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBTextViewHelvetica.m; sourceTree = "<group>"; };
 		04B177601ACBA98D00008293 /* TestPathViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestPathViewController.h; path = ../TestPathViewController.h; sourceTree = "<group>"; };
 		04B177611ACBA98D00008293 /* TestPathViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestPathViewController.m; path = ../TestPathViewController.m; sourceTree = "<group>"; };
 		04B177631ACBAB5000008293 /* TestPathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestPathView.h; sourceTree = "<group>"; };
@@ -471,6 +480,8 @@
 		04BB70551911C01F0059E93C /* EBFindFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBFindFriendViewController.m; sourceTree = "<group>"; };
 		04BB705D1911E9430059E93C /* EBFindFriendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBFindFriendTableViewCell.h; sourceTree = "<group>"; };
 		04BB705E1911E9430059E93C /* EBFindFriendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBFindFriendTableViewCell.m; sourceTree = "<group>"; };
+		04BEB8A61B6F596E000A0F9B /* EBEventDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBEventDetailTableViewController.h; sourceTree = "<group>"; };
+		04BEB8A71B6F596E000A0F9B /* EBEventDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBEventDetailTableViewController.m; sourceTree = "<group>"; };
 		04D6981D1ADCB3620096AD56 /* EBElectionInfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBElectionInfoTableViewController.h; sourceTree = "<group>"; };
 		04D6981E1ADCB3620096AD56 /* EBElectionInfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBElectionInfoTableViewController.m; sourceTree = "<group>"; };
 		04D698201ADD23AB0096AD56 /* EBPositionsCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBPositionsCollectionViewController.h; sourceTree = "<group>"; };
@@ -487,8 +498,19 @@
 		04D82596198B2B6400715E0A /* juliaBig.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = juliaBig.jpg; sourceTree = "<group>"; };
 		04D82597198B2B6400715E0A /* juliaSmall.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = juliaSmall.jpg; sourceTree = "<group>"; };
 		04D8259A198B2C4100715E0A /* julia-gillard-data.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "julia-gillard-data.jpg"; sourceTree = "<group>"; };
+		04DA53C41B7D8CA80090AD6B /* EBProfileDescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBProfileDescriptionViewController.h; sourceTree = "<group>"; };
+		04DA53C51B7D8CA80090AD6B /* EBProfileDescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBProfileDescriptionViewController.m; sourceTree = "<group>"; };
+		04DA53C71B7DADF50090AD6B /* EBDarkImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBDarkImageView.h; sourceTree = "<group>"; };
+		04DA53C81B7DADF50090AD6B /* EBDarkImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBDarkImageView.m; sourceTree = "<group>"; };
+		04DA53CD1B7DD9130090AD6B /* EBContentDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBContentDetail.h; sourceTree = "<group>"; };
 		04DBD30D1A6CCFE0008752E4 /* EBUserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBUserService.h; sourceTree = "<group>"; };
 		04DBD30E1A6CCFE0008752E4 /* EBUserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBUserService.m; sourceTree = "<group>"; };
+		04DE97291B660662000091A8 /* EBTextBodyLayoutManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBTextBodyLayoutManagerDelegate.h; sourceTree = "<group>"; };
+		04DE972A1B660662000091A8 /* EBTextBodyLayoutManagerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBTextBodyLayoutManagerDelegate.m; sourceTree = "<group>"; };
+		04DE972E1B66260F000091A8 /* EBContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBContentViewController.h; sourceTree = "<group>"; };
+		04DE972F1B66260F000091A8 /* EBContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBContentViewController.m; sourceTree = "<group>"; };
+		04DE97311B672188000091A8 /* EBArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBArticleViewController.h; sourceTree = "<group>"; };
+		04DE97321B672188000091A8 /* EBArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBArticleViewController.m; sourceTree = "<group>"; };
 		04EC194819416F1E0001FF72 /* EBPollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBPollViewController.h; sourceTree = "<group>"; };
 		04EC194919416F1E0001FF72 /* EBPollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBPollViewController.m; sourceTree = "<group>"; };
 		04EC194E1941A4930001FF72 /* EBPollContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBPollContentViewController.h; sourceTree = "<group>"; };
@@ -993,6 +1015,22 @@
 			name = Profile;
 			sourceTree = "<group>";
 		};
+		04DE972D1B6625D9000091A8 /* Content UI */ = {
+			isa = PBXGroup;
+			children = (
+				04DA53CD1B7DD9130090AD6B /* EBContentDetail.h */,
+				04DE972E1B66260F000091A8 /* EBContentViewController.h */,
+				04DE972F1B66260F000091A8 /* EBContentViewController.m */,
+				04DE97311B672188000091A8 /* EBArticleViewController.h */,
+				04DE97321B672188000091A8 /* EBArticleViewController.m */,
+				04BEB8A61B6F596E000A0F9B /* EBEventDetailTableViewController.h */,
+				04BEB8A71B6F596E000A0F9B /* EBEventDetailTableViewController.m */,
+				04DA53C41B7D8CA80090AD6B /* EBProfileDescriptionViewController.h */,
+				04DA53C51B7D8CA80090AD6B /* EBProfileDescriptionViewController.m */,
+			);
+			name = "Content UI";
+			sourceTree = "<group>";
+		};
 		04EC194719416EF20001FF72 /* Poll */ = {
 			isa = PBXGroup;
 			children = (
@@ -1047,12 +1085,18 @@
 				04959B8F1987781B00D9E768 /* EBTextViewMuseoLight.m */,
 				04EC195E194206150001FF72 /* EBTextViewMuseoLightBody.h */,
 				04EC195F194206150001FF72 /* EBTextViewMuseoLightBody.m */,
+				04A2380B1B65F4AE00377499 /* EBTextViewHelvetica.h */,
+				04A2380C1B65F4AE00377499 /* EBTextViewHelvetica.m */,
 				048D01C2195BB0A600E878DA /* EBBlurImageView.h */,
 				048D01C3195BB0A600E878DA /* EBBlurImageView.m */,
+				04DA53C71B7DADF50090AD6B /* EBDarkImageView.h */,
+				04DA53C81B7DADF50090AD6B /* EBDarkImageView.m */,
 				049A476E196B803E00D363AE /* EBTextFieldMuseo.h */,
 				049A476F196B803E00D363AE /* EBTextFieldMuseo.m */,
 				04937C961AC11992002209AA /* EBCircleProgressBar.h */,
 				04937C971AC11992002209AA /* EBCircleProgressBar.m */,
+				04DE97291B660662000091A8 /* EBTextBodyLayoutManagerDelegate.h */,
+				04DE972A1B660662000091A8 /* EBTextBodyLayoutManagerDelegate.m */,
 			);
 			name = "Custom UI";
 			sourceTree = "<group>";
@@ -1134,6 +1178,7 @@
 				04FD419019062ECD00AF17DC /* Main_iPad.storyboard */,
 				04FD418A19062ECD00AF17DC /* EBAppDelegate.h */,
 				04FD418B19062ECD00AF17DC /* EBAppDelegate.m */,
+				04DE972D1B6625D9000091A8 /* Content UI */,
 				04BB702F1908917C0059E93C /* Login */,
 				04BB702E190891690059E93C /* Feed */,
 				046D645F192DB25900C354F4 /* Election */,
@@ -1433,6 +1478,7 @@
 				048D01D3195BDC5400E878DA /* EBBadgesCollectionViewController.m in Sources */,
 				04EC197A194989E20001FF72 /* EBFriendsTableViewController.m in Sources */,
 				048D01CE195BC53500E878DA /* EBFriendProfileViewController.m in Sources */,
+				04DE97301B66260F000091A8 /* EBContentViewController.m in Sources */,
 				04EC19501941A4930001FF72 /* EBPollContentViewController.m in Sources */,
 				04BB70561911C01F0059E93C /* EBFindFriendViewController.m in Sources */,
 				04EC19631942080C0001FF72 /* EBElectionContainerViewController.m in Sources */,
@@ -1475,10 +1521,13 @@
 				04079741194072800097706C /* EBSignupTermsViewController.m in Sources */,
 				04B177621ACBA98D00008293 /* TestPathViewController.m in Sources */,
 				04EC196919421E680001FF72 /* EBElectionPositionDetailViewController.m in Sources */,
+				04A2380D1B65F4AE00377499 /* EBTextViewHelvetica.m in Sources */,
 				04788ECE195A70460015FB06 /* EBButtonRounded.m in Sources */,
 				040797471940E7F80097706C /* EBButton.m in Sources */,
+				04DE97331B672188000091A8 /* EBArticleViewController.m in Sources */,
 				04EC195D1941C0A90001FF72 /* EBPollAnswerTableViewCell.m in Sources */,
 				04EC197319488A730001FF72 /* EBButtonRoundedHeavy.m in Sources */,
+				04DA53C91B7DADF50090AD6B /* EBDarkImageView.m in Sources */,
 				04B655731962B76E0002E784 /* EBTasksTableViewController.m in Sources */,
 				044BB0F01989F16C00E0180F /* EBPhotoDetailViewController.m in Sources */,
 				04428E1A199C6F5B0061E2C5 /* EBSliderTableViewCell.m in Sources */,
@@ -1488,6 +1537,7 @@
 				048D01F3195D02B900E878DA /* EBCandidateTableViewController.m in Sources */,
 				04B177651ACBAB5000008293 /* TestPathView.m in Sources */,
 				049A4764196A5E3800D363AE /* EBTask.m in Sources */,
+				04DE972B1B660662000091A8 /* EBTextBodyLayoutManagerDelegate.m in Sources */,
 				04BB704E190D229D0059E93C /* EBProfileViewController.m in Sources */,
 				04937C981AC11992002209AA /* EBCircleProgressBar.m in Sources */,
 				0449533F1B1215270036F080 /* EBPersonalityDescriptionViewController.m in Sources */,
@@ -1504,10 +1554,12 @@
 				04EC19701948839C0001FF72 /* EBCandidateTableViewCell.m in Sources */,
 				0495C508191B651900EAEAB5 /* EBPhotoStackViewController.m in Sources */,
 				04959B8D198775E600D9E768 /* EBPollCommentTableViewCell.m in Sources */,
+				04BEB8A81B6F596E000A0F9B /* EBEventDetailTableViewController.m in Sources */,
 				048D01C1195BAEE600E878DA /* EBCandidateProfileViewController.m in Sources */,
 				048D01F0195CFE6A00E878DA /* EBTicketCollectionViewCell.m in Sources */,
 				04BB7034190B83710059E93C /* EBStopWatch.m in Sources */,
 				04BB703E190BCEB50059E93C /* EBFeedDetailViewController.m in Sources */,
+				04DA53C61B7D8CA80090AD6B /* EBProfileDescriptionViewController.m in Sources */,
 				04D82595198B29DF00715E0A /* EBAboutViewController.m in Sources */,
 				04EC197E19498FC20001FF72 /* EBFriendTableViewCell.m in Sources */,
 				049A4761196A5C8500D363AE /* EBBadge.m in Sources */,

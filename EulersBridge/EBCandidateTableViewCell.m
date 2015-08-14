@@ -32,8 +32,13 @@
 }
 - (IBAction)showDetail:(UIButton *)sender
 {
-    [self.delegate candidateShowDetailWithIndex:self.index];
+//    [self.delegate candidateShowDetailWithCell:self];
     
+}
+
+- (void)revealButtonPressed
+{
+    [self.showDetailButton sendActionsForControlEvents:UIControlEventTouchUpInside];
 }
 
 @end

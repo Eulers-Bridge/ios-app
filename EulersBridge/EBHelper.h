@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "MyConstants.h"
 #import "EBAppDelegate.h"
 @import AddressBook;
@@ -31,5 +32,9 @@
 + (unsigned)hexFromString:(NSString *)string;
 
 + (NSString *)getUserId;
+
++ (UIView *)sectionTitleViewWithEnclosingView:(UIView *)enclosingView andText:(NSString *)text;
+
++ (void)resetTextView:(UITextView *)textView;
 
 @end

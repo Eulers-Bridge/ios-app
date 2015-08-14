@@ -18,7 +18,7 @@
     [[NSUserDefaults standardUserDefaults] setObject:user.userId forKey:@"userId"];
 }
 
-- (EBUser *)retriveUser
++ (NSString *)retriveUserEmail
 {
     return [[NSUserDefaults standardUserDefaults] objectForKey:@"userEmail"];
 }

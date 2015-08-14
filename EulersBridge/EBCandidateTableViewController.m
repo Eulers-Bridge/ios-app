@@ -13,8 +13,9 @@
 #import "EBNetworkService.h"
 #import "EBHelper.h"
 #import "UIImageView+AFNetworking.h"
+#import "EBContentViewController.h"
 
-@interface EBCandidateTableViewController () <UISearchBarDelegate, EBCandidateCellDelegate, UIScrollViewDelegate, EBContentServiceDelegate>
+@interface EBCandidateTableViewController () <UISearchBarDelegate, UIScrollViewDelegate, EBContentServiceDelegate>
 
 @property (weak, nonatomic) IBOutlet UISearchBar *candidateSearchBar;
 @property NSUInteger selectedCellIndex;
@@ -308,7 +309,7 @@
     NSString *urlString = self.matchingCandidates[indexPath.row][@"candidateData"][@"photos"][0][@"url"];
     [cell.candidateImageView setImageWithURL:[NSURL URLWithString:urlString]];
     cell.index = indexPath.row;
-    cell.delegate = self;
+//    cell.delegate = self;
     return cell;
 }
 
@@ -323,15 +324,23 @@
 #pragma mark cell selection by cell selection
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self candidateShowDetailWithIndex:indexPath.row];
+    EBCandidateTableViewCell *cell = (EBCandidateTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    [cell revealButtonPressed];
+    
+    self.selectedCellIndex = [self.tableView indexPathForCell:cell].row;
+    EBContentViewController *content = [self.storyboard instantiateViewControllerWithIdentifier:@"ContentViewController"];
+    content.contentViewType = EBContentViewTypeCandidateDescription;
+    content.data = self.matchingCandidates[self.selectedCellIndex][@"candidateData"];
+    content.image = cell.candidateImageView.image;
+    [self.navigationController pushViewController:content animated:YES];
 }
 
-#pragma mark cell selection by reveal button
--(void)candidateShowDetailWithIndex:(NSUInteger)index
-{
-    self.selectedCellIndex = index;
-    [self performSegueWithIdentifier:@"showCandidateDetail" sender:nil];
-}
+//#pragma mark cell selection by reveal button
+//-(void)candidateShowDetailWithCell:(EBCandidateTableViewCell *)cell
+//{
+//    
+////    [self performSegueWithIdentifier:@"showCandidateDetail" sender:nil];
+//}
 
 #pragma mark UISearchBar delegate
 

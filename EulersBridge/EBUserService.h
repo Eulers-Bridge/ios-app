@@ -13,6 +13,6 @@
 
 
 - (void)saveUser:(EBUser *)user;
-- (EBUser *)retriveUser;
++ (NSString *)retriveUserEmail;
 
 @end

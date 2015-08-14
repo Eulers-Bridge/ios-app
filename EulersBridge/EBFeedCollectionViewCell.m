@@ -26,9 +26,17 @@
     if ([self.data[@"hasImage"] isEqualToString:@"true"]) {
 
         if (self.data[@"imageUrl"]) {
-            [self.imageView setImageWithURL:[NSURL URLWithString:self.data[@"imageUrl"]]];
+            NSURL *url = [NSURL URLWithString:self.data[@"imageUrl"]];
+            NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+            [request addValue:@"image/*" forHTTPHeaderField:@"Accept"];
+            [self.imageView setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                self.image = image;
+                self.imageView.image = image;
+            } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+                NSLog(@"%@", error);
+            }];
         } else {
-            self.imageView.image = [UIImage imageNamed:self.data[@"imageName"]];            
+            self.imageView.image = [UIImage imageNamed:self.data[@"imageName"]];
         }
 
     }
@@ -45,11 +53,11 @@
         // Setup the mask.
         self.titleLabel.textColor = [UIColor whiteColor];
         self.dateLabel.textColor = [UIColor whiteColor];
-        CAGradientLayer *gradient = [CAGradientLayer layer];
-        gradient.frame = self.bounds;
-        gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithWhite:0.0 alpha:0.35] CGColor], (id)[[UIColor colorWithWhite:0.0 alpha:0.35] CGColor], nil];
-        gradient.locations = @[@(0.0), @(1.0)];
-        self.imageView.layer.mask = gradient;
+//        CAGradientLayer *gradient = [CAGradientLayer layer];
+//        gradient.frame = self.bounds;
+//        gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithWhite:0.0 alpha:0.35] CGColor], (id)[[UIColor colorWithWhite:0.0 alpha:0.35] CGColor], nil];
+//        gradient.locations = @[@(0.0), @(1.0)];
+//        self.imageView.layer.mask = gradient;
     }
 
     self.titleLabel.text = self.data[@"title"];

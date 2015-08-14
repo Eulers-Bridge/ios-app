@@ -17,8 +17,11 @@
 @property (weak, nonatomic) IBOutlet UIImageView *candidateImageView;
 @property (weak, nonatomic) IBOutlet UIButton *showDetailButton;
 @property (weak, nonatomic) IBOutlet EBLabelMedium *codeLabel;
+@property (strong, nonatomic) NSIndexPath *indexPath;
 @property NSUInteger index;
 
-@property (assign, nonatomic) id<EBCandidateCellDelegate> delegate;
+- (void)revealButtonPressed;
+
+//@property (assign, nonatomic) id<EBCandidateCellDelegate> delegate;
 
 @end

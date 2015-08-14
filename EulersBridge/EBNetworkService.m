@@ -95,6 +95,17 @@
 
 }
 
+- (void)getUserWithUserEmail:(NSString *)email
+{
+    NSString *urlString = [NSString stringWithFormat:@"%@/user/%@/", TESTING_URL, email];
+    
+    [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.signupDelegate getUserWithUserEmailFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.signupDelegate getUserWithUserEmailFinishedWithSuccess:NO withInfo:nil failureReason:error];
+    }];
+}
+
 #pragma mark Friend Services
 
 - (void)findFriendWithContactDetail:(NSString *)contactDetail originalContact:(NSDictionary *)contact
@@ -158,6 +169,32 @@
         [self.userActionDelegate postPollCommentFinishedWithSuccess:YES withInfo:res failureReason:nil];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [self.userActionDelegate postPollCommentFinishedWithSuccess:NO withInfo:nil failureReason:error];
+    }];
+
+}
+
+- (void)likeContentWithLike:(BOOL)like contentType:(EBContentViewType)contentType contentId:(NSString *)contentId
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:TESTING_USERNAME password:TESTING_PASSWORD];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/hal+json", @"application/json", nil];
+    
+    NSString *contentTypeString;
+    if (contentType == EBContentViewTypeNews) {
+        contentTypeString = @"newsArticle";
+    }
+    NSString *urlString = [NSString stringWithFormat:@"%@/%@/%@/%@/%@/",
+                           TESTING_URL,
+                           contentTypeString,
+                           contentId,
+                           like ? @"likedBy" : @"unlikedBy",
+                           [EBUserService retriveUserEmail]];
+    [manager PUT:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id res) {
+        
+        [self.userActionDelegate likeContentFinishedWithSuccess:YES withInfo:res failureReason:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.userActionDelegate likeContentFinishedWithSuccess:NO withInfo:nil failureReason:error];
     }];
 
 }
@@ -327,6 +364,17 @@
     }];
 }
 
+- (void)getNewsLikesWithArticleId:(NSString *)articleId
+{
+    NSString *urlString = [NSString stringWithFormat:@"%@/newsArticle/%@/likes", TESTING_URL, articleId];
+    
+    [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.contentDelegate getNewsLikesFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.contentDelegate getNewsLikesFinishedWithSuccess:NO withInfo:nil failureReason:error];
+    }];
+}
+
 - (void)getGeneralInfo
 {
     NSString *urlString = [NSString stringWithFormat:@"%@/general-info", TESTING_URL];
@@ -348,7 +396,7 @@
     [manager setRequestSerializer:[AFHTTPRequestSerializer serializer]];
     [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:TESTING_USERNAME password:TESTING_PASSWORD];
     
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/hal+json"];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/hal+json", @"application/json", nil];
     
     [manager GET:urlString parameters:nil success:success failure:failure];
     

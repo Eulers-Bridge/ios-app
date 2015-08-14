@@ -113,4 +113,32 @@
     return [[NSUserDefaults standardUserDefaults] objectForKey:@"userId"];
 }
 
++ (UIView *)sectionTitleViewWithEnclosingView:(UIView *)enclosingView andText:(NSString *)text
+{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, enclosingView.frame.size.width, SECTION_TITLE_VIEW_HEIGHT)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(SECTION_TITLE_VIEW_TITLE_X_OFFSET,
+                                                              SECTION_TITLE_VIEW_TITLE_Y_OFFSET,
+                                                              enclosingView.frame.size.width - SECTION_TITLE_VIEW_TITLE_X_OFFSET,
+                                                               SECTION_TITLE_VIEW_HEIGHT - SECTION_TITLE_VIEW_TITLE_Y_OFFSET)];
+    EBOnePixelLine *line = [[EBOnePixelLine alloc] initWithFrame:CGRectMake(0, SECTION_TITLE_VIEW_HEIGHT - 1, view.frame.size.width, 1)];
+    line.backgroundColor = ONE_PIXEL_GREY;
+    label.textColor = ISEGORIA_TEXT_TITLE_GREY;
+    label.text = text;
+    label.font = [UIFont systemFontOfSize:14];
+    
+    [view addSubview:label];
+    [view addSubview:line];
+    
+    return view;
+}
+
++ (void)resetTextView:(UITextView *)textView
+{
+    CGFloat fixedWidth = textView.frame.size.width;
+    CGSize newSize = [textView sizeThatFits:CGSizeMake(fixedWidth, MAXFLOAT)];
+    CGRect newFrame = textView.frame;
+    newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
+    textView.frame = newFrame;
+}
+
 @end

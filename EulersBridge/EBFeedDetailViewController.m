@@ -58,14 +58,14 @@
     self.detailScrollView.delegate = self;
     self.detailScrollView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0);
     
-    // Setup the mask
-    CAGradientLayer *gradient = [CAGradientLayer layer];
-    gradient.frame = self.imageView.frame;
-    gradient.bounds = CGRectMake(0, 0, [EBHelper getScreenSize].width, [EBHelper getScreenSize].height);
-    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithWhite:0.0 alpha:0.35] CGColor], (id)[[UIColor colorWithWhite:0.0 alpha:0.35] CGColor], nil];
-    gradient.locations = @[@(0.0), @(1.0)];
-    gradient.masksToBounds = YES;
-    self.imageView.layer.mask = gradient;
+//    // Setup the mask
+//    CAGradientLayer *gradient = [CAGradientLayer layer];
+//    gradient.frame = self.imageView.frame;
+//    gradient.bounds = CGRectMake(0, 0, [EBHelper getScreenSize].width, [EBHelper getScreenSize].height);
+//    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithWhite:0.0 alpha:0.35] CGColor], (id)[[UIColor colorWithWhite:0.0 alpha:0.35] CGColor], nil];
+//    gradient.locations = @[@(0.0), @(1.0)];
+//    gradient.masksToBounds = YES;
+//    self.imageView.layer.mask = gradient;
     
     // Setup Font
     self.titleLabel.font = [UIFont fontWithName:@"MuseoSansRounded-300" size:FONT_SIZE_ARTICLE_TITLE];
@@ -263,7 +263,7 @@
 - (IBAction)like:(UIButton *)sender
 {
     [sender setSelected:!sender.selected];
-    self.likes += (sender.selected?1:-1);
+    self.likes += (sender.selected ? 1 : -1);
     self.likesLabel.text = [NSString stringWithFormat:@"%d", self.likes];
 }
 
@@ -285,12 +285,15 @@
             frame.size.height = -(scrollView.contentOffset.y + 64) + 229;
             backFrame.size.height = frame.size.height;
             CGFloat newBlurRadius = (DEFAULT_BLUR_RADIUS + (scrollView.contentOffset.y + 64) * DEFAULT_BLUR_RADIUS / 206);
+            if (newBlurRadius < 0.1) {
+                newBlurRadius = 0.1;
+            }
             NSLog(@"%f",newBlurRadius);
-            [self.imageView setImage:[self.image copy] withBlurRadius:(DEFAULT_BLUR_RADIUS + (scrollView.contentOffset.y + 64) * DEFAULT_BLUR_RADIUS / 130)];
+            [self.imageView setImage:[self.image copy] withBlurRadius:newBlurRadius];
             NSLog(@"%f",scrollView.contentOffset.y);
         }
         self.imageView.frame = frame;
-        self.darkBackgroundView.frame = backFrame;
+//        self.darkBackgroundView.frame = backFrame;
 //        self.imageView.layer.mask.position = CGPointMake(frame.size.width/2, frame.origin.y +200 + frame.size.height/2);
 //        self.imageView.layer.mask.bounds = CGRectMake(0, 0, 150,800);
     }

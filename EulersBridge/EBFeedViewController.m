@@ -13,6 +13,7 @@
 #import "EBHelper.h"
 #import "EBNetworkService.h"
 #import "DateTools.h"
+#import "EBContentViewController.h"
 
 @interface EBFeedViewController () <EBContentServiceDelegate>
 
@@ -172,6 +173,29 @@
     return 0;
 }
 
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (collectionView == self.newsCollectionView) {
+        
+        EBContentViewController *content = [self.storyboard instantiateViewControllerWithIdentifier:@"ContentViewController"];
+        content.contentViewType = EBContentViewTypeNews;
+        content.data = self.newsDataList[indexPath.item];
+        [self.navigationController pushViewController:content animated:YES];
+//        EBFeedCollectionViewCell *cell = (EBFeedCollectionViewCell *)[self.newsCollectionView cellForItemAtIndexPath:indexPath];
+        
+    } else if (collectionView == self.eventsCollectionView) {
+        
+        EBContentViewController *content = [self.storyboard instantiateViewControllerWithIdentifier:@"ContentViewController"];
+        content.contentViewType = EBContentViewTypeEvent;
+        content.data = self.eventDataList[indexPath.item];
+        [self.navigationController pushViewController:content animated:YES];
+//        EBFeedCollectionViewCell *cell = (EBFeedCollectionViewCell *)[self.eventsCollectionView cellForItemAtIndexPath:indexPath];
+        
+    } else if (collectionView == self.photosCollectionView) {
+        
+    }
+}
+
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     EBFeedCollectionViewCell *cell;
@@ -294,13 +318,16 @@
 //            NSString *ago = [date timeAgoSinceNow];
             NSArray *photoList = newsItem[@"photos"];
             
-            NSDictionary *data = @{@"priority"   : @(i % 3 == 0 ? 1 : 0),
-                                   @"title"      : newsItem[@"title"],
-                                   @"date"       : dateAndTime,
-                                   @"hasImage"   : [photoList count] == 0 ? @"false" : @"true",
-                                   @"imageName"  : [NSString stringWithFormat:@"%@%ld.jpg", @"news", (long)i],
-                                   @"imageUrl"   : [photoList count] == 0 ? @"" : [photoList firstObject][@"url"],
-                                   @"article"    : newsItem[@"content"]
+            NSDictionary *data = @{@"priority"     : @(i % 3 == 0 ? 1 : 0),
+                                   @"title"        : newsItem[@"title"],
+                                   @"date"         : dateAndTime,
+                                   @"hasImage"     : [photoList count] == 0 ? @"false" : @"true",
+                                   @"imageName"    : [NSString stringWithFormat:@"%@%ld.jpg", @"news", (long)i],
+                                   @"imageUrl"     : [photoList count] == 0 ? @"" : [photoList firstObject][@"url"],
+                                   @"article"      : newsItem[@"content"],
+                                   @"creatorEmail" : newsItem[@"creatorEmail"],
+                                   @"likes"        : newsItem[@"likes"],
+                                   @"articleId"    : newsItem[@"articleId"]
                                    };
             [newsDataList addObject:data];
             i++;

@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "MyConstants.h"
+#import "EBBlurImageView.h"
 
 @interface EBFeedCollectionViewCell : UICollectionViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet EBBlurImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (strong, nonatomic) UIImage *image;
 @property (strong, nonatomic) NSDictionary *data;
 @property NSUInteger index;
 @property EBFeedCellType feedCellType;

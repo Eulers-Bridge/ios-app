@@ -8,13 +8,15 @@
 
 #import "EBElectionInfoTableViewController.h"
 #import "EBNetworkService.h"
+#import "EBHelper.h"
+#import "EBTextViewHelvetica.h"
 
 @interface EBElectionInfoTableViewController () <EBContentServiceDelegate, NSLayoutManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet EBLabelMedium *electionTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *electionDateLabel;
-@property (weak, nonatomic) IBOutlet UITextView *overviewTextView;
-@property (weak, nonatomic) IBOutlet UITextView *processTextView;
+@property (strong, nonatomic) EBTextViewHelvetica *overviewTextView;
+@property (strong, nonatomic) EBTextViewHelvetica *processTextView;
 
 @end
 
@@ -28,8 +30,9 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    self.overviewTextView.layoutManager.delegate = self;
-    self.processTextView.layoutManager.delegate = self;
+    self.overviewTextView = [[EBTextViewHelvetica alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, self.tableView.frame.size.height)];
+    self.processTextView = [[EBTextViewHelvetica alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, self.tableView.frame.size.height)];
+
     [self getElectionInfo];
 }
 
@@ -53,80 +56,75 @@
         self.electionTitleLabel.text = info[@"title"];
         self.overviewTextView.text = info[@"introduction"];
         self.processTextView.text = info[@"process"];
+        [EBHelper resetTextView:self.overviewTextView];
+        [EBHelper resetTextView:self.processTextView];
+        [self.tableView reloadData];
         NSDate *date = [NSDate dateWithTimeIntervalSince1970:[info[@"startVoting"] integerValue] / 1000];
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"dd MMMM yyyy, 'Ballot opens' h:mm a"];
         NSString *dateAndTime = [dateFormatter stringFromDate:date];
         self.electionDateLabel.text = dateAndTime;
+        
     } else {
         
     }
 }
 
 
-- (CGFloat)layoutManager:(NSLayoutManager *)layoutManager lineSpacingAfterGlyphAtIndex:(NSUInteger)glyphIndex withProposedLineFragmentRect:(CGRect)rect
+#pragma mark - Table view data source
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    return 4;
+    NSString *title = @"";
+    if (section == 0) {
+        title = @"OVERVIEW";
+    } else if (section == 1) {
+        title = @"ELECTION PROCESS";
+    }
+    
+    UIView *view = [EBHelper sectionTitleViewWithEnclosingView:tableView andText:title];
+    return view;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return SECTION_TITLE_VIEW_HEIGHT;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+
+    return 2;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+
+    return 1;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0) {
+        return self.overviewTextView.frame.size.height;
+    } else if (indexPath.section == 1) {
+        return self.processTextView.frame.size.height;
+    }
+    return 50;
 }
 
 
-#pragma mark - Table view data source
-
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-//#warning Potentially incomplete method implementation.
-//    // Return the number of sections.
-//    return 0;
-//}
-
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//#warning Incomplete method implementation.
-//    // Return the number of rows in the section.
-//    return 0;
-//}
-
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ElectionInfoCell" forIndexPath:indexPath];
     
-    // Configure the cell...
+    if (indexPath.section == 0) {
+        [cell.contentView addSubview:self.overviewTextView];
+    } else if (indexPath.section == 1) {
+        [cell.contentView addSubview:self.processTextView];
+    }
     
     return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 /*
 #pragma mark - Navigation

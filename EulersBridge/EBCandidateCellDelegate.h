@@ -7,9 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "EBCandidateTableViewCell.h"
+
+@class EBCandidateTableViewCell;
 
 @protocol EBCandidateCellDelegate <NSObject>
 
-- (void)candidateShowDetailWithIndex:(NSUInteger) index;
+- (void)candidateShowDetailWithCell:(EBCandidateTableViewCell *) cell;
 
 @end
