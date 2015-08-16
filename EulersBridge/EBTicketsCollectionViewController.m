@@ -12,6 +12,7 @@
 #import "MyConstants.h"
 #import "EBHelper.h"
 #import "EBNetworkService.h"
+#import "EBContentViewController.h"
 
 @interface EBTicketsCollectionViewController () <EBContentServiceDelegate>
 
@@ -169,6 +170,26 @@
     return CGSizeMake(cellWidth, cellWidth);
 }
 
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.ticketDataReady && self.candidateDataReady && self.positionDataReady) {
+        
+        EBContentViewController *content = [self.storyboard instantiateViewControllerWithIdentifier:@"ContentViewController"];
+        content.contentViewType = EBContentViewTypeTicketProfile;
+        content.data = self.tickets[indexPath.item];
+        content.candidates = self.candidates;
+        content.tickets = self.tickets;
+        content.positions = self.positions;
+        [self.navigationController pushViewController:content animated:YES];
+        
+    } else {
+        
+        [[[UIAlertView alloc] initWithTitle:@"Data not ready" message:@"Please wait while we are getting data from the server." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
+        
+    }
+    
+}
+
 #pragma mark - Navigation
 
 -(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
@@ -195,21 +216,5 @@
     }
 }
 
-- (void)fetchData
-{
-    EBNetworkService *service = [[EBNetworkService alloc] init];
-    service.contentDelegate = self;
-    [service getTicketsInfoWithElectionId:TESTING_ELETION_ID];
-}
-
--(void)getTicketsInfoFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
-{
-    if (success) {
-        self.tickets = (NSArray *)info;
-        [self.collectionView reloadData];
-    } else {
-        NSLog(@"%@", error);
-    }
-}
 
 @end

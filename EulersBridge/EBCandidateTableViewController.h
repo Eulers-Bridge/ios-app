@@ -16,6 +16,7 @@
 @property (strong, nonatomic) NSArray *positions;
 @property (strong, nonatomic) NSArray *matchingCandidates;
 @property EBCandidateFilter candidateFilter;
+@property EBCandidateViewType candidateViewType;
 @property int filterId;
 @property (strong, nonatomic) NSString *filterTitle;
 

@@ -116,6 +116,12 @@ typedef NS_ENUM(NSInteger, EBCandidateFilter) {
     EBCandidateFilterAll
 };
 
+typedef NS_ENUM(NSInteger, EBCandidateViewType) {
+    EBCandidateViewTypeTicketProfile,
+    EBCandidateViewTypePositionProfile,
+    EBCandidateViewTypeAll,
+};
+
 typedef NS_ENUM(NSInteger, EBProfilePhotoType) {
     EBProfilePhotoTypeBackground,
     EBProfilePhotoTypeProfile

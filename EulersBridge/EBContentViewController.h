@@ -16,4 +16,8 @@
 @property (strong, nonatomic) UIImage *image;
 @property (strong, nonatomic) NSDictionary *data;
 
+@property (strong, nonatomic) NSArray *candidates;
+@property (strong, nonatomic) NSArray *tickets;
+@property (strong, nonatomic) NSArray *positions;
+
 @end

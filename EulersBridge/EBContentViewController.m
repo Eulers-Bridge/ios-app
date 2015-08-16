@@ -14,6 +14,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "EBHelper.h"
 #import "EBContentDetail.h"
+#import "EBTicketViewController.h"
 
 @interface EBContentViewController () <UIScrollViewDelegate, EBSignupServiceDelegate>
 
@@ -55,7 +56,8 @@
     if (self.contentViewType == EBContentViewTypeNews) {
         
         self.titleLabel.text = self.data[@"title"];
-        [self getImageFromServer];
+        NSURL *url = [NSURL URLWithString:self.data[@"imageUrl"]];
+        [self getImageFromServerWithURL:url];
         self.navigationItem.title = @"News";
 
         EBArticleViewController *articleVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ArticleViewController"];
@@ -66,7 +68,8 @@
     } else if (self.contentViewType == EBContentViewTypeEvent) {
         
         self.titleLabel.text = self.data[@"title"];
-        [self getImageFromServer];
+        NSURL *url = [NSURL URLWithString:self.data[@"imageUrl"]];
+        [self getImageFromServerWithURL:url];
         self.navigationItem.title = @"Event";
         EBEventDetailTableViewController *eventVC = [self.storyboard instantiateViewControllerWithIdentifier:@"EventViewController"];
         self.contentViewController = eventVC;
@@ -79,6 +82,7 @@
         self.contentScrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.imageView.frame.size.height + eventVC.view.frame.size.height);
         
     } else if (self.contentViewType == EBContentViewTypeCandidateDescription) {
+        
         self.titleLabel.hidden = YES;
         self.centerImageView.hidden = NO;
         self.nameLabel.hidden = NO;
@@ -93,6 +97,26 @@
         EBProfileDescriptionViewController *profileDesVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ProfileDescriptionView"];
         [self setupDetailViewController:profileDesVC];
         
+    } else if (self.contentViewType == EBContentViewTypeTicketProfile) {
+        
+        self.titleLabel.hidden = YES;
+        self.centerImageView.hidden = NO;
+        self.nameLabel.hidden = NO;
+        self.institutionLabel.hidden = NO;
+        
+        self.navigationItem.title = @"Ticket Profile";
+        
+        if ([self.data[@"photos"] count] != 0) {
+            [self getImageFromServerWithURL:[NSURL URLWithString:self.data[@"photos"][0][@"url"]]];
+        }
+        self.nameLabel.text = self.data[@"name"];
+        
+        EBTicketViewController *ticketVC = [self.storyboard instantiateViewControllerWithIdentifier:@"TicketView"];
+        ticketVC.candidates = self.candidates;
+        ticketVC.tickets = self.tickets;
+        ticketVC.positions = self.positions;
+        [self setupDetailViewController:ticketVC];
+
     }
     // Receive content size information
     // Set scroll view content size
@@ -100,24 +124,25 @@
 
 - (void)setupDetailViewController:(UIViewController <EBContentDetail> *)detailVC
 {
-    
+    [detailVC setupData:self.data];
     self.contentViewController = detailVC;
     [self addChildViewController:detailVC];
     [detailVC didMoveToParentViewController:self];
     [self.contentScrollView addSubview:detailVC.view];
-    [detailVC setupData:self.data];
     detailVC.view.frame = CGRectMake(0, self.imageView.frame.size.height, detailVC.view.frame.size.width, detailVC.view.frame.size.height);
     
     self.contentScrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.imageView.frame.size.height + detailVC.view.frame.size.height);
 }
 
-- (void)getImageFromServer
+- (void)getImageFromServerWithURL:(NSURL *)url
 {
-    NSURL *url = [NSURL URLWithString:self.data[@"imageUrl"]];
+
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request addValue:@"image/*" forHTTPHeaderField:@"Accept"];
     [self.imageView setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
         self.image = image;
+        self.imageView.image = image;
+        self.centerImageView.image = image;
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
         NSLog(@"%@", error);
     }];

@@ -181,7 +181,6 @@
         content.contentViewType = EBContentViewTypeNews;
         content.data = self.newsDataList[indexPath.item];
         [self.navigationController pushViewController:content animated:YES];
-//        EBFeedCollectionViewCell *cell = (EBFeedCollectionViewCell *)[self.newsCollectionView cellForItemAtIndexPath:indexPath];
         
     } else if (collectionView == self.eventsCollectionView) {
         
@@ -189,7 +188,6 @@
         content.contentViewType = EBContentViewTypeEvent;
         content.data = self.eventDataList[indexPath.item];
         [self.navigationController pushViewController:content animated:YES];
-//        EBFeedCollectionViewCell *cell = (EBFeedCollectionViewCell *)[self.eventsCollectionView cellForItemAtIndexPath:indexPath];
         
     } else if (collectionView == self.photosCollectionView) {
         
