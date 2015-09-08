@@ -36,4 +36,9 @@
     [self.delegate inviteFriendWithContact:self.contact];
 }
 
+-(void)prepareForReuse
+{
+    self.profileImageView.image = nil;
+}
+
 @end

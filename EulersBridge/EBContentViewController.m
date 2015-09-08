@@ -15,8 +15,10 @@
 #import "EBHelper.h"
 #import "EBContentDetail.h"
 #import "EBTicketViewController.h"
+#import "EBProfileContentViewController.h"
+#import "EBUserService.h"
 
-@interface EBContentViewController () <UIScrollViewDelegate, EBSignupServiceDelegate>
+@interface EBContentViewController () <UIScrollViewDelegate, EBUserServiceDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet EBBlurImageView *imageView;
@@ -27,13 +29,15 @@
 @property (weak, nonatomic) IBOutlet UILabel *institutionLabel;
 
 @property (strong, nonatomic) UIViewController *contentViewController;
-
+@property (strong, nonatomic) NSMutableArray *signUpNetworkServices;
 @end
 
 @implementation EBContentViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.signUpNetworkServices = [NSMutableArray array];
     
     self.centerImageView.hidden = YES;
     self.nameLabel.hidden = YES;
@@ -62,7 +66,7 @@
 
         EBArticleViewController *articleVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ArticleViewController"];
         [self setupDetailViewController:articleVC];
-        [self getAuthorDetailWithEmail:self.data[@"creatorEmail"]];
+        [self getUserDetailWithEmail:self.data[@"creatorEmail"]];
         
 
     } else if (self.contentViewType == EBContentViewTypeEvent) {
@@ -93,6 +97,7 @@
         self.imageView.image = self.image;
         self.centerImageView.image = self.image;
         self.nameLabel.text = [EBHelper fullNameWithUserObject:self.data];
+//        self.institutionLabel.text = 
         
         EBProfileDescriptionViewController *profileDesVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ProfileDescriptionView"];
         [self setupDetailViewController:profileDesVC];
@@ -117,6 +122,20 @@
         ticketVC.positions = self.positions;
         [self setupDetailViewController:ticketVC];
 
+    } else if (self.contentViewType == EBContentViewTypeProfile) {
+        
+        self.titleLabel.hidden = YES;
+        self.centerImageView.hidden = NO;
+        self.nameLabel.hidden = NO;
+        self.institutionLabel.hidden = NO;
+        
+        self.navigationItem.title = @"Profile";
+        
+        [self getUserDetailWithEmail:[EBUserService retriveUserEmail]];
+        
+        EBProfileContentViewController *profileVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ProfileContentView"];
+        [self setupDetailViewController:profileVC];
+        
     }
     // Receive content size information
     // Set scroll view content size
@@ -124,14 +143,16 @@
 
 - (void)setupDetailViewController:(UIViewController <EBContentDetail> *)detailVC
 {
-    [detailVC setupData:self.data];
+
     self.contentViewController = detailVC;
     [self addChildViewController:detailVC];
     [detailVC didMoveToParentViewController:self];
     [self.contentScrollView addSubview:detailVC.view];
+    [detailVC setupData:self.data];
     detailVC.view.frame = CGRectMake(0, self.imageView.frame.size.height, detailVC.view.frame.size.width, detailVC.view.frame.size.height);
     
     self.contentScrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.imageView.frame.size.height + detailVC.view.frame.size.height);
+    
 }
 
 - (void)getImageFromServerWithURL:(NSURL *)url
@@ -149,25 +170,41 @@
 
 }
 
-- (void)getAuthorDetailWithEmail:(NSString *)email
+- (void)getUserDetailWithEmail:(NSString *)email
 {
     EBNetworkService *service = [[EBNetworkService alloc] init];
-    service.signupDelegate = self;
+    [self.signUpNetworkServices addObject:service];
+    service.userDelegate = self;
     [service getUserWithUserEmail:email];
 }
 
 - (void)getUserWithUserEmailFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
 {
     if (success) {
+        
         if (self.contentViewType == EBContentViewTypeNews) {
             EBArticleViewController *articleVC = (EBArticleViewController *)self.contentViewController;
             [articleVC setupAuthorData:info];
+        } else if (self.contentViewType == EBContentViewTypeProfile) {
+            [self setupProfileViewWithInfo:info];
         }
+        
     } else {
         
     }
 }
 
+- (void)setupProfileViewWithInfo:(NSDictionary *)info
+{
+//    EBProfileContentViewController *profileVC = (EBProfileContentViewController *)self.contentViewController;
+    if ([info[@"photos"] count] > 0) {
+        NSString *urlString = info[@"photos"][0][@"thumbNailUrl"];
+        [self.imageView setImageWithURL:[NSURL URLWithString:urlString]];
+    }
+    
+    self.nameLabel.text = [EBHelper fullNameWithUserObject:info];
+
+}
 
 #pragma mark Scroll View Delegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -192,8 +229,12 @@
     
 }
 
-
-
+-(void)dealloc
+{
+    for (EBNetworkService *service in self.signUpNetworkServices) {
+        service.userDelegate = nil;
+    }
+}
 
 
 - (void)didReceiveMemoryWarning {

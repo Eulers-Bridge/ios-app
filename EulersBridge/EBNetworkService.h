@@ -9,18 +9,21 @@
 #import <Foundation/Foundation.h>
 #import "EBUser.h"
 
-@protocol EBSignupServiceDelegate <NSObject>
+@protocol EBUserServiceDelegate <NSObject>
 @optional
 - (void)signupFinishedWithSuccess:(BOOL)success withUser:(EBUser *)user failureReason:(NSError *)error;
 - (void)loginFinishedWithSuccess:(BOOL)success withUser:(EBUser *)user failureReason:(NSError *)error errorString:(NSString *)errorString;
 - (void)resendEmailFinishedWithSuccess:(BOOL)success withUser:(EBUser *)user failureReason:(NSError *)error;
 - (void)addPersonalityForUserFinishedWithSuccess:(BOOL)success withUser:(EBUser *)user failureReason:(NSError *)error;
 - (void)getUserWithUserEmailFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
+- (void)getGroupsWithUserEmailFinishedWithSuccess:(BOOL)success withGroups:(NSArray *)groups failureReason:(NSError *)error;
+- (void)getNotificationsWithUserIdFinishedWithSuccess:(BOOL)success withNotifications:(NSArray *)notifications failureReason:(NSError *)error;
 @end
 
 @protocol EBFriendServiceDelegate <NSObject>
-
+@optional
 - (void)findFriendFinishedWithSuccess:(BOOL)success withContact:(NSDictionary *)contact failureReason:(NSError *)error;
+- (void)getFriendsWithUserEmailFinishedWithSuccess:(BOOL)success withContacts:(NSArray *)contacts failureReason:(NSError *)error;
 
 @end
 
@@ -58,7 +61,7 @@
 
 @interface EBNetworkService : NSObject
 
-@property (assign, nonatomic) id<EBSignupServiceDelegate> signupDelegate;
+@property (assign, nonatomic) id<EBUserServiceDelegate> userDelegate;
 @property (assign, nonatomic) id<EBContentServiceDelegate> contentDelegate;
 @property (assign, nonatomic) id<EBUserActionServiceDelegate> userActionDelegate;
 @property (assign, nonatomic) id<EBFriendServiceDelegate> friendDelegate;
@@ -72,9 +75,12 @@
 - (void)resendVerificationEmailForUser:(EBUser *)user;
 - (void)addPersonalityForUser:(EBUser *)user withParameters:(NSDictionary *)parameters;
 - (void)getUserWithUserEmail:(NSString *)email;
+- (void)getGroupsWithUserEmail:(NSString *)email;
+- (void)getNotificationWithUserId:(NSString *)userId;
 
 // Friend services
 - (void)findFriendWithContactDetail:(NSString *)contactDetail originalContact:(NSDictionary *)contact;
+- (void)getFriendsWithUserEmail:(NSString *)userEmail;
 
 // Content services
 - (void)getNewsWithInstitutionId:(NSString *)institutionId;

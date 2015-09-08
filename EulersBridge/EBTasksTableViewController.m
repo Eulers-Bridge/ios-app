@@ -57,7 +57,7 @@
     if (self.tasksViewType == EBTasksViewTypeSmall) {
         return 1;
     }
-    return 3;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -82,52 +82,61 @@
 #pragma mark section header config
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
+    NSString *titleString;
+    
     if (self.tasksViewType == EBTasksViewTypeDetail) {
-        UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [EBHelper getScreenSize].width, 32)];
-        headerView.backgroundColor = ISEGORIA_ULTRA_LIGHT_GREY;
-        
-        EBOnePixelLine *upperLine = [[EBOnePixelLine alloc] initWithFrame:CGRectMake(0, 0, [EBHelper getScreenSize].width, 1)];
-        EBOnePixelLine *lowerLine = [[EBOnePixelLine alloc] initWithFrame:CGRectMake(0, headerView.bounds.size.height, [EBHelper getScreenSize].width, 1)];
-        upperLine.backgroundColor = ONE_PIXEL_GREY;
-        lowerLine.backgroundColor = ONE_PIXEL_GREY;
-        [headerView addSubview:upperLine];
-        [headerView addSubview:lowerLine];
-        
-        EBLabelHeavy *title = [[EBLabelHeavy alloc] initWithFrame:CGRectMake(8, 0, [EBHelper getScreenSize].width, 32)];
-        title.font = [title.font fontWithSize:15];
-        title.textColor = ISEGORIA_LIGHT_GREY;
-        NSString *titleString = @"";
         switch (section) {
+                
             case 0:
-                titleString = @"Daily";
+                titleString = @"Completed";
                 break;
                 
             case 1:
                 titleString = @"Remaining";
-                break;
-            
-            case 2:
-                titleString = @"Completed";
                 break;
                 
             default:
                 titleString = @"";
                 break;
         }
-        title.text = titleString;
-        [headerView addSubview:title];
-        
-        return headerView;
+    } else if (self.tasksViewType == EBTasksViewTypeSmall) {
+        titleString = @"TASKS";
     }
-    return nil;
+
+    return [EBHelper sectionTitleViewWithEnclosingView:self.tableView andText:titleString];
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+
+    NSString *titleString;
+
+    if (self.tasksViewType == EBTasksViewTypeDetail) {
+        switch (section) {
+                
+            case 0:
+                titleString = @"Completed";
+                break;
+                
+            case 1:
+                titleString = @"Remaining";
+                break;
+                
+            default:
+                titleString = @"";
+                break;
+        }
+    } else if (self.tasksViewType == EBTasksViewTypeSmall) {
+        titleString = @"TASKS";
+    }
+    
+    return titleString;
+
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (self.tasksViewType == EBTasksViewTypeDetail) {
-        return 32;
-    }
-    return 0;
+    return SECTION_TITLE_VIEW_HEIGHT;
 }
 
 /*

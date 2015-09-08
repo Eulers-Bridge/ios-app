@@ -116,6 +116,7 @@
 + (UIView *)sectionTitleViewWithEnclosingView:(UIView *)enclosingView andText:(NSString *)text
 {
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, enclosingView.frame.size.width, SECTION_TITLE_VIEW_HEIGHT)];
+    view.backgroundColor = [UIColor whiteColor];
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(SECTION_TITLE_VIEW_TITLE_X_OFFSET,
                                                               SECTION_TITLE_VIEW_TITLE_Y_OFFSET,
                                                               enclosingView.frame.size.width - SECTION_TITLE_VIEW_TITLE_X_OFFSET,

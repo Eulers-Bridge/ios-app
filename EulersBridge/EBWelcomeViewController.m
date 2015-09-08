@@ -12,7 +12,7 @@
 #import "EBAppDelegate.h"
 #import "EBHelper.h"
 
-@interface EBWelcomeViewController () <UITextViewDelegate, EBSignupServiceDelegate>
+@interface EBWelcomeViewController () <UITextViewDelegate, EBUserServiceDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
@@ -98,7 +98,7 @@
         self.signupButton.enabled = NO;
         
         EBNetworkService *service = [[EBNetworkService alloc] init];
-        service.signupDelegate = self;
+        service.userDelegate = self;
         [service loginWithEmailAddress:self.emailTextField.text password:self.passwordTextField.text];
     }
     

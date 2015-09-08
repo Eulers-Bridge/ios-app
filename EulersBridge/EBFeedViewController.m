@@ -31,6 +31,8 @@
 @property (strong, nonatomic) NSArray *eventDataList;
 @property (strong, nonatomic) NSArray *photoDataList;
 
+@property (strong, nonatomic) EBNetworkService *networkService;
+
 
 @end
 
@@ -282,6 +284,7 @@
 - (void)fetchDataNews:(UIRefreshControl *)refreshControl
 {
     EBNetworkService *service = [[EBNetworkService alloc] init];
+    self.networkService = service;
     service.contentDelegate = self;
     [service getNewsWithInstitutionId:TESTING_INSTITUTION_ID];
     
@@ -413,6 +416,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)dealloc
+{
+    self.networkService.contentDelegate = nil;
+}
 
 #pragma mark - Navigation
 

@@ -30,11 +30,11 @@
                                  @"institutionId": institutionId};
     [manager POST:@"http://eulersbridge.com:8080/dbInterface/api/signUp" parameters:parameters success:^(AFHTTPRequestOperation *operation, id res) {
         
-        EBUser *user = [self createAndSaveUser:res userId:nil];
+        EBUser *user = [self createAndSaveUser:res userId:nil password:password];
         
-        [self.signupDelegate signupFinishedWithSuccess:YES withUser:user failureReason:nil];
+        [self.userDelegate signupFinishedWithSuccess:YES withUser:user failureReason:nil];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.signupDelegate signupFinishedWithSuccess:NO withUser:nil failureReason:error];
+        [self.userDelegate signupFinishedWithSuccess:NO withUser:nil failureReason:error];
         
     }];
     
@@ -54,9 +54,9 @@
     NSString *urlString = [NSString stringWithFormat:@"http://eulersbridge.com:8080/dbInterface/api/user/greg.newitt@unimelb.edu.au/personality"];
     [manager PUT:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id res) {
         
-        [self.signupDelegate addPersonalityForUserFinishedWithSuccess:YES withUser:user failureReason:nil];
+        [self.userDelegate addPersonalityForUserFinishedWithSuccess:YES withUser:user failureReason:nil];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.signupDelegate addPersonalityForUserFinishedWithSuccess:NO withUser:nil failureReason:error];
+        [self.userDelegate addPersonalityForUserFinishedWithSuccess:NO withUser:nil failureReason:error];
         
     }];
     
@@ -76,8 +76,8 @@
     
     [manager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id res) {
 //        NSLog(@"JSON: %@", responseObject);
-        EBUser *user = [self createAndSaveUser:res[@"user"] userId:res[@"userId"]];
-        [self.signupDelegate loginFinishedWithSuccess:YES withUser:user failureReason:nil errorString:nil];
+        EBUser *user = [self createAndSaveUser:res[@"user"] userId:res[@"userId"] password:password];
+        [self.userDelegate loginFinishedWithSuccess:YES withUser:user failureReason:nil errorString:nil];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 //        NSLog(@"Error: %@", error);
         if ([[operation responseString] isEqualToString:LOGIN_ERROR_USER_UNVERIFIED]) {
@@ -90,7 +90,7 @@
             [userService saveUser:user];
             
         }
-        [self.signupDelegate loginFinishedWithSuccess:NO withUser:nil failureReason:error errorString:[operation responseString]];
+        [self.userDelegate loginFinishedWithSuccess:NO withUser:nil failureReason:error errorString:[operation responseString]];
     }];
 
 }
@@ -100,9 +100,32 @@
     NSString *urlString = [NSString stringWithFormat:@"%@/user/%@/", TESTING_URL, email];
     
     [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.signupDelegate getUserWithUserEmailFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        [self.userDelegate getUserWithUserEmailFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.signupDelegate getUserWithUserEmailFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        [self.userDelegate getUserWithUserEmailFinishedWithSuccess:NO withInfo:nil failureReason:error];
+    }];
+}
+
+- (void)getGroupsWithUserEmail:(NSString *)email
+{
+    NSString *urlString = [NSString stringWithFormat:@"%@/user/%@/support/", TESTING_URL, email];
+    
+    [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.userDelegate getGroupsWithUserEmailFinishedWithSuccess:YES withGroups:responseObject failureReason:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.userDelegate getGroupsWithUserEmailFinishedWithSuccess:NO withGroups:nil failureReason:error];
+    }];
+
+}
+
+- (void)getNotificationWithUserId:(NSString *)userId
+{
+    NSString *urlString = [NSString stringWithFormat:@"%@/notifications/%@/", TESTING_URL, @"42"];
+    
+    [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.userDelegate getNotificationsWithUserIdFinishedWithSuccess:YES withNotifications:responseObject failureReason:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.userDelegate getNotificationsWithUserIdFinishedWithSuccess:NO withNotifications:nil failureReason:error];
     }];
 }
 
@@ -119,7 +142,16 @@
     }];
 }
 
-
+- (void)getFriendsWithUserEmail:(NSString *)userEmail
+{
+    NSString *urlString = [NSString stringWithFormat:@"%@/contacts/%@/", TESTING_URL, @"greg.newitt@unimelb.edu.au"];
+    
+    [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.friendDelegate getFriendsWithUserEmailFinishedWithSuccess:YES withContacts:responseObject[@"foundObjects"] failureReason:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.friendDelegate getFriendsWithUserEmailFinishedWithSuccess:NO withContacts:nil failureReason:error];
+    }];
+}
 
 
 #pragma mark User Action Services
@@ -396,16 +428,16 @@
     [manager setRequestSerializer:[AFHTTPRequestSerializer serializer]];
     [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:TESTING_USERNAME password:TESTING_PASSWORD];
     
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/hal+json", @"application/json", nil];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/hal+json", @"application/json", @"application/xml", nil];
     
     [manager GET:urlString parameters:nil success:success failure:failure];
     
 }
 
-- (EBUser *)createAndSaveUser:(NSDictionary *)res userId:(NSString *)userId
+- (EBUser *)createAndSaveUser:(NSDictionary *)res userId:(NSString *)userId password:(NSString *)password
 {
     // Create the user object.
-    EBUser *user = [[EBUser alloc] initWithEmail:res[@"email"] givenName:res[@"givenName"] password:res[@"password"] accountVerified:res[@"accountVerified"] institutionId:res[@"institutionId"] userId:userId];
+    EBUser *user = [[EBUser alloc] initWithEmail:res[@"email"] givenName:res[@"givenName"] password:password accountVerified:res[@"accountVerified"] institutionId:res[@"institutionId"] userId:userId];
     
     // Save the user in the system.
     EBUserService *userService = [[EBUserService alloc] init];

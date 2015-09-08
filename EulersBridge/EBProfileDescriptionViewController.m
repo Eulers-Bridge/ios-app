@@ -26,10 +26,10 @@
 - (void)setupData:(NSDictionary *)data
 {
     self.textView.text = data[@"policyStatement"];
-//    CGFloat oldHeight = self.textView.frame.size.height;
-//    [EBHelper resetTextView:self.textView];
-//    CGFloat textViewExtraHeight = self.textView.frame.size.height - oldHeight;
-//    self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height + textViewExtraHeight + TEXT_BODY_INSET * 2);
+    CGFloat oldHeight = self.textView.frame.size.height;
+    [EBHelper resetTextView:self.textView];
+    CGFloat textViewExtraHeight = self.textView.frame.size.height - oldHeight;
+    self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height + textViewExtraHeight + TEXT_BODY_INSET * 2);
 }
 
 

@@ -17,7 +17,7 @@
 #import "EBHelper.h"
 #import "EBPersonalityDescriptionViewController.h"
 
-@interface EBSignupLoginViewController () <UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate, GKImagePickerDelegate, UINavigationControllerDelegate,UIActionSheetDelegate, EBSignupServiceDelegate, EBSignupTermsDelegate, EBContentServiceDelegate>
+@interface EBSignupLoginViewController () <UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate, GKImagePickerDelegate, UINavigationControllerDelegate,UIActionSheetDelegate, EBUserServiceDelegate, EBSignupTermsDelegate, EBContentServiceDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *photoImageView;
@@ -110,7 +110,7 @@
     
     [self.view addGestureRecognizer:tap];
     self.networkService = [[EBNetworkService alloc] init];
-    self.networkService.signupDelegate = self;
+    self.networkService.userDelegate = self;
     self.networkService.contentDelegate = self;
     
     [self.networkService getGeneralInfo];

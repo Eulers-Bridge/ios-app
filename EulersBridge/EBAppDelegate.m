@@ -8,6 +8,7 @@
 
 #import "EBAppDelegate.h"
 #import "AFNetworkActivityIndicatorManager.h"
+#import "EBContentViewController.h"
 
 @implementation EBAppDelegate
 
@@ -104,8 +105,14 @@
 {
     self.window.rootViewController = [self.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"tabBarView"];
     
-    // Tabbar custom image
+    EBContentViewController *contentVC = [self.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"ContentViewController"];
+    contentVC.contentViewType = EBContentViewTypeProfile;
+    
     UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
+    UINavigationController *nav = (UINavigationController *)tabBarController.viewControllers[3];
+    nav.viewControllers = @[contentVC];
+    
+    // Tabbar custom image
     UITabBar *tabBar = tabBarController.tabBar;
     UITabBarItem *tabBarItem1 = [tabBar.items objectAtIndex:0];
     UITabBarItem *tabBarItem2 = [tabBar.items objectAtIndex:1];

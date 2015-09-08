@@ -193,6 +193,8 @@
 		04DA53C61B7D8CA80090AD6B /* EBProfileDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DA53C51B7D8CA80090AD6B /* EBProfileDescriptionViewController.m */; };
 		04DA53C91B7DADF50090AD6B /* EBDarkImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DA53C81B7DADF50090AD6B /* EBDarkImageView.m */; };
 		04DA53D31B8075FC0090AD6B /* EBTicketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DA53D21B8075FC0090AD6B /* EBTicketViewController.m */; };
+		04DA53D61B98230A0090AD6B /* EBProfileContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DA53D51B98230A0090AD6B /* EBProfileContentViewController.m */; };
+		04DA53D91B9DDCA90090AD6B /* EBFriendsContentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DA53D81B9DDCA90090AD6B /* EBFriendsContentTableViewController.m */; };
 		04DBD30F1A6CCFE0008752E4 /* EBUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DBD30E1A6CCFE0008752E4 /* EBUserService.m */; };
 		04DE972B1B660662000091A8 /* EBTextBodyLayoutManagerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DE972A1B660662000091A8 /* EBTextBodyLayoutManagerDelegate.m */; };
 		04DE97301B66260F000091A8 /* EBContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DE972F1B66260F000091A8 /* EBContentViewController.m */; };
@@ -506,6 +508,10 @@
 		04DA53CD1B7DD9130090AD6B /* EBContentDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBContentDetail.h; sourceTree = "<group>"; };
 		04DA53D11B8075FC0090AD6B /* EBTicketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBTicketViewController.h; sourceTree = "<group>"; };
 		04DA53D21B8075FC0090AD6B /* EBTicketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBTicketViewController.m; sourceTree = "<group>"; };
+		04DA53D41B98230A0090AD6B /* EBProfileContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBProfileContentViewController.h; sourceTree = "<group>"; };
+		04DA53D51B98230A0090AD6B /* EBProfileContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBProfileContentViewController.m; sourceTree = "<group>"; };
+		04DA53D71B9DDCA90090AD6B /* EBFriendsContentTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBFriendsContentTableViewController.h; sourceTree = "<group>"; };
+		04DA53D81B9DDCA90090AD6B /* EBFriendsContentTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBFriendsContentTableViewController.m; sourceTree = "<group>"; };
 		04DBD30D1A6CCFE0008752E4 /* EBUserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBUserService.h; sourceTree = "<group>"; };
 		04DBD30E1A6CCFE0008752E4 /* EBUserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBUserService.m; sourceTree = "<group>"; };
 		04DE97291B660662000091A8 /* EBTextBodyLayoutManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBTextBodyLayoutManagerDelegate.h; sourceTree = "<group>"; };
@@ -1032,6 +1038,10 @@
 				04DA53C51B7D8CA80090AD6B /* EBProfileDescriptionViewController.m */,
 				04DA53D11B8075FC0090AD6B /* EBTicketViewController.h */,
 				04DA53D21B8075FC0090AD6B /* EBTicketViewController.m */,
+				04DA53D41B98230A0090AD6B /* EBProfileContentViewController.h */,
+				04DA53D51B98230A0090AD6B /* EBProfileContentViewController.m */,
+				04DA53D71B9DDCA90090AD6B /* EBFriendsContentTableViewController.h */,
+				04DA53D81B9DDCA90090AD6B /* EBFriendsContentTableViewController.m */,
 			);
 			name = "Content UI";
 			sourceTree = "<group>";
@@ -1501,9 +1511,11 @@
 				046D645E192D963400C354F4 /* UIImage+ImageEffects.m in Sources */,
 				04BB702D190891320059E93C /* EBFeedViewController.m in Sources */,
 				044BB0E91989DA6F00E0180F /* EBPhotosCollectionViewController.m in Sources */,
+				04DA53D91B9DDCA90090AD6B /* EBFriendsContentTableViewController.m in Sources */,
 				04B6556F196123610002E784 /* EBProfileSettingsViewController.m in Sources */,
 				04937C9C1AC17E8B002209AA /* EBOnePixelLineVertical.m in Sources */,
 				04959B901987781B00D9E768 /* EBTextViewMuseoLight.m in Sources */,
+				04DA53D61B98230A0090AD6B /* EBProfileContentViewController.m in Sources */,
 				049A475419652D8700D363AE /* EBTicketProfileViewController.m in Sources */,
 				044BB0F31989FB3500E0180F /* EBButtonLightSystem.m in Sources */,
 				04EC194A19416F1E0001FF72 /* EBPollViewController.m in Sources */,

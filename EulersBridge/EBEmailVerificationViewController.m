@@ -9,7 +9,7 @@
 #import "EBEmailVerificationViewController.h"
 #import "EBNetworkService.h"
 
-@interface EBEmailVerificationViewController () <EBSignupServiceDelegate>
+@interface EBEmailVerificationViewController () <EBUserServiceDelegate>
 
 @end
 
@@ -41,7 +41,7 @@
 - (IBAction)resendEmail:(EBButton *)sender
 {
     EBNetworkService *networkService = [[EBNetworkService alloc] init];
-    networkService.signupDelegate = self;
+    networkService.userDelegate = self;
 }
 
 - (IBAction)doneAction:(UIBarButtonItem *)sender

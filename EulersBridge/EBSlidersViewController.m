@@ -12,7 +12,7 @@
 #import "EBNetworkService.h"
 #import "EBEmailVerificationViewController.h"
 
-@interface EBSlidersViewController () <UITableViewDataSource, UITableViewDelegate, EBPersonalitySelectionDelegate, EBSignupServiceDelegate>
+@interface EBSlidersViewController () <UITableViewDataSource, UITableViewDelegate, EBPersonalitySelectionDelegate, EBUserServiceDelegate>
 
 @property (strong, nonatomic) NSArray *titleArray;
 @property (strong, nonatomic) NSArray *degreeArray;
@@ -105,7 +105,7 @@
     
     
     EBNetworkService *service = [[EBNetworkService alloc] init];
-    service.signupDelegate = self;
+    service.userDelegate = self;
     [service addPersonalityForUser:self.user withParameters:parameters];
 }
 
