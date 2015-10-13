@@ -171,7 +171,7 @@
 {
     if (success) {
         [self getPollResults];
-        [self getPollComments];
+//        [self getPollComments];
     } else {
         
     }

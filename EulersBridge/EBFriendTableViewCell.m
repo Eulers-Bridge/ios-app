@@ -36,9 +36,22 @@
     [self.delegate inviteFriendWithContact:self.contact];
 }
 
+- (IBAction)accept:(UIButton *)sender
+{
+    sender.enabled = NO;
+    [self.delegate acceptFriendWithRequestId:self.requestId];
+}
+
+- (IBAction)reject:(UIButton *)sender
+{
+    sender.enabled = NO;
+    [self.delegate rejectFriendWithRequestId:self.requestId];
+}
+
 -(void)prepareForReuse
 {
     self.profileImageView.image = nil;
+    self.requestId = nil;
 }
 
 @end

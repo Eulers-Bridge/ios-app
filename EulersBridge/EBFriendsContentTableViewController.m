@@ -13,11 +13,13 @@
 #import "EBFriendTableViewCell.h"
 #import "UIImageView+AFNetworking.h"
 
-@interface EBFriendsContentTableViewController () <EBFindFriendCellDelegate, UISearchBarDelegate, UIAlertViewDelegate, EBUserServiceDelegate>
+@interface EBFriendsContentTableViewController () <EBFindFriendCellDelegate, UISearchBarDelegate, UIAlertViewDelegate, EBUserServiceDelegate, EBFriendServiceDelegate>
 
 @property (strong, nonatomic) NSArray *matchingFriends;
-@property (strong, nonatomic) NSArray *contactRequests;
+@property (strong, nonatomic) NSArray *friendRequests;
+@property (strong, nonatomic) NSArray *friendRequestsPending;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) NSMutableArray *networkServices;
 
 @end
 
@@ -31,14 +33,43 @@
     self.searchBar.showsCancelButton = YES;
     self.matchingFriends = self.friends;
     
+    self.networkServices = [NSMutableArray array];
+    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addFriend)];
     
-    [self loadNotifications];
+//    [self loadNotifications];
+    [self loadFriendRequests];
+}
+
+- (void)loadFriendRequests
+{
+    EBNetworkService *service = [[EBNetworkService alloc] init];
+    [self.networkServices addObject:service];
+    service.friendDelegate = self;
+    [service getFriendRequestReceived];
+    [service getFriendRequestSent];
+}
+
+-(void)getFriendRequestReceivedFinishedWithSuccess:(BOOL)success withRequests:(NSArray *)contacts failureReason:(NSError *)error
+{
+    if (success) {
+        self.friendRequests = contacts;
+        [self.tableView reloadData];
+    }
+}
+
+-(void)getFriendRequestSentFinishedWithSuccess:(BOOL)success withRequests:(NSArray *)contacts failureReason:(NSError *)error
+{
+    if (success) {
+        self.friendRequestsPending = contacts;
+        [self.tableView reloadData];
+    }
 }
 
 - (void)loadNotifications
 {
     EBNetworkService *service = [[EBNetworkService alloc] init];
+    [self.networkServices addObject:service];
     service.userDelegate = self;
     [service getNotificationWithUserId:[EBHelper getUserId]];
 }
@@ -46,27 +77,42 @@
 -(void)getNotificationsWithUserIdFinishedWithSuccess:(BOOL)success withNotifications:(NSArray *)notifications failureReason:(NSError *)error
 {
     if (success) {
-        NSMutableArray *requests = [NSMutableArray array];
-        for (NSDictionary *notification in notifications) {
-            if ([notification[@"type"] isEqualToString:@"contactRequest"]) {
-                [requests addObject:notification];
-            }
-        }
-        self.contactRequests = [requests copy];
-        [self.tableView reloadData];
+        
+    }
+}
+
+- (void)addFriendWithEmail:(NSString *)email
+{
+    EBNetworkService *service = [[EBNetworkService alloc] init];
+    [self.networkServices addObject:service];
+    service.friendDelegate = self;
+    [service addFriendWithEmail:email];
+}
+
+- (void)addFriendWithEmailFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
+{
+    if (success) {
+        NSString *message = [NSString stringWithFormat:@"Your friend request for %@ is successfully sent.", info[@"contactDetails"]];
+        [[[UIAlertView alloc] initWithTitle:@"Request Sent" message:message delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
+        [self loadFriendRequests];
+    } else {
+        NSString *message = @"There is an error processing your request, please check the email address and try again.";
+        [[[UIAlertView alloc] initWithTitle:@"Error" message:message delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
     }
 }
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 3;
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     if (section == 0) {
         return @"Friend Requests";
+    } else if (section == 1) {
+        return @"Pending";
     } else {
         return @"Friends";
     }
@@ -75,7 +121,9 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
-        return self.contactRequests.count;
+        return self.friendRequests.count;
+    } else if (section == 1) {
+        return self.friendRequestsPending.count;
     } else {
         return self.friends.count;
     }
@@ -93,9 +141,7 @@
     if (buttonIndex == 1) {
         UITextField *emailTextField = [alertView textFieldAtIndex:0];
         NSString *email = emailTextField.text;
-        NSString *message = [NSString stringWithFormat:@"Your friend request for %@ is successfully sent.", email];
-        [[[UIAlertView alloc] initWithTitle:@"Request Sent" message:message delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
-        
+        [self addFriendWithEmail:email];
     }
 }
 
@@ -107,13 +153,26 @@
     
     if (indexPath.section == 0) {
         
-        cell.nameLabel.text = self.contactRequests[indexPath.row][@"notificationBody"][@"contactDetails"];
-        cell.subtitleLabel.text = @"Univeristy";
+        cell.requestActionView.hidden = NO;
+        cell.nameLabel.text = self.friendRequests[indexPath.row][@"contactDetails"];
+        cell.subtitleLabel.text = @"Institution";
+        cell.requestId = self.friendRequests[indexPath.row][@"nodeId"];
         
     } else if (indexPath.section == 1) {
+        
+        cell.requestActionView.hidden = YES;
+        cell.viewDetailButton.hidden = YES;
+        cell.nameLabel.text = self.friendRequestsPending[indexPath.row][@"contactDetails"];
+        cell.subtitleLabel.text = @"Institution";
+        cell.requestId = self.friendRequestsPending[indexPath.row][@"nodeId"];
+        
+    } else if (indexPath.section == 2) {
+        
+        cell.requestActionView.hidden = YES;
+        cell.viewDetailButton.hidden = NO;
         NSString *fullName = [EBHelper fullNameWithUserObject:self.friends[indexPath.row]];
         cell.nameLabel.text = fullName;
-        cell.subtitleLabel.text = @"Univeristy";
+        cell.subtitleLabel.text = @"Institution";
         
         if ([self.friends[indexPath.row][@"profilePhoto"] isKindOfClass:[NSDictionary class]]) {
             NSString *urlString = self.friends[indexPath.row][@"profilePhoto"][@"url"];
@@ -191,6 +250,40 @@
     actionSheet.cancelButtonIndex = [actionSheet addButtonWithTitle:@"Cancel"];
     
     [actionSheet  showInView:self.view];
+}
+
+- (void)acceptFriendWithRequestId:(NSString *)requestId
+{
+    EBNetworkService *service = [[EBNetworkService alloc] init];
+    [self.networkServices addObject:service];
+    service.friendDelegate = self;
+    [service acceptFriendRequestWithRequestId:requestId];
+}
+
+- (void)rejectFriendWithRequestId:(NSString *)requestId
+{
+    EBNetworkService *service = [[EBNetworkService alloc] init];
+    [self.networkServices addObject:service];
+    service.friendDelegate = self;
+    [service rejectFriendRequestWithRequestId:requestId];
+}
+
+-(void)acceptFriendRequestFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
+{
+//    [self loadFriendRequests];
+}
+
+- (void)rejectFriendRequestFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
+{
+    [self.tableView reloadData];
+}
+
+-(void)dealloc
+{
+    for (EBNetworkService *service in self.networkServices) {
+        service.friendDelegate = nil;
+        service.userDelegate = nil;
+    }
 }
 
 @end

@@ -24,7 +24,11 @@
 @optional
 - (void)findFriendFinishedWithSuccess:(BOOL)success withContact:(NSDictionary *)contact failureReason:(NSError *)error;
 - (void)getFriendsWithUserEmailFinishedWithSuccess:(BOOL)success withContacts:(NSArray *)contacts failureReason:(NSError *)error;
-
+- (void)getFriendRequestSentFinishedWithSuccess:(BOOL)success withRequests:(NSArray *)contacts failureReason:(NSError *)error;
+- (void)getFriendRequestReceivedFinishedWithSuccess:(BOOL)success withRequests:(NSArray *)contacts failureReason:(NSError *)error;
+- (void)addFriendWithEmailFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
+- (void)acceptFriendRequestFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
+- (void)rejectFriendRequestFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 @end
 
 
@@ -81,6 +85,12 @@
 // Friend services
 - (void)findFriendWithContactDetail:(NSString *)contactDetail originalContact:(NSDictionary *)contact;
 - (void)getFriendsWithUserEmail:(NSString *)userEmail;
+- (void)getFriendRequestSent;
+- (void)getFriendRequestReceived;
+- (void)addFriendWithEmail:(NSString *)email;
+- (void)acceptFriendRequestWithRequestId:(NSString *)requestId;
+- (void)rejectFriendRequestWithRequestId:(NSString *)requestId;
+
 
 // Content services
 - (void)getNewsWithInstitutionId:(NSString *)institutionId;

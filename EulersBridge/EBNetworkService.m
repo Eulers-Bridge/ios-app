@@ -11,8 +11,11 @@
 #import "AFNetworking.h"
 #import "MyConstants.h"
 #import "EBUser.h"
+#import "EBHelper.h"
 
 @implementation EBNetworkService
+
+#pragma mark User Services
 
 - (void)signupWithEmailAddress:(NSString *)email password:(NSString *)password givenName:(NSString *)givenName familyName:(NSString *)familyName institutionId:(NSString *)institutionId
 {
@@ -144,7 +147,7 @@
 
 - (void)getFriendsWithUserEmail:(NSString *)userEmail
 {
-    NSString *urlString = [NSString stringWithFormat:@"%@/contacts/%@/", TESTING_URL, @"greg.newitt@unimelb.edu.au"];
+    NSString *urlString = [NSString stringWithFormat:@"%@/contacts/%@/", TESTING_URL, userEmail];
     
     [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self.friendDelegate getFriendsWithUserEmailFinishedWithSuccess:YES withContacts:responseObject[@"foundObjects"] failureReason:nil];
@@ -153,6 +156,87 @@
     }];
 }
 
+- (void)getFriendRequestSent
+{
+    NSString *urlString = [NSString stringWithFormat:@"%@/user/%@/contactRequests/", TESTING_URL, [EBHelper getUserId]];
+    
+    [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.friendDelegate getFriendRequestSentFinishedWithSuccess:YES withRequests:responseObject[@"foundObjects"] failureReason:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.friendDelegate getFriendRequestSentFinishedWithSuccess:NO withRequests:nil failureReason:error];
+    }];
+}
+
+- (void)getFriendRequestReceived
+{
+    NSString *urlString = [NSString stringWithFormat:@"%@/contactRequests/%@/", TESTING_URL, [EBHelper getUserId]];
+    
+    [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.friendDelegate getFriendRequestReceivedFinishedWithSuccess:YES withRequests:responseObject[@"foundObjects"] failureReason:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.friendDelegate getFriendRequestReceivedFinishedWithSuccess:NO withRequests:nil failureReason:error];
+    }];
+}
+
+- (void)addFriendWithEmail:(NSString *)email
+{
+    NSString *urlString = [NSString stringWithFormat:@"%@/user/%@/contact/%@/", TESTING_URL, [EBHelper getUserId], email];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:TESTING_USERNAME password:TESTING_PASSWORD];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/hal+json"];
+    
+    [manager PUT:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id res) {
+        
+        [self.friendDelegate addFriendWithEmailFinishedWithSuccess:YES withInfo:res failureReason:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.friendDelegate addFriendWithEmailFinishedWithSuccess:NO withInfo:nil failureReason:error];
+    }];
+}
+
+- (void)acceptFriendRequestWithRequestId:(NSString *)requestId
+{
+    NSString *urlString = [NSString stringWithFormat:@"%@/contact/%@/", TESTING_URL, requestId];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:TESTING_USERNAME password:TESTING_PASSWORD];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/hal+json"];
+    
+    [manager PUT:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id res) {
+        
+        [self.friendDelegate acceptFriendRequestFinishedWithSuccess:YES withInfo:res failureReason:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.friendDelegate acceptFriendRequestFinishedWithSuccess:NO withInfo:nil failureReason:error];
+    }];
+}
+
+- (void)rejectFriendRequestWithRequestId:(NSString *)requestId
+{
+    NSString *urlString = [NSString stringWithFormat:@"%@/contact/%@/", TESTING_URL, requestId];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:TESTING_USERNAME password:TESTING_PASSWORD];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/hal+json"];
+    
+    [manager DELETE:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id res) {
+        
+        [self.friendDelegate rejectFriendRequestFinishedWithSuccess:YES withInfo:res failureReason:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.friendDelegate rejectFriendRequestFinishedWithSuccess:NO withInfo:nil failureReason:error];
+    }];
+}
+
+- (AFHTTPRequestOperationManager *)getHTTPRequestManager
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:TESTING_USERNAME password:TESTING_PASSWORD];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/hal+json"];
+    return manager;
+}
 
 #pragma mark User Action Services
 
@@ -331,6 +415,7 @@
 }
 
 - (void)getPollsWithInstitutionId:(NSString *)institutionId
+
 {
     NSString *urlString = [NSString stringWithFormat:@"%@/polls/%@", TESTING_URL, institutionId];
     

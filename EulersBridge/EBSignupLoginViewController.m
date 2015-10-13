@@ -349,6 +349,7 @@
     NSUInteger imageSize = imageData.length;
     NSLog(@"SIZE OF IMAGE: %lu ", (unsigned long)imageSize);
     // Upload the photo
+    
 }
 
 #pragma mark content delegate

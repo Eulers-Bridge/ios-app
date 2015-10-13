@@ -44,6 +44,9 @@
 
 @property (strong, nonatomic) NSArray *friends;
 
+@property (strong, nonatomic) NSDictionary *data;
+@property (strong, nonatomic) UIBarButtonItem *rightBarButton;
+
 @end
 
 @implementation EBProfileContentViewController
@@ -51,6 +54,8 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    self.rightBarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Settings"] style:UIBarButtonItemStylePlain target:self action:@selector(showSettings)];
+    self.parentViewController.navigationItem.rightBarButtonItem = self.rightBarButton;
     
     self.friendsButton.enabled = NO;
     self.viewBadgesButton.enabled = NO;
@@ -78,10 +83,14 @@
     [self.progressBar4 animate];
 }
 
+- (void)showSettings
+{
+    [self performSegueWithIdentifier:@"ShowSettings" sender:self];
+}
 
 - (void)setupData:(NSDictionary *)data
 {
-    
+    self.data = data;
 }
 
 - (void)loadUserData
@@ -208,9 +217,9 @@
         badgesViewController.completedBadges = self.completedBadges;
         badgesViewController.remainingBadges = self.remainingBadges;
     }
-    if ([segue.identifier isEqualToString:@"ProfileSettings"]) {
+    if ([segue.identifier isEqualToString:@"ShowSettings"]) {
         EBProfileSettingsViewController *settingsViewController = (EBProfileSettingsViewController *)[segue destinationViewController];
-        
+
     }
     if ([segue.identifier isEqualToString:@"TasksEmbed"]) {
         EBTasksTableViewController *tasksViewController = (EBTasksTableViewController *)[segue destinationViewController];
