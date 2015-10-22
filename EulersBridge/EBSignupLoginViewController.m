@@ -338,7 +338,7 @@
         self.gkImagePicker.delegate = self;
         self.gkImagePicker.cropSize = CGSizeMake(320.0, 320.0);
     }
-    [self.gkImagePicker showActionSheetOnViewController:self onPopoverFromView:sender];
+    [self presentViewController:self.gkImagePicker animated:YES completion:nil];
     
 }
 

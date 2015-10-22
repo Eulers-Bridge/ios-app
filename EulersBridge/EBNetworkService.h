@@ -37,9 +37,12 @@
 
 - (void)getGeneralInfoFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 - (void)getNewsFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
+- (void)getNewsFeedIdFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 - (void)getEventsFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 - (void)getPhotoAlbumsFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 - (void)getPhotosFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
+- (void)getUserPhotosFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
+- (void)getElectionsInfoFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 - (void)getElectionInfoFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 - (void)getPositionsInfoFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 - (void)getCandidatesInfoFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
@@ -94,9 +97,12 @@
 
 // Content services
 - (void)getNewsWithInstitutionId:(NSString *)institutionId;
+- (void)getNewsFeedIdWithInstitutionId:(NSString *)institutionId;
 - (void)getEventsWithInstitutionId:(NSString *)institutionId;
-- (void)getPhotoAlbumsWithInstitutionId:(NSString *)institutionId;
+- (void)getPhotoAlbumsWithNewsFeedId:(NSString *)newsFeedId;
 - (void)getPhotosWithAlbumId:(NSString *)albumId;
+- (void)getUserPhotosWithUserEmail:(NSString *)email;
+- (void)getElectionsInfoWithInstitutionId:(NSString *)institutionId;
 - (void)getElectionInfoWithElectionId:(NSString *)electionId;
 - (void)getPositionsInfoWithElectionId:(NSString *)electionId;
 - (void)getCandidatesInfoWithElectionId:(NSString *)electionId;

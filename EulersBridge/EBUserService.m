@@ -16,6 +16,7 @@
     [[NSUserDefaults standardUserDefaults] setObject:user.email forKey:@"userEmail"];
     [[NSUserDefaults standardUserDefaults] setObject:user.password forKey:@"userPassword"];
     [[NSUserDefaults standardUserDefaults] setObject:user.userId forKey:@"userId"];
+    [[NSUserDefaults standardUserDefaults] setObject:user.institutionId forKey:@"institutionId"];
 }
 
 + (NSString *)retriveUserEmail

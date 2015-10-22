@@ -20,11 +20,9 @@
 #define SERVER_URL @"https://eulersbridge.meteor.com"
 
 #define TESTING_URL @"http://eulersbridge.com:8080/dbInterface/api"
-#define TESTING_USERNAME @"greg.newitt@unimelb.edu.au"
-#define TESTING_PASSWORD @"test123"
-#define TESTING_INSTITUTION_ID @"26"
-#define TESTING_PHOTO_INSTITUTION_ID @"7449"
-#define TESTING_ELETION_ID @"7459"
+#define TESTING_USERNAME [[NSUserDefaults standardUserDefaults] objectForKey:@"userEmail"]
+#define TESTING_PASSWORD [[NSUserDefaults standardUserDefaults] objectForKey:@"userPassword"]
+#define TESTING_INSTITUTION_ID [[NSUserDefaults standardUserDefaults] objectForKey:@"institutionId"]
 
 #define PERSON_NAME_PROPERTY @"name"
 #define PERSON_EMAILS_PROPERTY @"emails"

@@ -95,13 +95,21 @@
         NSDecimalNumber *decimal = [NSDecimalNumber decimalNumberWithDecimal:[number decimalValue]];
         [a addObject:[decimal decimalNumberByAdding:[NSDecimalNumber one]]];
     }
+//    NSDictionary *parameters = @{
+//        @"extroversion" : @(([a[0] floatValue] + (8 - [a[5] floatValue])) / 2),
+//        @"agreeableness" : @(([a[6] floatValue] + (8 - [a[1] floatValue])) / 2),
+//        @"conscientiousness" : @(([a[2] floatValue] + (8 - [a[7] floatValue])) / 2),
+//        @"emotionalStability" : @(([a[8] floatValue] + (8 - [a[3] floatValue])) / 2),
+//        @"openess" : @(([a[4] floatValue] + (8 - [a[9] floatValue])) / 2)
+//    };
+    
     NSDictionary *parameters = @{
-        @"extroversion" : @(([a[0] floatValue] + (8 - [a[5] floatValue])) / 2),
-        @"agreeableness" : @(([a[6] floatValue] + (8 - [a[1] floatValue])) / 2),
-        @"conscientiousness" : @(([a[2] floatValue] + (8 - [a[7] floatValue])) / 2),
-        @"emotionalStability" : @(([a[8] floatValue] + (8 - [a[3] floatValue])) / 2),
-        @"openess" : @(([a[4] floatValue] + (8 - [a[9] floatValue])) / 2)
-    };
+         @"extroversion" : [@(([a[0] floatValue] + (8 - [a[5] floatValue])) / 2) stringValue],
+         @"agreeableness" : [@(([a[6] floatValue] + (8 - [a[1] floatValue])) / 2) stringValue],
+         @"conscientiousness" : [@(([a[2] floatValue] + (8 - [a[7] floatValue])) / 2) stringValue],
+         @"emotionalStability" : [@(([a[8] floatValue] + (8 - [a[3] floatValue])) / 2) stringValue],
+         @"openess" : [@(([a[4] floatValue] + (8 - [a[9] floatValue])) / 2) stringValue]
+     };
     
     
     EBNetworkService *service = [[EBNetworkService alloc] init];

@@ -32,6 +32,10 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.overviewTextView = [[EBTextViewHelvetica alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, self.tableView.frame.size.height)];
     self.processTextView = [[EBTextViewHelvetica alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, self.tableView.frame.size.height)];
+    self.overviewTextView.scrollEnabled = NO;
+    self.overviewTextView.editable = NO;
+    self.processTextView.scrollEnabled = NO;
+    self.processTextView.editable = NO;
 
     [self getElectionInfo];
 }
@@ -47,7 +51,19 @@
 {
     EBNetworkService *service = [[EBNetworkService alloc] init];
     service.contentDelegate = self;
-    [service getElectionInfoWithElectionId:TESTING_ELETION_ID];
+    [service getElectionsInfoWithInstitutionId:TESTING_INSTITUTION_ID];
+}
+
+-(void)getElectionsInfoFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
+{
+    if (success) {
+        EBNetworkService *service = [[EBNetworkService alloc] init];
+        service.contentDelegate = self;
+        NSString *electionId = info[@"foundObjects"][0][@"electionId"];
+        [service getElectionInfoWithElectionId:electionId];
+    } else {
+        
+    }
 }
 
 -(void)getElectionInfoFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error

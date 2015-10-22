@@ -57,9 +57,9 @@
     // Disable controls until data returned from server.
     self.segmentedControl.enabled = NO;
     
-    [self fetchCandidateData];
-    [self fetchTicketData];
-    [self fetchPositionData];
+    [self fetchElectionData];
+    
+    
 }
 
 - (void)changeSegment
@@ -78,25 +78,45 @@
     }
 }
 
-- (void)fetchCandidateData
+- (void)fetchElectionData
 {
     EBNetworkService *service = [[EBNetworkService alloc] init];
     service.contentDelegate = self;
-    [service getCandidatesInfoWithElectionId:TESTING_ELETION_ID];
+    [service getElectionsInfoWithInstitutionId:TESTING_INSTITUTION_ID];
 }
 
-- (void)fetchTicketData
+- (void)getElectionsInfoFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
 {
-    EBNetworkService *service = [[EBNetworkService alloc] init];
-    service.contentDelegate = self;
-    [service getTicketsInfoWithElectionId:TESTING_ELETION_ID];
+    if (success) {
+        NSString *electionId = info[@"foundObjects"][0][@"electionId"];
+        [self fetchCandidateDataWithElectionId:electionId];
+        [self fetchTicketDataWithElectionId:electionId];
+        [self fetchPositionDataWithElectionId:electionId];
+    } else {
+        
+    }
+
 }
 
-- (void)fetchPositionData
+- (void)fetchCandidateDataWithElectionId:(NSString *)electionId
 {
     EBNetworkService *service = [[EBNetworkService alloc] init];
     service.contentDelegate = self;
-    [service getPositionsInfoWithElectionId:TESTING_ELETION_ID];
+    [service getCandidatesInfoWithElectionId:electionId];
+}
+
+- (void)fetchTicketDataWithElectionId:(NSString *)electionId
+{
+    EBNetworkService *service = [[EBNetworkService alloc] init];
+    service.contentDelegate = self;
+    [service getTicketsInfoWithElectionId:electionId];
+}
+
+- (void)fetchPositionDataWithElectionId:(NSString *)electionId
+{
+    EBNetworkService *service = [[EBNetworkService alloc] init];
+    service.contentDelegate = self;
+    [service getPositionsInfoWithElectionId:electionId];
 }
 
 -(void)getCandidatesInfoFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error

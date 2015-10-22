@@ -22,7 +22,7 @@
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/hal+json"];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/hal+json", @"application/json", @"application/xml", nil];
     NSDictionary *parameters = @{@"email": email,
                                  @"givenName": givenName,
                                  @"familyName": familyName,
@@ -33,7 +33,7 @@
                                  @"institutionId": institutionId};
     [manager POST:@"http://eulersbridge.com:8080/dbInterface/api/signUp" parameters:parameters success:^(AFHTTPRequestOperation *operation, id res) {
         
-        EBUser *user = [self createAndSaveUser:res userId:nil password:password];
+        EBUser *user = [self createAndSaveUser:res userId:nil password:password institutionId:res[@"institutionId"]];
         
         [self.userDelegate signupFinishedWithSuccess:YES withUser:user failureReason:nil];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -52,9 +52,9 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:TESTING_USERNAME password:TESTING_PASSWORD];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/hal+json"];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/hal+json", @"application/json", @"application/xml", nil];
     
-    NSString *urlString = [NSString stringWithFormat:@"http://eulersbridge.com:8080/dbInterface/api/user/greg.newitt@unimelb.edu.au/personality"];
+    NSString *urlString = [NSString stringWithFormat:@"http://eulersbridge.com:8080/dbInterface/api/user/%@/personality", TESTING_USERNAME];
     [manager PUT:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id res) {
         
         [self.userDelegate addPersonalityForUserFinishedWithSuccess:YES withUser:user failureReason:nil];
@@ -75,11 +75,11 @@
     [manager setRequestSerializer:[AFHTTPRequestSerializer serializer]];
     [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:email password:password];
     
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/hal+json"];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/hal+json", @"application/json", @"application/xml", nil];
     
     [manager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id res) {
 //        NSLog(@"JSON: %@", responseObject);
-        EBUser *user = [self createAndSaveUser:res[@"user"] userId:res[@"userId"] password:password];
+        EBUser *user = [self createAndSaveUser:res[@"user"] userId:res[@"userId"] password:password institutionId: res[@"user"][@"institutionId"]];
         [self.userDelegate loginFinishedWithSuccess:YES withUser:user failureReason:nil errorString:nil];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 //        NSLog(@"Error: %@", error);
@@ -100,7 +100,7 @@
 
 - (void)getUserWithUserEmail:(NSString *)email
 {
-    NSString *urlString = [NSString stringWithFormat:@"%@/user/%@/", TESTING_URL, email];
+    NSString *urlString = [NSString stringWithFormat:@"%@/contact/%@/", TESTING_URL, email];
     
     [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self.userDelegate getUserWithUserEmailFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
@@ -185,7 +185,7 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:TESTING_USERNAME password:TESTING_PASSWORD];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/hal+json"];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/hal+json", @"application/json", @"application/xml", nil];
     
     [manager PUT:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id res) {
         
@@ -202,7 +202,7 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:TESTING_USERNAME password:TESTING_PASSWORD];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/hal+json"];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/hal+json", @"application/json", @"application/xml", nil];
     
     [manager PUT:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id res) {
         
@@ -219,7 +219,7 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:TESTING_USERNAME password:TESTING_PASSWORD];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/hal+json"];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/hal+json", @"application/json", @"application/xml", nil];
     
     [manager DELETE:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id res) {
         
@@ -234,7 +234,7 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:TESTING_USERNAME password:TESTING_PASSWORD];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/hal+json"];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/hal+json", @"application/json", @"application/xml", nil];
     return manager;
 }
 
@@ -245,7 +245,7 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:TESTING_USERNAME password:TESTING_PASSWORD];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/hal+json"];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/hal+json", @"application/json", @"application/xml", nil];
     double date = [[NSDate date] timeIntervalSince1970] / 1000;
     NSString *dateString = [NSString stringWithFormat:@"%.0f", date];
 
@@ -269,7 +269,7 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:TESTING_USERNAME password:TESTING_PASSWORD];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/hal+json"];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/hal+json", @"application/json", @"application/xml", nil];
     double date = [[NSDate date] timeIntervalSince1970] / 1000;
     NSString *dateString = [NSString stringWithFormat:@"%.0f", date];
     
@@ -294,7 +294,7 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:TESTING_USERNAME password:TESTING_PASSWORD];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/hal+json", @"application/json", nil];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/hal+json", @"application/json", @"application/xml", nil];
     
     NSString *contentTypeString;
     if (contentType == EBContentViewTypeNews) {
@@ -332,6 +332,19 @@
     }];
 }
 
+- (void)getNewsFeedIdWithInstitutionId:(NSString *)institutionId
+{
+    
+    institutionId = TESTING_INSTITUTION_ID;
+    NSString *urlString = [NSString stringWithFormat:@"%@/institution/%@/newsFeed", TESTING_URL, TESTING_INSTITUTION_ID];
+    
+    [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.contentDelegate getNewsFeedIdFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.contentDelegate getNewsFeedIdFinishedWithSuccess:NO withInfo:nil failureReason:error];
+    }];
+}
+
 - (void)getEventsWithInstitutionId:(NSString *)institutionId
 {
     
@@ -345,10 +358,9 @@
     }];
 }
 
-- (void)getPhotoAlbumsWithInstitutionId:(NSString *)institutionId;
+- (void)getPhotoAlbumsWithNewsFeedId:(NSString *)newsFeedId
 {
-    institutionId = TESTING_PHOTO_INSTITUTION_ID;
-    NSString *urlString = [NSString stringWithFormat:@"%@/photoAlbums/%@?pageSize=100", TESTING_URL, TESTING_PHOTO_INSTITUTION_ID];
+    NSString *urlString = [NSString stringWithFormat:@"%@/photoAlbums/%@?pageSize=100", TESTING_URL, newsFeedId];
     
     [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self.contentDelegate getPhotoAlbumsFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
@@ -367,6 +379,29 @@
         [self.contentDelegate getPhotosFinishedWithSuccess:NO withInfo:nil failureReason:error];
     }];
 }
+
+- (void)getUserPhotosWithUserEmail:(NSString *)email;
+{
+    NSString *urlString = [NSString stringWithFormat:@"%@/user/photos/%@?pageSize=100", TESTING_URL, email];
+    
+    [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.contentDelegate getPhotosFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.contentDelegate getPhotosFinishedWithSuccess:NO withInfo:nil failureReason:error];
+    }];
+}
+
+- (void)getElectionsInfoWithInstitutionId:(NSString *)institutionId
+{
+    NSString *urlString = [NSString stringWithFormat:@"%@/elections/%@", TESTING_URL, institutionId];
+    
+    [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.contentDelegate getElectionsInfoFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.contentDelegate getElectionsInfoFinishedWithSuccess:NO withInfo:nil failureReason:error];
+    }];
+}
+
 
 - (void)getElectionInfoWithElectionId:(NSString *)electionId
 {
@@ -496,7 +531,11 @@
 {
     NSString *urlString = [NSString stringWithFormat:@"%@/general-info", TESTING_URL];
     
-    [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/hal+json", @"application/json", @"application/xml", nil];
+    
+    [manager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *info = (NSDictionary *)responseObject;
         [self.contentDelegate getGeneralInfoFinishedWithSuccess:YES withInfo:info failureReason:nil];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -519,10 +558,10 @@
     
 }
 
-- (EBUser *)createAndSaveUser:(NSDictionary *)res userId:(NSString *)userId password:(NSString *)password
+- (EBUser *)createAndSaveUser:(NSDictionary *)resUser userId:(NSString *)userId password:(NSString *)password institutionId:(NSString *)institutionId
 {
     // Create the user object.
-    EBUser *user = [[EBUser alloc] initWithEmail:res[@"email"] givenName:res[@"givenName"] password:password accountVerified:res[@"accountVerified"] institutionId:res[@"institutionId"] userId:userId];
+    EBUser *user = [[EBUser alloc] initWithEmail:resUser[@"email"] givenName:resUser[@"givenName"] password:password accountVerified:resUser[@"accountVerified"] institutionId:institutionId userId:userId];
     
     // Save the user in the system.
     EBUserService *userService = [[EBUserService alloc] init];

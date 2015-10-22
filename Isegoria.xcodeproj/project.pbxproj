@@ -574,7 +574,8 @@
 		04FD41C21906574900AF17DC /* EBWelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBWelcomeViewController.h; sourceTree = "<group>"; };
 		04FD41C31906574900AF17DC /* EBWelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBWelcomeViewController.m; sourceTree = "<group>"; };
 		04FD41C51906B68200AF17DC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		8FB63B052AC2408A9C372E37 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		135BC85AC9EC425DFD7CFB8C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		CB84690F3E4872701510CADC /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		DA4A187B11A845AF9E3E5CDF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -1151,7 +1152,7 @@
 				04FD419919062ECD00AF17DC /* Images.xcassets */,
 				048D01CF195BC9EB00E878DA /* Badges.xcassets */,
 				049A474D1964FDFB00D363AE /* Tasks.xcassets */,
-				8FB63B052AC2408A9C372E37 /* Pods.xcconfig */,
+				35F7A6D37D6B281B980483BE /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1241,6 +1242,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		35F7A6D37D6B281B980483BE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				135BC85AC9EC425DFD7CFB8C /* Pods.debug.xcconfig */,
+				CB84690F3E4872701510CADC /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1253,6 +1263,7 @@
 				04FD417519062ECD00AF17DC /* Frameworks */,
 				04FD417619062ECD00AF17DC /* Resources */,
 				CC16852ABD2B4F5A98994117 /* Copy Pods Resources */,
+				C2B49AA758FD9037BB645764 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1461,6 +1472,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		C2B49AA758FD9037BB645764 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		CC16852ABD2B4F5A98994117 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1473,7 +1499,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1716,7 +1742,7 @@
 		};
 		04FD41B119062ECD00AF17DC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8FB63B052AC2408A9C372E37 /* Pods.xcconfig */;
+			baseConfigurationReference = 135BC85AC9EC425DFD7CFB8C /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1725,7 +1751,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EulersBridge/Isegoria-Prefix.pch";
 				INFOPLIST_FILE = "EulersBridge/Isegoria-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = Isegoria;
 				PROVISIONING_PROFILE = "d3d5c4fd-ada7-4e39-a80e-f422825d10e5";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1735,7 +1761,7 @@
 		};
 		04FD41B219062ECD00AF17DC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8FB63B052AC2408A9C372E37 /* Pods.xcconfig */;
+			baseConfigurationReference = CB84690F3E4872701510CADC /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1744,7 +1770,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EulersBridge/Isegoria-Prefix.pch";
 				INFOPLIST_FILE = "EulersBridge/Isegoria-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = Isegoria;
 				PROVISIONING_PROFILE = "a2819124-c3b7-4e9d-b7a3-57b4aba6a3ab";
 				TARGETED_DEVICE_FAMILY = 1;

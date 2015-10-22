@@ -98,7 +98,19 @@
 {
     EBNetworkService *service = [[EBNetworkService alloc] init];
     service.contentDelegate = self;
-    [service getPositionsInfoWithElectionId:TESTING_ELETION_ID];
+    [service getElectionsInfoWithInstitutionId:TESTING_INSTITUTION_ID];
+}
+
+-(void)getElectionsInfoFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
+{
+    if (success) {
+        EBNetworkService *service = [[EBNetworkService alloc] init];
+        service.contentDelegate = self;
+        NSString *electionId = info[@"foundObjects"][0][@"electionId"];
+        [service getPositionsInfoWithElectionId:electionId];
+    } else {
+        
+    }
 }
 
 -(void)getPositionsInfoFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error

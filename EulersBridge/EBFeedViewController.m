@@ -301,7 +301,19 @@
 {
     EBNetworkService *service = [[EBNetworkService alloc] init];
     service.contentDelegate = self;
-    [service getPhotoAlbumsWithInstitutionId:TESTING_INSTITUTION_ID];
+    [service getNewsFeedIdWithInstitutionId:TESTING_INSTITUTION_ID];
+}
+
+-(void)getNewsFeedIdFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
+{
+    if (success) {
+        EBNetworkService *service = [[EBNetworkService alloc] init];
+        service.contentDelegate = self;
+        NSString *newsFeedId = info[@"nodeId"];
+        [service getPhotoAlbumsWithNewsFeedId:newsFeedId];
+    } else {
+        
+    }
 }
 
 - (void)getNewsFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
