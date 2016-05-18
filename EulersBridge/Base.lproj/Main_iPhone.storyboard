@@ -798,6 +798,7 @@
                         <outlet property="signupButton" destination="vha-CY-TA6" id="D0c-Wp-xlj"/>
                         <outlet property="titleLabel" destination="gOJ-ri-tIB" id="eVU-Fk-6gh"/>
                         <segue destination="i1h-Cc-saW" kind="push" identifier="LoginEmailUnverified" id="THe-Rv-3qE"/>
+                        <segue destination="TWT-11-E3N" kind="push" identifier="ShowPersonalityQuestionsFromLogin" id="ccM-QI-Ya5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lrq-o8-M07" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -960,7 +961,7 @@
                                             <outlet property="delegate" destination="AS6-Ue-LrR" id="BMz-WN-Ta4"/>
                                         </connections>
                                     </textField>
-                                    <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="University Email" minimumFontSize="17" clearButtonMode="whileEditing" id="ZfG-Xv-07A">
+                                    <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" minimumFontSize="17" clearButtonMode="whileEditing" id="ZfG-Xv-07A">
                                         <rect key="frame" x="10" y="88" width="280" height="44"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <animations/>
@@ -1315,7 +1316,7 @@
                             </segments>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </segmentedControl>
-                        <barButtonItem key="rightBarButtonItem" image="Pledge Icon" id="aKP-HO-f6v">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" image="Pledge Icon" id="aKP-HO-f6v">
                             <connections>
                                 <segue destination="tqy-QC-0u3" kind="push" id="fsx-1V-cqu"/>
                             </connections>
@@ -3211,7 +3212,7 @@ Create a reminder to vote, by selecting the date and time for your next student 
                         </searchBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FriendCell" id="qig-dS-uit" customClass="EBFriendTableViewCell">
-                                <rect key="frame" x="0.0" y="66" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="130" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qig-dS-uit" id="xAZ-4z-yn0">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -4558,7 +4559,7 @@ That it. Let’s do this. </string>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UNIVERSITY OF MELBOURNE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zAV-Jq-L3t">
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Institution Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zAV-Jq-L3t">
                                                 <rect key="frame" x="20" y="194" width="280" height="13"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <animations/>
@@ -5954,7 +5955,7 @@ If you have any further questions about the research itself, please contact the 
                                 </textView>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SliderCell" id="cMw-Zy-6En" customClass="EBSliderTableViewCell">
-                                        <rect key="frame" x="0.0" y="146" width="320" height="82"/>
+                                        <rect key="frame" x="0.0" y="210" width="320" height="82"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cMw-Zy-6En" id="Fek-Yl-enR">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="82"/>
@@ -6960,11 +6961,12 @@ If you have any further questions about the research itself, please contact the 
         <image name="welcome.jpg" width="640" height="1136"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="N4E-ro-Kty"/>
+        <segue reference="kRX-vk-Pe5"/>
         <segue reference="Qa8-yg-wXH"/>
         <segue reference="eh2-Tf-C1m"/>
         <segue reference="phb-OD-nP9"/>
-        <segue reference="kRX-vk-Pe5"/>
+        <segue reference="ccM-QI-Ya5"/>
+        <segue reference="THe-Rv-3qE"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.2901960784" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="deviceRGB"/>
 </document>

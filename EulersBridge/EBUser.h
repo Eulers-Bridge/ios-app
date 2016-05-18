@@ -20,7 +20,8 @@
 @property (strong, nonatomic) NSString *institutionId;
 @property (strong, nonatomic) NSArray *badgesEarned;
 @property (strong, nonatomic) NSArray *tasksCompleted;
+@property BOOL hasPersonality;
 
--(EBUser *)initWithEmail:(NSString *)email givenName:(NSString *)givenName password:(NSString *)password accountVerified:(NSString *)accountVerified institutionId:(NSString *)institutionId userId:(NSString *)userId;
+-(EBUser *)initWithEmail:(NSString *)email givenName:(NSString *)givenName password:(NSString *)password accountVerified:(NSString *)accountVerified institutionId:(NSString *)institutionId userId:(NSString *)userId hasPersonality:(BOOL)hasPersonaltiy;
 
 @end

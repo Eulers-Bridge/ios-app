@@ -8,6 +8,7 @@
 
 #import "EBEmailVerificationViewController.h"
 #import "EBNetworkService.h"
+#import "EBWelcomeViewController.h"
 
 @interface EBEmailVerificationViewController () <EBUserServiceDelegate>
 
@@ -51,7 +52,8 @@
 - (IBAction)verifiedAction:(EBButton *)sender
 {
     UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
-    window.rootViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"loginView"];
+    UINavigationController *welcomeView = [self.storyboard instantiateViewControllerWithIdentifier:@"loginView"];
+    window.rootViewController = welcomeView;
 }
 
 #pragma mark signup delegate

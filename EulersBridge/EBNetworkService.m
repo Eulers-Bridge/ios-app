@@ -31,9 +31,10 @@
                                  @"yearOfBirth": @"",
                                  @"password": password,
                                  @"institutionId": institutionId};
-    [manager POST:@"http://eulersbridge.com:8080/dbInterface/api/signUp" parameters:parameters success:^(AFHTTPRequestOperation *operation, id res) {
+    NSString *urlString = [NSString stringWithFormat:@"%@/signUp", TESTING_URL];
+    [manager POST:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id res) {
         
-        EBUser *user = [self createAndSaveUser:res userId:nil password:password institutionId:res[@"institutionId"]];
+        EBUser *user = [self createAndSaveUser:res userId:nil password:password institutionId:res[@"institutionId"] hasPersonality:NO];
         
         [self.userDelegate signupFinishedWithSuccess:YES withUser:user failureReason:nil];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -54,7 +55,7 @@
     [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:TESTING_USERNAME password:TESTING_PASSWORD];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/hal+json", @"application/json", @"application/xml", nil];
     
-    NSString *urlString = [NSString stringWithFormat:@"http://eulersbridge.com:8080/dbInterface/api/user/%@/personality", TESTING_USERNAME];
+    NSString *urlString = [NSString stringWithFormat:@"%@/user/%@/personality", TESTING_URL, TESTING_USERNAME];
     [manager PUT:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id res) {
         
         [self.userDelegate addPersonalityForUserFinishedWithSuccess:YES withUser:user failureReason:nil];
@@ -76,17 +77,19 @@
     [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:email password:password];
     
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/hal+json", @"application/json", @"application/xml", nil];
+    // Debug timeout
+//    [manager.requestSerializer setTimeoutInterval:1800];
     
     [manager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id res) {
 //        NSLog(@"JSON: %@", responseObject);
-        EBUser *user = [self createAndSaveUser:res[@"user"] userId:res[@"userId"] password:password institutionId: res[@"user"][@"institutionId"]];
+        EBUser *user = [self createAndSaveUser:res[@"user"] userId:res[@"userId"] password:password institutionId: res[@"user"][@"institutionId"] hasPersonality:res[@"user"][@"hasPersonality"]];
         [self.userDelegate loginFinishedWithSuccess:YES withUser:user failureReason:nil errorString:nil];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 //        NSLog(@"Error: %@", error);
         if ([[operation responseString] isEqualToString:LOGIN_ERROR_USER_UNVERIFIED]) {
             
             // Create the user object.
-            EBUser *user = [[EBUser alloc] initWithEmail:email givenName:@"" password:password accountVerified:@"0" institutionId:@"" userId:@""];
+            EBUser *user = [[EBUser alloc] initWithEmail:email givenName:@"" password:password accountVerified:@"0" institutionId:@"" userId:@"" hasPersonality:NO];
             
             // Save the user in the system.
             EBUserService *userService = [[EBUserService alloc] init];
@@ -251,7 +254,7 @@
 
     NSDictionary *parameters = @{@"answerIndex": [NSString stringWithFormat:@"%lu", (unsigned long)answerIndex],
                                  @"timeStamp": dateString,
-                                 @"answererId": [NSString stringWithFormat:@"%d", 8807],
+                                 @"answererId": [NSString stringWithFormat:@"%@", [EBHelper getUserId]],
                                  @"pollId": pollId};
     
     NSString *urlString = [NSString stringWithFormat:@"%@/poll/%@/answer", TESTING_URL, pollId];
@@ -527,6 +530,17 @@
     }];
 }
 
+- (void)getInstitutionInfoWithInstitutionId:(NSString *)institutionId
+{
+    NSString *urlString = [NSString stringWithFormat:@"%@/institution/%@", TESTING_URL, institutionId];
+    
+    [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.contentDelegate getInstitutionInfoFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.contentDelegate getInstitutionInfoFinishedWithSuccess:NO withInfo:nil failureReason:error];
+    }];
+}
+
 - (void)getGeneralInfo
 {
     NSString *urlString = [NSString stringWithFormat:@"%@/general-info", TESTING_URL];
@@ -558,10 +572,10 @@
     
 }
 
-- (EBUser *)createAndSaveUser:(NSDictionary *)resUser userId:(NSString *)userId password:(NSString *)password institutionId:(NSString *)institutionId
+- (EBUser *)createAndSaveUser:(NSDictionary *)resUser userId:(NSString *)userId password:(NSString *)password institutionId:(NSString *)institutionId hasPersonality:(BOOL)hasPersonality
 {
     // Create the user object.
-    EBUser *user = [[EBUser alloc] initWithEmail:resUser[@"email"] givenName:resUser[@"givenName"] password:password accountVerified:resUser[@"accountVerified"] institutionId:institutionId userId:userId];
+    EBUser *user = [[EBUser alloc] initWithEmail:resUser[@"email"] givenName:resUser[@"givenName"] password:password accountVerified:resUser[@"accountVerified"] institutionId:institutionId userId:userId hasPersonality:hasPersonality];
     
     // Save the user in the system.
     EBUserService *userService = [[EBUserService alloc] init];

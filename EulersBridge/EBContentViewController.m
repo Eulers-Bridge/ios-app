@@ -18,7 +18,7 @@
 #import "EBProfileContentViewController.h"
 #import "EBUserService.h"
 
-@interface EBContentViewController () <UIScrollViewDelegate, EBUserServiceDelegate>
+@interface EBContentViewController () <UIScrollViewDelegate, EBUserServiceDelegate, EBContentServiceDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet EBBlurImageView *imageView;
@@ -91,6 +91,7 @@
         self.centerImageView.hidden = NO;
         self.nameLabel.hidden = NO;
         self.institutionLabel.hidden = NO;
+        [self getInstitutionInfo];
         
         self.navigationItem.title = @"Profile";
         
@@ -108,6 +109,7 @@
         self.centerImageView.hidden = NO;
         self.nameLabel.hidden = NO;
         self.institutionLabel.hidden = NO;
+        [self getInstitutionInfo];
         
         self.navigationItem.title = @"Ticket Profile";
         
@@ -128,6 +130,7 @@
         self.centerImageView.hidden = NO;
         self.nameLabel.hidden = NO;
         self.institutionLabel.hidden = NO;
+        [self getInstitutionInfo];
         
         self.navigationItem.title = @"Profile";
         
@@ -168,6 +171,23 @@
         NSLog(@"%@", error);
     }];
 
+}
+
+- (void)getInstitutionInfo
+{
+    EBNetworkService *service = [[EBNetworkService alloc] init];
+    [self.signUpNetworkServices addObject:service];
+    service.contentDelegate = self;
+    [service getInstitutionInfoWithInstitutionId:[[NSUserDefaults standardUserDefaults] valueForKey:@"institutionId"]];
+}
+
+-(void)getInstitutionInfoFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
+{
+    if (success) {
+        self.institutionLabel.text = info[@"name"];
+    } else {
+        
+    }
 }
 
 - (void)getUserDetailWithEmail:(NSString *)email
@@ -233,6 +253,7 @@
 {
     for (EBNetworkService *service in self.signUpNetworkServices) {
         service.userDelegate = nil;
+        service.contentDelegate = nil;
     }
 }
 

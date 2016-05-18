@@ -73,11 +73,12 @@
         self.gkImagePicker.delegate = self;
         self.gkImagePicker.cropSize = CGSizeMake(320.0, 320.0);
     }
-    [self presentViewController:self.gkImagePicker animated:YES completion:nil];
+    [self presentViewController:self.gkImagePicker.imagePickerController animated:YES completion:nil];
     
 }
 
 - (void)imagePicker:(GKImagePicker *)imagePicker pickedImage:(UIImage *)image{
+    [self dismissViewControllerAnimated:YES completion:nil];
     if (self.changeProfilePhotoType == EBProfilePhotoTypeProfile) {
         self.profileImageView.image = image;
     } else if (self.changeProfilePhotoType == EBProfilePhotoTypeBackground) {
@@ -96,6 +97,10 @@
     if (buttonIndex == 0) {
         [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"userEmail"];
         [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"userPassword"];
+        [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"userId"];
+        [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"hasPersonality"];
+        [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"institutionId"];
+        
         UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
         window.rootViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"loginView"];
     }

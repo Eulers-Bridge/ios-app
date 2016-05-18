@@ -36,7 +36,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        
     }
     return self;
 }
@@ -113,8 +113,13 @@
     self.signupButton.enabled = YES;
     
     if (success) {
-        EBAppDelegate *delegate = (EBAppDelegate *)[[UIApplication sharedApplication] delegate];
-        [delegate instantiateTabBarController];
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"hasPersonality"]) {
+            EBAppDelegate *delegate = (EBAppDelegate *)[[UIApplication sharedApplication] delegate];
+            [delegate instantiateTabBarController];
+        } else {
+            [self performSegueWithIdentifier:@"ShowPersonalityQuestionsFromLogin" sender:self];
+        }
+        
     } else {
         if ([errorString isEqualToString:LOGIN_ERROR_BAD_CREDENTIALS]) {
             [self highlightFields];

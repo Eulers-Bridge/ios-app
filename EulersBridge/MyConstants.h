@@ -19,7 +19,9 @@
 #define SERVER_TOKEN @"6F87C408-98E2-403F-BD9F-D60DB6328BEP"
 #define SERVER_URL @"https://eulersbridge.meteor.com"
 
-#define TESTING_URL @"http://eulersbridge.com:8080/dbInterface/api"
+#define PROD_URL @"http://eulersbridge.com:8080/dbInterface/api"
+//#define TESTING_URL @"http://172.20.10.2:8080/api"
+#define TESTING_URL @"http://54.79.70.241:8080/dbInterface/api"
 #define TESTING_USERNAME [[NSUserDefaults standardUserDefaults] objectForKey:@"userEmail"]
 #define TESTING_PASSWORD [[NSUserDefaults standardUserDefaults] objectForKey:@"userPassword"]
 #define TESTING_INSTITUTION_ID [[NSUserDefaults standardUserDefaults] objectForKey:@"institutionId"]

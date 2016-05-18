@@ -9,11 +9,19 @@
 #import "EBAppDelegate.h"
 #import "AFNetworkActivityIndicatorManager.h"
 #import "EBContentViewController.h"
+#import "AWSCore.h"
 
 @implementation EBAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    // Setup Amazon s3
+    AWSStaticCredentialsProvider *credentialsProvider = [[AWSStaticCredentialsProvider alloc] initWithAccessKey:@"AKIAJQRORA6BE2O5LP7A" secretKey:@"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"];
+    AWSServiceConfiguration *defaultServiceConfiguration = [[AWSServiceConfiguration alloc] initWithRegion:AWSRegionAPSoutheast2 credentialsProvider:credentialsProvider];
+    [AWSServiceManager defaultServiceManager].defaultServiceConfiguration = defaultServiceConfiguration;
+    
+    
     // Override point for customization after application launch.
     // Set Global tint color
     self.window.tintColor = [UIColor colorWithRed:74.0/255.0 green:144.0/255.0 blue:226.0/255.0 alpha:1.0];

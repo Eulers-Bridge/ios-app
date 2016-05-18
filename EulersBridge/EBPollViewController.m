@@ -55,7 +55,9 @@
     if (success) {
         NSArray *polls = (NSArray *)info[@"polls"];
         self.polls = polls;
-        [self setupWithNumberOfPages:(int)[polls count]];
+        if (polls.count > 0) {
+            [self setupWithNumberOfPages:(int)[polls count]];
+        }
     } else {
         
     }

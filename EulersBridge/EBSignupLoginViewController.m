@@ -338,18 +338,20 @@
         self.gkImagePicker.delegate = self;
         self.gkImagePicker.cropSize = CGSizeMake(320.0, 320.0);
     }
-    [self presentViewController:self.gkImagePicker animated:YES completion:nil];
+    [self presentViewController:self.gkImagePicker.imagePickerController animated:YES completion:nil];
     
 }
 
 - (void)imagePicker:(GKImagePicker *)imagePicker pickedImage:(UIImage *)image{
+    [self dismissViewControllerAnimated:YES completion:nil];
     self.photoImageView.image = image;
     self.photoImageView.contentMode = UIViewContentModeScaleAspectFill;
     NSData *imageData = UIImageJPEGRepresentation(image, 0.6);
     NSUInteger imageSize = imageData.length;
     NSLog(@"SIZE OF IMAGE: %lu ", (unsigned long)imageSize);
     // Upload the photo
-    
+//    NSString *uuidString = [NSUUID UUID].UUIDString;
+//    NSString *key = [NSString stringWithFormat:@"%@_%@_%@"]
 }
 
 #pragma mark content delegate
@@ -383,7 +385,7 @@
     // advance to next page or display the error.
     if (success) {
         self.signupedUser = user;
-        [self performSegueWithIdentifier:@"ShowPersonalityDescription" sender:self];
+        [self performSegueWithIdentifier:@"SignupAction" sender:self];
     } else {
         // Display error reason.
     }

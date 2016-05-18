@@ -59,8 +59,11 @@
     if (success) {
         EBNetworkService *service = [[EBNetworkService alloc] init];
         service.contentDelegate = self;
-        NSString *electionId = info[@"foundObjects"][0][@"electionId"];
-        [service getElectionInfoWithElectionId:electionId];
+        NSArray *array = info[@"foundObjects"];
+        if (array.count > 0) {
+            NSString *electionId = info[@"foundObjects"][0][@"electionId"];
+            [service getElectionInfoWithElectionId:electionId];
+        }
     } else {
         
     }

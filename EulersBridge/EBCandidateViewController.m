@@ -88,10 +88,13 @@
 - (void)getElectionsInfoFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
 {
     if (success) {
-        NSString *electionId = info[@"foundObjects"][0][@"electionId"];
-        [self fetchCandidateDataWithElectionId:electionId];
-        [self fetchTicketDataWithElectionId:electionId];
-        [self fetchPositionDataWithElectionId:electionId];
+        NSArray *array = info[@"foundObjects"];
+        if (array.count > 0) {
+            NSString *electionId = info[@"foundObjects"][0][@"electionId"];
+            [self fetchCandidateDataWithElectionId:electionId];
+            [self fetchTicketDataWithElectionId:electionId];
+            [self fetchPositionDataWithElectionId:electionId];
+        }
     } else {
         
     }

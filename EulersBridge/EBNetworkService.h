@@ -36,6 +36,7 @@
 @optional
 
 - (void)getGeneralInfoFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
+- (void)getInstitutionInfoFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 - (void)getNewsFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 - (void)getNewsFeedIdFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 - (void)getEventsFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
@@ -96,6 +97,7 @@
 
 
 // Content services
+- (void)getInstitutionInfoWithInstitutionId:(NSString *)institutionId;
 - (void)getNewsWithInstitutionId:(NSString *)institutionId;
 - (void)getNewsFeedIdWithInstitutionId:(NSString *)institutionId;
 - (void)getEventsWithInstitutionId:(NSString *)institutionId;
