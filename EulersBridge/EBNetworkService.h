@@ -65,6 +65,7 @@
 - (void)votePollFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 - (void)postPollCommentFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 - (void)likeContentFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
+- (void)supportTicketFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 @end
 
 @interface EBNetworkService : NSObject
@@ -123,4 +124,5 @@
 - (void)voteWithPollId:(NSString *)pollId answerIndex:(NSUInteger)answerIndex;
 - (void)postPollCommentWithPollId:(NSString *)pollId comment:(NSString *)comment;
 - (void)likeContentWithLike:(BOOL)like contentType:(EBContentViewType)contentType contentId:(NSString *)contentId;
+- (void)supportTicketWithTicketId:(NSString *)ticketId;
 @end

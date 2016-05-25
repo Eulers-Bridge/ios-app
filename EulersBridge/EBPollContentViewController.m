@@ -12,7 +12,7 @@
 #import "EBNetworkService.h"
 #import "MyConstants.h"
 
-@interface EBPollContentViewController () <UITableViewDataSource, UITableViewDelegate, UITextViewDelegate, UIScrollViewDelegate, EBContentServiceDelegate, EBUserActionServiceDelegate>
+@interface EBPollContentViewController () <UITableViewDataSource, UITableViewDelegate, UITextViewDelegate, UIScrollViewDelegate, EBContentServiceDelegate, EBUserActionServiceDelegate, EBUserServiceDelegate>
 
 
 @property (weak, nonatomic) IBOutlet EBTextViewMuseoMedium *questionTextView;
@@ -23,6 +23,10 @@
 @property (weak, nonatomic) IBOutlet EBOnePixelLine *divider;
 @property (weak, nonatomic) IBOutlet EBButtonRoundedHeavy *postCommentButton;
 @property (weak, nonatomic) IBOutlet EBLabelMedium *commentStatusLabel;
+@property (weak, nonatomic) IBOutlet EBLabelMedium *numberOfVotesLabel;
+@property (weak, nonatomic) IBOutlet EBLabelMedium *numberOfCommentsLabel;
+
+
 @property (strong, nonatomic) NSIndexPath *selectedIndexPath;
 @property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer;
 @property (strong, nonatomic) UIPanGestureRecognizer *panGestureRecognizer;
@@ -97,8 +101,17 @@
     
     // Setup data
     self.questionTextView.text = self.info[@"question"];
+    self.numberOfVotesLabel.text = @"";
+    self.numberOfCommentsLabel.text = [self.info[@"numOfComments"] stringValue];
     NSString *answers = self.info[@"answers"];
     self.answers = [answers componentsSeparatedByString:@","];
+}
+
+- (void)getUserDetailWithEmail:(NSString *)email
+{
+    EBNetworkService *service = [[EBNetworkService alloc] init];
+    service.userDelegate = self;
+    [service getUserWithUserEmail:email];
 }
 
 - (void)getPollResults
@@ -118,6 +131,15 @@
     [service getPollCommentsWithPollId:self.info[@"nodeId"]];
 }
 
+- (void)getUserWithUserEmailFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
+{
+    if (success) {
+        
+    } else {
+        
+    }
+}
+
 - (void)getPollResultsFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
 {
     if (success) {
@@ -125,6 +147,9 @@
 //        self.results = [self updateResults:[self parseResults:(NSArray *)info[@"answers"]] withVoteIndex:self.voteIndex];
         self.voted = YES;
         [self.answerTableView reloadData];
+        if (self.results.count > 0) {
+            self.numberOfVotesLabel.text = [[self.results firstObject][@"totalVotes"] stringValue];
+        }
     } else {
         
     }

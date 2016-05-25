@@ -307,15 +307,44 @@
                            TESTING_URL,
                            contentTypeString,
                            contentId,
-                           like ? @"likedBy" : @"unlikedBy",
+//                           like ? @"likedBy" : @"unlikedBy",
+                            @"likedBy",
                            [EBUserService retriveUserEmail]];
-    [manager PUT:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id res) {
-        
-        [self.userActionDelegate likeContentFinishedWithSuccess:YES withInfo:res failureReason:nil];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.userActionDelegate likeContentFinishedWithSuccess:NO withInfo:nil failureReason:error];
-    }];
+    if (like) {
+        [manager PUT:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id res) {
+            
+            [self.userActionDelegate likeContentFinishedWithSuccess:YES withInfo:res failureReason:nil];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [self.userActionDelegate likeContentFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        }];
+    } else {
+        [manager DELETE:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id res) {
+            
+            [self.userActionDelegate likeContentFinishedWithSuccess:YES withInfo:res failureReason:nil];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [self.userActionDelegate likeContentFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        }];
+    }
+    
 
+}
+
+- (void)supportTicketWithTicketId:(NSString *)ticketId
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:TESTING_USERNAME password:TESTING_PASSWORD];
+    manager.responseSerializer =  [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
+//    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", nil];
+    
+    NSString *urlString = [NSString stringWithFormat:@"%@/ticket/%@/support/%@/", TESTING_URL, ticketId, [EBUserService retriveUserEmail]];
+    [manager PUT:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id res) {
+     
+        [self.userActionDelegate supportTicketFinishedWithSuccess:YES withInfo:res failureReason:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.userActionDelegate supportTicketFinishedWithSuccess:NO withInfo:nil failureReason:error];
+    }];
+    
 }
 
 

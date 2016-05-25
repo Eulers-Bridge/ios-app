@@ -93,13 +93,13 @@
         
         
         EKEvent *event = [EKEvent eventWithEventStore:store];
-        event.title = @"Election event on campus";
-        event.location = @"University of Melbourne Union House";
+        event.title = self.data[@"title"];
+        event.location = self.data[@"location"];
         
         
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"yyyyMMdd HHmm"];
-        NSDate *date = [formatter dateFromString:@"20140426 2100"];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"dd MMMM yyyy 'at' h:mm a"];
+        NSDate *date = [dateFormatter dateFromString:self.data[@"date"]];
         
         
         event.startDate = date;
