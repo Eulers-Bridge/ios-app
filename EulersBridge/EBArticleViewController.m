@@ -65,10 +65,17 @@
 -(void)getNewsLikesFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
 {
     if (success) {
+        self.likesLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)((NSArray *)info).count];
+        BOOL found = NO;
         for (NSDictionary *like in info) {
             if ([like[@"email"] isEqualToString:[EBUserService retriveUserEmail]]) {
                 self.liked = YES;
+                found = YES;
+                break;
             }
+        }
+        if (found == NO) {
+            self.liked = NO;
         }
         self.likeButton.enabled = YES;
     } else {
@@ -78,6 +85,7 @@
 
 - (IBAction)like:(id)sender
 {
+    self.likeButton.enabled = NO;
     EBNetworkService *service = [[EBNetworkService alloc] init];
     service.userActionDelegate = self;
     [service likeContentWithLike:!self.liked contentType:EBContentViewTypeNews contentId:self.data[@"articleId"]];
@@ -86,7 +94,7 @@
 -(void)likeContentFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
 {
     if (success) {
-        
+        [self getLikesWithArticleId:self.data[@"articleId"]];
     } else {
         
     }

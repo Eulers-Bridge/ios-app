@@ -49,6 +49,7 @@
 - (void)getCandidatesInfoFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 - (void)getTicketsInfoFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 - (void)getNewsLikesFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
+- (void)getTicketSupportersFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 
 - (void)getPollsFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 - (void)getPollResultsFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
@@ -111,6 +112,7 @@
 - (void)getCandidatesInfoWithElectionId:(NSString *)electionId;
 - (void)getTicketsInfoWithElectionId:(NSString *)electionId;
 - (void)getNewsLikesWithArticleId:(NSString *)articleId;
+- (void)getSupportsWithTicketId:(NSString *)ticketId;
 
 - (void)getPollsWithInstitutionId:(NSString *)institutionId;
 - (void)getPollResultsWithPollId:(NSString *)pollId;
@@ -124,5 +126,5 @@
 - (void)voteWithPollId:(NSString *)pollId answerIndex:(NSUInteger)answerIndex;
 - (void)postPollCommentWithPollId:(NSString *)pollId comment:(NSString *)comment;
 - (void)likeContentWithLike:(BOOL)like contentType:(EBContentViewType)contentType contentId:(NSString *)contentId;
-- (void)supportTicketWithTicketId:(NSString *)ticketId;
+- (void)supportTicketWithSupport:(BOOL)support ticketId:(NSString *)ticketId;
 @end

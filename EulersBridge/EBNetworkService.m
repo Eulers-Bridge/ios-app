@@ -329,7 +329,7 @@
 
 }
 
-- (void)supportTicketWithTicketId:(NSString *)ticketId
+- (void)supportTicketWithSupport:(BOOL)support ticketId:(NSString *)ticketId
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
@@ -338,12 +338,21 @@
 //    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", nil];
     
     NSString *urlString = [NSString stringWithFormat:@"%@/ticket/%@/support/%@/", TESTING_URL, ticketId, [EBUserService retriveUserEmail]];
-    [manager PUT:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id res) {
-     
-        [self.userActionDelegate supportTicketFinishedWithSuccess:YES withInfo:res failureReason:nil];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.userActionDelegate supportTicketFinishedWithSuccess:NO withInfo:nil failureReason:error];
-    }];
+    if (support) {
+        [manager PUT:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id res) {
+         
+            [self.userActionDelegate supportTicketFinishedWithSuccess:YES withInfo:res failureReason:nil];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [self.userActionDelegate supportTicketFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        }];
+    } else {
+        [manager DELETE:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id res) {
+            
+            [self.userActionDelegate supportTicketFinishedWithSuccess:YES withInfo:res failureReason:nil];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [self.userActionDelegate supportTicketFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        }];
+    }
     
 }
 
@@ -556,6 +565,17 @@
         [self.contentDelegate getNewsLikesFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [self.contentDelegate getNewsLikesFinishedWithSuccess:NO withInfo:nil failureReason:error];
+    }];
+}
+
+- (void)getSupportsWithTicketId:(NSString *)ticketId
+{
+    NSString *urlString = [NSString stringWithFormat:@"%@/ticket/%@/supporters", TESTING_URL, ticketId];
+    
+    [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.contentDelegate getTicketSupportersFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.contentDelegate getTicketSupportersFinishedWithSuccess:NO withInfo:nil failureReason:error];
     }];
 }
 

@@ -11,6 +11,8 @@
 #import "EBPollCommentTableViewCell.h"
 #import "EBNetworkService.h"
 #import "MyConstants.h"
+#import "UIImageView+AFNetworking.h"
+#import "EBHelper.h"
 
 @interface EBPollContentViewController () <UITableViewDataSource, UITableViewDelegate, UITextViewDelegate, UIScrollViewDelegate, EBContentServiceDelegate, EBUserActionServiceDelegate, EBUserServiceDelegate>
 
@@ -25,6 +27,8 @@
 @property (weak, nonatomic) IBOutlet EBLabelMedium *commentStatusLabel;
 @property (weak, nonatomic) IBOutlet EBLabelMedium *numberOfVotesLabel;
 @property (weak, nonatomic) IBOutlet EBLabelMedium *numberOfCommentsLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *authorImageView;
+
 
 
 @property (strong, nonatomic) NSIndexPath *selectedIndexPath;
@@ -100,6 +104,7 @@
     
     
     // Setup data
+    [self getUserDetailWithEmail:self.info[@"creatorEmail"]];
     self.questionTextView.text = self.info[@"question"];
     self.numberOfVotesLabel.text = @"";
     self.numberOfCommentsLabel.text = [self.info[@"numOfComments"] stringValue];
@@ -134,7 +139,11 @@
 - (void)getUserWithUserEmailFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
 {
     if (success) {
-        
+        NSString *urlString = info[@"profilePhoto"][@"url"];
+        if (![urlString isEqual:[NSNull null]]) {
+            [self.authorImageView setImageWithURL:[NSURL URLWithString:urlString]];
+        }
+        self.authorLabel.text = self.authorLabel.text = [@"Asked by " stringByAppendingString:[EBHelper fullNameWithUserObject:info]];
     } else {
         
     }
