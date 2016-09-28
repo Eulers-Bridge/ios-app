@@ -26,6 +26,9 @@
 #define TESTING_PASSWORD [[NSUserDefaults standardUserDefaults] objectForKey:@"userPassword"]
 #define TESTING_INSTITUTION_ID [[NSUserDefaults standardUserDefaults] objectForKey:@"institutionId"]
 
+#define S3_BUCKET_KEY @"isegoriauserpics"
+#define S3_URL_PREFIX @"https://s3.amazonaws.com/isegoriauserpics/"
+
 #define PERSON_NAME_PROPERTY @"name"
 #define PERSON_EMAILS_PROPERTY @"emails"
 #define PERSON_PHONES_PROPERTY @"phones"

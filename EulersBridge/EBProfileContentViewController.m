@@ -25,8 +25,8 @@
 
 @property (weak, nonatomic) IBOutlet EBCircleProgressBar *progressBar1;
 @property (weak, nonatomic) IBOutlet EBCircleProgressBar *progressBar2;
-@property (weak, nonatomic) IBOutlet EBCircleProgressBar *progressBar3;
-@property (weak, nonatomic) IBOutlet EBCircleProgressBar *progressBar4;
+//@property (weak, nonatomic) IBOutlet EBCircleProgressBar *progressBar3;
+//@property (weak, nonatomic) IBOutlet EBCircleProgressBar *progressBar4;
 
 @property (weak, nonatomic) IBOutlet EBLabelLight *completedBadgesLabel;
 @property (weak, nonatomic) IBOutlet EBLabelHeavy *remainingBadgesLabel;
@@ -79,8 +79,8 @@
     [super viewDidAppear:animated];
     [self.progressBar1 animate];
     [self.progressBar2 animate];
-    [self.progressBar3 animate];
-    [self.progressBar4 animate];
+//    [self.progressBar3 animate];
+//    [self.progressBar4 animate];
 }
 
 - (void)showSettings

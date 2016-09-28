@@ -17,7 +17,7 @@
 
 #pragma mark User Services
 
-- (void)signupWithEmailAddress:(NSString *)email password:(NSString *)password givenName:(NSString *)givenName familyName:(NSString *)familyName institutionId:(NSString *)institutionId
+- (void)signupWithEmailAddress:(NSString *)email password:(NSString *)password givenName:(NSString *)givenName familyName:(NSString *)familyName institutionId:(NSString *)institutionId profilePicURL:(NSString *)profilePicURL
 {
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -30,7 +30,8 @@
                                  @"nationality": @"",
                                  @"yearOfBirth": @"",
                                  @"password": password,
-                                 @"institutionId": institutionId};
+                                 @"institutionId": institutionId,
+                                 @"profilePhoto": profilePicURL};
     NSString *urlString = [NSString stringWithFormat:@"%@/signUp", TESTING_URL];
     [manager POST:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id res) {
         
@@ -82,7 +83,8 @@
     
     [manager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id res) {
 //        NSLog(@"JSON: %@", responseObject);
-        EBUser *user = [self createAndSaveUser:res[@"user"] userId:res[@"userId"] password:password institutionId: res[@"user"][@"institutionId"] hasPersonality:res[@"user"][@"hasPersonality"]];
+        BOOL hasPersonality = ([res[@"user"][@"hasPersonality"] isEqual: @(YES)]);
+        EBUser *user = [self createAndSaveUser:res[@"user"] userId:res[@"userId"] password:password institutionId: res[@"user"][@"institutionId"] hasPersonality:hasPersonality];
         [self.userDelegate loginFinishedWithSuccess:YES withUser:user failureReason:nil errorString:nil];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 //        NSLog(@"Error: %@", error);

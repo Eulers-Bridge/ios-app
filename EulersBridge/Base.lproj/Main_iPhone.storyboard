@@ -21,7 +21,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCollectionCell" id="KPf-ni-HYm">
-                                <rect key="frame" x="0.0" y="50" width="78" height="78"/>
+                                <rect key="frame" x="0.0" y="114" width="78" height="78"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="78" height="78"/>
@@ -35,7 +35,7 @@
                             </collectionViewCell>
                         </cells>
                         <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.90000000000000002" contentMode="center" reuseIdentifier="PhotoHeader" id="pr6-fh-vSr" customClass="EBPhotosHeaderView">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                            <rect key="frame" x="0.0" y="64" width="320" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="nnd-JJ-Ow3">
@@ -774,7 +774,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FindFriendCell" rowHeight="63" id="vb2-f4-ciN" customClass="EBFindFriendTableViewCell">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="63"/>
+                                        <rect key="frame" x="0.0" y="86" width="320" height="63"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vb2-f4-ciN" id="qzW-fg-anr">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="62"/>
@@ -1035,6 +1035,11 @@
                                     <outlet property="delegate" destination="AS6-Ue-LrR" id="MGB-zZ-RCt"/>
                                 </connections>
                             </pickerView>
+                            <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" id="n5N-bh-Eje">
+                                <rect key="frame" x="96" y="192" width="128" height="2"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="progressTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -1068,6 +1073,7 @@
                         <outlet property="universityTextField" destination="GB2-5c-cGX" id="aga-KV-vuW"/>
                         <outlet property="universityValidIndicator" destination="h9w-c8-WsJ" id="ZE0-dR-nBf"/>
                         <outlet property="uploadImageButton" destination="xfi-zt-O6e" id="tsJ-EV-r0d"/>
+                        <outlet property="uploadProgressView" destination="n5N-bh-Eje" id="lrn-W4-5Tj"/>
                         <segue destination="i1h-Cc-saW" kind="push" identifier="SignupAction" id="N4E-ro-Kty"/>
                         <segue destination="ETm-q7-KIY" kind="modal" identifier="PresentTerms" id="sGe-qg-qhy"/>
                         <segue destination="TWT-11-E3N" kind="push" identifier="ShowPersonalityDescription" id="cqZ-rZ-ALM"/>
@@ -2721,19 +2727,6 @@ Create a reminder to vote, by selecting the date and time for your next student 
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <view contentMode="scaleToFill" id="9Lu-QI-ggL" customClass="EBCircleProgressBar">
-                                        <rect key="frame" x="242" y="296" width="64" height="64"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="mainColor">
-                                                <color key="value" red="0.28627450980000002" green="0.52156862749999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="progress">
-                                                <real key="value" value="0.94999999999999996"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
                                     <view contentMode="scaleToFill" id="az4-gx-t5B" customClass="EBCircleProgressBar">
                                         <rect key="frame" x="90" y="296" width="64" height="64"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2744,19 +2737,6 @@ Create a reminder to vote, by selecting the date and time for your next student 
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="progress">
                                                 <integer key="value" value="0"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
-                                    <view contentMode="scaleToFill" id="wMs-MY-L6o" customClass="EBCircleProgressBar">
-                                        <rect key="frame" x="166" y="296" width="64" height="64"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="mainColor">
-                                                <color key="value" red="1" green="0.3294117647" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="progress">
-                                                <real key="value" value="0.78000000000000003"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
@@ -2788,27 +2768,6 @@ Create a reminder to vote, by selecting the date and time for your next student 
                                         <color key="textColor" red="0.19215686269999999" green="0.24313725489999999" blue="0.30196078430000001" alpha="1" colorSpace="deviceRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PER DAY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lkX-wy-nmW" customClass="EBLabelHeavy">
-                                        <rect key="frame" x="178" y="333" width="41" height="11"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="8"/>
-                                        <color key="textColor" red="0.41960784309999999" green="0.47843137250000001" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="i81-BD-hxv" customClass="EBLabelLight">
-                                        <rect key="frame" x="181" y="312" width="35" height="24"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <color key="textColor" red="0.19215686269999999" green="0.24313725489999999" blue="0.30196078430000001" alpha="1" colorSpace="deviceRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="27" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iNV-tu-NDo" customClass="EBLabelLight">
-                                        <rect key="frame" x="259" y="316" width="35" height="24"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <color key="textColor" red="0.41960784309999999" green="0.47843137250000001" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exp Level" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="q6y-RE-jdu">
                                         <rect key="frame" x="20" y="367" width="52" height="11"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2818,20 +2777,6 @@ Create a reminder to vote, by selecting the date and time for your next student 
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Badges" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6ga-vg-ul4">
                                         <rect key="frame" x="79" y="367" width="87" height="12"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                        <color key="textColor" red="0.41960784309999999" green="0.47843137250000001" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tasks" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gRs-5h-zgh">
-                                        <rect key="frame" x="161" y="367" width="75" height="12"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                        <color key="textColor" red="0.41960784309999999" green="0.47843137250000001" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Events" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pdN-7M-Bpk">
-                                        <rect key="frame" x="236" y="367" width="80" height="12"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <color key="textColor" red="0.41960784309999999" green="0.47843137250000001" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2890,8 +2835,6 @@ Create a reminder to vote, by selecting the date and time for your next student 
                         <outlet property="profileImageView" destination="Zmp-f9-HQb" id="pgx-GF-5qo"/>
                         <outlet property="progressBar1" destination="9B9-IM-CtO" id="K6e-XP-wWs"/>
                         <outlet property="progressBar2" destination="az4-gx-t5B" id="kBW-sZ-Xtb"/>
-                        <outlet property="progressBar3" destination="wMs-MY-L6o" id="zDj-cm-rJz"/>
-                        <outlet property="progressBar4" destination="9Lu-QI-ggL" id="O5C-pt-lfP"/>
                         <outlet property="remainingBadgesLabel" destination="a3W-N8-mY5" id="dPf-39-IAi"/>
                         <outlet property="scrollView" destination="e1d-vA-vJF" id="0H3-nA-Szq"/>
                         <outlet property="showProgressButton" destination="TPR-fa-bVB" id="NmF-mt-Mnx"/>
@@ -2920,7 +2863,7 @@ Create a reminder to vote, by selecting the date and time for your next student 
                         </searchBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FriendCell" id="qig-dS-uit" customClass="EBFriendTableViewCell">
-                                <rect key="frame" x="0.0" y="66" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="130" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qig-dS-uit" id="xAZ-4z-yn0">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -2994,6 +2937,58 @@ Create a reminder to vote, by selecting the date and time for your next student 
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZnZ-G4-2P4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2629" y="2000"/>
+        </scene>
+        <!--Add Contact View Controller-->
+        <scene sceneID="b2y-SL-E4Q">
+            <objects>
+                <viewController storyboardIdentifier="AddContact" id="3CF-Xp-icU" customClass="EBAddContactViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Bvh-SB-zz2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" id="Y7C-jk-dMI">
+                                <rect key="frame" x="0.0" y="142" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="searchBar" destination="Y7C-jk-dMI" id="Ig5-ol-aWc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xUJ-cx-F2V" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2997" y="1703"/>
+        </scene>
+        <!--Search User Table View Controller-->
+        <scene sceneID="YkT-8c-EdP">
+            <objects>
+                <tableViewController storyboardIdentifier="SearchUserResult" id="Nuh-oe-liK" customClass="EBSearchUserTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="IS6-ec-OMO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ldO-LA-7V4">
+                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ldO-LA-7V4" id="i14-Hb-IHA">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Nuh-oe-liK" id="ojh-Tx-GvE"/>
+                            <outlet property="delegate" destination="Nuh-oe-liK" id="YJo-jp-n6h"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bM0-v6-IgW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3327" y="1703"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lcg-Dh-Qgj">
@@ -3884,7 +3879,7 @@ That it. Let’s do this. </string>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="badgeCellDetail" id="IgS-rG-qZ8" customClass="EBBadgeCollectionViewCell">
-                                <rect key="frame" x="20" y="0.0" width="85" height="127"/>
+                                <rect key="frame" x="20" y="64" width="85" height="127"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="85" height="127"/>
@@ -4620,44 +4615,11 @@ That it. Let’s do this. </string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" id="Sur-Sk-6RD" customClass="EBCircleProgressBar">
-                                <rect key="frame" x="161" y="63" width="64" height="64"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="mainColor">
-                                        <color key="value" red="1" green="0.3294117647" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="progress">
-                                        <real key="value" value="0.78000000000000003"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                            <view contentMode="scaleToFill" id="m8e-dl-rBH" customClass="EBCircleProgressBar">
-                                <rect key="frame" x="237" y="63" width="64" height="64"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="mainColor">
-                                        <color key="value" red="0.28627450980000002" green="0.52156862749999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="progress">
-                                        <real key="value" value="0.94999999999999996"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="14" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nOG-3I-rsg" customClass="EBLabelLight">
                                 <rect key="frame" x="100" y="79" width="35" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" red="0.19215686269999999" green="0.24313725489999999" blue="0.30196078430000001" alpha="1" colorSpace="deviceRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tasks" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zJK-Mj-dwk">
-                                <rect key="frame" x="156" y="134" width="75" height="12"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <color key="textColor" red="0.41960784309999999" green="0.47843137250000001" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="38 LEFT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UZP-PM-jIy" customClass="EBLabelHeavy">
@@ -4674,13 +4636,6 @@ That it. Let’s do this. </string>
                                 <color key="textColor" red="0.41960784309999999" green="0.47843137250000001" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Events" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aAe-yZ-jgC">
-                                <rect key="frame" x="231" y="134" width="80" height="12"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <color key="textColor" red="0.41960784309999999" green="0.47843137250000001" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bvG-Mm-aC1" customClass="EBLabelLight">
                                 <rect key="frame" x="22" y="79" width="35" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -4692,27 +4647,6 @@ That it. Let’s do this. </string>
                                 <rect key="frame" x="74" y="134" width="87" height="12"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <color key="textColor" red="0.41960784309999999" green="0.47843137250000001" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="50p-VZ-0L7" customClass="EBLabelLight">
-                                <rect key="frame" x="176" y="79" width="35" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" red="0.19215686269999999" green="0.24313725489999999" blue="0.30196078430000001" alpha="1" colorSpace="deviceRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PER DAY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Li4-zV-bfK" customClass="EBLabelHeavy">
-                                <rect key="frame" x="173" y="100" width="41" height="11"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="8"/>
-                                <color key="textColor" red="0.41960784309999999" green="0.47843137250000001" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="27" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="n5j-zc-pQb" customClass="EBLabelLight">
-                                <rect key="frame" x="254" y="83" width="35" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" red="0.41960784309999999" green="0.47843137250000001" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -4798,8 +4732,6 @@ That it. Let’s do this. </string>
                         <outlet property="groupsLabel" destination="E9g-uZ-qmY" id="iGI-jD-MkO"/>
                         <outlet property="progressBar1" destination="dV5-0Q-EFp" id="28J-Er-lbE"/>
                         <outlet property="progressBar2" destination="Zag-8y-6Xy" id="Qti-ds-jOp"/>
-                        <outlet property="progressBar3" destination="Sur-Sk-6RD" id="tdR-qx-49h"/>
-                        <outlet property="progressBar4" destination="m8e-dl-rBH" id="zYP-mn-QaU"/>
                         <outlet property="remainingBadgesLabel" destination="3pG-oP-glc" id="1Xt-n1-RzZ"/>
                         <outlet property="showProgressButton" destination="wZ3-wY-YjB" id="Qhr-5Y-knX"/>
                         <outlet property="tasksContainerView" destination="gNy-i2-PsR" id="iCs-AL-Ru2"/>
@@ -5402,7 +5334,7 @@ If you have any further questions about the research itself, please contact the 
                                 </textView>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SliderCell" id="cMw-Zy-6En" customClass="EBSliderTableViewCell">
-                                        <rect key="frame" x="0.0" y="146" width="320" height="82"/>
+                                        <rect key="frame" x="0.0" y="210" width="320" height="82"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cMw-Zy-6En" id="Fek-Yl-enR">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="82"/>
@@ -6317,10 +6249,10 @@ If you have any further questions about the research itself, please contact the 
     <inferredMetricsTieBreakers>
         <segue reference="Qa8-yg-wXH"/>
         <segue reference="eh2-Tf-C1m"/>
-        <segue reference="kRX-vk-Pe5"/>
-        <segue reference="ccM-QI-Ya5"/>
-        <segue reference="THe-Rv-3qE"/>
+        <segue reference="Z83-OW-woT"/>
+        <segue reference="cqZ-rZ-ALM"/>
         <segue reference="phb-OD-nP9"/>
+        <segue reference="kRX-vk-Pe5"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.2901960784" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="deviceRGB"/>
 </document>

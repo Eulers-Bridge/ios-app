@@ -16,6 +16,8 @@
 		042559331931C9FD0030AA0A /* Sentinel-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 042559321931C9FD0030AA0A /* Sentinel-Book.otf */; };
 		0425593C19346DA40030AA0A /* EBCandidateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0425593B19346DA40030AA0A /* EBCandidateViewController.m */; };
 		0425593F1935D6970030AA0A /* CALayer+XibConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0425593E1935D6970030AA0A /* CALayer+XibConfiguration.m */; };
+		042858441D76A0F400E53C67 /* EBSearchUserTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042858431D76A0F400E53C67 /* EBSearchUserTableViewController.m */; };
+		042858471D76A55700E53C67 /* EBAddContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042858461D76A55700E53C67 /* EBAddContactViewController.m */; };
 		04428E141998CE450061E2C5 /* EBSlidersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04428E131998CE450061E2C5 /* EBSlidersViewController.m */; };
 		04428E171999B8370061E2C5 /* EBPersonalitySlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 04428E161999B8370061E2C5 /* EBPersonalitySlider.m */; };
 		04428E1A199C6F5B0061E2C5 /* EBSliderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04428E19199C6F5B0061E2C5 /* EBSliderTableViewCell.m */; };
@@ -260,6 +262,10 @@
 		0425593B19346DA40030AA0A /* EBCandidateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBCandidateViewController.m; sourceTree = "<group>"; };
 		0425593D1935D6970030AA0A /* CALayer+XibConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+XibConfiguration.h"; sourceTree = "<group>"; };
 		0425593E1935D6970030AA0A /* CALayer+XibConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+XibConfiguration.m"; sourceTree = "<group>"; };
+		042858421D76A0F400E53C67 /* EBSearchUserTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBSearchUserTableViewController.h; sourceTree = "<group>"; };
+		042858431D76A0F400E53C67 /* EBSearchUserTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBSearchUserTableViewController.m; sourceTree = "<group>"; };
+		042858451D76A55700E53C67 /* EBAddContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBAddContactViewController.h; sourceTree = "<group>"; };
+		042858461D76A55700E53C67 /* EBAddContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBAddContactViewController.m; sourceTree = "<group>"; };
 		04428E121998CE450061E2C5 /* EBSlidersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBSlidersViewController.h; sourceTree = "<group>"; };
 		04428E131998CE450061E2C5 /* EBSlidersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBSlidersViewController.m; sourceTree = "<group>"; };
 		04428E151999B8370061E2C5 /* EBPersonalitySlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBPersonalitySlider.h; sourceTree = "<group>"; };
@@ -1043,6 +1049,10 @@
 				04DA53D51B98230A0090AD6B /* EBProfileContentViewController.m */,
 				04DA53D71B9DDCA90090AD6B /* EBFriendsContentTableViewController.h */,
 				04DA53D81B9DDCA90090AD6B /* EBFriendsContentTableViewController.m */,
+				042858421D76A0F400E53C67 /* EBSearchUserTableViewController.h */,
+				042858431D76A0F400E53C67 /* EBSearchUserTableViewController.m */,
+				042858451D76A55700E53C67 /* EBAddContactViewController.h */,
+				042858461D76A55700E53C67 /* EBAddContactViewController.m */,
 			);
 			name = "Content UI";
 			sourceTree = "<group>";
@@ -1553,6 +1563,7 @@
 				046D6453192C3E7600C354F4 /* EBVolunteerTableViewCell.m in Sources */,
 				04EC196C19483B4C0001FF72 /* EBElectionCandidateTableDataSource.m in Sources */,
 				04FD418C19062ECD00AF17DC /* EBAppDelegate.m in Sources */,
+				042858471D76A55700E53C67 /* EBAddContactViewController.m in Sources */,
 				04FD41C41906574900AF17DC /* EBWelcomeViewController.m in Sources */,
 				0495C50C191B661000EAEAB5 /* EBStackLayout.m in Sources */,
 				049A476D196A803F00D363AE /* EBEmailVerificationViewController.m in Sources */,
@@ -1585,6 +1596,7 @@
 				04BB704E190D229D0059E93C /* EBProfileViewController.m in Sources */,
 				04937C981AC11992002209AA /* EBCircleProgressBar.m in Sources */,
 				0449533F1B1215270036F080 /* EBPersonalityDescriptionViewController.m in Sources */,
+				042858441D76A0F400E53C67 /* EBSearchUserTableViewController.m in Sources */,
 				04428E141998CE450061E2C5 /* EBSlidersViewController.m in Sources */,
 				04D6981F1ADCB3620096AD56 /* EBElectionInfoTableViewController.m in Sources */,
 				049A475A19667FA000D363AE /* EBPersonalityTableViewCell.m in Sources */,
@@ -1747,15 +1759,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Yuan Gao (TD577P828Y)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yuan Gao (TD577P828Y)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yuan Gao (XFJ96J978W)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EulersBridge/Isegoria-Prefix.pch";
 				INFOPLIST_FILE = "EulersBridge/Isegoria-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.eulersbridge.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = Isegoria;
-				PROVISIONING_PROFILE = "6e30ae78-8ed0-432b-a69f-105903129cf8";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1767,15 +1779,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Eulers Bridge Pty Ltd (899L62SLX6)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: Eulers Bridge Pty Ltd (899L62SLX6)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EulersBridge/Isegoria-Prefix.pch";
 				INFOPLIST_FILE = "EulersBridge/Isegoria-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.eulersbridge.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = Isegoria;
-				PROVISIONING_PROFILE = "8b838a00-5ffb-418f-97e8-3ffb6efaa410";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

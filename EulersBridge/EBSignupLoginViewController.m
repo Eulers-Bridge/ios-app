@@ -16,13 +16,17 @@
 #import "MyConstants.h"
 #import "EBHelper.h"
 #import "EBPersonalityDescriptionViewController.h"
+#import "AWSS3.h"
+#import <MobileCoreServices/MobileCoreServices.h>
 
-@interface EBSignupLoginViewController () <UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate, GKImagePickerDelegate, UINavigationControllerDelegate,UIActionSheetDelegate, EBUserServiceDelegate, EBSignupTermsDelegate, EBContentServiceDelegate>
+@interface EBSignupLoginViewController () <UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate, GKImagePickerDelegate, UINavigationControllerDelegate,UIActionSheetDelegate, EBUserServiceDelegate, EBSignupTermsDelegate, EBContentServiceDelegate, UIImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *photoImageView;
 @property (weak, nonatomic) IBOutlet UIView *textFieldContainerView;
 @property (weak, nonatomic) IBOutlet UIButton *uploadImageButton;
+@property (weak, nonatomic) IBOutlet UIProgressView *uploadProgressView;
+
 
 
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
@@ -57,6 +61,8 @@
 @property (strong, nonatomic) EBNetworkService *networkService;
 @property (strong, nonatomic) EBUser *signupedUser;
 
+@property (strong, nonatomic) NSString *profilePicURL;
+
 @property NSInteger countrySelected;
 @property BOOL termsAgreed;
 @property BOOL contentPushedUp;
@@ -86,7 +92,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Init profile pic key
+    self.profilePicURL = @"";
 
+    // Set progress to 0
+    [self.uploadProgressView setProgress:0.0 animated:NO];
+    
     // Image setup
     UIColor *tintColor = [UIColor colorWithRed:51.0/255.0 green:56.0/255.0 blue:69.0/255.0 alpha:0.5];
     self.backgroundImageView.image = [self.backgroundImageView.image applyBlurWithRadius:10 tintColor:tintColor saturationDeltaFactor:1.8 maskImage:nil];
@@ -332,27 +344,177 @@
 
 #pragma image picker
 
+//- (void)showPicker:(UIButton *)sender {
+//    if (!self.gkImagePicker) {
+//        self.gkImagePicker = [[GKImagePicker alloc] init];
+//        self.gkImagePicker.delegate = self;
+//        self.gkImagePicker.cropSize = CGSizeMake(320.0, 320.0);
+//    }
+//    [self presentViewController:self.gkImagePicker.imagePickerController animated:YES completion:nil];
+//    
+//}
+
 - (void)showPicker:(UIButton *)sender {
-    if (!self.gkImagePicker) {
-        self.gkImagePicker = [[GKImagePicker alloc] init];
-        self.gkImagePicker.delegate = self;
-        self.gkImagePicker.cropSize = CGSizeMake(320.0, 320.0);
-    }
-    [self presentViewController:self.gkImagePicker.imagePickerController animated:YES completion:nil];
-    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *takePhotoAction = [UIAlertAction actionWithTitle:@"Take Photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        // TODO: Show Camera
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        picker.allowsEditing = YES;
+        picker.modalPresentationStyle = UIModalPresentationFullScreen;
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        picker.mediaTypes = @[(NSString *)kUTTypeImage];
+        [self presentViewController:picker animated:YES completion:nil];
+    }];
+    UIAlertAction *libAction = [UIAlertAction actionWithTitle:@"Photo Library" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        // TODO: Show Photo Library
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        picker.allowsEditing = YES;
+        picker.modalPresentationStyle = UIModalPresentationPopover;
+        picker.popoverPresentationController.sourceView = sender;
+        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        picker.mediaTypes = @[(NSString *)kUTTypeImage];
+        [self presentViewController:picker animated:YES completion:nil];
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    [alert addAction:takePhotoAction];
+    [alert addAction:libAction];
+    [alert addAction:cancelAction];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
-- (void)imagePicker:(GKImagePicker *)imagePicker pickedImage:(UIImage *)image{
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     [self dismissViewControllerAnimated:YES completion:nil];
+    UIImage *image = info[UIImagePickerControllerEditedImage];
     self.photoImageView.image = image;
     self.photoImageView.contentMode = UIViewContentModeScaleAspectFill;
     NSData *imageData = UIImageJPEGRepresentation(image, 0.6);
     NSUInteger imageSize = imageData.length;
     NSLog(@"SIZE OF IMAGE: %lu ", (unsigned long)imageSize);
     // Upload the photo
-//    NSString *uuidString = [NSUUID UUID].UUIDString;
-//    NSString *key = [NSString stringWithFormat:@"%@_%@_%@"]
+    NSString *uuidString = [NSUUID UUID].UUIDString;
+    NSString *key = [NSString stringWithFormat:@"%@.jpg", uuidString];
+    
+    // Transfer the data
+    self.uploadProgressView.hidden = NO;
+    NSData *dataToUpload = imageData;// The data to upload.
+    
+    AWSS3TransferUtilityUploadExpression *expression = [AWSS3TransferUtilityUploadExpression new];
+    expression.uploadProgress = ^(AWSS3TransferUtilityTask *task, int64_t bytesSent,
+                                  int64_t totalBytesSent,
+                                  int64_t totalBytesExpectedToSend) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            float progress = (float)totalBytesSent / (float)totalBytesExpectedToSend;
+            [self.uploadProgressView setProgress:progress animated:YES];
+        });
+    };
+    
+    AWSS3TransferUtilityUploadCompletionHandlerBlock completionHandler = ^(AWSS3TransferUtilityUploadTask *task, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (error) {
+                NSLog(@"Error: %@", error);
+            } else {
+                self.uploadProgressView.hidden = YES;
+                [self.uploadProgressView setProgress:0.0 animated:NO];
+            }
+        });
+    };
+    
+    AWSS3TransferUtility *transferUtility = [AWSS3TransferUtility defaultS3TransferUtility];
+    [[transferUtility uploadData:dataToUpload
+                          bucket:S3_BUCKET_KEY
+                             key:key
+                     contentType:@"image"
+                      expression:expression
+                completionHander:completionHandler] continueWithBlock:^id(AWSTask *task) {
+        if (task.error) {
+            NSLog(@"Error: %@", task.error);
+        }
+        if (task.exception) {
+            NSLog(@"Exception: %@", task.exception);
+        }
+        if (task.result) {
+            //            AWSS3TransferUtilityUploadTask *uploadTask = task.result;
+            // Do something with uploadTask.
+            self.profilePicURL = [S3_URL_PREFIX stringByAppendingString:key];
+            
+        }
+        
+        return nil;
+    }];
+    
+
 }
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+//- (void)imagePicker:(GKImagePicker *)imagePicker pickedImage:(UIImage *)image{
+//    [self dismissViewControllerAnimated:YES completion:nil];
+//    self.photoImageView.image = image;
+//    self.photoImageView.contentMode = UIViewContentModeScaleAspectFill;
+//    NSData *imageData = UIImageJPEGRepresentation(image, 0.6);
+//    NSUInteger imageSize = imageData.length;
+//    NSLog(@"SIZE OF IMAGE: %lu ", (unsigned long)imageSize);
+//    // Upload the photo
+//    NSString *uuidString = [NSUUID UUID].UUIDString;
+//    NSString *key = [NSString stringWithFormat:@"%@.jpg", uuidString];
+//    
+//    // Transfer the data
+//    self.uploadProgressView.hidden = NO;
+//    NSData *dataToUpload = imageData;// The data to upload.
+//    
+//    AWSS3TransferUtilityUploadExpression *expression = [AWSS3TransferUtilityUploadExpression new];
+//    expression.uploadProgress = ^(AWSS3TransferUtilityTask *task, int64_t bytesSent,
+//                                  int64_t totalBytesSent,
+//                                  int64_t totalBytesExpectedToSend) {
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            float progress = (float)totalBytesSent / (float)totalBytesExpectedToSend;
+//            [self.uploadProgressView setProgress:progress animated:YES];
+//        });
+//    };
+//    
+//    AWSS3TransferUtilityUploadCompletionHandlerBlock completionHandler = ^(AWSS3TransferUtilityUploadTask *task, NSError *error) {
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            if (error) {
+//                NSLog(@"Error: %@", error);
+//            } else {
+//                self.uploadProgressView.hidden = YES;
+//                [self.uploadProgressView setProgress:0.0 animated:NO];
+//            }
+//        });
+//    };
+//    
+//    AWSS3TransferUtility *transferUtility = [AWSS3TransferUtility defaultS3TransferUtility];
+//    [[transferUtility uploadData:dataToUpload
+//                          bucket:S3_BUCKET_KEY
+//                             key:key
+//                     contentType:@"image"
+//                      expression:expression
+//                completionHander:completionHandler] continueWithBlock:^id(AWSTask *task) {
+//        if (task.error) {
+//            NSLog(@"Error: %@", task.error);
+//        }
+//        if (task.exception) {
+//            NSLog(@"Exception: %@", task.exception);
+//        }
+//        if (task.result) {
+////            AWSS3TransferUtilityUploadTask *uploadTask = task.result;
+//            // Do something with uploadTask.
+//            self.profilePicURL = [S3_URL_PREFIX stringByAppendingString:key];
+//            
+//        }
+//        
+//        return nil;
+//    }];
+//    
+//    
+//    
+//}
 
 #pragma mark content delegate
 
@@ -415,7 +577,8 @@
                                        password:self.passwordTextField.text
                                       givenName:self.nameTextField.text
                                        familyName:self.familyNameTextField.text
-                                  institutionId:self.institutionIdSelected];
+                                  institutionId:self.institutionIdSelected
+                                    profilePicURL:self.profilePicURL];
     // Set the spinning wheel or equivelent.
     [self.activityIndicator startAnimating];
     }
@@ -486,6 +649,11 @@
         self.universityTextField.textColor = ISEGORIA_COLOR_SIGNUP_GREEN;
         self.universityValidIndicator.image = tick;
     }
+    
+    if (self.uploadProgressView.hidden == false) {
+        allGood = NO;
+    }
+    
     return allGood;
 }
 

@@ -131,9 +131,11 @@
 
 - (void)addFriend
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Add Friend" message:@"Please enter your friend's email address." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Add", nil];
-    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
-    [alert show];
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Add Friend" message:@"Please enter your friend's email address." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Add", nil];
+//    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+//    [alert show];
+    
+    [self showViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"AddContact"] sender:self];
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
