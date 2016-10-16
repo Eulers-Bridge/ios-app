@@ -18,10 +18,11 @@
 @property (strong, nonatomic) NSString *password;
 @property (strong, nonatomic) NSString *emailVerified;
 @property (strong, nonatomic) NSString *institutionId;
+@property (strong, nonatomic) NSString *profilePhotoURL;
 @property (strong, nonatomic) NSArray *badgesEarned;
 @property (strong, nonatomic) NSArray *tasksCompleted;
 @property BOOL hasPersonality;
 
--(EBUser *)initWithEmail:(NSString *)email givenName:(NSString *)givenName password:(NSString *)password accountVerified:(NSString *)accountVerified institutionId:(NSString *)institutionId userId:(NSString *)userId hasPersonality:(BOOL)hasPersonaltiy;
+-(EBUser *)initWithEmail:(NSString *)email givenName:(NSString *)givenName password:(NSString *)password accountVerified:(NSString *)accountVerified institutionId:(NSString *)institutionId userId:(NSString *)userId hasPersonality:(BOOL)hasPersonaltiy profilePhotoURL:(NSString *)profilePhotoURL;
 
 @end

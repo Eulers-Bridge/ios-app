@@ -50,8 +50,11 @@
 
 - (void)setupAuthorData:(NSDictionary *)data
 {
-    NSString *urlString = data[@"profilePhoto"][@"thumbNailUrl"];
-    [self.authorImageView setImageWithURL:[NSURL URLWithString:urlString]];
+//    NSString *urlString = data[@"profilePhoto"][@"thumbNailUrl"];
+    NSString *urlString = data[@"profilePhoto"];
+    if ([urlString class] != [NSNull class]) {
+        [self.authorImageView setImageWithURL:[NSURL URLWithString:urlString]];
+    }
     self.authorLabel.text = [EBHelper fullNameWithUserObject:data];
 }
 

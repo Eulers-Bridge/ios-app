@@ -12,6 +12,7 @@
 #import "EBUserService.h"
 #import "EBFriendTableViewCell.h"
 #import "UIImageView+AFNetworking.h"
+#import "EBUserService.h"
 
 @interface EBFriendsContentTableViewController () <EBFindFriendCellDelegate, UISearchBarDelegate, UIAlertViewDelegate, EBUserServiceDelegate, EBFriendServiceDelegate>
 
@@ -38,6 +39,19 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addFriend)];
     
 //    [self loadNotifications];
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [self loadFriendRequests];
+}
+
+- (void)refresh:(UIRefreshControl *)refreshControl {
+    [self loadFriendRequests];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     [self loadFriendRequests];
 }
 
@@ -48,10 +62,12 @@
     service.friendDelegate = self;
     [service getFriendRequestReceived];
     [service getFriendRequestSent];
+    [service getFriendsWithUserEmail:[EBUserService retriveUserEmail]];
 }
 
 -(void)getFriendRequestReceivedFinishedWithSuccess:(BOOL)success withRequests:(NSArray *)contacts failureReason:(NSError *)error
 {
+    [self.refreshControl endRefreshing];
     if (success) {
         self.friendRequests = contacts;
         [self.tableView reloadData];
@@ -60,8 +76,18 @@
 
 -(void)getFriendRequestSentFinishedWithSuccess:(BOOL)success withRequests:(NSArray *)contacts failureReason:(NSError *)error
 {
+    [self.refreshControl endRefreshing];
     if (success) {
         self.friendRequestsPending = contacts;
+        [self.tableView reloadData];
+    }
+}
+
+- (void)getFriendsWithUserEmailFinishedWithSuccess:(BOOL)success withContacts:(NSArray *)contacts failureReason:(NSError *)error
+{
+    [self.refreshControl endRefreshing];
+    if (success) {
+        self.friends = contacts;
         [self.tableView reloadData];
     }
 }
@@ -272,12 +298,21 @@
 
 -(void)acceptFriendRequestFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
 {
-//    [self loadFriendRequests];
+    if (success) {
+        [self loadFriendRequests];
+    } else {
+        
+    }
 }
 
 - (void)rejectFriendRequestFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
 {
-    [self.tableView reloadData];
+    if (success) {
+        [self loadFriendRequests];
+    } else {
+        
+    }
+
 }
 
 -(void)dealloc

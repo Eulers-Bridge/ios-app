@@ -139,7 +139,7 @@
 - (void)getUserWithUserEmailFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
 {
     if (success) {
-        NSString *urlString = info[@"profilePhoto"][@"url"];
+        NSString *urlString = info[@"profilePhoto"];
         if (![urlString isEqual:[NSNull null]]) {
             [self.authorImageView setImageWithURL:[NSURL URLWithString:urlString]];
         }

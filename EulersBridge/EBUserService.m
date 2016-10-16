@@ -18,6 +18,7 @@
     [[NSUserDefaults standardUserDefaults] setObject:user.userId forKey:@"userId"];
     [[NSUserDefaults standardUserDefaults] setObject:user.institutionId forKey:@"institutionId"];
     [[NSUserDefaults standardUserDefaults] setBool:user.hasPersonality forKey:@"hasPersonality"];
+    [[NSUserDefaults standardUserDefaults] setBool:user.profilePhotoURL forKey:@"profilePhotoURL"];
 }
 
 + (NSString *)retriveUserEmail

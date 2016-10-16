@@ -23,6 +23,7 @@
 @protocol EBFriendServiceDelegate <NSObject>
 @optional
 - (void)findFriendFinishedWithSuccess:(BOOL)success withContact:(NSDictionary *)contact failureReason:(NSError *)error;
+- (void)findFriendWithNameFinishedWithSuccess:(BOOL)success withContacts:(NSArray *)contacts failureReason:(NSError *)error;
 - (void)getFriendsWithUserEmailFinishedWithSuccess:(BOOL)success withContacts:(NSArray *)contacts failureReason:(NSError *)error;
 - (void)getFriendRequestSentFinishedWithSuccess:(BOOL)success withRequests:(NSArray *)contacts failureReason:(NSError *)error;
 - (void)getFriendRequestReceivedFinishedWithSuccess:(BOOL)success withRequests:(NSArray *)contacts failureReason:(NSError *)error;
@@ -90,6 +91,7 @@
 
 // Friend services
 - (void)findFriendWithContactDetail:(NSString *)contactDetail originalContact:(NSDictionary *)contact;
+- (void)findFriendWithName:(NSString *)name;
 - (void)getFriendsWithUserEmail:(NSString *)userEmail;
 - (void)getFriendRequestSent;
 - (void)getFriendRequestReceived;

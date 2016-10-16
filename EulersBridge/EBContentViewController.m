@@ -217,9 +217,9 @@
 - (void)setupProfileViewWithInfo:(NSDictionary *)info
 {
 //    EBProfileContentViewController *profileVC = (EBProfileContentViewController *)self.contentViewController;
-    if ([info[@"photos"] count] > 0) {
-        NSString *urlString = info[@"photos"][0][@"thumbNailUrl"];
-        [self.imageView setImageWithURL:[NSURL URLWithString:urlString]];
+    NSString *urlString = info[@"profilePhoto"];
+    if ([urlString class] != [NSNull class]) {
+        [self getImageFromServerWithURL: [NSURL URLWithString:urlString]];
     }
     
     self.nameLabel.text = [EBHelper fullNameWithUserObject:info];

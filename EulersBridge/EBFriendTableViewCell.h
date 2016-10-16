@@ -10,6 +10,7 @@
 
 @protocol EBFindFriendCellDelegate <NSObject>
 
+- (void)actionButtonTapped:(NSDictionary *)contact;
 - (void)inviteFriendWithContact:(NSDictionary *)contact;
 - (void)acceptFriendWithRequestId:(NSString *)requestId;
 - (void)rejectFriendWithRequestId:(NSString *)requestId;
@@ -23,6 +24,8 @@
 @property (weak, nonatomic) IBOutlet EBLabelMedium *subtitleLabel;
 @property (weak, nonatomic) IBOutlet UIView *requestActionView;
 @property (weak, nonatomic) IBOutlet UIButton *viewDetailButton;
+@property (weak, nonatomic) IBOutlet EBButtonRoundedHeavy *actionButton;
+
 @property (nonatomic, assign) id<EBFindFriendCellDelegate> delegate;
 @property (strong, nonatomic) NSDictionary *contact;
 @property (strong, nonatomic) NSString *requestId;

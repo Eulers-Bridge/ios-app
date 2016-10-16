@@ -10,6 +10,7 @@
 #import "AFNetworkActivityIndicatorManager.h"
 #import "EBContentViewController.h"
 #import "AWSCore.h"
+#import "AWSS3.h"
 
 @implementation EBAppDelegate
 
@@ -18,9 +19,11 @@
     
     // Setup Amazon s3
     AWSStaticCredentialsProvider *credentialsProvider = [[AWSStaticCredentialsProvider alloc] initWithAccessKey:@"AKIAJNFUHYIZGWPMIZWA" secretKey:@"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"];
-    AWSServiceConfiguration *defaultServiceConfiguration = [[AWSServiceConfiguration alloc] initWithRegion:AWSRegionAPSoutheast2 credentialsProvider:credentialsProvider];
+    AWSServiceConfiguration *defaultServiceConfiguration = [[AWSServiceConfiguration alloc] initWithRegion:AWSRegionUSEast1 credentialsProvider:credentialsProvider];
     [AWSServiceManager defaultServiceManager].defaultServiceConfiguration = defaultServiceConfiguration;
     
+    
+        
     
     // Override point for customization after application launch.
     // Set Global tint color
@@ -101,6 +104,12 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier
+  completionHandler:(void (^)())completionHandler {
+    /* Store the completion handler.*/
+    [AWSS3TransferUtility interceptApplication:application handleEventsForBackgroundURLSession:identifier completionHandler:completionHandler];
 }
 
 // Custom URL scheme

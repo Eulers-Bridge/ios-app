@@ -7,6 +7,7 @@
 //
 
 #import "EBFriendTableViewCell.h"
+#import "MyConstants.h"
 
 @implementation EBFriendTableViewCell
 
@@ -21,7 +22,7 @@
 
 - (void)awakeFromNib
 {
-    // Initialization code
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -33,7 +34,7 @@
 
 - (IBAction)actionButtonPressed:(EBButtonRoundedHeavy *)sender
 {
-    [self.delegate inviteFriendWithContact:self.contact];
+    [self.delegate actionButtonTapped:self.contact];
 }
 
 - (IBAction)accept:(UIButton *)sender
@@ -52,6 +53,8 @@
 {
     self.profileImageView.image = nil;
     self.requestId = nil;
+    self.contact = nil;
+    self.nameLabel.text = @"";
 }
 
 @end

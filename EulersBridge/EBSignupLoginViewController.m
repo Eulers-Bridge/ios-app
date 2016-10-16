@@ -133,6 +133,7 @@
     self.universityButton.enabled = NO;
     
     self.institutionIdSelected = @"";
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -388,7 +389,8 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     [self dismissViewControllerAnimated:YES completion:nil];
-    UIImage *image = info[UIImagePickerControllerEditedImage];
+//    UIImage *image = info[UIImagePickerControllerEditedImage];
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
     self.photoImageView.image = image;
     self.photoImageView.contentMode = UIViewContentModeScaleAspectFill;
     NSData *imageData = UIImageJPEGRepresentation(image, 0.6);
@@ -445,7 +447,6 @@
         
         return nil;
     }];
-    
 
 }
 
