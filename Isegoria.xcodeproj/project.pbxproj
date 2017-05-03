@@ -1309,7 +1309,7 @@
 				ORGANIZATIONNAME = "Eulers Bridge";
 				TargetAttributes = {
 					04FD417719062ECD00AF17DC = {
-						DevelopmentTeam = 899L62SLX6;
+						DevelopmentTeam = L7PYF339KE;
 					};
 					04FD419E19062ECD00AF17DC = {
 						TestTargetID = 04FD417719062ECD00AF17DC;
@@ -1757,6 +1757,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yuan Gao (XFJ96J978W)";
+				DEVELOPMENT_TEAM = L7PYF339KE;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EulersBridge/Isegoria-Prefix.pch";
 				INFOPLIST_FILE = "EulersBridge/Isegoria-Info.plist";
@@ -1764,7 +1765,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.eulersbridge.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = Isegoria;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "a0bf893b-bc7d-4d56-bba9-710b2c41c8fd";
+				PROVISIONING_PROFILE_SPECIFIER = wildcard;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -1780,6 +1782,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: Eulers Bridge Pty Ltd (899L62SLX6)";
+				DEVELOPMENT_TEAM = 899L62SLX6;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EulersBridge/Isegoria-Prefix.pch";
 				INFOPLIST_FILE = "EulersBridge/Isegoria-Info.plist";
@@ -1787,7 +1790,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.eulersbridge.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = Isegoria;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "5d0f98cc-93a6-4aa1-beb3-97ab1671c0b5";
+				PROVISIONING_PROFILE_SPECIFIER = "Isegoria Team Distribution";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

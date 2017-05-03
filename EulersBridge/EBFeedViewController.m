@@ -451,7 +451,7 @@
         [[segue destinationViewController] setImage:cell.imageView.image];
     } else if ([segue.identifier isEqualToString:@"showPhotoCollection"]) {
         [[segue destinationViewController] setFeedDetailType:EBFeedDetailPhoto];
-        [[segue destinationViewController] setIndex:[sender index]];
+//        [[segue destinationViewController] setPhotoIndex:[sender index]];
     }
     [[segue destinationViewController] setData:[sender data]];
 }

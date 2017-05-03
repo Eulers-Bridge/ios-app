@@ -52,6 +52,14 @@
     
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if (self.contentViewType == EBContentViewTypeProfile) {
+        [self loadContentView];
+    }
+}
+
 
 - (void)loadContentView
 {
@@ -130,13 +138,20 @@
         self.centerImageView.hidden = NO;
         self.nameLabel.hidden = NO;
         self.institutionLabel.hidden = NO;
+        // Add an upload button
+        
         [self getInstitutionInfo];
         
         self.navigationItem.title = @"Profile";
         
-        [self getUserDetailWithEmail:[EBUserService retriveUserEmail]];
+        if (self.isSelfProfile) {
+            [self getUserDetailWithEmail:[EBUserService retriveUserEmail]];
+        } else {
+            [self getUserDetailWithEmail:self.data[@"email"]];
+        }
         
         EBProfileContentViewController *profileVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ProfileContentView"];
+        profileVC.isSelfProfile = self.isSelfProfile;
         [self setupDetailViewController:profileVC];
         
     }
@@ -216,7 +231,8 @@
 
 - (void)setupProfileViewWithInfo:(NSDictionary *)info
 {
-//    EBProfileContentViewController *profileVC = (EBProfileContentViewController *)self.contentViewController;
+    EBProfileContentViewController *profileVC = (EBProfileContentViewController *)self.contentViewController;
+    [profileVC setupSelfProfileData:info];
     NSString *urlString = info[@"profilePhoto"];
     if ([urlString class] != [NSNull class]) {
         [self getImageFromServerWithURL: [NSURL URLWithString:urlString]];

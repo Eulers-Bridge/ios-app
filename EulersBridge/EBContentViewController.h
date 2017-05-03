@@ -20,4 +20,6 @@
 @property (strong, nonatomic) NSArray *tickets;
 @property (strong, nonatomic) NSArray *positions;
 
+@property BOOL isSelfProfile;
+
 @end

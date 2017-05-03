@@ -300,6 +300,7 @@
     [self dismissKeyboard];
     [self pushContentDown];
     self.pickerView.hidden = YES;
+    self.uploadImageButton.hidden = NO;
 }
 
 -(void)dismissKeyboard {
@@ -321,6 +322,7 @@
             frame.origin.y -= 138;
             self.textFieldContainerView.frame = frame;
             self.photoImageView.alpha = 0.0;
+            self.uploadImageButton.hidden = YES;
         } completion:completion];
         self.contentPushedUp = YES;
     }

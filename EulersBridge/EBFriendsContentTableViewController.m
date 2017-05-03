@@ -13,13 +13,14 @@
 #import "EBFriendTableViewCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "EBUserService.h"
+#import "EBContentViewController.h"
 
 @interface EBFriendsContentTableViewController () <EBFindFriendCellDelegate, UISearchBarDelegate, UIAlertViewDelegate, EBUserServiceDelegate, EBFriendServiceDelegate>
 
 @property (strong, nonatomic) NSArray *matchingFriends;
 @property (strong, nonatomic) NSArray *friendRequests;
 @property (strong, nonatomic) NSArray *friendRequestsPending;
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+//@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) NSMutableArray *networkServices;
 
 @end
@@ -30,8 +31,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.searchBar.delegate = self;
-    self.searchBar.showsCancelButton = YES;
+//    self.searchBar.delegate = self;
+//    self.searchBar.showsCancelButton = YES;
+//    self.searchBar.hidden = YES;
     self.matchingFriends = self.friends;
     
     self.networkServices = [NSMutableArray array];
@@ -69,7 +71,13 @@
 {
     [self.refreshControl endRefreshing];
     if (success) {
-        self.friendRequests = contacts;
+        NSMutableArray *newRequests = [NSMutableArray array];
+        for (NSDictionary *contact in contacts) {
+            if ([contact[@"accepted"] class] == [NSNull class]) {
+                [newRequests addObject:contact];
+            }
+        }
+        self.friendRequests = [newRequests copy];
         [self.tableView reloadData];
     }
 }
@@ -78,7 +86,13 @@
 {
     [self.refreshControl endRefreshing];
     if (success) {
-        self.friendRequestsPending = contacts;
+        NSMutableArray *newRequests = [NSMutableArray array];
+        for (NSDictionary *contact in contacts) {
+            if ([contact[@"accepted"] class] == [NSNull class]) {
+                [newRequests addObject:contact];
+            }
+        }
+        self.friendRequestsPending = [newRequests copy];
         [self.tableView reloadData];
     }
 }
@@ -182,25 +196,34 @@
     if (indexPath.section == 0) {
         
         cell.requestActionView.hidden = NO;
-        cell.nameLabel.text = self.friendRequests[indexPath.row][@"contactDetails"];
-        cell.subtitleLabel.text = @"Institution";
+        NSString *name = [EBHelper fullNameWithUserObject:self.friendRequests[indexPath.row][@"requesterProfile"]];
+        NSString *email = self.friendRequests[indexPath.row][@"requesterProfile"][@"email"];
+        cell.contact = self.friendRequests[indexPath.row][@"requesterProfile"];
+        cell.nameLabel.text = name;
+        cell.subtitleLabel.text = email;
+//        cell.subtitleLabel.text = @"Institution";
         cell.requestId = self.friendRequests[indexPath.row][@"nodeId"];
         
     } else if (indexPath.section == 1) {
         
         cell.requestActionView.hidden = YES;
         cell.viewDetailButton.hidden = YES;
-        cell.nameLabel.text = self.friendRequestsPending[indexPath.row][@"contactDetails"];
+        NSDictionary *friendObject = self.friendRequestsPending[indexPath.row][@"requestReceiverProfile"];
+        NSString *fullName = [EBHelper fullNameWithUserObject:friendObject];
+        cell.nameLabel.text = fullName;
         cell.subtitleLabel.text = @"Institution";
+        cell.subtitleLabel.text = self.friendRequestsPending[indexPath.row][@"requestReceiverProfile"][@"email"];
         cell.requestId = self.friendRequestsPending[indexPath.row][@"nodeId"];
         
     } else if (indexPath.section == 2) {
         
         cell.requestActionView.hidden = YES;
         cell.viewDetailButton.hidden = NO;
+        cell.contact = self.friends[indexPath.row];
         NSString *fullName = [EBHelper fullNameWithUserObject:self.friends[indexPath.row]];
         cell.nameLabel.text = fullName;
         cell.subtitleLabel.text = @"Institution";
+        cell.subtitleLabel.text = self.friends[indexPath.row][@"requestReceiverProfile"][@"email"];
         
         if ([self.friends[indexPath.row][@"profilePhoto"] isKindOfClass:[NSDictionary class]]) {
             NSString *urlString = self.friends[indexPath.row][@"profilePhoto"][@"url"];
@@ -296,10 +319,20 @@
     [service rejectFriendRequestWithRequestId:requestId];
 }
 
+- (void)actionButtonTapped:(NSDictionary *)contact
+{
+    // Show contact profile.
+    EBContentViewController *contentVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ContentViewController"];
+    contentVC.contentViewType = EBContentViewTypeProfile;
+    contentVC.data = contact;
+    [self showViewController:contentVC sender:self];
+}
+
 -(void)acceptFriendRequestFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
 {
+    [self loadFriendRequests];
     if (success) {
-        [self loadFriendRequests];
+        
     } else {
         
     }
@@ -307,8 +340,9 @@
 
 - (void)rejectFriendRequestFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
 {
+    [self loadFriendRequests];
     if (success) {
-        [self loadFriendRequests];
+        
     } else {
         
     }

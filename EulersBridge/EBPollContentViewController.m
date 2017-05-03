@@ -104,7 +104,9 @@
     
     
     // Setup data
-    [self getUserDetailWithEmail:self.info[@"creatorEmail"]];
+    if (self.info[@"creatorEmail"] != [NSNull null]) {
+        [self getUserDetailWithEmail:self.info[@"creatorEmail"]];
+    }
     self.questionTextView.text = self.info[@"question"];
     self.numberOfVotesLabel.text = @"";
     self.numberOfCommentsLabel.text = [self.info[@"numOfComments"] stringValue];

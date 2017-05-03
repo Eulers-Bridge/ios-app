@@ -13,5 +13,7 @@
 @interface EBProfileContentViewController : UIViewController <EBContentDetail>
 
 - (void)setupData:(NSDictionary *)data;
+- (void)setupSelfProfileData:(NSDictionary *)data;
+@property BOOL isSelfProfile;
 
 @end

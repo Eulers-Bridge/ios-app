@@ -13,6 +13,6 @@
 
 @property (strong, nonatomic) NSDictionary *data;
 @property EBFeedDetail feedDetailType;
-@property NSUInteger index;
+@property NSUInteger photoIndex;
 
 @end

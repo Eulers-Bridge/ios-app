@@ -49,6 +49,11 @@
     [self.delegate rejectFriendWithRequestId:self.requestId];
 }
 
+- (IBAction)showProfile:(UIButton *)sender {
+    [self.delegate actionButtonTapped:self.contact];
+}
+
+
 -(void)prepareForReuse
 {
     self.profileImageView.image = nil;

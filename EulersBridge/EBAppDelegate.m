@@ -124,6 +124,7 @@
     
     EBContentViewController *contentVC = [self.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"ContentViewController"];
     contentVC.contentViewType = EBContentViewTypeProfile;
+    contentVC.isSelfProfile = YES;
     
     UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
     UINavigationController *nav = (UINavigationController *)tabBarController.viewControllers[3];
