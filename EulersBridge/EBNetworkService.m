@@ -40,7 +40,6 @@
         [self.userDelegate signupFinishedWithSuccess:YES withUser:user failureReason:nil];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [self.userDelegate signupFinishedWithSuccess:NO withUser:nil failureReason:error];
-        
     }];
     
 }

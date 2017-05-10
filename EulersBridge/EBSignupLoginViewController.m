@@ -17,6 +17,7 @@
 #import "EBHelper.h"
 #import "EBPersonalityDescriptionViewController.h"
 #import "AWSS3.h"
+#import "AFNetworking.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 
 @interface EBSignupLoginViewController () <UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate, GKImagePickerDelegate, UINavigationControllerDelegate,UIActionSheetDelegate, EBUserServiceDelegate, EBSignupTermsDelegate, EBContentServiceDelegate, UIImagePickerControllerDelegate>
@@ -28,7 +29,7 @@
 @property (weak, nonatomic) IBOutlet UIProgressView *uploadProgressView;
 
 
-
+@property (weak, nonatomic) IBOutlet EBLabelLight *errorLabel;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *familyNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
@@ -64,6 +65,7 @@
 @property (strong, nonatomic) NSString *profilePicURL;
 
 @property NSInteger countrySelected;
+@property CGFloat textContainerPushDownAmount;
 @property BOOL termsAgreed;
 @property BOOL contentPushedUp;
 
@@ -113,14 +115,25 @@
 
     }
     
+    if (self.textFieldContainerView.frame.origin.y < (self.errorLabel.frame.origin.y + self.errorLabel.frame.size.height)) {
+        CGRect frame = self.textFieldContainerView.frame;
+        frame.origin.y += 20;
+        self.textContainerPushDownAmount = 20;
+        self.textFieldContainerView.frame = frame;
+    }
+    
     self.countryButton.enabled = NO;
     self.pickerView.hidden = YES;
+    self.errorLabel.hidden = YES;
     
     // Gesture Recognizer
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                           action:@selector(tapAnywhere)];
+    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeDown)];
+    swipe.direction = UISwipeGestureRecognizerDirectionDown;
     
     [self.view addGestureRecognizer:tap];
+    [self.view addGestureRecognizer:swipe];
     self.networkService = [[EBNetworkService alloc] init];
     self.networkService.userDelegate = self;
     self.networkService.contentDelegate = self;
@@ -311,6 +324,13 @@
     [self.confirmPasswordTextField resignFirstResponder];
 }
 
+#pragma mark swipe gesture
+- (void)swipeDown
+{
+    [self tapAnywhere];
+}
+
+
 
 #pragma mark animation
 - (void)pushContentUpWithCompletion:(void (^)(BOOL finished))completion
@@ -321,6 +341,9 @@
             CGRect frame = self.textFieldContainerView.frame;
             frame.origin.y -= 138;
             self.textFieldContainerView.frame = frame;
+            CGRect errorMessageFrame = self.errorLabel.frame;
+            errorMessageFrame.origin.y -= 138;
+            self.errorLabel.frame = errorMessageFrame;
             self.photoImageView.alpha = 0.0;
             self.uploadImageButton.hidden = YES;
         } completion:completion];
@@ -336,6 +359,9 @@
             CGRect frame = self.textFieldContainerView.frame;
             frame.origin.y += 138;
             self.textFieldContainerView.frame = frame;
+            CGRect errorMessageFrame = self.errorLabel.frame;
+            errorMessageFrame.origin.y += 138;
+            self.errorLabel.frame = errorMessageFrame;
             self.photoImageView.alpha = 1.0;
         } completion:^(BOOL finished) {
             
@@ -418,11 +444,12 @@
     
     AWSS3TransferUtilityUploadCompletionHandlerBlock completionHandler = ^(AWSS3TransferUtilityUploadTask *task, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
+            self.uploadProgressView.hidden = YES;
+            [self.uploadProgressView setProgress:0.0 animated:NO];
             if (error) {
                 NSLog(@"Error: %@", error);
             } else {
-                self.uploadProgressView.hidden = YES;
-                [self.uploadProgressView setProgress:0.0 animated:NO];
+                self.profilePicURL = [S3_URL_PREFIX stringByAppendingString:key];
             }
         });
     };
@@ -434,17 +461,22 @@
                      contentType:@"image"
                       expression:expression
                 completionHander:completionHandler] continueWithBlock:^id(AWSTask *task) {
+        
         if (task.error) {
             NSLog(@"Error: %@", task.error);
+            self.uploadProgressView.hidden = YES;
+            [self.uploadProgressView setProgress:0.0 animated:NO];
+            self.errorLabel.text = @"Upload failed, please try again.";
+            self.errorLabel.hidden = NO;
         }
         if (task.exception) {
             NSLog(@"Exception: %@", task.exception);
+            self.uploadProgressView.hidden = YES;
+            [self.uploadProgressView setProgress:0.0 animated:NO];
+            self.errorLabel.text = @"Upload failed, please try again.";
+            self.errorLabel.hidden = NO;
         }
         if (task.result) {
-            //            AWSS3TransferUtilityUploadTask *uploadTask = task.result;
-            // Do something with uploadTask.
-            self.profilePicURL = [S3_URL_PREFIX stringByAppendingString:key];
-            
         }
         
         return nil;
@@ -544,7 +576,7 @@
 }
 
 #pragma mark signup delegate
--(void)signupFinishedWithSuccess:(BOOL)success withUser:(EBUser *)user failureReason:(NSString *)reason
+-(void)signupFinishedWithSuccess:(BOOL)success withUser:(EBUser *)user failureReason:(NSError *)error
 {
     [self.activityIndicator stopAnimating];
     // advance to next page or display the error.
@@ -553,6 +585,13 @@
         [self performSegueWithIdentifier:@"SignupAction" sender:self];
     } else {
         // Display error reason.
+        NSInteger errorCode = (NSInteger)[[[error userInfo] objectForKey:AFNetworkingOperationFailingURLResponseErrorKey] statusCode];
+        if (errorCode == 409) {
+            self.errorLabel.text = @"Account already exists.";
+            self.errorLabel.hidden = false;
+            self.emailTextField.textColor = ISEGORIA_COLOR_SIGNUP_RED;
+            self.emailValidIndicator.image = [UIImage imageNamed:@"Cross"];
+        }
     }
 }
 
@@ -589,6 +628,9 @@
 
 - (BOOL)verifyFields
 {
+    self.errorLabel.text = @"";
+    self.errorLabel.hidden = YES;
+    
     BOOL allGood = YES;
     UIImage *tick = [UIImage imageNamed:@"Tick"];
     UIImage *cross = [UIImage imageNamed:@"Cross"];
@@ -618,6 +660,8 @@
     } else {
         self.emailTextField.textColor = ISEGORIA_COLOR_SIGNUP_RED;
         self.emailValidIndicator.image = cross;
+        self.errorLabel.text = @"Email is not valid.";
+        self.errorLabel.hidden = NO;
         allGood = NO;
     }
     
@@ -628,6 +672,13 @@
         self.passwordValidIndicator.image = tick;
         self.confirmPasswordValidIndicator.image = tick;
     } else {
+        if ([self.passwordTextField.text length] < 6) {
+            self.errorLabel.text = @"Password must be at least 6 characters.";
+            self.errorLabel.hidden = NO;
+        } else {
+            self.errorLabel.text = @"Password does not match.";
+            self.errorLabel.hidden = NO;
+        }
         self.passwordTextField.textColor = ISEGORIA_COLOR_SIGNUP_RED;
         self.confirmPasswordTextField.textColor = ISEGORIA_COLOR_SIGNUP_RED;
         self.passwordValidIndicator.image = cross;
@@ -655,6 +706,8 @@
     
     if (self.uploadProgressView.hidden == false) {
         allGood = NO;
+        self.errorLabel.text = @"Please wait for photo uploading.";
+        self.errorLabel.hidden = NO;
     }
     
     return allGood;
@@ -662,10 +715,13 @@
 
 - (void)restoreFields
 {
+    self.errorLabel.text = @"";
+    self.errorLabel.hidden = YES;
     self.nameTextField.enabled = YES;
     self.nameTextField.textColor = [UIColor blackColor];
     self.familyNameTextField.enabled = YES;
     self.familyNameTextField.textColor = [UIColor blackColor];
+    self.familyNameValidIndicator.image = nil;
     self.nameValidIndicator.image = nil;
     self.emailTextField.enabled = YES;
     self.emailTextField.textColor = [UIColor blackColor];

@@ -1790,8 +1790,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.eulersbridge.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = Isegoria;
-				PROVISIONING_PROFILE = "5d0f98cc-93a6-4aa1-beb3-97ab1671c0b5";
-				PROVISIONING_PROFILE_SPECIFIER = "Isegoria Team Distribution";
+				PROVISIONING_PROFILE = "856934d9-8466-484b-9481-e46209db6aa6";
+				PROVISIONING_PROFILE_SPECIFIER = "Isegoria App Distribution";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

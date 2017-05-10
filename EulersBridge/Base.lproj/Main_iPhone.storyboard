@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES" initialViewController="fmt-DH-4Pl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES" initialViewController="fmt-DH-4Pl">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -212,14 +212,14 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FeedCellLarge" id="OGo-gI-Lc2" customClass="EBFeedCollectionViewCell">
-                                                <rect key="frame" x="35" y="8" width="304" height="150"/>
+                                                <rect key="frame" x="35" y="8" width="305" height="150"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                    <rect key="frame" x="0.0" y="0.0" width="304" height="150"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="305" height="150"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="hWn-Q2-Asr" customClass="EBDarkImageView">
-                                                            <rect key="frame" x="0.0" y="0.0" width="304" height="150"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="305" height="150"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         </imageView>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title title Title title Title titleTitle title title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="R1K-yS-Nel" customClass="EBLabelLight">
@@ -282,7 +282,7 @@
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         </imageView>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title title Title title Title titleTitle title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Iqu-tL-4LO" customClass="EBLabelLight">
-                                                            <rect key="frame" x="20" y="51" width="114" height="34"/>
+                                                            <rect key="frame" x="21" y="51" width="114" height="34"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -850,11 +850,16 @@
                                     <action selector="uploadImage:" destination="AS6-Ue-LrR" eventType="touchUpInside" id="ToU-Fd-alg"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" id="ge1-bF-dNV">
+                            <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progress="0.5" id="n5N-bh-Eje">
+                                <rect key="frame" x="123" y="229" width="128" height="2"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="progressTintColor" red="0.37647058823529411" green="0.59999999999999998" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </progressView>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" id="ge1-bF-dNV">
                                 <rect key="frame" x="15" y="287" width="345" height="308"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <textField clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="University" minimumFontSize="17" clearButtonMode="whileEditing" id="GB2-5c-cGX">
+                                    <textField clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Institution" minimumFontSize="17" clearButtonMode="whileEditing" id="GB2-5c-cGX">
                                         <rect key="frame" x="10" y="264" width="335" height="44"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <color key="textColor" red="0.14541876316070557" green="0.1842799037694931" blue="0.23556813597679138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1033,11 +1038,13 @@
                                     <outlet property="delegate" destination="AS6-Ue-LrR" id="MGB-zZ-RCt"/>
                                 </connections>
                             </pickerView>
-                            <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" id="n5N-bh-Eje">
-                                <rect key="frame" x="123" y="225" width="128" height="2"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Error Message" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HGb-El-Wg6" customClass="EBLabelLight">
+                                <rect key="frame" x="15" y="240" width="345" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <color key="progressTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </progressView>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.42745098039215684" blue="0.396078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -1058,6 +1065,7 @@
                         <outlet property="countryValidIndicator" destination="e2u-Ll-LlV" id="OPG-iY-yCk"/>
                         <outlet property="emailTextField" destination="ZfG-Xv-07A" id="0BA-2F-y3S"/>
                         <outlet property="emailValidIndicator" destination="yhF-FC-h9c" id="O3Y-nR-dKW"/>
+                        <outlet property="errorLabel" destination="HGb-El-Wg6" id="zBM-kX-hOV"/>
                         <outlet property="familyNameTextField" destination="aln-K4-ghK" id="msf-Ij-Wks"/>
                         <outlet property="familyNameValidIndicator" destination="YMO-7O-YUx" id="5h1-Mf-heI"/>
                         <outlet property="nameTextField" destination="RcE-Wc-b1D" id="Cos-fv-09f"/>
@@ -1079,7 +1087,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gur-3p-9oT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-606" y="1209"/>
+            <point key="canvasLocation" x="-606.5" y="1208.5"/>
         </scene>
         <!--Sign Up-->
         <scene sceneID="uPo-k2-j4O">
@@ -5888,7 +5896,7 @@ If you have any further questions about the research itself, please contact the 
                                 <rect key="frame" x="0.0" y="22" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GnX-XS-Vc9" id="xky-Qe-RMF">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Pgk-wr-XCi" customClass="EBLabelMedium">
@@ -5929,7 +5937,7 @@ If you have any further questions about the research itself, please contact the 
                                             </connections>
                                         </button>
                                         <view contentMode="scaleToFill" id="CpE-je-Dfh">
-                                            <rect key="frame" x="200" y="5" width="126" height="30"/>
+                                            <rect key="frame" x="200" y="4" width="126" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="254-ga-9Te">
