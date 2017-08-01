@@ -29,7 +29,7 @@
 
 - (void)sliderUpdate:(UISlider *)slider
 {
-    float interval = slider.maximumValue / 6;
+    float interval = slider.maximumValue / (self.numChoice - 1);
     float n = slider.value / interval;
     int section = (int)n;
     if (n - section > 0.5) {
@@ -42,7 +42,7 @@
 
 -(void)setSelectionWithIndex:(int)index
 {
-    self.slider.value = (float)index * self.slider.maximumValue / 6;
+    self.slider.value = (float)index * self.slider.maximumValue / (self.numChoice - 1);
     self.degreeLabel.text = self.degreeTitles[index];
 }
 

@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 Eulers Bridge. All rights reserved.
 //
 
-#import "EBSlidersViewController.h"
+#import "EBSelfEfficacySlidersViewController.h"
 #import "EBSliderTableViewCell.h"
 #import "EBAppDelegate.h"
 #import "EBNetworkService.h"
 #import "EBEmailVerificationViewController.h"
 
-@interface EBSlidersViewController () <UITableViewDataSource, UITableViewDelegate, EBPersonalitySelectionDelegate, EBUserServiceDelegate>
+@interface EBSelfEfficacySlidersViewController () <UITableViewDataSource, UITableViewDelegate, EBPersonalitySelectionDelegate, EBUserServiceDelegate>
 
 @property (strong, nonatomic) NSArray *titleArray;
 @property (strong, nonatomic) NSArray *degreeArray;
@@ -21,7 +21,7 @@
 
 @end
 
-@implementation EBSlidersViewController
+@implementation EBSelfEfficacySlidersViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,26 +35,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.titleArray = @[@"Extraverted, enthusiastic",
-                        @"Critical, quarrelsome",
-                        @"Dependable, self-disciplined",
-                        @"Anxious, easily upset",
-                        @"Open to new experiences, complex",
-                        @"Reserved, quiet",
-                        @"Sympathetic, warm",
-                        @"Disorganized, careless",
-                        @"Calm, emotionally stable",
-                        @"Conventional, uncreative"];
-    self.degreeArray = @[@"Disagree Strongly",
-                         @"Disagree Moderately",
-                         @"Disagree a Little",
-                         @"Neither",
-                         @"Agree a little",
-                         @"Agree Moderately",
-                         @"Agree Strongly"];
+    self.titleArray = @[@"Promote public initiatives to support political programs that you believe are just",
+                        @"Maintain personal relationships with representatives of national government authorities",
+                        @"Promote effective activities of information and mobilization in your own community (of work, friends, and family), to sustain political programs in which you believe",
+                        @"Use the means you have as a citizen to critically monitor the actions of your political representatives"];
+    self.degreeArray = @[@"Not at all",
+                         @"Somewhat unlikely",
+                         @"Neutral",
+                         @"Somewhat likely",
+                         @"Completely"];
     
     self.selectionArray = [NSMutableArray array];
-    for (int i = 0; i < 10; i += 1) {
+    for (int i = 0; i < self.titleArray.count; i += 1) {
         [self.selectionArray addObject:@(3)];
     }
     
@@ -68,7 +60,7 @@
 #pragma mark Table View Data Source
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return self.titleArray.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -79,7 +71,7 @@
     [cell setSelectionWithIndex:[self.selectionArray[indexPath.row] intValue]];
     cell.selectionDelegate = self;
     cell.index = indexPath.row;
-    cell.numChoice = 7;
+    cell.numChoice = 5;
     return cell;
 }
 

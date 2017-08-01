@@ -239,8 +239,10 @@
         } else if (self.candidateFilter == EBCandidateFilterByTicket) {
             id = candidate[@"candidateData"][@"ticketId"];
         }
-        if ([id intValue] == self.filterId) {
-            [matchingCandidates addObject:candidate];
+        if (id != [NSNull null]) {
+            if ([id intValue] == self.filterId) {
+                [matchingCandidates addObject:candidate];
+            }
         }
     }
     self.candidates = [matchingCandidates copy];
@@ -257,13 +259,17 @@
         NSDictionary *candidateData = [candidate copy];
         // Find position and ticket data
         for (NSDictionary *position in positions) {
-            if ([position[@"positionId"] integerValue] == [candidate[@"positionId"] integerValue]) {
-                positionData = [position copy];
+            if (position[@"positionId"] != [NSNull null] && candidate[@"positionId"] != [NSNull null]) {
+                if ([position[@"positionId"] integerValue] == [candidate[@"positionId"] integerValue]) {
+                    positionData = [position copy];
+                }
             }
         }
         for (NSDictionary *ticket in tickets) {
-            if ([ticket[@"ticketId"] integerValue] == [candidate[@"ticketId"] integerValue]) {
-                ticketData = [ticket copy];
+            if (ticket[@"ticketId"] != [NSNull null] && candidate[@"ticketId"] != [NSNull null]) {
+                if ([ticket[@"ticketId"] integerValue] == [candidate[@"ticketId"] integerValue]) {
+                    ticketData = [ticket copy];
+                }
             }
         }
         NSDictionary *newCandidate = @{@"candidateData": candidateData,
@@ -310,9 +316,10 @@
     
 
 //    NSString *imageName = [NSString stringWithFormat:@"candidate%@.jpg", self.matchingCandidates[indexPath.row][@"id"]];
-
-    NSString *urlString = self.matchingCandidates[indexPath.row][@"candidateData"][@"photos"][0][@"url"];
-    [cell.candidateImageView setImageWithURL:[NSURL URLWithString:urlString]];
+    if (self.matchingCandidates[indexPath.row][@"candidateData"][@"photos"] != [NSNull null]) {
+        NSString *urlString = self.matchingCandidates[indexPath.row][@"candidateData"][@"photos"][0][@"url"];
+        [cell.candidateImageView setImageWithURL:[NSURL URLWithString:urlString]];
+    }
     cell.index = indexPath.row;
 //    cell.delegate = self;
     return cell;

@@ -120,9 +120,10 @@
         [self getInstitutionInfo];
         
         self.navigationItem.title = @"Ticket Profile";
-        
-        if ([self.data[@"photos"] count] != 0) {
-            [self getImageFromServerWithURL:[NSURL URLWithString:self.data[@"photos"][0][@"url"]]];
+        if (self.data[@"photos"] != [NSNull null]) {
+            if ([self.data[@"photos"] count] != 0) {
+                [self getImageFromServerWithURL:[NSURL URLWithString:self.data[@"photos"][0][@"url"]]];
+            }
         }
         self.nameLabel.text = self.data[@"name"];
         

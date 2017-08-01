@@ -329,7 +329,7 @@
             [dateFormatter setDateFormat:@"dd MMMM yyyy, h:mm a"];
             NSString *dateAndTime = [dateFormatter stringFromDate:date];
 //            NSString *ago = [date timeAgoSinceNow];
-            NSArray *photoList = newsItem[@"photos"];
+            NSArray *photoList = newsItem[@"photos"] == [NSNull null] ? [NSArray array] : newsItem[@"photos"];
             
             NSDictionary *data = @{@"priority"     : @(i % 3 == 0 ? 1 : 0),
                                    @"title"        : newsItem[@"title"],
@@ -364,7 +364,7 @@
             NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
             [dateFormatter setDateFormat:@"dd MMMM yyyy 'at' h:mm a"];
             NSString *dateAndTime = [dateFormatter stringFromDate:date];
-            NSArray *photoList = eventItem[@"photos"];
+            NSArray *photoList = eventItem[@"photos"] == [NSNull null] ? [NSArray array] : eventItem[@"photos"];
             
             NSDictionary *data = @{@"priority"      : @(1),
                                    @"title"         : eventItem[@"name"],

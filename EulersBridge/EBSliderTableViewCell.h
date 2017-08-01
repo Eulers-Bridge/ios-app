@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet EBLabelMedium *titleLabel;
 @property (weak, nonatomic) IBOutlet EBLabelMedium *degreeLabel;
 
+@property int numChoice;
 @property (strong, nonatomic) NSArray *degreeTitles;
 @property long index;
 

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES" initialViewController="fmt-DH-4Pl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES" initialViewController="fmt-DH-4Pl">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -166,14 +166,14 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </imageView>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Collection Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CFl-L6-or7" customClass="EBLabelMedium">
-                                                            <rect key="frame" x="51" y="7" width="241" height="21"/>
+                                                            <rect key="frame" x="51" y="7" width="242" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" red="0.14541876316070557" green="0.1842799037694931" blue="0.23556813597679138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of photos and Dates" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ah8-7Z-9BC">
-                                                            <rect key="frame" x="51" y="23" width="241" height="21"/>
+                                                            <rect key="frame" x="51" y="23" width="242" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                             <color key="textColor" red="0.45224356651306152" green="0.50741010904312134" blue="0.5720556378364563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -212,18 +212,18 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FeedCellLarge" id="OGo-gI-Lc2" customClass="EBFeedCollectionViewCell">
-                                                <rect key="frame" x="35" y="8" width="305" height="150"/>
+                                                <rect key="frame" x="35" y="8" width="304" height="150"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                    <rect key="frame" x="0.0" y="0.0" width="305" height="150"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="304" height="150"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="hWn-Q2-Asr" customClass="EBDarkImageView">
-                                                            <rect key="frame" x="0.0" y="0.0" width="305" height="150"/>
+                                                            <rect key="frame" x="-1" y="-3" width="301" height="152"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         </imageView>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title title Title title Title titleTitle title title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="R1K-yS-Nel" customClass="EBLabelLight">
-                                                            <rect key="frame" x="14" y="44" width="275" height="48"/>
+                                                            <rect key="frame" x="11" y="42" width="277" height="46"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -231,7 +231,7 @@
                                                             <size key="shadowOffset" width="0.0" height="1"/>
                                                         </label>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jIC-tu-lik">
-                                                            <rect key="frame" x="14" y="94" width="275" height="11"/>
+                                                            <rect key="frame" x="11" y="92" width="277" height="10"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1201,7 +1201,7 @@
                     <navigationItem key="navigationItem" id="DLi-fg-KPz">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="XJI-Wc-Snu">
-                            <rect key="frame" x="39" y="8" width="230" height="29"/>
+                            <rect key="frame" x="72" y="8" width="230" height="29"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Election"/>
@@ -1209,7 +1209,7 @@
                             </segments>
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </segmentedControl>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" image="Pledge Icon" id="aKP-HO-f6v">
+                        <barButtonItem key="rightBarButtonItem" image="Pledge Icon" id="aKP-HO-f6v">
                             <connections>
                                 <segue destination="tqy-QC-0u3" kind="push" id="fsx-1V-cqu"/>
                             </connections>
@@ -2131,6 +2131,26 @@ Create a reminder to vote, by selecting the date and time for your next student 
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.39865052700042725" green="0.3953668475151062" blue="0.4916556179523468" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="NHO-fa-l0a" customClass="EBButtonRoundedHeavy">
+                                        <rect key="frame" x="122" y="555" width="131" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" title="Start Survey">
+                                            <color key="titleColor" red="0.43150305750000001" green="0.69289422040000004" blue="0.25811487440000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="mainColor">
+                                                <color key="value" red="0.31676065920000002" green="0.73180449010000004" blue="0.25796914100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                <color key="value" red="0.31676065920000002" green="0.73180449010000004" blue="0.25796914100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="setReminder:" destination="tqy-QC-0u3" eventType="touchUpInside" id="Vru-ag-6TZ"/>
+                                            <segue destination="fOF-VB-Mhw" kind="push" id="mYB-nK-v2u"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
@@ -3117,7 +3137,7 @@ Create a reminder to vote, by selecting the date and time for your next student 
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="CFC-7L-d7J"/>
                                     <barButtonItem style="plain" id="K0a-em-IPF">
                                         <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="MRO-Aa-9l8">
-                                            <rect key="frame" x="48" y="8" width="279" height="29"/>
+                                            <rect key="frame" x="48" y="7.5" width="279" height="29"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="Position"/>
@@ -5429,7 +5449,7 @@ If you have any further questions about the research itself, please contact the 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y3w-bj-IFh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="748" y="1979"/>
+            <point key="canvasLocation" x="762" y="1970"/>
         </scene>
         <!--Sign Up-->
         <scene sceneID="tLg-Cd-crq">
@@ -6253,6 +6273,83 @@ If you have any further questions about the research itself, please contact the 
             </objects>
             <point key="canvasLocation" x="5721" y="-3106"/>
         </scene>
+        <!--Self-Efficacy Questions-->
+        <scene sceneID="6ey-SF-nNO">
+            <objects>
+                <viewController id="fOF-VB-Mhw" customClass="EBSelfEfficacySlidersViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="n9L-Hx-jUf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="199" sectionHeaderHeight="22" sectionFooterHeight="22" id="XfR-Rz-Hha">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textView key="tableHeaderView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" id="3Sk-Yt-68p">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="148"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                    <string key="text">The PPSE-S composed of 4 items aimed to assess individuals’ beliefs in their capabilities to engage actively in politics.
+The 4 items are measured on a 5 point Likert scale, from 1 (not at all) to 5 (completely).
+</string>
+                                    <color key="textColor" red="0.1454187632" green="0.18427990380000001" blue="0.23556813600000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                </textView>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" misplaced="YES" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SliderCell" rowHeight="199" id="NW1-fJ-kuI" customClass="EBSliderTableViewCell">
+                                        <rect key="frame" x="0.0" y="170" width="375" height="199"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NW1-fJ-kuI" id="8lg-S2-Bio">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="199"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Title" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="p2j-v3-Ags" customClass="EBLabelMedium">
+                                                    <rect key="frame" x="15" y="8" width="345" height="111"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.1454187632" green="0.18427990380000001" blue="0.23556813600000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Degree" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1VN-lz-9sC" customClass="EBLabelMedium">
+                                                    <rect key="frame" x="76" y="168" width="222" height="17"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <color key="textColor" red="0.45224356650000003" green="0.50741010900000005" blue="0.57205563780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" continuous="NO" id="Fvs-KP-HpF" customClass="EBPersonalitySlider">
+                                                    <rect key="frame" x="45" y="130" width="285" height="31"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                </slider>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="degreeLabel" destination="1VN-lz-9sC" id="5kY-Kj-iSA"/>
+                                            <outlet property="slider" destination="Fvs-KP-HpF" id="edK-LD-EaJ"/>
+                                            <outlet property="titleLabel" destination="p2j-v3-Ags" id="nkV-nz-g2L"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="fOF-VB-Mhw" id="3LC-ON-ixM"/>
+                                    <outlet property="delegate" destination="fOF-VB-Mhw" id="677-Mj-BKY"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Self-Efficacy Questions" id="u0E-OW-1Qf">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="EzU-8L-YKZ">
+                            <connections>
+                                <action selector="doneAction:" destination="fOF-VB-Mhw" id="9dS-6D-pfM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xFt-hu-rB2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3361.5" y="-1279.5"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Chevron 2" width="8" height="12"/>
@@ -6286,12 +6383,12 @@ If you have any further questions about the research itself, please contact the 
         <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Qa8-yg-wXH"/>
-        <segue reference="eh2-Tf-C1m"/>
-        <segue reference="Z83-OW-woT"/>
-        <segue reference="cqZ-rZ-ALM"/>
         <segue reference="phb-OD-nP9"/>
+        <segue reference="eh2-Tf-C1m"/>
+        <segue reference="Qa8-yg-wXH"/>
         <segue reference="kRX-vk-Pe5"/>
+        <segue reference="WU0-f4-Xhh"/>
+        <segue reference="cqZ-rZ-ALM"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.23315238952636719" green="0.47978004813194275" blue="0.85770797729492188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

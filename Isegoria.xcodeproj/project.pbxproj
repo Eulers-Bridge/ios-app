@@ -216,6 +216,7 @@
 		04EC1977194987A20001FF72 /* GenBkBasR.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04EC1976194987A20001FF72 /* GenBkBasR.ttf */; };
 		04EC197A194989E20001FF72 /* EBFriendsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EC1979194989E20001FF72 /* EBFriendsTableViewController.m */; };
 		04EC197E19498FC20001FF72 /* EBFriendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EC197D19498FC20001FF72 /* EBFriendTableViewCell.m */; };
+		04F562BA1F1F3AF000A21245 /* EBSelfEfficacySlidersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F562B81F1F3AF000A21245 /* EBSelfEfficacySlidersViewController.m */; };
 		04FD417C19062ECD00AF17DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FD417B19062ECD00AF17DC /* Foundation.framework */; };
 		04FD417E19062ECD00AF17DC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FD417D19062ECD00AF17DC /* CoreGraphics.framework */; };
 		04FD418019062ECD00AF17DC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FD417F19062ECD00AF17DC /* UIKit.framework */; };
@@ -554,6 +555,8 @@
 		04EC1979194989E20001FF72 /* EBFriendsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBFriendsTableViewController.m; sourceTree = "<group>"; };
 		04EC197C19498FC20001FF72 /* EBFriendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBFriendTableViewCell.h; sourceTree = "<group>"; };
 		04EC197D19498FC20001FF72 /* EBFriendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBFriendTableViewCell.m; sourceTree = "<group>"; };
+		04F562B81F1F3AF000A21245 /* EBSelfEfficacySlidersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBSelfEfficacySlidersViewController.m; sourceTree = "<group>"; };
+		04F562B91F1F3AF000A21245 /* EBSelfEfficacySlidersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBSelfEfficacySlidersViewController.h; sourceTree = "<group>"; };
 		04FD417819062ECD00AF17DC /* Isegoria.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Isegoria.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04FD417B19062ECD00AF17DC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		04FD417D19062ECD00AF17DC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -724,6 +727,8 @@
 				04EC196819421E680001FF72 /* EBElectionPositionDetailViewController.m */,
 				04D698201ADD23AB0096AD56 /* EBPositionsCollectionViewController.h */,
 				04D698211ADD23AB0096AD56 /* EBPositionsCollectionViewController.m */,
+				04F562B81F1F3AF000A21245 /* EBSelfEfficacySlidersViewController.m */,
+				04F562B91F1F3AF000A21245 /* EBSelfEfficacySlidersViewController.h */,
 			);
 			name = Election;
 			sourceTree = "<group>";
@@ -962,10 +967,10 @@
 				040797401940727F0097706C /* EBSignupTermsViewController.m */,
 				049A476B196A803F00D363AE /* EBEmailVerificationViewController.h */,
 				049A476C196A803F00D363AE /* EBEmailVerificationViewController.m */,
-				04428E121998CE450061E2C5 /* EBSlidersViewController.h */,
-				04428E131998CE450061E2C5 /* EBSlidersViewController.m */,
 				04428E18199C6F5B0061E2C5 /* EBSliderTableViewCell.h */,
 				04428E19199C6F5B0061E2C5 /* EBSliderTableViewCell.m */,
+				04428E121998CE450061E2C5 /* EBSlidersViewController.h */,
+				04428E131998CE450061E2C5 /* EBSlidersViewController.m */,
 				0449533D1B1215270036F080 /* EBPersonalityDescriptionViewController.h */,
 				0449533E1B1215270036F080 /* EBPersonalityDescriptionViewController.m */,
 			);
@@ -1309,7 +1314,8 @@
 				ORGANIZATIONNAME = "Eulers Bridge";
 				TargetAttributes = {
 					04FD417719062ECD00AF17DC = {
-						DevelopmentTeam = L7PYF339KE;
+						DevelopmentTeam = 899L62SLX6;
+						ProvisioningStyle = Automatic;
 					};
 					04FD419E19062ECD00AF17DC = {
 						TestTargetID = 04FD417719062ECD00AF17DC;
@@ -1591,6 +1597,7 @@
 				04BB704E190D229D0059E93C /* EBProfileViewController.m in Sources */,
 				04937C981AC11992002209AA /* EBCircleProgressBar.m in Sources */,
 				0449533F1B1215270036F080 /* EBPersonalityDescriptionViewController.m in Sources */,
+				04F562BA1F1F3AF000A21245 /* EBSelfEfficacySlidersViewController.m in Sources */,
 				04428E141998CE450061E2C5 /* EBSlidersViewController.m in Sources */,
 				04D6981F1ADCB3620096AD56 /* EBElectionInfoTableViewController.m in Sources */,
 				049A475A19667FA000D363AE /* EBPersonalityTableViewCell.m in Sources */,
@@ -1756,8 +1763,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yuan Gao (XFJ96J978W)";
-				DEVELOPMENT_TEAM = L7PYF339KE;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 899L62SLX6;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EulersBridge/Isegoria-Prefix.pch";
 				INFOPLIST_FILE = "EulersBridge/Isegoria-Info.plist";
@@ -1765,8 +1772,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.eulersbridge.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = Isegoria;
-				PROVISIONING_PROFILE = "a0bf893b-bc7d-4d56-bba9-710b2c41c8fd";
-				PROVISIONING_PROFILE_SPECIFIER = wildcard;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -1782,6 +1789,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: Eulers Bridge Pty Ltd (899L62SLX6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 899L62SLX6;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EulersBridge/Isegoria-Prefix.pch";
@@ -1790,8 +1798,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.eulersbridge.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = Isegoria;
-				PROVISIONING_PROFILE = "856934d9-8466-484b-9481-e46209db6aa6";
-				PROVISIONING_PROFILE_SPECIFIER = "Isegoria App Distribution";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
