@@ -13,6 +13,7 @@
 		040797471940E7F80097706C /* EBButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 040797461940E7F80097706C /* EBButton.m */; };
 		04173F4F197DF8C90093C145 /* GentiumPlus-I.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04173F4D197DF8C90093C145 /* GentiumPlus-I.ttf */; };
 		04173F50197DF8C90093C145 /* GentiumPlus-R.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04173F4E197DF8C90093C145 /* GentiumPlus-R.ttf */; };
+		0421B3141F71D04A00E4AAE0 /* EBEfficacySlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 0421B3131F71D04A00E4AAE0 /* EBEfficacySlider.m */; };
 		042559331931C9FD0030AA0A /* Sentinel-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 042559321931C9FD0030AA0A /* Sentinel-Book.otf */; };
 		0425593C19346DA40030AA0A /* EBCandidateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0425593B19346DA40030AA0A /* EBCandidateViewController.m */; };
 		0425593F1935D6970030AA0A /* CALayer+XibConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0425593E1935D6970030AA0A /* CALayer+XibConfiguration.m */; };
@@ -257,6 +258,8 @@
 		040797461940E7F80097706C /* EBButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBButton.m; sourceTree = "<group>"; };
 		04173F4D197DF8C90093C145 /* GentiumPlus-I.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GentiumPlus-I.ttf"; sourceTree = "<group>"; };
 		04173F4E197DF8C90093C145 /* GentiumPlus-R.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GentiumPlus-R.ttf"; sourceTree = "<group>"; };
+		0421B3121F71D04A00E4AAE0 /* EBEfficacySlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBEfficacySlider.h; sourceTree = "<group>"; };
+		0421B3131F71D04A00E4AAE0 /* EBEfficacySlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBEfficacySlider.m; sourceTree = "<group>"; };
 		042559321931C9FD0030AA0A /* Sentinel-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sentinel-Book.otf"; sourceTree = "<group>"; };
 		0425593A19346DA40030AA0A /* EBCandidateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBCandidateViewController.h; sourceTree = "<group>"; };
 		0425593B19346DA40030AA0A /* EBCandidateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBCandidateViewController.m; sourceTree = "<group>"; };
@@ -1081,6 +1084,8 @@
 			children = (
 				04428E151999B8370061E2C5 /* EBPersonalitySlider.h */,
 				04428E161999B8370061E2C5 /* EBPersonalitySlider.m */,
+				0421B3121F71D04A00E4AAE0 /* EBEfficacySlider.h */,
+				0421B3131F71D04A00E4AAE0 /* EBEfficacySlider.m */,
 				04788EC9195A6C0C0015FB06 /* EBOnePixelLine.h */,
 				04788ECA195A6C0C0015FB06 /* EBOnePixelLine.m */,
 				04937C9A1AC17E8B002209AA /* EBOnePixelLineVertical.h */,
@@ -1607,6 +1612,7 @@
 				048D01C4195BB0A600E878DA /* EBBlurImageView.m in Sources */,
 				044BB0ED1989E89300E0180F /* EBPhotosHeaderView.m in Sources */,
 				04BB702A190890920059E93C /* EBFeedCollectionViewCell.m in Sources */,
+				0421B3141F71D04A00E4AAE0 /* EBEfficacySlider.m in Sources */,
 				04BB7046190BE93F0059E93C /* EBVoteViewController.m in Sources */,
 				04EC19701948839C0001FF72 /* EBCandidateTableViewCell.m in Sources */,
 				0495C508191B651900EAEAB5 /* EBPhotoStackViewController.m in Sources */,

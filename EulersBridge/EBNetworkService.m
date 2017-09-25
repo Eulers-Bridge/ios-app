@@ -48,6 +48,22 @@
 {
 }
 
+- (void)requestPasswordResetWithEmail:(NSString *)email
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/hal+json", @"application/json", @"application/xml", @"text/plain", nil];
+    NSDictionary *parameters = [NSDictionary dictionary];
+    NSString *urlString = [NSString stringWithFormat:@"%@/requestPwdReset/%@/", TESTING_URL, email];
+    [manager POST:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id res) {
+        
+        [self.userDelegate requestPasswordResetWithEmailFinishedWithSuccess:YES failureReason:nil errorString:@""];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.userDelegate requestPasswordResetWithEmailFinishedWithSuccess:NO failureReason:error errorString:error.localizedDescription];
+    }];
+
+}
+
 - (void)addPersonalityForUser:(EBUser *)user withParameters:(NSDictionary *)parameters
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -63,9 +79,26 @@
         [self.userDelegate addPersonalityForUserFinishedWithSuccess:NO withUser:nil failureReason:error];
         
     }];
-    
-    
 }
+
+- (void)addEfficacyForUser:(EBUser *)user withParameters:(NSDictionary *)parameters
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:TESTING_USERNAME password:TESTING_PASSWORD];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/hal+json", @"application/json", @"application/xml", nil];
+    
+    NSString *urlString = [NSString stringWithFormat:@"%@/user/%@/PPSEQuestions", TESTING_URL, TESTING_USERNAME];
+    [manager PUT:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id res) {
+        
+        [self.userDelegate addEfficacyForUserFinishedWithSuccess:YES withUser:user failureReason:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.userDelegate addEfficacyForUserFinishedWithSuccess:NO withUser:nil failureReason:error];
+        
+    }];
+}
+
+
 
 - (void)loginWithEmailAddress:(NSString *)email password:(NSString *)password
 {

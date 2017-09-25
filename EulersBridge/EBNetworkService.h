@@ -14,7 +14,9 @@
 - (void)signupFinishedWithSuccess:(BOOL)success withUser:(EBUser *)user failureReason:(NSError *)error;
 - (void)loginFinishedWithSuccess:(BOOL)success withUser:(EBUser *)user failureReason:(NSError *)error errorString:(NSString *)errorString;
 - (void)resendEmailFinishedWithSuccess:(BOOL)success withUser:(EBUser *)user failureReason:(NSError *)error;
+- (void)requestPasswordResetWithEmailFinishedWithSuccess:(BOOL)success failureReason:(NSError *)error errorString:(NSString *)errorString;
 - (void)addPersonalityForUserFinishedWithSuccess:(BOOL)success withUser:(EBUser *)user failureReason:(NSError *)error;
+- (void)addEfficacyForUserFinishedWithSuccess:(BOOL)success withUser:(EBUser *)user failureReason:(NSError *)error;
 - (void)getUserWithUserEmailFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 - (void)getGroupsWithUserEmailFinishedWithSuccess:(BOOL)success withGroups:(NSArray *)groups failureReason:(NSError *)error;
 - (void)getNotificationsWithUserIdFinishedWithSuccess:(BOOL)success withNotifications:(NSArray *)notifications failureReason:(NSError *)error;
@@ -84,7 +86,9 @@
 
 - (void)loginWithEmailAddress:(NSString *)email password:(NSString *)password;
 - (void)resendVerificationEmailForUser:(EBUser *)user;
+- (void)requestPasswordResetWithEmail:(NSString *)email;
 - (void)addPersonalityForUser:(EBUser *)user withParameters:(NSDictionary *)parameters;
+- (void)addEfficacyForUser:(EBUser *)user withParameters:(NSDictionary *)parameters;
 - (void)getUserWithUserEmail:(NSString *)email;
 - (void)getGroupsWithUserEmail:(NSString *)email;
 - (void)getNotificationWithUserId:(NSString *)userId;

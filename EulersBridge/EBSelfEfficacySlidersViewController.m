@@ -97,26 +97,34 @@
 //    };
     
     NSDictionary *parameters = @{
-         @"extroversion" : [@(([a[0] floatValue] + (8 - [a[5] floatValue])) / 2) stringValue],
-         @"agreeableness" : [@(([a[6] floatValue] + (8 - [a[1] floatValue])) / 2) stringValue],
-         @"conscientiousness" : [@(([a[2] floatValue] + (8 - [a[7] floatValue])) / 2) stringValue],
-         @"emotionalStability" : [@(([a[8] floatValue] + (8 - [a[3] floatValue])) / 2) stringValue],
-         @"openess" : [@(([a[4] floatValue] + (8 - [a[9] floatValue])) / 2) stringValue]
+         @"q1" : [a[0] stringValue],
+         @"q2" : [a[1] stringValue],
+         @"q3" : [a[2] stringValue],
+         @"q4" : [a[3] stringValue]
      };
     
     
     EBNetworkService *service = [[EBNetworkService alloc] init];
     service.userDelegate = self;
-    [service addPersonalityForUser:self.user withParameters:parameters];
+    [service addEfficacyForUser:self.user withParameters:parameters];
 }
 
--(void)addPersonalityForUserFinishedWithSuccess:(BOOL)success withUser:(EBUser *)user failureReason:(NSError *)error
+-(void)addEfficacyForUserFinishedWithSuccess:(BOOL)success withUser:(EBUser *)user failureReason:(NSError *)error
 {
     if (success) {
-        EBAppDelegate *delegate = (EBAppDelegate *)[[UIApplication sharedApplication] delegate];
-        [delegate instantiateTabBarController];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Successful" message:@"Answers submitted successfully." preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [[self navigationController] popViewControllerAnimated:true];
+        }];
+        [alert addAction:action];
+        [self presentViewController:alert animated:YES completion:NULL];
     } else {
-        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Oops!" message:@"Sorry, request failed, please resubmit." preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [[self navigationController] popViewControllerAnimated:true];
+        }];
+        [alert addAction:action];
+        [self presentViewController:alert animated:YES completion:NULL];
     }
 }
 

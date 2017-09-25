@@ -212,10 +212,10 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FeedCellLarge" id="OGo-gI-Lc2" customClass="EBFeedCollectionViewCell">
-                                                <rect key="frame" x="35" y="8" width="304" height="150"/>
+                                                <rect key="frame" x="35" y="8" width="305" height="150"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                    <rect key="frame" x="0.0" y="0.0" width="304" height="150"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="305" height="150"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="hWn-Q2-Asr" customClass="EBDarkImageView">
@@ -223,7 +223,7 @@
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         </imageView>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title title Title title Title titleTitle title title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="R1K-yS-Nel" customClass="EBLabelLight">
-                                                            <rect key="frame" x="11" y="42" width="277" height="46"/>
+                                                            <rect key="frame" x="11" y="42" width="276" height="46"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -231,7 +231,7 @@
                                                             <size key="shadowOffset" width="0.0" height="1"/>
                                                         </label>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jIC-tu-lik">
-                                                            <rect key="frame" x="11" y="92" width="277" height="10"/>
+                                                            <rect key="frame" x="11" y="92" width="276" height="10"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -682,18 +682,28 @@
                                         <rect key="frame" x="149" y="20" width="76" height="76"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fgu-2E-p6B" customClass="EBButtonLightSystem">
-                                        <rect key="frame" x="38" y="347" width="303" height="25"/>
+                                    <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fgu-2E-p6B" customClass="EBButtonLightSystem">
+                                        <rect key="frame" x="38" y="375" width="303" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <state key="normal" title="By continuing, you agree to our Terms and Privacy Policy.">
                                             <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                     </button>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" id="vOY-jM-bQS">
-                                        <rect key="frame" x="177" y="372" width="20" height="20"/>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="white" id="vOY-jM-bQS">
+                                        <rect key="frame" x="177" y="400" width="20" height="20"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     </activityIndicatorView>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JWc-0t-BD9" customClass="EBButton">
+                                        <rect key="frame" x="128" y="347" width="122" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Forget password?">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="forgetPasswordAction:" destination="GJt-2I-ECl" eventType="touchUpInside" id="q4P-Vt-9cK"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
@@ -2131,7 +2141,7 @@ Create a reminder to vote, by selecting the date and time for your next student 
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.39865052700042725" green="0.3953668475151062" blue="0.4916556179523468" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="NHO-fa-l0a" customClass="EBButtonRoundedHeavy">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="NHO-fa-l0a" customClass="EBButtonRoundedHeavy">
                                         <rect key="frame" x="122" y="555" width="131" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -2147,7 +2157,6 @@ Create a reminder to vote, by selecting the date and time for your next student 
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="setReminder:" destination="tqy-QC-0u3" eventType="touchUpInside" id="Vru-ag-6TZ"/>
                                             <segue destination="fOF-VB-Mhw" kind="push" id="mYB-nK-v2u"/>
                                         </connections>
                                     </button>
@@ -3137,7 +3146,7 @@ Create a reminder to vote, by selecting the date and time for your next student 
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="CFC-7L-d7J"/>
                                     <barButtonItem style="plain" id="K0a-em-IPF">
                                         <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="MRO-Aa-9l8">
-                                            <rect key="frame" x="48" y="7.5" width="279" height="29"/>
+                                            <rect key="frame" x="48" y="8" width="279" height="29"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="Position"/>
@@ -6285,11 +6294,12 @@ If you have any further questions about the research itself, please contact the 
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <textView key="tableHeaderView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" id="3Sk-Yt-68p">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="148"/>
+                                <textView key="tableHeaderView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" id="3Sk-Yt-68p">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                    <inset key="contentInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                     <string key="text">The PPSE-S composed of 4 items aimed to assess individuals’ beliefs in their capabilities to engage actively in politics.
-The 4 items are measured on a 5 point Likert scale, from 1 (not at all) to 5 (completely).
+The 4 items are measured on a 5 point Likert scale,  from 1 (not at all) to 5 (completely).
 </string>
                                     <color key="textColor" red="0.1454187632" green="0.18427990380000001" blue="0.23556813600000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -6297,7 +6307,7 @@ The 4 items are measured on a 5 point Likert scale, from 1 (not at all) to 5 (co
                                 </textView>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" misplaced="YES" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SliderCell" rowHeight="199" id="NW1-fJ-kuI" customClass="EBSliderTableViewCell">
-                                        <rect key="frame" x="0.0" y="170" width="375" height="199"/>
+                                        <rect key="frame" x="0.0" y="150" width="375" height="199"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NW1-fJ-kuI" id="8lg-S2-Bio">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="199"/>
@@ -6305,7 +6315,7 @@ The 4 items are measured on a 5 point Likert scale, from 1 (not at all) to 5 (co
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Title" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="p2j-v3-Ags" customClass="EBLabelMedium">
                                                     <rect key="frame" x="15" y="8" width="345" height="111"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.1454187632" green="0.18427990380000001" blue="0.23556813600000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -6317,7 +6327,7 @@ The 4 items are measured on a 5 point Likert scale, from 1 (not at all) to 5 (co
                                                     <color key="textColor" red="0.45224356650000003" green="0.50741010900000005" blue="0.57205563780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" continuous="NO" id="Fvs-KP-HpF" customClass="EBPersonalitySlider">
+                                                <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" continuous="NO" id="Fvs-KP-HpF" customClass="EBEfficacySlider">
                                                     <rect key="frame" x="45" y="130" width="285" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 </slider>
@@ -6383,12 +6393,12 @@ The 4 items are measured on a 5 point Likert scale, from 1 (not at all) to 5 (co
         <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="phb-OD-nP9"/>
+        <segue reference="kRX-vk-Pe5"/>
         <segue reference="eh2-Tf-C1m"/>
         <segue reference="Qa8-yg-wXH"/>
-        <segue reference="kRX-vk-Pe5"/>
-        <segue reference="WU0-f4-Xhh"/>
-        <segue reference="cqZ-rZ-ALM"/>
+        <segue reference="phb-OD-nP9"/>
+        <segue reference="ccM-QI-Ya5"/>
+        <segue reference="THe-Rv-3qE"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.23315238952636719" green="0.47978004813194275" blue="0.85770797729492188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

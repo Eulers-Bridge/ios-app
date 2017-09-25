@@ -87,6 +87,43 @@
     [super viewWillDisappear:animated];
 }
 
+- (IBAction)forgetPasswordAction:(id)sender {
+    UIAlertController * alertController = [UIAlertController alertControllerWithTitle: @"Forget password"
+                                                                              message: @"Please provide your email address, we will send you a password reset link."
+                                                                       preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = @"Email address";
+        textField.textColor = [UIColor blueColor];
+        textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+        textField.borderStyle = UITextBorderStyleRoundedRect;
+    }];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        NSArray * textfields = alertController.textFields;
+        UITextField * emailField = textfields[0];
+        NSLog(@"%@",emailField.text);
+        EBNetworkService *service = [[EBNetworkService alloc] init];
+        service.userDelegate = self;
+        [service requestPasswordResetWithEmail:emailField.text];
+    }]];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+ - (void)requestPasswordResetWithEmailFinishedWithSuccess:(BOOL)success failureReason:(NSError *)error errorString:(NSString *)errorString
+{
+    
+    if (success) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Successful" message:@"A email is sent to your inbox, please follow instructions from there." preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        }]];
+        [self presentViewController:alertController animated:YES completion:nil];
+    } else {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Oops!" message:errorString preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        }]];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+}
+
 - (IBAction)loginAction:(id)sender
 {
     [self dismissKeyboard];
