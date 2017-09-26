@@ -52,6 +52,7 @@
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/hal+json", @"application/json", @"application/xml", @"text/plain", nil];
     NSDictionary *parameters = [NSDictionary dictionary];
     NSString *urlString = [NSString stringWithFormat:@"%@/requestPwdReset/%@/", TESTING_URL, email];
