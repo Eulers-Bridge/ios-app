@@ -11,6 +11,7 @@
 #import "EBContentViewController.h"
 #import "AWSCore.h"
 #import "AWSS3.h"
+#import "AWSSNS.h"
 
 @implementation EBAppDelegate
 
@@ -76,6 +77,8 @@
     // Enable network activity indicator
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     
+    // Setup push
+    [self setupPushNotification];
     return YES;
 }
 							
@@ -154,5 +157,74 @@
 //{
 //    return YES;
 //}
+
+// Push notification
+
+- (void)setupPushNotification {
+    // Sets up Mobile Push Notification
+    UIMutableUserNotificationAction *readAction = [UIMutableUserNotificationAction new];
+    readAction.identifier = @"READ_IDENTIFIER";
+    readAction.title = @"Read";
+    readAction.activationMode = UIUserNotificationActivationModeForeground;
+    readAction.destructive = NO;
+    readAction.authenticationRequired = YES;
+    
+    UIMutableUserNotificationAction *deleteAction = [UIMutableUserNotificationAction new];
+    deleteAction.identifier = @"DELETE_IDENTIFIER";
+    deleteAction.title = @"Delete";
+    deleteAction.activationMode = UIUserNotificationActivationModeForeground;
+    deleteAction.destructive = YES;
+    deleteAction.authenticationRequired = YES;
+    
+    UIMutableUserNotificationAction *ignoreAction = [UIMutableUserNotificationAction new];
+    ignoreAction.identifier = @"IGNORE_IDENTIFIER";
+    ignoreAction.title = @"Ignore";
+    ignoreAction.activationMode = UIUserNotificationActivationModeForeground;
+    ignoreAction.destructive = NO;
+    ignoreAction.authenticationRequired = NO;
+    
+    UIMutableUserNotificationCategory *messageCategory = [UIMutableUserNotificationCategory new];
+    messageCategory.identifier = @"MESSAGE_CATEGORY";
+    [messageCategory setActions:@[readAction, deleteAction] forContext:UIUserNotificationActionContextMinimal];
+    [messageCategory setActions:@[readAction, deleteAction, ignoreAction] forContext:UIUserNotificationActionContextDefault];
+    
+    UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
+    UIUserNotificationSettings *notificationSettings = [UIUserNotificationSettings settingsForTypes:types categories:[NSSet setWithArray:@[messageCategory]]];
+    
+    [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
+    [[UIApplication sharedApplication] registerForRemoteNotifications];
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    NSString *deviceTokenString = [[[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]] stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    NSLog(@"deviceTokenString: %@", deviceTokenString);
+    [[NSUserDefaults standardUserDefaults] setObject:deviceTokenString forKey:@"deviceToken"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    AWSSNS *sns = [AWSSNS defaultSNS];
+    AWSSNSCreatePlatformEndpointInput *request = [AWSSNSCreatePlatformEndpointInput new];
+    request.token = deviceTokenString;
+    request.platformApplicationArn = SNSPlatformApplicationArn;
+    [[sns createPlatformEndpoint:request] continueWithBlock:^id(AWSTask *task) {
+        if (task.error != nil) {
+            NSLog(@"Error: %@",task.error);
+        } else {
+            AWSSNSCreateEndpointResponse *createEndPointResponse = task.result;
+            NSLog(@"endpointArn: %@",createEndPointResponse);
+            [[NSUserDefaults standardUserDefaults] setObject:createEndPointResponse.endpointArn forKey:@"endpointArn"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+        }
+        
+        return nil;
+    }];
+    
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    NSLog(@"userInfo: %@",userInfo);
+}
+
 
 @end

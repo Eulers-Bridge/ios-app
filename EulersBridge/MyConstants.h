@@ -19,6 +19,8 @@
 #define SERVER_TOKEN @"6F87C408-98E2-403F-BD9F-D60DB6328BEP"
 #define SERVER_URL @"https://eulersbridge.meteor.com"
 
+#define SNSPlatformApplicationArn @"arn:aws:sns:ap-southeast-2:715927704730:app/APNS_SANDBOX/isegoria_dev"
+
 #define PROD_URL @"http://eulersbridge.com:8080/dbInterface/api"
 //#define TESTING_URL @"http://172.20.10.2:8080/api"
 #define TESTING_URL @"http://54.79.70.241:8080/dbInterface/api"
