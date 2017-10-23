@@ -20,7 +20,7 @@
     
     // Setup Amazon s3
     AWSStaticCredentialsProvider *credentialsProvider = [[AWSStaticCredentialsProvider alloc] initWithAccessKey:@"AKIAJNFUHYIZGWPMIZWA" secretKey:@"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"];
-    AWSServiceConfiguration *defaultServiceConfiguration = [[AWSServiceConfiguration alloc] initWithRegion:AWSRegionUSEast1 credentialsProvider:credentialsProvider];
+    AWSServiceConfiguration *defaultServiceConfiguration = [[AWSServiceConfiguration alloc] initWithRegion:AWSRegionAPSoutheast2 credentialsProvider:credentialsProvider];
     [AWSServiceManager defaultServiceManager].defaultServiceConfiguration = defaultServiceConfiguration;
     
     
@@ -78,7 +78,7 @@
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     
     // Setup push
-    [self setupPushNotification];
+//    [self setupPushNotification];
     return YES;
 }
 							
@@ -160,7 +160,8 @@
 
 // Push notification
 
-- (void)setupPushNotification {
+- (void)setupPushNotificationWithDelegate:(id<SetupPushNotificationDelegate>)delegate {
+    self.pushDelegate = delegate;
     // Sets up Mobile Push Notification
     UIMutableUserNotificationAction *readAction = [UIMutableUserNotificationAction new];
     readAction.identifier = @"READ_IDENTIFIER";
@@ -209,17 +210,23 @@
     [[sns createPlatformEndpoint:request] continueWithBlock:^id(AWSTask *task) {
         if (task.error != nil) {
             NSLog(@"Error: %@",task.error);
+            [self.pushDelegate setupPushNoficationFinishedWithSuccess:NO withARN:@"" deviceToken:@""];
         } else {
             AWSSNSCreateEndpointResponse *createEndPointResponse = task.result;
             NSLog(@"endpointArn: %@",createEndPointResponse);
             [[NSUserDefaults standardUserDefaults] setObject:createEndPointResponse.endpointArn forKey:@"endpointArn"];
             [[NSUserDefaults standardUserDefaults] synchronize];
-            
+            [self.pushDelegate setupPushNoficationFinishedWithSuccess:YES withARN:createEndPointResponse.endpointArn deviceToken:deviceTokenString];
         }
         
         return nil;
     }];
     
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    [self.pushDelegate setupPushNoficationFinishedWithSuccess:NO withARN:@"" deviceToken:@""];
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {

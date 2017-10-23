@@ -15,9 +15,10 @@
 @property (weak, nonatomic) IBOutlet EBLabelMedium *answerTitleLabel;
 @property (weak, nonatomic) IBOutlet EBLabelHeavy *resultNumberLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *tickImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *answerImageView;
 
 @property (strong, nonatomic) NSDictionary *result;
-@property (strong, nonatomic) NSString *answer;
+@property (strong, nonatomic) NSDictionary *answer;
 @property (strong, nonatomic) UIColor *baseColor;
 @property BOOL voted;
 

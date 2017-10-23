@@ -74,7 +74,7 @@
 //                     @{@"votes": @(37),
 //                       @"totalVotes": @(100),
 //                       @"change": @(23)},];
-    
+//    
 //    self.answers = @[@{@"title": @"Liberal Party",
 //                       @"subtitle": @"Tony Abbot"},
 //                     @{@"title": @"Australian Labor Party",
@@ -83,8 +83,32 @@
 //                       @"subtitle": @"Christine Milne"},
 //                     @{@"title": @"Other",
 //                       @"subtitle": @"Other"}];
-//    
+    
     self.baseColors = @[
+                        [UIColor colorWithRed:62.0/255.0 green:90.0/255.0 blue:215.0/255.0 alpha:1.0],
+                        [UIColor colorWithRed:255.0/255.0 green:64.0/255.0 blue:99.0/255.0 alpha:1.0],
+                        [UIColor colorWithRed:76.0/255.0 green:217.0/255.0 blue:100.0/255.0 alpha:1.0],
+                        [UIColor colorWithRed:124.0/255.0 green:124.0/255.0 blue:134.0/255.0 alpha:1.0],
+                        [UIColor colorWithRed:76.0/255.0 green:217.0/255.0 blue:100.0/255.0 alpha:1.0],
+                        [UIColor colorWithRed:62.0/255.0 green:90.0/255.0 blue:215.0/255.0 alpha:1.0],
+                        [UIColor colorWithRed:62.0/255.0 green:90.0/255.0 blue:215.0/255.0 alpha:1.0],
+                        [UIColor colorWithRed:255.0/255.0 green:64.0/255.0 blue:99.0/255.0 alpha:1.0],
+                        [UIColor colorWithRed:76.0/255.0 green:217.0/255.0 blue:100.0/255.0 alpha:1.0],
+                        [UIColor colorWithRed:124.0/255.0 green:124.0/255.0 blue:134.0/255.0 alpha:1.0],
+                        [UIColor colorWithRed:76.0/255.0 green:217.0/255.0 blue:100.0/255.0 alpha:1.0],
+                        [UIColor colorWithRed:62.0/255.0 green:90.0/255.0 blue:215.0/255.0 alpha:1.0],
+                        [UIColor colorWithRed:62.0/255.0 green:90.0/255.0 blue:215.0/255.0 alpha:1.0],
+                        [UIColor colorWithRed:255.0/255.0 green:64.0/255.0 blue:99.0/255.0 alpha:1.0],
+                        [UIColor colorWithRed:76.0/255.0 green:217.0/255.0 blue:100.0/255.0 alpha:1.0],
+                        [UIColor colorWithRed:124.0/255.0 green:124.0/255.0 blue:134.0/255.0 alpha:1.0],
+                        [UIColor colorWithRed:76.0/255.0 green:217.0/255.0 blue:100.0/255.0 alpha:1.0],
+                        [UIColor colorWithRed:62.0/255.0 green:90.0/255.0 blue:215.0/255.0 alpha:1.0],
+                        [UIColor colorWithRed:62.0/255.0 green:90.0/255.0 blue:215.0/255.0 alpha:1.0],
+                        [UIColor colorWithRed:255.0/255.0 green:64.0/255.0 blue:99.0/255.0 alpha:1.0],
+                        [UIColor colorWithRed:76.0/255.0 green:217.0/255.0 blue:100.0/255.0 alpha:1.0],
+                        [UIColor colorWithRed:124.0/255.0 green:124.0/255.0 blue:134.0/255.0 alpha:1.0],
+                        [UIColor colorWithRed:76.0/255.0 green:217.0/255.0 blue:100.0/255.0 alpha:1.0],
+                        [UIColor colorWithRed:62.0/255.0 green:90.0/255.0 blue:215.0/255.0 alpha:1.0],
                         [UIColor colorWithRed:62.0/255.0 green:90.0/255.0 blue:215.0/255.0 alpha:1.0],
                         [UIColor colorWithRed:255.0/255.0 green:64.0/255.0 blue:99.0/255.0 alpha:1.0],
                         [UIColor colorWithRed:76.0/255.0 green:217.0/255.0 blue:100.0/255.0 alpha:1.0],
@@ -110,8 +134,7 @@
     self.questionTextView.text = self.info[@"question"];
     self.numberOfVotesLabel.text = @"";
     self.numberOfCommentsLabel.text = [self.info[@"numOfComments"] stringValue];
-    NSString *answers = self.info[@"answers"];
-    self.answers = [answers componentsSeparatedByString:@","];
+    self.answers = self.info[@"pollOptions"];
 }
 
 - (void)getUserDetailWithEmail:(NSString *)email
@@ -196,11 +219,18 @@
     return [parsedResults copy];
 }
 
-- (void)voteWithAnswerIndex:(NSUInteger)answerIndex
+//- (void)voteWithAnswerIndex:(NSUInteger)answerIndex
+//{
+//    EBNetworkService *service = [[EBNetworkService alloc] init];
+//    service.userActionDelegate = self;
+//    [service voteWithPollId:self.info[@"nodeId"] answerIndex:answerIndex];
+//}
+
+- (void)voteWithOptionId:(NSString *)optionId
 {
     EBNetworkService *service = [[EBNetworkService alloc] init];
     service.userActionDelegate = self;
-    [service voteWithPollId:self.info[@"nodeId"] answerIndex:answerIndex];
+    [service voteWithPollId:self.info[@"nodeId"] answerId:optionId];
 }
 
 -(void)votePollFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
@@ -209,7 +239,7 @@
         [self getPollResults];
 //        [self getPollComments];
     } else {
-        
+        [self getPollResults];
     }
 }
 
@@ -285,7 +315,7 @@
 {
     switch (indexPath.section) {
         case 0:
-            return 47;
+            return 278;
             break;
         case 1:
             return 110;
@@ -301,7 +331,8 @@
     if (indexPath.section == 0) {
         self.selectedIndexPath = indexPath;
         self.voteIndex = indexPath.row;
-        [self voteWithAnswerIndex:indexPath.row];
+        NSString *optionId = self.answers[indexPath.row][@"id"];
+        [self voteWithOptionId:optionId];
         return indexPath;
     }
     return nil;

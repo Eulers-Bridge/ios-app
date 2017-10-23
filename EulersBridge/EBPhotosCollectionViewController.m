@@ -38,6 +38,9 @@
     [self fetchData];
     // Do any additional setup after loading the view.
 //    [self.collectionView setCollectionViewLayout:[[StickyHeaderFlowLayout alloc] init] animated:NO];
+    if ([self.collectionView respondsToSelector:@selector(setPrefetchingEnabled:)]) {
+        self.collectionView.prefetchingEnabled = false;
+    }
 }
 
 - (void)fetchData

@@ -12,7 +12,7 @@
 #import "EBAppDelegate.h"
 #import "EBHelper.h"
 
-@interface EBWelcomeViewController () <UITextViewDelegate, EBUserServiceDelegate>
+@interface EBWelcomeViewController () <UITextViewDelegate, EBUserServiceDelegate, SetupPushNotificationDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
@@ -134,11 +134,27 @@
         self.loginButton.enabled = NO;
         self.signupButton.enabled = NO;
         
-        EBNetworkService *service = [[EBNetworkService alloc] init];
-        service.userDelegate = self;
-        [service loginWithEmailAddress:self.emailTextField.text password:self.passwordTextField.text];
+        // Register for notification
+        if ([[NSUserDefaults standardUserDefaults] stringForKey:@"endpointArn"] == nil || [[NSUserDefaults standardUserDefaults] stringForKey:@"deviceToken"] == nil) {
+            EBAppDelegate *delegate = (EBAppDelegate *)[[UIApplication sharedApplication] delegate];
+            [delegate setupPushNotificationWithDelegate:self];
+        } else {
+            EBNetworkService *service = [[EBNetworkService alloc] init];
+            service.userDelegate = self;
+            [service loginWithEmailAddress:self.emailTextField.text password:self.passwordTextField.text arn:[[NSUserDefaults standardUserDefaults] stringForKey:@"endpointArn"] deviceToken:[[NSUserDefaults standardUserDefaults] stringForKey:@"deviceToken"]];
+        }
+
     }
     
+}
+
+- (void)setupPushNoficationFinishedWithSuccess:(BOOL)success withARN:(NSString *)arn deviceToken:(NSString *)deviceToken
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        EBNetworkService *service = [[EBNetworkService alloc] init];
+        service.userDelegate = self;
+        [service loginWithEmailAddress:self.emailTextField.text password:self.passwordTextField.text arn:arn deviceToken:deviceToken];
+    });
 }
 
 - (void)loginFinishedWithSuccess:(BOOL)success withUser:(EBUser *)user failureReason:(NSError *)error errorString:(NSString *)errorString

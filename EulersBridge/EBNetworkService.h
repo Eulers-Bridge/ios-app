@@ -84,7 +84,7 @@
 // Signup, login and user service
 - (void)signupWithEmailAddress:(NSString *)email password:(NSString *)password givenName:(NSString *)givenName familyName:(NSString *)familyName institutionId:(NSString *)institutionId profilePicURL:(NSString *)profilePicURL;
 
-- (void)loginWithEmailAddress:(NSString *)email password:(NSString *)password;
+- (void)loginWithEmailAddress:(NSString *)email password:(NSString *)password arn:(NSString *)arn deviceToken:(NSString *)deviceToken;
 - (void)resendVerificationEmailForUser:(EBUser *)user;
 - (void)requestPasswordResetWithEmail:(NSString *)email;
 - (void)addPersonalityForUser:(EBUser *)user withParameters:(NSDictionary *)parameters;
@@ -129,7 +129,7 @@
 - (void)getTasks;
 
 // User action service
-- (void)voteWithPollId:(NSString *)pollId answerIndex:(NSUInteger)answerIndex;
+- (void)voteWithPollId:(NSString *)pollId answerId:(NSString *)optionId;
 - (void)postPollCommentWithPollId:(NSString *)pollId comment:(NSString *)comment;
 - (void)likeContentWithLike:(BOOL)like contentType:(EBContentViewType)contentType contentId:(NSString *)contentId;
 - (void)supportTicketWithSupport:(BOOL)support ticketId:(NSString *)ticketId;

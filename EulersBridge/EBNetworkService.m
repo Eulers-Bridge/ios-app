@@ -101,9 +101,13 @@
 
 
 
-- (void)loginWithEmailAddress:(NSString *)email password:(NSString *)password
+- (void)loginWithEmailAddress:(NSString *)email password:(NSString *)password arn:(NSString *)arn deviceToken:(NSString *)deviceToken
 {
-    NSString *urlString = [NSString stringWithFormat:@"%@/login", TESTING_URL];
+    NSString *notificationString = @"";
+    if (![arn isEqualToString:@""]) {
+        notificationString = [NSString stringWithFormat:@"?topicArn=%@&deviceToken=%@", arn, deviceToken];
+    }
+    NSString *urlString = [NSString stringWithFormat:@"%@/login%@", TESTING_URL, notificationString];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
@@ -289,22 +293,22 @@
 
 #pragma mark User Action Services
 
-- (void)voteWithPollId:(NSString *)pollId answerIndex:(NSUInteger)answerIndex
+- (void)voteWithPollId:(NSString *)pollId answerId:(NSString *)answerId
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:TESTING_USERNAME password:TESTING_PASSWORD];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/hal+json", @"application/json", @"application/xml", nil];
-    double date = [[NSDate date] timeIntervalSince1970] / 1000;
-    NSString *dateString = [NSString stringWithFormat:@"%.0f", date];
+//    double date = [[NSDate date] timeIntervalSince1970] / 1000;
+//    NSString *dateString = [NSString stringWithFormat:@"%.0f", date];
 
-    NSDictionary *parameters = @{@"answerIndex": [NSString stringWithFormat:@"%lu", (unsigned long)answerIndex],
-                                 @"timeStamp": dateString,
-                                 @"answererId": [NSString stringWithFormat:@"%@", [EBHelper getUserId]],
-                                 @"pollId": pollId};
+//    NSDictionary *parameters = @{@"answerIndex": [NSString stringWithFormat:@"%lu", (unsigned long)answerIndex],
+//                                 @"timeStamp": dateString,
+//                                 @"answererId": [NSString stringWithFormat:@"%@", [EBHelper getUserId]],
+//                                 @"pollId": pollId};
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/poll/%@/answer", TESTING_URL, pollId];
-    [manager PUT:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id res) {
+    NSString *urlString = [NSString stringWithFormat:@"%@/poll/%@/vote/%@", TESTING_URL, pollId, answerId];
+    [manager PUT:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id res) {
         
         [self.userActionDelegate votePollFinishedWithSuccess:YES withInfo:res failureReason:nil];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -539,6 +543,7 @@
 - (void)getPollsWithInstitutionId:(NSString *)institutionId
 
 {
+//    NSString *urlString = [NSString stringWithFormat:@"%@/polls/7449", TESTING_URL, institutionId];
     NSString *urlString = [NSString stringWithFormat:@"%@/polls/%@", TESTING_URL, institutionId];
     
     [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {

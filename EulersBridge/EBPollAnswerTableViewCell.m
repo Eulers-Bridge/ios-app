@@ -7,6 +7,7 @@
 //
 
 #import "EBPollAnswerTableViewCell.h"
+#import "UIImageView+AFNetworking.h"
 
 @implementation EBPollAnswerTableViewCell
 
@@ -22,7 +23,7 @@
 - (void)awakeFromNib
 {
     // Initialization code
-    
+    [super awakeFromNib];
 }
 
 - (void)showResult
@@ -67,7 +68,12 @@
 
 - (void)refreshData
 {
-    self.answerTitleLabel.text = self.answer;
+    self.answerTitleLabel.text = self.answer[@"txt"];
+    NSDictionary *photo = self.answer[@"photo"];
+    if ([photo class] != [NSNull class]) {
+        NSString *answerImageURL = photo[@"url"];
+        [self.answerImageView setImageWithURL:[NSURL URLWithString:answerImageURL] placeholderImage:[UIImage imageNamed:@"ImagePlaceholder"]];
+    }
     self.progressViewFrame.backgroundColor = [UIColor clearColor];
     self.progressViewFrame.layer.borderWidth = 1.0;
     self.progressViewFrame.layer.borderColor = [self.baseColor CGColor];
@@ -84,7 +90,7 @@
 
 -(void)prepareForReuse
 {
-    
+    [super prepareForReuse];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
