@@ -97,6 +97,7 @@
 - (void)findFriendWithContactDetail:(NSString *)contactDetail originalContact:(NSDictionary *)contact;
 - (void)findFriendWithName:(NSString *)name;
 - (void)getFriendsWithUserEmail:(NSString *)userEmail;
+- (void)getMyFriends;
 - (void)getFriendRequestSent;
 - (void)getFriendRequestReceived;
 - (void)addFriendWithEmail:(NSString *)email;
@@ -129,6 +130,7 @@
 - (void)getTasks;
 
 // User action service
+- (void)addVoteReminder;
 - (void)voteWithPollId:(NSString *)pollId answerId:(NSString *)optionId;
 - (void)postPollCommentWithPollId:(NSString *)pollId comment:(NSString *)comment;
 - (void)likeContentWithLike:(BOOL)like contentType:(EBContentViewType)contentType contentId:(NSString *)contentId;

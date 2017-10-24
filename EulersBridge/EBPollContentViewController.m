@@ -56,7 +56,7 @@
     // Do any additional setup after loading the view.
     self.voted = NO;
 //    self.profileImageView.image = [UIImage imageNamed:@"head1.jpg"];
-    self.authorLabel.text = @"Asked by Eva Menendez";
+    self.authorLabel.text = @"";
     self.divider.hidden = YES;
     self.pageNumberLabel.text = [NSString stringWithFormat:@"%d", self.pageIndex];
     self.commentTextView.editable = NO;
@@ -146,9 +146,9 @@
 
 - (void)getPollResults
 {
-    EBNetworkService *service = [[EBNetworkService alloc] init];
-    service.contentDelegate = self;
-    [service getPollResultsWithPollId:self.info[@"nodeId"]];
+//    EBNetworkService *service = [[EBNetworkService alloc] init];
+//    service.contentDelegate = self;
+//    [service getPollResultsWithPollId:self.info[@"nodeId"]];
 }
 
 - (void)getPollComments
@@ -235,11 +235,16 @@
 
 -(void)votePollFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
 {
+    self.voted = YES;
+    [self.answerTableView reloadData];
     if (success) {
-        [self getPollResults];
+//        [self getPollResults];
 //        [self getPollComments];
+        // Before endpoint ready
+        
+        
     } else {
-        [self getPollResults];
+//        [self getPollResults];
     }
 }
 
@@ -298,7 +303,7 @@
         if (self.voted) {
             cell.result = self.results[indexPath.row];
             cell.resultNumberLabel.hidden = NO;
-            [cell showResult];
+            [cell showVoted];
         }
         cell.backgroundColor = ISEGORIA_ULTRA_LIGHT_GREY;
         return cell;

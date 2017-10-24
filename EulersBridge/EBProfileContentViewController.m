@@ -126,7 +126,7 @@
     EBNetworkService *service = [[EBNetworkService alloc] init];
     service.friendDelegate = self;
     if (self.isSelfProfile) {
-        [service getFriendsWithUserEmail:[EBUserService retriveUserEmail]];
+        [service getMyFriends];
     } else {
         [service getFriendsWithUserEmail:self.data[@"email"]];
     }

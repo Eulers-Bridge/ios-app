@@ -64,7 +64,7 @@
     service.friendDelegate = self;
     [service getFriendRequestReceived];
     [service getFriendRequestSent];
-    [service getFriendsWithUserEmail:[EBUserService retriveUserEmail]];
+    [service getMyFriends];
 }
 
 -(void)getFriendRequestReceivedFinishedWithSuccess:(BOOL)success withRequests:(NSArray *)contacts failureReason:(NSError *)error

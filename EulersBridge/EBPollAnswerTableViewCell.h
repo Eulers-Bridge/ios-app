@@ -22,6 +22,7 @@
 @property (strong, nonatomic) UIColor *baseColor;
 @property BOOL voted;
 
+- (void)showVoted;
 - (void)showResult;
 - (void)refreshData;
 

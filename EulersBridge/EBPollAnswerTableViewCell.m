@@ -26,6 +26,35 @@
     [super awakeFromNib];
 }
 
+- (void)showVoted
+{
+    CGFloat percentage = 1.0;
+    if (self.voted) {
+        self.tickImageView.image = [UIImage imageNamed:@"Tick"];
+        percentage = 1.0;
+    } else {
+        self.tickImageView.image = [UIImage imageNamed:@"Tick Disabled"];
+        percentage = 0.0;
+    }
+    
+    
+    CGFloat width = percentage * self.progressViewFrame.bounds.size.width;
+    
+    [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        CGRect frame = self.progressView.frame;
+        frame.size.width = width;
+        self.progressView.frame = frame;
+    } completion:^(BOOL finished) {
+        if (finished) {
+            if (self.voted) {
+                // Another animation
+            }
+            
+        }
+    }];
+    self.resultNumberLabel.text = @"";
+}
+
 - (void)showResult
 {
     if (self.voted) {

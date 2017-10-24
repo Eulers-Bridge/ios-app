@@ -12,6 +12,7 @@
 #import "CDZQRScanningViewController.h"
 #import "MyConstants.h"
 #import "EBHelper.h"
+#import "EBNetworkService.h"
 
 @interface EBVoteViewController () <UIPickerViewDataSource, UIPickerViewDelegate, EKEventEditViewDelegate>
 
@@ -63,8 +64,8 @@
     self.picker.hidden = YES;
     self.textView.hidden = NO;
     
-    self.votingDates = @[@"2014-07-12 14:30", @"2014-08-12 11:30", @"2014-09-14 12:30", @"2014-10-12 12:00", @"2014-07-12 14:30"];
-    self.votingLocations = @[@"Union House", @"Baillieu Library", @"ERC Library"];
+    self.votingDates = @[@"2017-10-26 15:30"];
+    self.votingLocations = @[@"Rm 8.02, L8 Doug McDonell Building, UoM"];
     // 14:30 12th July 2014
     // Gesture Recognizer
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
@@ -188,6 +189,8 @@
 
 - (IBAction)setReminder:(UIButton *)sender
 {
+    EBNetworkService *service = [[EBNetworkService alloc] init];
+    [service addVoteReminder];
     
     if ([self.dateLabel.text isEqualToString:@""] || [self.locationLabel.text isEqualToString:@""]) {
         
