@@ -42,7 +42,7 @@
     self.likesLabel.text = [data[@"likes"] stringValue];
     CGFloat oldHeight = self.textView.frame.size.height;
     [EBHelper resetTextView:self.textView];
-    CGFloat textViewExtraHeight = self.textView.frame.size.height - oldHeight;
+    CGFloat textViewExtraHeight = fmaxf(self.textView.frame.size.height - oldHeight, 0);
     self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height + textViewExtraHeight);
     self.likeButton.enabled = NO;
     [self getLikesWithArticleId:data[@"articleId"]];
