@@ -53,11 +53,11 @@
         // Setup the mask.
         self.titleLabel.textColor = [UIColor whiteColor];
         self.dateLabel.textColor = [UIColor whiteColor];
-//        CAGradientLayer *gradient = [CAGradientLayer layer];
-//        gradient.frame = self.bounds;
-//        gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithWhite:0.0 alpha:0.35] CGColor], (id)[[UIColor colorWithWhite:0.0 alpha:0.35] CGColor], nil];
-//        gradient.locations = @[@(0.0), @(1.0)];
-//        self.imageView.layer.mask = gradient;
+        CAGradientLayer *gradient = [CAGradientLayer layer];
+        gradient.frame = self.bounds;
+        gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithWhite:0.0 alpha:0.35] CGColor], (id)[[UIColor colorWithWhite:0.0 alpha:0.35] CGColor], nil];
+        gradient.locations = @[@(0.0), @(1.0)];
+        self.imageView.layer.mask = gradient;
     }
 
     self.titleLabel.text = self.data[@"title"];

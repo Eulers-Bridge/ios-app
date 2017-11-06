@@ -1210,6 +1210,39 @@
                                     <segue destination="KYc-k3-CcX" kind="embed" id="Ejg-es-JQc"/>
                                 </connections>
                             </containerView>
+                            <view opaque="NO" alpha="0.84999999999999998" contentMode="scaleToFill" misplaced="YES" id="ElT-zv-Qqc">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3zD-Ye-Qk3" customClass="EBLabelLight">
+                                        <rect key="frame" x="49" y="248" width="276" height="123"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <string key="text">Welcome to your election centre.
+Learn about your political efficacy by completing this survey.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bgJ-wf-zj9" customClass="EBButtonRoundedHeavy">
+                                        <rect key="frame" x="122" y="379" width="131" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" title="Start Survey"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="mainColor">
+                                                <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="fOF-VB-Mhw" kind="push" id="QJB-KW-Ov4"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -1232,12 +1265,13 @@
                     </navigationItem>
                     <connections>
                         <outlet property="candidateView" destination="XtR-Ad-CUM" id="gd4-Q4-75w"/>
+                        <outlet property="coverView" destination="ElT-zv-Qqc" id="cWb-8x-fcE"/>
                         <outlet property="segmentedControl" destination="XJI-Wc-Snu" id="wZ4-wN-Dk5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3qq-4t-Ow8" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1291" y="6"/>
+            <point key="canvasLocation" x="1290.5" y="5.5"/>
         </scene>
         <!--Stopwatch View Controller-->
         <scene sceneID="R5H-QO-9Ph">
@@ -2054,7 +2088,7 @@ All you need to do is answer a few questions about yourself and your personality
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I will be voting in the next university election at" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="f52-pO-cI9" customClass="EBLabelLight">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I will be voting in the next community election at" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="f52-pO-cI9" customClass="EBLabelLight">
                                         <rect key="frame" x="65" y="128" width="245" height="53"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -2068,8 +2102,8 @@ All you need to do is answer a few questions about yourself and your personality
                                         <color key="textColor" red="0.47058823529999999" green="0.4823529412" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Djd-nc-cN4" customClass="EBButtonRoundedHeavy">
-                                        <rect key="frame" x="122" y="517" width="131" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Djd-nc-cN4" customClass="EBButtonRoundedHeavy">
+                                        <rect key="frame" x="122" y="489" width="131" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="Create Reminder">
@@ -2123,19 +2157,16 @@ All you need to do is answer a few questions about yourself and your personality
                                             <action selector="chooseDate:" destination="tqy-QC-0u3" eventType="touchUpInside" id="ou0-Qd-vd9"/>
                                         </connections>
                                     </button>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="center" id="aUb-s3-Odh" customClass="EBTextViewMuseoLight">
-                                        <rect key="frame" x="57" y="353" width="260" height="142"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Voting is the most key part of a democratic system and the best method of having your voice heard." textAlignment="center" id="aUb-s3-Odh" customClass="EBTextViewMuseoLight">
+                                        <rect key="frame" x="57" y="353" width="260" height="74"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <string key="text">Voting is the most key part of a democratic system and the best method of having your voice heard.
-
-Create a reminder to vote, by selecting the date and time for your next student union election.</string>
                                         <color key="textColor" red="0.14541876316070557" green="0.1842799037694931" blue="0.23556813597679138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <pickerView opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" id="qUi-wf-J7b">
-                                        <rect key="frame" x="27" y="358" width="320" height="162"/>
+                                    <pickerView opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" misplaced="YES" id="qUi-wf-J7b">
+                                        <rect key="frame" x="27" y="317" width="320" height="162"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <connections>
                                             <outlet property="dataSource" destination="tqy-QC-0u3" id="Vgm-EQ-wrt"/>
@@ -2152,25 +2183,6 @@ Create a reminder to vote, by selecting the date and time for your next student 
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.39865052700042725" green="0.3953668475151062" blue="0.4916556179523468" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="NHO-fa-l0a" customClass="EBButtonRoundedHeavy">
-                                        <rect key="frame" x="122" y="555" width="131" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" title="Start Survey">
-                                            <color key="titleColor" red="0.43150305750000001" green="0.69289422040000004" blue="0.25811487440000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="mainColor">
-                                                <color key="value" red="0.31676065920000002" green="0.73180449010000004" blue="0.25796914100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                                <color key="value" red="0.31676065920000002" green="0.73180449010000004" blue="0.25796914100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <segue destination="fOF-VB-Mhw" kind="push" id="mYB-nK-v2u"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
@@ -2261,7 +2273,7 @@ Create a reminder to vote, by selecting the date and time for your next student 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aaz-NA-Qz5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1385" y="-691"/>
+            <point key="canvasLocation" x="1384.5" y="-691.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="F6B-Hq-Py0">
@@ -3154,7 +3166,7 @@ Create a reminder to vote, by selecting the date and time for your next student 
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="CFC-7L-d7J"/>
                                     <barButtonItem style="plain" id="K0a-em-IPF">
                                         <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="MRO-Aa-9l8">
-                                            <rect key="frame" x="48" y="7.5" width="279" height="29"/>
+                                            <rect key="frame" x="92" y="7.5" width="191" height="29"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="Position"/>
@@ -3194,7 +3206,7 @@ Create a reminder to vote, by selecting the date and time for your next student 
             <objects>
                 <tableViewController id="5dt-O9-dRQ" customClass="EBCandidateTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="150" sectionHeaderHeight="22" sectionFooterHeight="22" id="lOT-QP-bgl">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="619"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -3365,7 +3377,7 @@ Create a reminder to vote, by selecting the date and time for your next student 
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <inset key="contentInset" minX="0.0" minY="108" maxX="0.0" maxY="49"/>
+                        <inset key="contentInset" minX="0.0" minY="44" maxX="0.0" maxY="0.0"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="8" minimumInteritemSpacing="8" id="Dso-O0-eYk">
                             <size key="itemSize" width="150" height="150"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -3433,11 +3445,11 @@ Create a reminder to vote, by selecting the date and time for your next student 
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="Ntx-HS-gIc" customClass="EBCandidateProfileViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Z4Y-7Y-ybR">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="619"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="1uj-3h-kKU">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="619"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="AsB-iC-0wt">
@@ -3514,7 +3526,7 @@ Create a reminder to vote, by selecting the date and time for your next student 
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" id="KRq-Ee-LRm" customClass="EBTextViewGentium">
-                                        <rect key="frame" x="0.0" y="264" width="375" height="357"/>
+                                        <rect key="frame" x="0.0" y="264" width="375" height="405"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -3553,11 +3565,11 @@ Create a reminder to vote, by selecting the date and time for your next student 
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="ZQD-Kt-LNU" customClass="EBFriendProfileViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MDI-qB-7uI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="619"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="86T-6N-UeR">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="619"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="Ug3-qn-J6D">
@@ -5605,7 +5617,7 @@ If you have any further questions about the research itself, please contact the 
         <scene sceneID="N5c-9P-vNQ">
             <objects>
                 <tableViewController id="MGD-FB-f3Z" customClass="EBElectionInfoTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="IgD-lv-Gy9">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="IgD-lv-Gy9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -5674,7 +5686,7 @@ If you have any further questions about the research itself, please contact the 
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <inset key="contentInset" minX="0.0" minY="108" maxX="0.0" maxY="49"/>
+                        <inset key="contentInset" minX="0.0" minY="44" maxX="0.0" maxY="0.0"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="8" minimumInteritemSpacing="8" id="pbg-uv-9lE">
                             <size key="itemSize" width="150" height="150"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -6398,7 +6410,7 @@ The 4 items are measured on a 5 point Likert scale,  from 1 (not at all) to 5 
         <segue reference="phb-OD-nP9"/>
         <segue reference="ccM-QI-Ya5"/>
         <segue reference="eh2-Tf-C1m"/>
-        <segue reference="kRX-vk-Pe5"/>
+        <segue reference="YQG-kQ-vCD"/>
         <segue reference="THe-Rv-3qE"/>
         <segue reference="Qa8-yg-wXH"/>
     </inferredMetricsTieBreakers>

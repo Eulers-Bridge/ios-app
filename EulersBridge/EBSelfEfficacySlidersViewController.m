@@ -10,6 +10,7 @@
 #import "EBSliderTableViewCell.h"
 #import "EBAppDelegate.h"
 #import "EBNetworkService.h"
+#import "EBUserService.h"
 #import "EBEmailVerificationViewController.h"
 
 @interface EBSelfEfficacySlidersViewController () <UITableViewDataSource, UITableViewDelegate, EBPersonalitySelectionDelegate, EBUserServiceDelegate>
@@ -112,6 +113,7 @@
 -(void)addEfficacyForUserFinishedWithSuccess:(BOOL)success withUser:(EBUser *)user failureReason:(NSError *)error
 {
     if (success) {
+        [EBUserService setHasPPSEQuestions:YES];
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Successful" message:@"Answers submitted successfully." preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [[self navigationController] popViewControllerAnimated:true];

@@ -22,7 +22,8 @@
 @property (strong, nonatomic) NSArray *badgesEarned;
 @property (strong, nonatomic) NSArray *tasksCompleted;
 @property BOOL hasPersonality;
+@property BOOL hasPPSEQuestions;
 
--(EBUser *)initWithEmail:(NSString *)email givenName:(NSString *)givenName password:(NSString *)password accountVerified:(NSString *)accountVerified institutionId:(NSString *)institutionId userId:(NSString *)userId hasPersonality:(BOOL)hasPersonaltiy profilePhotoURL:(NSString *)profilePhotoURL;
+-(EBUser *)initWithEmail:(NSString *)email givenName:(NSString *)givenName password:(NSString *)password accountVerified:(NSString *)accountVerified institutionId:(NSString *)institutionId userId:(NSString *)userId hasPersonality:(BOOL)hasPersonaltiy hasPPSEQuestions:(BOOL)hasPPSEQuestions profilePhotoURL:(NSString *)profilePhotoURL;
 
 @end

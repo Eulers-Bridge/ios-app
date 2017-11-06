@@ -209,7 +209,7 @@
         
         
         EKEvent *event = [EKEvent eventWithEventStore:store];
-        event.title = @"Voting for student union election";
+        event.title = @"Voting for community election";
         event.location = self.locationLabel.text;
         
         

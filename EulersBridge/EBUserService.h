@@ -14,5 +14,7 @@
 
 - (void)saveUser:(EBUser *)user;
 + (NSString *)retriveUserEmail;
++ (BOOL)hasPPSEQuestions;
++ (void)setHasPPSEQuestions:(BOOL)hasPPSEQuestions;
 
 @end

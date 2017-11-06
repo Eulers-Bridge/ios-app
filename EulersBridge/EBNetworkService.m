@@ -35,7 +35,7 @@
     NSString *urlString = [NSString stringWithFormat:@"%@/signUp", TESTING_URL];
     [manager POST:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id res) {
         
-        EBUser *user = [self createAndSaveUser:res userId:nil password:password institutionId:res[@"institutionId"] hasPersonality:NO profilePhotoURL:profilePicURL];
+        EBUser *user = [self createAndSaveUser:res userId:nil password:password institutionId:res[@"institutionId"] hasPersonality:NO hasPPSEQuestions:NO profilePhotoURL:profilePicURL];
         
         [self.userDelegate signupFinishedWithSuccess:YES withUser:user failureReason:nil];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -104,8 +104,8 @@
 - (void)loginWithEmailAddress:(NSString *)email password:(NSString *)password arn:(NSString *)arn deviceToken:(NSString *)deviceToken
 {
     NSString *notificationString = @"";
-    if (![arn isEqualToString:@""]) {
-        notificationString = [NSString stringWithFormat:@"?topicArn=%@&deviceToken=%@", arn, deviceToken];
+    if (![deviceToken isEqualToString:@""]) {
+        notificationString = [NSString stringWithFormat:@"?topicArn=%@&deviceToken=%@", SNSPlatformApplicationArn, deviceToken];
     }
     NSString *urlString = [NSString stringWithFormat:@"%@/login%@", TESTING_URL, notificationString];
     
@@ -121,14 +121,15 @@
     [manager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id res) {
 //        NSLog(@"JSON: %@", responseObject);
         BOOL hasPersonality = ([res[@"user"][@"hasPersonality"] isEqual: @(YES)]);
-        EBUser *user = [self createAndSaveUser:res[@"user"] userId:res[@"userId"] password:password institutionId: res[@"user"][@"institutionId"] hasPersonality:hasPersonality profilePhotoURL:res[@"user"][@"profilePhoto"]];
+        BOOL hasPPSEQuestions = ([res[@"user"][@"hasPPSEQuestions"] isEqual: @(YES)]);
+        EBUser *user = [self createAndSaveUser:res[@"user"] userId:res[@"userId"] password:password institutionId: res[@"user"][@"institutionId"] hasPersonality:hasPersonality hasPPSEQuestions:hasPPSEQuestions profilePhotoURL:res[@"user"][@"profilePhoto"]];
         [self.userDelegate loginFinishedWithSuccess:YES withUser:user failureReason:nil errorString:nil];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 //        NSLog(@"Error: %@", error);
         if ([[operation responseString] isEqualToString:LOGIN_ERROR_USER_UNVERIFIED]) {
             
             // Create the user object.
-            EBUser *user = [[EBUser alloc] initWithEmail:email givenName:@"" password:password accountVerified:@"0" institutionId:@"" userId:@"" hasPersonality:NO profilePhotoURL:@""];
+            EBUser *user = [[EBUser alloc] initWithEmail:email givenName:@"" password:password accountVerified:@"0" institutionId:@"" userId:@"" hasPersonality:NO hasPPSEQuestions:NO profilePhotoURL:@""];
             
             // Save the user in the system.
             EBUserService *userService = [[EBUserService alloc] init];
@@ -702,10 +703,10 @@
     
 }
 
-- (EBUser *)createAndSaveUser:(NSDictionary *)resUser userId:(NSString *)userId password:(NSString *)password institutionId:(NSString *)institutionId hasPersonality:(BOOL)hasPersonality profilePhotoURL:(NSString *)profilePhotoURL
+- (EBUser *)createAndSaveUser:(NSDictionary *)resUser userId:(NSString *)userId password:(NSString *)password institutionId:(NSString *)institutionId hasPersonality:(BOOL)hasPersonality hasPPSEQuestions:(BOOL)hasPPSEQuestions  profilePhotoURL:(NSString *)profilePhotoURL
 {
     // Create the user object.
-    EBUser *user = [[EBUser alloc] initWithEmail:resUser[@"email"] givenName:resUser[@"givenName"] password:password accountVerified:resUser[@"accountVerified"] institutionId:institutionId userId:userId hasPersonality:hasPersonality profilePhotoURL:resUser[@"profilePhoto"]];
+    EBUser *user = [[EBUser alloc] initWithEmail:resUser[@"email"] givenName:resUser[@"givenName"] password:password accountVerified:resUser[@"accountVerified"] institutionId:institutionId userId:userId hasPersonality:hasPersonality hasPPSEQuestions:hasPPSEQuestions profilePhotoURL:resUser[@"profilePhoto"]];
     
     // Save the user in the system.
     EBUserService *userService = [[EBUserService alloc] init];

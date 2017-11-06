@@ -72,9 +72,9 @@
 -(void)getElectionInfoFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
 {
     if (success) {
-        self.electionTitleLabel.text = info[@"title"];
-        self.overviewTextView.text = info[@"introduction"];
-        self.processTextView.text = info[@"process"];
+        self.electionTitleLabel.text = (info[@"title"] == [NSNull null] ? @"" : info[@"title"]);
+        self.overviewTextView.text = (info[@"introduction"] == [NSNull null] ? @"" : info[@"introduction"]);
+        self.processTextView.text = (info[@"process"] == [NSNull null] ? @"" : info[@"process"]);
         [EBHelper resetTextView:self.overviewTextView];
         [EBHelper resetTextView:self.processTextView];
         [self.tableView reloadData];

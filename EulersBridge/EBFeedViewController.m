@@ -81,10 +81,14 @@
     self.eventRefreshControl = eventControl;
     self.photoRefreshControl = photoControl;
 
+//    
+//    self.eventsCollectionView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0);
+//    self.newsCollectionView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0);
+//    self.photosCollectionView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0);
     
-    self.eventsCollectionView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0);
-    self.newsCollectionView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0);
-    self.photosCollectionView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0);
+    self.eventsCollectionView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    self.newsCollectionView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    self.photosCollectionView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
     
     CGRect frame0 = CGRectMake(0, 0, [EBHelper getScreenSize].width, [EBHelper getScreenSize].height);
     CGRect frame1 = frame0;

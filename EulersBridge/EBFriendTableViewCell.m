@@ -22,7 +22,7 @@
 
 - (void)awakeFromNib
 {
-    
+    [super awakeFromNib];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -56,6 +56,7 @@
 
 -(void)prepareForReuse
 {
+    [super prepareForReuse];
     self.profileImageView.image = nil;
     self.requestId = nil;
     self.contact = nil;

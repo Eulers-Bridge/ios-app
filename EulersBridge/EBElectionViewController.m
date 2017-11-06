@@ -13,6 +13,7 @@
 #import "EBFeedCollectionViewCell.h"
 #import "EBElectionPositionDetailViewController.h"
 #import "EBNetworkService.h"
+#import "EBUserService.h"
 
 @interface EBElectionViewController () <UIScrollViewDelegate, EBContentServiceDelegate>
 
@@ -23,6 +24,9 @@
 
 
 @property (weak, nonatomic) IBOutlet UIView *candidateView;
+
+@property (weak, nonatomic) IBOutlet UIView *coverView;
+
 
 
 @end
@@ -45,6 +49,14 @@
     [self.segmentedControl addTarget:self action:@selector(changeSegment) forControlEvents:UIControlEventValueChanged];
     
     [self getElectionInfo];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+//    BOOL hasPPSEQuestions = [EBUserService hasPPSEQuestions];
+//    self.coverView.hidden = hasPPSEQuestions;
+//    [self.segmentedControl setEnabled:hasPPSEQuestions];
 }
 
 - (void)changeSegment

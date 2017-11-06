@@ -202,7 +202,7 @@
         cell.nameLabel.text = name;
         cell.subtitleLabel.text = email;
 //        cell.subtitleLabel.text = @"Institution";
-        cell.requestId = self.friendRequests[indexPath.row][@"nodeId"];
+        cell.requestId = self.friendRequests[indexPath.row][@"id"];
         
     } else if (indexPath.section == 1) {
         
