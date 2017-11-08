@@ -29,7 +29,7 @@
 
 + (BOOL)hasPPSEQuestions
 {
-    return [[NSUserDefaults standardUserDefaults] objectForKey:@"hasPPSEQuestions"];
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"hasPPSEQuestions"];
 }
 
 + (void)setHasPPSEQuestions:(BOOL)hasPPSEQuestions

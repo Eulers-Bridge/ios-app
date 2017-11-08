@@ -54,9 +54,9 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-//    BOOL hasPPSEQuestions = [EBUserService hasPPSEQuestions];
-//    self.coverView.hidden = hasPPSEQuestions;
-//    [self.segmentedControl setEnabled:hasPPSEQuestions];
+    BOOL hasPPSEQuestions = [EBUserService hasPPSEQuestions];
+    self.coverView.hidden = hasPPSEQuestions;
+    [self.segmentedControl setEnabled:hasPPSEQuestions];
 }
 
 - (void)changeSegment
