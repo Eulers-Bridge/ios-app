@@ -14,6 +14,8 @@
 @interface EBPhotoDetailViewController () <UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *photoScrollView;
+@property (weak, nonatomic) IBOutlet EBLabelLight *likesLabel;
+
 
 @property NSString *prefix;
 @property CGPoint lastContentOffset;
@@ -136,6 +138,7 @@
 //        self.photoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index + 1]];
 //        self.rightPhotoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index + 2]];
     }
+    self.likesLabel.text = [NSString stringWithFormat:@"%ld", [self.photoDataList[self.index][@"numOfLikes"] integerValue]];
     [self fitImageView];
 }
 
@@ -182,6 +185,7 @@
             }
         }
     }
+    self.likesLabel.text = [NSString stringWithFormat:@"%ld", [self.photoDataList[self.index][@"numOfLikes"] integerValue]];
     [self fitImageView];
    
 }
