@@ -17,7 +17,7 @@
 
 #pragma mark User Services
 
-- (void)signupWithEmailAddress:(NSString *)email password:(NSString *)password givenName:(NSString *)givenName familyName:(NSString *)familyName institutionId:(NSString *)institutionId profilePicURL:(NSString *)profilePicURL
+- (void)signupWithEmailAddress:(NSString *)email password:(NSString *)password givenName:(NSString *)givenName familyName:(NSString *)familyName yearOfBirth:(NSString *)yearOfBirth gender:(NSString *)gender institutionId:(NSString *)institutionId profilePicURL:(NSString *)profilePicURL
 {
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -26,9 +26,9 @@
     NSDictionary *parameters = @{@"email": email,
                                  @"givenName": givenName,
                                  @"familyName": familyName,
-                                 @"gender": @"",
+                                 @"gender": gender,
                                  @"nationality": @"",
-                                 @"yearOfBirth": @"",
+                                 @"yearOfBirth": yearOfBirth,
                                  @"password": password,
                                  @"institutionId": institutionId,
                                  @"profilePhoto": profilePicURL};

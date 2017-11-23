@@ -35,8 +35,11 @@
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *confirmPasswordTextField;
+@property (weak, nonatomic) IBOutlet UITextField *ageTextField;
 @property (weak, nonatomic) IBOutlet UITextField *countryTextField;
+@property (weak, nonatomic) IBOutlet UITextField *genderTextField;
 @property (weak, nonatomic) IBOutlet UITextField *universityTextField;
+@property (weak, nonatomic) IBOutlet UIButton *genderButton;
 @property (weak, nonatomic) IBOutlet UIButton *countryButton;
 @property (weak, nonatomic) IBOutlet UIButton *universityButton;
 
@@ -45,6 +48,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *emailValidIndicator;
 @property (weak, nonatomic) IBOutlet UIImageView *passwordValidIndicator;
 @property (weak, nonatomic) IBOutlet UIImageView *confirmPasswordValidIndicator;
+@property (weak, nonatomic) IBOutlet UIImageView *ageValidIndicator;
+@property (weak, nonatomic) IBOutlet UIImageView *genderValidIndicator;
 @property (weak, nonatomic) IBOutlet UIImageView *countryValidIndicator;
 @property (weak, nonatomic) IBOutlet UIImageView *universityValidIndicator;
 
@@ -54,11 +59,13 @@
 
 @property (strong, nonatomic) NSArray *countries;
 @property (strong, nonatomic) NSArray *universities;
+@property (strong, nonatomic) NSArray *genders;
 @property (strong, nonatomic) NSArray *pickerViewCurrentArray;
 
 @property (strong, nonatomic) GKImagePicker *gkImagePicker;
 
 @property (strong, nonatomic) NSString *institutionIdSelected;
+@property (strong, nonatomic) NSString *genderSelected;
 @property (strong, nonatomic) EBNetworkService *networkService;
 @property (strong, nonatomic) EBUser *signupedUser;
 
@@ -112,8 +119,8 @@
     } else {
         self.countries = @[];
         self.universities = @[];
-
     }
+    self.genders = @[@"Male", @"Female", @"Other"];
     
     if (self.textFieldContainerView.frame.origin.y < (self.errorLabel.frame.origin.y + self.errorLabel.frame.size.height)) {
         CGRect frame = self.textFieldContainerView.frame;
@@ -146,6 +153,7 @@
     self.universityButton.enabled = NO;
     
     self.institutionIdSelected = @"";
+    self.genderSelected = @"";
 
 }
 
@@ -188,6 +196,25 @@
 //        
 //    }];
 
+}
+
+- (IBAction)chooseGender:(UIButton *)sender
+{
+    [self dismissKeyboard];
+    self.pickerView.hidden = NO;
+    [self pushContentUpWithCompletion:^(BOOL finished) {
+        self.pickerView.hidden = NO;
+    }];
+    
+    self.pickerViewCurrentArray = self.genders;
+    [self.pickerView reloadAllComponents];
+    
+    [self.pickerView selectRow:0 inComponent:0 animated:NO];
+    
+    if ([self.genderTextField.text isEqualToString:@""]) {
+        self.genderTextField.text = self.pickerViewCurrentArray[[self.pickerView selectedRowInComponent:0]];
+        self.genderSelected = self.genders[0];
+    }
 }
 
 - (IBAction)chooseCountry:(UIButton *)sender
@@ -264,6 +291,11 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
+    if (self.pickerViewCurrentArray == self.genders) {
+        self.genderTextField.text = self.genders[row];
+        self.genderSelected = self.genders[row];
+    }
+    
     if (self.pickerViewCurrentArray == self.countries) {
         self.countryTextField.text = self.countries[row];
         self.countrySelected = row;
@@ -298,8 +330,11 @@
         [self.confirmPasswordTextField becomeFirstResponder];
         return NO;
     } else if (textField == self.confirmPasswordTextField) {
-        [textField resignFirstResponder];
-        [self chooseCountry:self.countryButton];
+        [self.ageTextField becomeFirstResponder];
+        return NO;
+    } else if (textField == self.ageTextField) {
+        [self.genderTextField becomeFirstResponder];
+        [self chooseGender:self.genderButton];
         return NO;
     }
     return YES;
@@ -615,14 +650,23 @@
     [self tapAnywhere];
     // Verify the fields.
     if ([self verifyFields]) {
-    [self.networkService signupWithEmailAddress:self.emailTextField.text
-                                       password:self.passwordTextField.text
-                                      givenName:self.nameTextField.text
-                                       familyName:self.familyNameTextField.text
-                                  institutionId:self.institutionIdSelected
-                                    profilePicURL:self.profilePicURL];
-    // Set the spinning wheel or equivelent.
-    [self.activityIndicator startAnimating];
+        
+        int age = [self.ageTextField.text intValue];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy"];
+        NSString *yearString = [formatter stringFromDate:[NSDate date]];
+        NSString *yearOfBirth = [NSString stringWithFormat:@"%d", [yearString intValue] - age];
+        
+        [self.networkService signupWithEmailAddress:self.emailTextField.text
+                                           password:self.passwordTextField.text
+                                          givenName:self.nameTextField.text
+                                         familyName:self.familyNameTextField.text
+                                        yearOfBirth:yearOfBirth
+                                             gender:self.genderTextField.text
+                                      institutionId:self.institutionIdSelected
+                                        profilePicURL:self.profilePicURL];
+        // Set the spinning wheel or equivelent.
+        [self.activityIndicator startAnimating];
     }
 }
 
@@ -651,6 +695,21 @@
     } else {
         self.familyNameTextField.textColor = ISEGORIA_COLOR_SIGNUP_GREEN;
         self.familyNameValidIndicator.image = tick;
+    }
+    
+    if ([self.ageTextField.text length] == 0) {
+        self.ageTextField.textColor = ISEGORIA_COLOR_SIGNUP_RED;
+        self.ageValidIndicator.image = cross;
+        allGood = NO;
+    } else {
+        if ([self.ageTextField.text intValue] == 0) {
+            self.ageTextField.textColor = ISEGORIA_COLOR_SIGNUP_RED;
+            self.ageValidIndicator.image = cross;
+            allGood = NO;
+        } else {
+            self.ageTextField.textColor = ISEGORIA_COLOR_SIGNUP_GREEN;
+            self.ageValidIndicator.image = tick;
+        }
     }
 
     
@@ -695,6 +754,15 @@
         self.countryValidIndicator.image = tick;
     }
     
+    if ([self.genderTextField.text length] == 0) {
+        // show cross
+        self.genderValidIndicator.image = cross;
+        allGood = NO;
+    } else {
+        self.genderTextField.textColor = ISEGORIA_COLOR_SIGNUP_GREEN;
+        self.genderValidIndicator.image = tick;
+    }
+    
     if ([self.universityTextField.text length] == 0) {
         // show cross
         self.universityValidIndicator.image = cross;
@@ -732,9 +800,15 @@
     self.confirmPasswordTextField.enabled = YES;
     self.confirmPasswordTextField.textColor = [UIColor blackColor];
     self.confirmPasswordValidIndicator.image = nil;
+    self.ageTextField.enabled = YES;
+    self.ageTextField.textColor = [UIColor blackColor];
+    self.ageValidIndicator.image = nil;
     self.countryButton.enabled = YES;
     self.countryTextField.backgroundColor = [UIColor whiteColor];
     self.countryTextField.textColor = [UIColor blackColor];
+    self.genderTextField.backgroundColor = [UIColor whiteColor];
+    self.genderTextField.textColor = [UIColor blackColor];
+    self.genderValidIndicator.image = nil;
     self.countryValidIndicator.image = nil;
     self.universityButton.enabled = YES;
     self.universityTextField.backgroundColor = [UIColor whiteColor];

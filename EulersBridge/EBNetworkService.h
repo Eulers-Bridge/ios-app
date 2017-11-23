@@ -82,7 +82,7 @@
 - (void)getGeneralInfo;
 
 // Signup, login and user service
-- (void)signupWithEmailAddress:(NSString *)email password:(NSString *)password givenName:(NSString *)givenName familyName:(NSString *)familyName institutionId:(NSString *)institutionId profilePicURL:(NSString *)profilePicURL;
+- (void)signupWithEmailAddress:(NSString *)email password:(NSString *)password givenName:(NSString *)givenName familyName:(NSString *)familyName yearOfBirth:(NSString *)yearOfBirth gender:(NSString *)gender institutionId:(NSString *)institutionId profilePicURL:(NSString *)profilePicURL;
 
 - (void)loginWithEmailAddress:(NSString *)email password:(NSString *)password arn:(NSString *)arn deviceToken:(NSString *)deviceToken;
 - (void)resendVerificationEmailForUser:(EBUser *)user;
