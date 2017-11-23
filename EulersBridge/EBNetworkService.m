@@ -384,6 +384,9 @@
     if (contentType == EBContentViewTypeNews) {
         contentTypeString = @"newsArticle";
     }
+    if (contentType == EBContentViewTypePhoto) {
+        contentTypeString = @"photo";
+    }
     NSString *urlString = [NSString stringWithFormat:@"%@/%@/%@/%@/%@/",
                            TESTING_URL,
                            contentTypeString,
@@ -647,6 +650,17 @@
         [self.contentDelegate getNewsLikesFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [self.contentDelegate getNewsLikesFinishedWithSuccess:NO withInfo:nil failureReason:error];
+    }];
+}
+
+- (void)getPhotoLikesWithPhotoId:(NSString *)photoId
+{
+    NSString *urlString = [NSString stringWithFormat:@"%@/photo/%@/likes", TESTING_URL, photoId];
+    
+    [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.contentDelegate getPhotoLikesFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.contentDelegate getPhotoLikesFinishedWithSuccess:NO withInfo:nil failureReason:error];
     }];
 }
 

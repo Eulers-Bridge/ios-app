@@ -10,15 +10,21 @@
 #import "EBHelper.h"
 #import "MyConstants.h"
 #import "UIImageView+AFNetworking.h"
+#import "EBNetworkService.h"
+#import "EBUserService.h"
 
-@interface EBPhotoDetailViewController () <UIScrollViewDelegate>
+@interface EBPhotoDetailViewController () <UIScrollViewDelegate, EBContentServiceDelegate, EBUserActionServiceDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *photoScrollView;
 @property (weak, nonatomic) IBOutlet EBLabelLight *likesLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UIButton *likeButton;
+
 
 
 @property NSString *prefix;
 @property CGPoint lastContentOffset;
+@property BOOL liked;
 
 @end
 
@@ -36,13 +42,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.liked = NO;
     self.prefix = self.data[@"prefix"];
-    
     CGFloat width = [EBHelper getScreenSize].width;
     CGFloat height = [EBHelper getScreenSize].height;
-    
-    self.titleLabel.text = self.titleName;
+
     self.photoScrollView.bounds = CGRectMake(0, 0, width + SPACING_PHOTO_DETAIL, height);
     self.photoScrollView.frame = CGRectMake(0, 0, width + SPACING_PHOTO_DETAIL, height);
     self.photoScrollView.contentSize = CGSizeMake(width * 3 + 3 * SPACING_PHOTO_DETAIL, height);
@@ -74,6 +78,7 @@
     self.rightPhotoScrollView.delegate = self;
     
     [self setupPhotos];
+    [self updateData];
     self.lastContentOffset = self.photoScrollView.contentOffset;
     
     
@@ -138,7 +143,6 @@
 //        self.photoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index + 1]];
 //        self.rightPhotoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%ld.jpg", self.prefix, (long)self.index + 2]];
     }
-    self.likesLabel.text = [NSString stringWithFormat:@"%ld", [self.photoDataList[self.index][@"numOfLikes"] integerValue]];
     [self fitImageView];
 }
 
@@ -158,6 +162,7 @@
         } else if (scrollView.contentOffset.x + [EBHelper getScreenSize].width + SPACING_PHOTO_DETAIL == self.lastContentOffset.x) {
             // swipe left
             self.index -= 1;
+            [self updateData];
             if (self.index == 0 || self.index + 2 == self.numberOfPhotos) {
                 self.lastContentOffset = scrollView.contentOffset;
                 return;
@@ -172,6 +177,7 @@
         } else if (scrollView.contentOffset.x - ([EBHelper getScreenSize].width + SPACING_PHOTO_DETAIL) == self.lastContentOffset.x) {
             // swipe right
             self.index += 1;
+            [self updateData];
             if (self.index + 1 == self.numberOfPhotos || self.index - 1 == 0) {
                 self.lastContentOffset = scrollView.contentOffset;
                 return;
@@ -185,9 +191,22 @@
             }
         }
     }
-    self.likesLabel.text = [NSString stringWithFormat:@"%ld", [self.photoDataList[self.index][@"numOfLikes"] integerValue]];
     [self fitImageView];
    
+}
+
+- (void)updateData
+{
+    [self getLikes];
+    self.likesLabel.text = [NSString stringWithFormat:@"%ld", [self.photoDataList[self.index][@"numOfLikes"] integerValue]];
+    self.titleLabel.text = self.photoDataList[self.index][@"title"];
+    
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:[self.photoDataList[self.index][@"date"] integerValue] / 1000];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd MMMM yyyy, h:mm a"];
+    NSString *dateAndTime = [dateFormatter stringFromDate:date];
+    
+    self.dateLabel.text = dateAndTime;
 }
 
 - (void)fitImageView
@@ -253,14 +272,54 @@
                                  scrollView.contentSize.height * 0.5 + offsetY);
 }
 
--(void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale
+// Likes
+
+- (void)getLikes
 {
-    
+    self.likeButton.enabled = NO;
+    EBNetworkService *service = [[EBNetworkService alloc] init];
+    service.contentDelegate = self;
+    [service getPhotoLikesWithPhotoId:self.photoDataList[self.index][@"nodeId"]];
 }
-//-(BOOL)hidesBottomBarWhenPushed
-//{
-//    return YES;
-//}
+
+-(void)getPhotoLikesFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
+{
+    if (success) {
+        self.likesLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)((NSArray *)info).count];
+        BOOL found = NO;
+        for (NSDictionary *like in info) {
+            if ([like[@"email"] isEqualToString:[EBUserService retriveUserEmail]]) {
+                self.liked = YES;
+                found = YES;
+                break;
+            }
+        }
+        if (found == NO) {
+            self.liked = NO;
+        }
+    } else {
+        
+    }
+    self.likeButton.enabled = YES;
+}
+
+- (IBAction)like:(id)sender
+{
+    self.likeButton.enabled = NO;
+    EBNetworkService *service = [[EBNetworkService alloc] init];
+    service.userActionDelegate = self;
+    [service likeContentWithLike:!self.liked contentType:EBContentViewTypePhoto contentId:self.photoDataList[self.index][@"nodeId"]];
+}
+
+-(void)likeContentFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
+{
+    if (success) {
+        [self getLikes];
+    } else {
+        
+    }
+}
+
 
 -(void)viewWillAppear:(BOOL)animated
 {

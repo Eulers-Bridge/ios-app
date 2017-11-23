@@ -155,7 +155,7 @@
                                                 </connections>
                                             </collectionViewCell>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FeedCellSmall" id="8sT-lZ-0Qo" customClass="EBFeedCollectionViewCell">
-                                                <rect key="frame" x="35.5" y="166" width="304" height="50"/>
+                                                <rect key="frame" x="36" y="166" width="304" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                     <rect key="frame" x="0.0" y="0.0" width="304" height="50"/>
@@ -1300,7 +1300,7 @@ Learn about your political efficacy by completing this survey.</string>
                     <navigationItem key="navigationItem" id="DLi-fg-KPz">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="XJI-Wc-Snu">
-                            <rect key="frame" x="72.5" y="7.5" width="230" height="29"/>
+                            <rect key="frame" x="73" y="8" width="230" height="29"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Election"/>
@@ -3217,7 +3217,7 @@ All you need to do is answer a few questions about yourself and your personality
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="CFC-7L-d7J"/>
                                     <barButtonItem style="plain" id="K0a-em-IPF">
                                         <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="MRO-Aa-9l8">
-                                            <rect key="frame" x="92" y="7.5" width="191" height="29"/>
+                                            <rect key="frame" x="92" y="8" width="191" height="29"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="Position"/>
@@ -5615,20 +5615,20 @@ If you have any further questions about the research itself, please contact the 
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="QZN-W5-T6D">
-                                <rect key="frame" x="188" y="626" width="22" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="QZN-W5-T6D">
+                                <rect key="frame" x="320" y="626" width="22" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                 <state key="normal" image="Photo Star">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <state key="selected" image="Photo Star"/>
                                 <state key="highlighted" image="Photo Star"/>
                                 <connections>
-                                    <action selector="like:" destination="77v-bU-2BT" eventType="touchUpInside" id="bme-zC-BL4"/>
+                                    <action selector="like:" destination="Ag8-Il-Pdj" eventType="touchUpInside" id="GaF-GR-BEG"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xke-Sb-qs6" customClass="EBLabelLight">
-                                <rect key="frame" x="144" y="628" width="39" height="17"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="100" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xke-Sb-qs6" customClass="EBLabelLight">
+                                <rect key="frame" x="280" y="628" width="39" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -5641,8 +5641,8 @@ If you have any further questions about the research itself, please contact the 
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20th Marth 2014" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ar0-UE-2ry">
-                                <rect key="frame" x="20" y="626" width="97" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="20th Marth 2014" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ar0-UE-2ry">
+                                <rect key="frame" x="20" y="626" width="163" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -5654,7 +5654,9 @@ If you have any further questions about the research itself, please contact the 
                     <navigationItem key="navigationItem" title="Photo" id="Scm-es-uRB"/>
                     <connections>
                         <outlet property="centrePhotoScrollView" destination="alT-bH-5RT" id="icI-fV-vV2"/>
+                        <outlet property="dateLabel" destination="Ar0-UE-2ry" id="DQc-At-fZi"/>
                         <outlet property="leftPhotoScrollView" destination="5Sd-Ss-vtO" id="110-Xf-tzq"/>
+                        <outlet property="likeButton" destination="QZN-W5-T6D" id="0M0-gA-wou"/>
                         <outlet property="likesLabel" destination="xke-Sb-qs6" id="b8T-c2-kfl"/>
                         <outlet property="photoScrollView" destination="lns-77-2Yb" id="aV9-vY-yDd"/>
                         <outlet property="rightPhotoScrollView" destination="3Bj-GF-vDv" id="8PG-9y-7gT"/>
@@ -5663,7 +5665,7 @@ If you have any further questions about the research itself, please contact the 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TRY-3b-N9u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1606" y="-2976"/>
+            <point key="canvasLocation" x="1605.5" y="-2976.5"/>
         </scene>
         <!--Election Info Table View Controller-->
         <scene sceneID="N5c-9P-vNQ">

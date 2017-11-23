@@ -52,6 +52,7 @@
 - (void)getCandidatesInfoFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 - (void)getTicketsInfoFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 - (void)getNewsLikesFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
+- (void)getPhotoLikesFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 - (void)getTicketSupportersFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 
 - (void)getPollsFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
@@ -119,6 +120,7 @@
 - (void)getCandidatesInfoWithElectionId:(NSString *)electionId;
 - (void)getTicketsInfoWithElectionId:(NSString *)electionId;
 - (void)getNewsLikesWithArticleId:(NSString *)articleId;
+- (void)getPhotoLikesWithPhotoId:(NSString *)photoId;
 - (void)getSupportsWithTicketId:(NSString *)ticketId;
 
 - (void)getPollsWithInstitutionId:(NSString *)institutionId;

@@ -101,6 +101,7 @@ typedef NS_ENUM(NSInteger, EBFeedDetail) {
 typedef NS_ENUM(NSInteger, EBContentViewType) {
     EBContentViewTypeNews,
     EBContentViewTypeEvent,
+    EBContentViewTypePhoto,
     EBContentViewTypeCandidateDescription,
     EBContentViewTypeTicketProfile,
     EBContentViewTypeProfile
