@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES" initialViewController="fmt-DH-4Pl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES" initialViewController="fmt-DH-4Pl">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -155,7 +155,7 @@
                                                 </connections>
                                             </collectionViewCell>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FeedCellSmall" id="8sT-lZ-0Qo" customClass="EBFeedCollectionViewCell">
-                                                <rect key="frame" x="36" y="166" width="304" height="50"/>
+                                                <rect key="frame" x="35.5" y="166" width="304" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                     <rect key="frame" x="0.0" y="0.0" width="304" height="50"/>
@@ -709,6 +709,15 @@
                                             <action selector="forgetPasswordAction:" destination="GJt-2I-ECl" eventType="touchUpInside" id="q4P-Vt-9cK"/>
                                         </connections>
                                     </button>
+                                    <pickerView contentMode="scaleToFill" misplaced="YES" id="fvw-5h-kLg">
+                                        <rect key="frame" x="0.0" y="384" width="375" height="162"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="GJt-2I-ECl" id="bzZ-QS-k3j"/>
+                                            <outlet property="delegate" destination="GJt-2I-ECl" id="AhU-rL-h89"/>
+                                        </connections>
+                                    </pickerView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
@@ -736,6 +745,7 @@
                         <outlet property="loginButton" destination="Ziq-qk-js2" id="GpV-Ee-Bhh"/>
                         <outlet property="passwordTextField" destination="4xy-re-2w6" id="d0Y-uN-AcS"/>
                         <outlet property="passwordValidIndicator" destination="TEg-64-vwf" id="2Bl-pg-6Pm"/>
+                        <outlet property="pickerView" destination="fvw-5h-kLg" id="pxx-2m-OKA"/>
                         <outlet property="signupButton" destination="vha-CY-TA6" id="D0c-Wp-xlj"/>
                         <outlet property="titleLabel" destination="gOJ-ri-tIB" id="eVU-Fk-6gh"/>
                         <segue destination="i1h-Cc-saW" kind="push" identifier="LoginEmailUnverified" id="THe-Rv-3qE"/>
@@ -1609,7 +1619,7 @@ Learn about your political efficacy by completing this survey.</string>
                                 <rect key="frame" x="347" y="76" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Comment Amount" id="Ax9-DY-XCU">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Comment Amount" id="Ax9-DY-XCU">
                                 <rect key="frame" x="347" y="97" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -1620,7 +1630,7 @@ Learn about your political efficacy by completing this survey.</string>
                                 <color key="textColor" red="0.56548672914505005" green="0.63621580600738525" blue="0.72303831577301025" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="64" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fm8-uQ-6HG" customClass="EBLabelMedium">
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="64" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fm8-uQ-6HG" customClass="EBLabelMedium">
                                 <rect key="frame" x="316" y="100" width="28" height="13"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
@@ -3217,7 +3227,7 @@ All you need to do is answer a few questions about yourself and your personality
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="CFC-7L-d7J"/>
                                     <barButtonItem style="plain" id="K0a-em-IPF">
                                         <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="MRO-Aa-9l8">
-                                            <rect key="frame" x="92" y="8" width="191" height="29"/>
+                                            <rect key="frame" x="92" y="7.5" width="191" height="29"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="Position"/>
@@ -6462,10 +6472,10 @@ The 4 items are measured on a 5 point Likert scale,  from 1 (not at all) to 5 
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="phb-OD-nP9"/>
-        <segue reference="cqZ-rZ-ALM"/>
+        <segue reference="ccM-QI-Ya5"/>
         <segue reference="eh2-Tf-C1m"/>
         <segue reference="YQG-kQ-vCD"/>
-        <segue reference="N4E-ro-Kty"/>
+        <segue reference="THe-Rv-3qE"/>
         <segue reference="Qa8-yg-wXH"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.23315238952636719" green="0.47978004813194275" blue="0.85770797729492188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

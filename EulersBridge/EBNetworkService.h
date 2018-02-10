@@ -39,6 +39,7 @@
 @optional
 
 - (void)getGeneralInfoFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
+- (void)getServerInfoFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 - (void)getInstitutionInfoFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 - (void)getNewsFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 - (void)getNewsFeedIdFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
@@ -81,6 +82,7 @@
 @property (assign, nonatomic) id<EBFriendServiceDelegate> friendDelegate;
 
 - (void)getGeneralInfo;
+- (void)getServerInfo;
 
 // Signup, login and user service
 - (void)signupWithEmailAddress:(NSString *)email password:(NSString *)password givenName:(NSString *)givenName familyName:(NSString *)familyName yearOfBirth:(NSString *)yearOfBirth gender:(NSString *)gender institutionId:(NSString *)institutionId profilePicURL:(NSString *)profilePicURL;

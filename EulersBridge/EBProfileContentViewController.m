@@ -83,7 +83,7 @@
     [self loadGroupsData];
     
     // Get Badges and tasks
-//    [self getBadges];
+    [self getBadges];
 //    [self getTasks];
 }
 

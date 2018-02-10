@@ -100,6 +100,7 @@
         [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"userId"];
         [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"hasPersonality"];
         [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"institutionId"];
+        [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"serverURL"];
         
         UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
         window.rootViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"loginView"];

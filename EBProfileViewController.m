@@ -104,11 +104,6 @@
 }
 
 
-
-
-
-
-
 - (IBAction)inviteFriends:(UIButton *)sender
 {
     ABPeoplePickerNavigationController *picker =

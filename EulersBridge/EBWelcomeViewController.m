@@ -12,7 +12,7 @@
 #import "EBAppDelegate.h"
 #import "EBHelper.h"
 
-@interface EBWelcomeViewController () <UITextViewDelegate, EBUserServiceDelegate, SetupPushNotificationDelegate>
+@interface EBWelcomeViewController () <UITextViewDelegate, EBUserServiceDelegate, EBContentServiceDelegate, SetupPushNotificationDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
@@ -25,8 +25,10 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UIImageView *emailValidIndicator;
 @property (weak, nonatomic) IBOutlet UIImageView *passwordValidIndicator;
+@property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
 
 @property BOOL contentPushedUp;
+@property (strong, nonatomic) NSArray *serverList;
 
 @end
 
@@ -44,6 +46,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.serverList = [NSArray array];
+    
     // Font setup
     self.learnMoreButton.titleLabel.font = [UIFont fontWithName:@"MuseoSansRounded-500" size:self.learnMoreButton.titleLabel.font.pointSize];
 
@@ -69,10 +73,13 @@
     // relogin the user if possible
     NSString *email = [[NSUserDefaults standardUserDefaults] objectForKey:@"userEmail"];
     NSString *password = [[NSUserDefaults standardUserDefaults] objectForKey:@"userPassword"];
-    if (email && password) {
+    NSString *serverURL = [[NSUserDefaults standardUserDefaults] objectForKey:@"serverURL"];
+    if (email && password && (serverURL != nil)) {
         self.emailTextField.text = email;
         self.passwordTextField.text = password;
         [self loginAction:self.loginButton];
+    } else {
+        [self getServerInfo];
     }
 }
 
@@ -190,6 +197,35 @@
     self.passwordValidIndicator.image = [UIImage imageNamed:@"Cross"];
 }
 
+- (void)getServerInfo
+{
+    self.loginButton.enabled = NO;
+    self.signupButton.enabled = NO;
+    EBNetworkService *service = [[EBNetworkService alloc] init];
+    service.contentDelegate = self;
+    [service getServerInfo];
+}
+
+- (void)getServerInfoFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
+{
+    if (success) {
+        // If no serverURL in userDefault, use the first one from returned list. otherwise set the pickerview to the one from userDefualt
+        
+        self.serverList = (NSArray *)info;
+        if ([self.serverList count] > 0) {
+            self.loginButton.enabled = YES;
+            self.signupButton.enabled = YES;
+            [self.pickerView reloadAllComponents];
+            NSString *serverURL = (NSString *)((NSDictionary *)self.serverList[0])[@"apiRoot"];
+            [[NSUserDefaults standardUserDefaults] setObject:serverURL forKey:@"serverURL"];
+            [self.pickerView selectRow:0 inComponent:0 animated:NO];
+        }
+        
+    } else {
+        
+    }
+}
+
 - (BOOL)verifyFields
 {
     BOOL allGood = YES;
@@ -286,6 +322,33 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Picker view datasource and delegate
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return [self.serverList count];
+}
+
+- (NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    NSString *title = (NSString *)((NSDictionary *)self.serverList[row])[@"name"];
+    NSAttributedString *attString =
+    [[NSAttributedString alloc] initWithString:title attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    
+    return attString;
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    NSString *serverURL = (NSString *)((NSDictionary *)self.serverList[row])[@"apiRoot"];
+    [[NSUserDefaults standardUserDefaults] setObject:serverURL forKey:@"serverURL"];
 }
 
 /*
