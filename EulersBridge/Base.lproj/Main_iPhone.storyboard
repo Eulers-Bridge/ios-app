@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES" initialViewController="fmt-DH-4Pl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES" initialViewController="fmt-DH-4Pl">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="HelveticaNeue.ttc">
-            <string>HelveticaNeue</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Photos-->
         <scene sceneID="9CH-Kv-MwJ">
@@ -570,13 +565,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1Fh-qs-okN" customClass="EBButtonLightSystem">
+                                <rect key="frame" x="321" y="617" width="31" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                <state key="normal" title="Skip">
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="skipToMainContent:" destination="GJt-2I-ECl" eventType="touchUpInside" id="7Ba-AP-2wM"/>
+                                </connections>
+                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welcome.jpg" id="G6y-ab-0tP">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <view contentMode="scaleToFill" id="7rg-Fa-DU1">
                                 <rect key="frame" x="0.0" y="121" width="375" height="392"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Isegoria" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gOJ-ri-tIB" customClass="EBLabelLight">
                                         <rect key="frame" x="47" y="96" width="280" height="45"/>
@@ -709,28 +714,18 @@
                                             <action selector="forgetPasswordAction:" destination="GJt-2I-ECl" eventType="touchUpInside" id="q4P-Vt-9cK"/>
                                         </connections>
                                     </button>
-                                    <pickerView contentMode="scaleToFill" misplaced="YES" id="fvw-5h-kLg">
-                                        <rect key="frame" x="0.0" y="384" width="375" height="162"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <connections>
-                                            <outlet property="dataSource" destination="GJt-2I-ECl" id="bzZ-QS-k3j"/>
-                                            <outlet property="delegate" destination="GJt-2I-ECl" id="AhU-rL-h89"/>
-                                        </connections>
-                                    </pickerView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1Fh-qs-okN" customClass="EBButtonLightSystem">
-                                <rect key="frame" x="321" y="617" width="31" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                <state key="normal" title="Skip">
-                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
+                            <pickerView contentMode="scaleToFill" misplaced="YES" id="fvw-5h-kLg">
+                                <rect key="frame" x="0.0" y="505" width="375" height="162"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
-                                    <action selector="skipToMainContent:" destination="GJt-2I-ECl" eventType="touchUpInside" id="7Ba-AP-2wM"/>
+                                    <outlet property="dataSource" destination="GJt-2I-ECl" id="bzZ-QS-k3j"/>
+                                    <outlet property="delegate" destination="GJt-2I-ECl" id="AhU-rL-h89"/>
                                 </connections>
-                            </button>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -738,11 +733,11 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="activityIndicator" destination="vOY-jM-bQS" id="rGz-YB-7Ku"/>
-                        <outlet property="backgroundImageView" destination="G6y-ab-0tP" id="55E-5o-bbb"/>
                         <outlet property="containerView" destination="7rg-Fa-DU1" id="B2D-Te-3sK"/>
                         <outlet property="emailTextField" destination="ILM-gE-h50" id="Wsq-2b-6a1"/>
                         <outlet property="emailValidIndicator" destination="Tto-ig-vad" id="aSU-qK-WBD"/>
                         <outlet property="loginButton" destination="Ziq-qk-js2" id="GpV-Ee-Bhh"/>
+                        <outlet property="logoImageView" destination="ih1-9b-oAo" id="oyQ-hE-wvs"/>
                         <outlet property="passwordTextField" destination="4xy-re-2w6" id="d0Y-uN-AcS"/>
                         <outlet property="passwordValidIndicator" destination="TEg-64-vwf" id="2Bl-pg-6Pm"/>
                         <outlet property="pickerView" destination="fvw-5h-kLg" id="pxx-2m-OKA"/>
@@ -2363,6 +2358,7 @@ All you need to do is answer a few questions about yourself and your personality
                     <tabBarItem key="tabBarItem" title="" image="Feed" id="u1e-5L-l1D"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5tE-NY-HFS">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -3151,6 +3147,7 @@ All you need to do is answer a few questions about yourself and your personality
                     <tabBarItem key="tabBarItem" title="" image="Profile" id="guI-z8-BKy"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="8Dm-ul-rAK">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -3169,6 +3166,7 @@ All you need to do is answer a few questions about yourself and your personality
                     <tabBarItem key="tabBarItem" title="" image="Election" id="Z7h-1E-pvt"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tvM-xn-TcE">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -3835,6 +3833,7 @@ All you need to do is answer a few questions about yourself and your personality
                     <tabBarItem key="tabBarItem" title="" image="Poll" id="Dk4-ee-L5n"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="MHl-bc-zAX">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

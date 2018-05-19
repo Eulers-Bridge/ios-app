@@ -696,10 +696,15 @@
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/hal+json", @"application/json", @"application/xml", nil];
     
     [manager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSArray *servers = (NSArray *)responseObject;
         NSDictionary *info = (NSDictionary *)responseObject;
-        [self.contentDelegate getServerInfoFinishedWithSuccess:YES withInfo:info failureReason:nil];
+        if (self.contentDelegate) {
+            [self.contentDelegate getServerInfoFinishedWithSuccess:YES withInfo:info failureReason:nil];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.contentDelegate getServerInfoFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        if (self.contentDelegate) {
+            [self.contentDelegate getServerInfoFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        }
     }];
 }
 

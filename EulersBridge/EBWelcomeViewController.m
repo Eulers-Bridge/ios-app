@@ -1,3 +1,4 @@
+
 //
 //  EBWelcomeViewController.m
 //  EulersBridge
@@ -26,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *emailValidIndicator;
 @property (weak, nonatomic) IBOutlet UIImageView *passwordValidIndicator;
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
+@property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
 
 @property BOOL contentPushedUp;
 @property (strong, nonatomic) NSArray *serverList;
@@ -47,6 +49,12 @@
 {
     [super viewDidLoad];
     self.serverList = [NSArray array];
+    
+    // Hide logo for iPad
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone &&
+        [[[UIDevice currentDevice] model] hasPrefix:@"iPad"]) {
+        self.logoImageView.hidden = YES;
+    }
     
     // Font setup
     self.learnMoreButton.titleLabel.font = [UIFont fontWithName:@"MuseoSansRounded-500" size:self.learnMoreButton.titleLabel.font.pointSize];
@@ -79,8 +87,9 @@
         self.passwordTextField.text = password;
         [self loginAction:self.loginButton];
     } else {
-        [self getServerInfo];
+
     }
+    [self getServerInfo];
 }
 
 - (void)viewWillAppear:(BOOL)animated

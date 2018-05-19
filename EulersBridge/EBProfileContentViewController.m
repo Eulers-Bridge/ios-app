@@ -185,7 +185,10 @@
         for (int i = 0; i < [self.data[@"numOfCompBadges"] intValue]; i++) {
             [cBadges addObject:[NSNumber numberWithInt:i]];
         }
-        int numOfRemainingBadges = [self.data[@"totalBadges"] intValue] - [self.data[@"numOfCompBadges"] intValue];
+        int numOfRemainingBadges = 0;
+        if (self.data[@"totalBadges"] != [NSNull null] && self.data[@"numOfCompBadges"] != [NSNull null]) {
+            numOfRemainingBadges = [self.data[@"totalBadges"] intValue] - [self.data[@"numOfCompBadges"] intValue];
+        }
         for (int i = 0; i < numOfRemainingBadges; i++) {
             [rBadges addObject:[NSNumber numberWithInt:i]];
         }
