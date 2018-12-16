@@ -14,7 +14,7 @@
 @property (strong, nonatomic) NSArray *candidates;
 @property (strong, nonatomic) NSArray *matchingCandidates;
 
-@property (assign, nonatomic) id<EBCandidateCellDelegate> cellDelegate;
+@property (weak, nonatomic) id<EBCandidateCellDelegate> cellDelegate;
 
 -(void)updateData:(NSString *)searchText;
 

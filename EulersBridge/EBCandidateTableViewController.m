@@ -306,8 +306,10 @@
     }
     
     cell.nameLabel.text = [EBHelper fullNameWithUserObject:data[@"candidateData"]];
-    cell.codeLabel.text = data[@"ticketData"][@"code"];
-    if (data[@"colour"] != [NSNull null]) {
+    if (data[@"ticketData"][@"code"] != [NSNull null]) {
+        cell.codeLabel.text = data[@"ticketData"][@"code"];
+    }
+    if (data[@"colour"] != [NSNull null] && data[@"ticketData"][@"colour"] != [NSNull null]) {
         cell.codeLabel.backgroundColor = UIColorFromRGB([EBHelper hexFromString:[data[@"ticketData"][@"colour"] substringFromIndex:1]]);
     } else {
         cell.codeLabel.backgroundColor = [UIColor grayColor];

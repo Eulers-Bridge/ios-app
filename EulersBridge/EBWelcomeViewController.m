@@ -68,7 +68,14 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                           action:@selector(dismissKeyboard)];
     
+    UISwipeGestureRecognizer *swipeDown = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    swipeDown.direction = UISwipeGestureRecognizerDirectionDown;
+    UISwipeGestureRecognizer *swipeUp = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    swipeUp.direction = UISwipeGestureRecognizerDirectionUp;
+    
     [self.view addGestureRecognizer:tap];
+    [self.view addGestureRecognizer:swipeDown];
+    [self.view addGestureRecognizer:swipeUp];
     
     // testing
 //    EBNetworkService *service = [[EBNetworkService alloc] init];
@@ -190,6 +197,7 @@
         }
         
     } else {
+        [self highlightFields];
         if ([errorString isEqualToString:LOGIN_ERROR_BAD_CREDENTIALS]) {
             [self highlightFields];
         } else if ([errorString isEqualToString:LOGIN_ERROR_USER_UNVERIFIED]) {

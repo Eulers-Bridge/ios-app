@@ -17,6 +17,6 @@
 
 @interface EBSignupTermsViewController : UIViewController
 
-@property (assign, nonatomic) id<EBSignupTermsDelegate> termsDelegate;
+@property (weak, nonatomic) id<EBSignupTermsDelegate> termsDelegate;
 
 @end

@@ -18,7 +18,7 @@
 
 @interface EBElectionPositionsDataSource : NSObject <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, EBContentServiceDelegate>
 
-@property (assign, nonatomic) id<EBElectionPositionsDataSourceDelegate> delegate;
+@property (weak, nonatomic) id<EBElectionPositionsDataSourceDelegate> delegate;
 
 @property (strong, nonatomic) NSArray *positions;
 

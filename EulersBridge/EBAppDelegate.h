@@ -14,7 +14,7 @@
 
 @interface EBAppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (assign, nonatomic) id<SetupPushNotificationDelegate> pushDelegate;
+@property (weak, nonatomic) id<SetupPushNotificationDelegate> pushDelegate;
 @property (strong, nonatomic) UIWindow *window;
 @property CGSize screenSize;
 

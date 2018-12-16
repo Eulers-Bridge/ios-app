@@ -136,11 +136,14 @@
     // Gesture Recognizer
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                           action:@selector(tapAnywhere)];
-    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeDown)];
-    swipe.direction = UISwipeGestureRecognizerDirectionDown;
+    UISwipeGestureRecognizer *swipeDown = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeUpDown)];
+    swipeDown.direction = UISwipeGestureRecognizerDirectionDown;
+    UISwipeGestureRecognizer *swipeUp = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeUpDown)];
+    swipeUp.direction = UISwipeGestureRecognizerDirectionUp;
     
     [self.view addGestureRecognizer:tap];
-    [self.view addGestureRecognizer:swipe];
+    [self.view addGestureRecognizer:swipeDown];
+    [self.view addGestureRecognizer:swipeUp];
     self.networkService = [[EBNetworkService alloc] init];
     self.networkService.userDelegate = self;
     self.networkService.contentDelegate = self;
@@ -360,7 +363,7 @@
 }
 
 #pragma mark swipe gesture
-- (void)swipeDown
+- (void)swipeUpDown
 {
     [self tapAnywhere];
 }

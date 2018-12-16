@@ -76,10 +76,10 @@
 
 @interface EBNetworkService : NSObject
 
-@property (assign, nonatomic) id<EBUserServiceDelegate> userDelegate;
-@property (assign, nonatomic) id<EBContentServiceDelegate> contentDelegate;
-@property (assign, nonatomic) id<EBUserActionServiceDelegate> userActionDelegate;
-@property (assign, nonatomic) id<EBFriendServiceDelegate> friendDelegate;
+@property (weak, nonatomic) id<EBUserServiceDelegate> userDelegate;
+@property (weak, nonatomic) id<EBContentServiceDelegate> contentDelegate;
+@property (weak, nonatomic) id<EBUserActionServiceDelegate> userActionDelegate;
+@property (weak, nonatomic) id<EBFriendServiceDelegate> friendDelegate;
 
 - (void)getGeneralInfo;
 - (void)getServerInfo;

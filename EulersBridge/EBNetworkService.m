@@ -36,10 +36,13 @@
     [manager POST:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id res) {
         
         EBUser *user = [self createAndSaveUser:res userId:nil password:password institutionId:res[@"institutionId"] hasPersonality:NO hasPPSEQuestions:NO profilePhotoURL:profilePicURL];
-        
-        [self.userDelegate signupFinishedWithSuccess:YES withUser:user failureReason:nil];
+        if (self.userDelegate != nil) {
+            [self.userDelegate signupFinishedWithSuccess:YES withUser:user failureReason:nil];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.userDelegate signupFinishedWithSuccess:NO withUser:nil failureReason:error];
+        if (self.userDelegate != nil) {
+            [self.userDelegate signupFinishedWithSuccess:NO withUser:nil failureReason:error];
+        }
     }];
     
 }
@@ -57,10 +60,13 @@
     NSDictionary *parameters = [NSDictionary dictionary];
     NSString *urlString = [NSString stringWithFormat:@"%@/requestPwdReset/%@/", TESTING_URL, email];
     [manager POST:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id res) {
-        
-        [self.userDelegate requestPasswordResetWithEmailFinishedWithSuccess:YES failureReason:nil errorString:@""];
+        if (self.userDelegate != nil) {
+            [self.userDelegate requestPasswordResetWithEmailFinishedWithSuccess:YES failureReason:nil errorString:@""];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.userDelegate requestPasswordResetWithEmailFinishedWithSuccess:NO failureReason:error errorString:error.localizedDescription];
+        if (self.userDelegate != nil) {
+            [self.userDelegate requestPasswordResetWithEmailFinishedWithSuccess:NO failureReason:error errorString:error.localizedDescription];
+        }
     }];
 
 }
@@ -74,10 +80,13 @@
     
     NSString *urlString = [NSString stringWithFormat:@"%@/user/%@/personality", TESTING_URL, TESTING_USERNAME];
     [manager PUT:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id res) {
-        
-        [self.userDelegate addPersonalityForUserFinishedWithSuccess:YES withUser:user failureReason:nil];
+        if (self.userDelegate != nil) {
+            [self.userDelegate addPersonalityForUserFinishedWithSuccess:YES withUser:user failureReason:nil];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.userDelegate addPersonalityForUserFinishedWithSuccess:NO withUser:nil failureReason:error];
+        if (self.userDelegate != nil) {
+            [self.userDelegate addPersonalityForUserFinishedWithSuccess:NO withUser:nil failureReason:error];
+        }
         
     }];
 }
@@ -91,10 +100,13 @@
     
     NSString *urlString = [NSString stringWithFormat:@"%@/user/%@/PPSEQuestions", TESTING_URL, TESTING_USERNAME];
     [manager PUT:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id res) {
-        
-        [self.userDelegate addEfficacyForUserFinishedWithSuccess:YES withUser:user failureReason:nil];
+        if (self.userDelegate != nil) {
+            [self.userDelegate addEfficacyForUserFinishedWithSuccess:YES withUser:user failureReason:nil];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.userDelegate addEfficacyForUserFinishedWithSuccess:NO withUser:nil failureReason:error];
+        if (self.userDelegate != nil) {
+            [self.userDelegate addEfficacyForUserFinishedWithSuccess:NO withUser:nil failureReason:error];
+        }
         
     }];
 }
@@ -123,7 +135,9 @@
         BOOL hasPersonality = ([res[@"user"][@"hasPersonality"] isEqual: @(YES)]);
         BOOL hasPPSEQuestions = ([res[@"user"][@"hasPPSEQuestions"] isEqual: @(YES)]);
         EBUser *user = [self createAndSaveUser:res[@"user"] userId:res[@"userId"] password:password institutionId: res[@"user"][@"institutionId"] hasPersonality:hasPersonality hasPPSEQuestions:hasPPSEQuestions profilePhotoURL:res[@"user"][@"profilePhoto"]];
-        [self.userDelegate loginFinishedWithSuccess:YES withUser:user failureReason:nil errorString:nil];
+        if (self.userDelegate != nil) {
+            [self.userDelegate loginFinishedWithSuccess:YES withUser:user failureReason:nil errorString:nil];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 //        NSLog(@"Error: %@", error);
         if ([[operation responseString] isEqualToString:LOGIN_ERROR_USER_UNVERIFIED]) {
@@ -136,7 +150,9 @@
             [userService saveUser:user];
             
         }
-        [self.userDelegate loginFinishedWithSuccess:NO withUser:nil failureReason:error errorString:[operation responseString]];
+        if (self.userDelegate != nil) {
+            [self.userDelegate loginFinishedWithSuccess:NO withUser:nil failureReason:error errorString:[operation responseString]];
+        }
     }];
 
 }
@@ -146,9 +162,13 @@
     NSString *urlString = [NSString stringWithFormat:@"%@/contact/%@/", TESTING_URL, email];
     
     [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.userDelegate getUserWithUserEmailFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        if (self.userDelegate != nil) {
+            [self.userDelegate getUserWithUserEmailFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.userDelegate getUserWithUserEmailFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        if (self.userDelegate != nil) {
+            [self.userDelegate getUserWithUserEmailFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        }
     }];
 }
 
@@ -157,9 +177,13 @@
     NSString *urlString = [NSString stringWithFormat:@"%@/user/%@/support/", TESTING_URL, email];
     
     [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.userDelegate getGroupsWithUserEmailFinishedWithSuccess:YES withGroups:responseObject failureReason:nil];
+        if (self.userDelegate != nil) {
+            [self.userDelegate getGroupsWithUserEmailFinishedWithSuccess:YES withGroups:responseObject failureReason:nil];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.userDelegate getGroupsWithUserEmailFinishedWithSuccess:NO withGroups:nil failureReason:error];
+        if (self.userDelegate != nil) {
+            [self.userDelegate getGroupsWithUserEmailFinishedWithSuccess:NO withGroups:nil failureReason:error];
+        }
     }];
 
 }
@@ -169,9 +193,13 @@
     NSString *urlString = [NSString stringWithFormat:@"%@/notifications/%@/", TESTING_URL, @"42"];
     
     [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.userDelegate getNotificationsWithUserIdFinishedWithSuccess:YES withNotifications:responseObject failureReason:nil];
+        if (self.userDelegate != nil) {
+            [self.userDelegate getNotificationsWithUserIdFinishedWithSuccess:YES withNotifications:responseObject failureReason:nil];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.userDelegate getNotificationsWithUserIdFinishedWithSuccess:NO withNotifications:nil failureReason:error];
+        if (self.userDelegate != nil) {
+            [self.userDelegate getNotificationsWithUserIdFinishedWithSuccess:NO withNotifications:nil failureReason:error];
+        }
     }];
 }
 
@@ -182,9 +210,13 @@
     NSString *urlString = [NSString stringWithFormat:@"%@/contact/%@/", TESTING_URL, contactDetail];
     
     [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.friendDelegate findFriendFinishedWithSuccess:YES withContact:contact failureReason:nil];
+        if (self.friendDelegate != nil) {
+            [self.friendDelegate findFriendFinishedWithSuccess:YES withContact:contact failureReason:nil];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.friendDelegate findFriendFinishedWithSuccess:NO withContact:nil failureReason:error];
+        if (self.friendDelegate != nil) {
+            [self.friendDelegate findFriendFinishedWithSuccess:NO withContact:nil failureReason:error];
+        }
     }];
 }
 
@@ -193,9 +225,13 @@
     NSString *urlString = [NSString stringWithFormat:@"%@/searchUserProfile/%@/", TESTING_URL, [name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     
     [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.friendDelegate findFriendWithNameFinishedWithSuccess:YES withContacts:responseObject failureReason:nil];
+        if (self.friendDelegate != nil) {
+            [self.friendDelegate findFriendWithNameFinishedWithSuccess:YES withContacts:responseObject failureReason:nil];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.friendDelegate findFriendWithNameFinishedWithSuccess:NO withContacts:nil failureReason:error];
+        if (self.friendDelegate != nil) {
+            [self.friendDelegate findFriendWithNameFinishedWithSuccess:NO withContacts:nil failureReason:error];
+        }
     }];
 }
 
@@ -204,9 +240,13 @@
     NSString *urlString = [NSString stringWithFormat:@"%@/contacts/%@/", TESTING_URL, userEmail];
     
     [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.friendDelegate getFriendsWithUserEmailFinishedWithSuccess:YES withContacts:responseObject[@"foundObjects"] failureReason:nil];
+        if (self.friendDelegate != nil) {
+            [self.friendDelegate getFriendsWithUserEmailFinishedWithSuccess:YES withContacts:responseObject[@"foundObjects"] failureReason:nil];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.friendDelegate getFriendsWithUserEmailFinishedWithSuccess:NO withContacts:nil failureReason:error];
+        if (self.friendDelegate != nil) {
+            [self.friendDelegate getFriendsWithUserEmailFinishedWithSuccess:NO withContacts:nil failureReason:error];
+        }
     }];
 }
 
@@ -215,9 +255,13 @@
     NSString *urlString = [NSString stringWithFormat:@"%@/contacts", TESTING_URL];
     
     [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.friendDelegate getFriendsWithUserEmailFinishedWithSuccess:YES withContacts:responseObject[@"foundObjects"] failureReason:nil];
+        if (self.friendDelegate != nil) {
+            [self.friendDelegate getFriendsWithUserEmailFinishedWithSuccess:YES withContacts:responseObject[@"foundObjects"] failureReason:nil];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.friendDelegate getFriendsWithUserEmailFinishedWithSuccess:NO withContacts:nil failureReason:error];
+        if (self.friendDelegate != nil) {
+            [self.friendDelegate getFriendsWithUserEmailFinishedWithSuccess:NO withContacts:nil failureReason:error];
+        }
     }];
 }
 
@@ -226,9 +270,13 @@
     NSString *urlString = [NSString stringWithFormat:@"%@/user/%@/contactRequests/", TESTING_URL, [EBHelper getUserId]];
     
     [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.friendDelegate getFriendRequestSentFinishedWithSuccess:YES withRequests:responseObject[@"foundObjects"] failureReason:nil];
+        if (self.friendDelegate != nil) {
+            [self.friendDelegate getFriendRequestSentFinishedWithSuccess:YES withRequests:responseObject[@"foundObjects"] failureReason:nil];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.friendDelegate getFriendRequestSentFinishedWithSuccess:NO withRequests:nil failureReason:error];
+        if (self.friendDelegate != nil) {
+            [self.friendDelegate getFriendRequestSentFinishedWithSuccess:NO withRequests:nil failureReason:error];
+        }
     }];
 }
 
@@ -237,9 +285,13 @@
     NSString *urlString = [NSString stringWithFormat:@"%@/user/%@/contactRequests/rec", TESTING_URL, [EBHelper getUserId]];
     
     [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.friendDelegate getFriendRequestReceivedFinishedWithSuccess:YES withRequests:responseObject[@"foundObjects"] failureReason:nil];
+        if (self.friendDelegate != nil) {
+            [self.friendDelegate getFriendRequestReceivedFinishedWithSuccess:YES withRequests:responseObject[@"foundObjects"] failureReason:nil];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.friendDelegate getFriendRequestReceivedFinishedWithSuccess:NO withRequests:nil failureReason:error];
+        if (self.friendDelegate != nil) {
+            [self.friendDelegate getFriendRequestReceivedFinishedWithSuccess:NO withRequests:nil failureReason:error];
+        }
     }];
 }
 
@@ -253,10 +305,13 @@
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/hal+json", @"application/json", @"application/xml", nil];
     
     [manager POST:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id res) {
-        
-        [self.friendDelegate addFriendWithEmailFinishedWithSuccess:YES withInfo:res failureReason:nil];
+        if (self.friendDelegate != nil) {
+            [self.friendDelegate addFriendWithEmailFinishedWithSuccess:YES withInfo:res failureReason:nil];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.friendDelegate addFriendWithEmailFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        if (self.friendDelegate != nil) {
+            [self.friendDelegate addFriendWithEmailFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        }
     }];
 }
 
@@ -270,10 +325,13 @@
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/hal+json", @"application/json", @"application/xml", nil];
     
     [manager PUT:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id res) {
-        
-        [self.friendDelegate acceptFriendRequestFinishedWithSuccess:YES withInfo:res failureReason:nil];
+        if (self.friendDelegate != nil) {
+            [self.friendDelegate acceptFriendRequestFinishedWithSuccess:YES withInfo:res failureReason:nil];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.friendDelegate acceptFriendRequestFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        if (self.friendDelegate != nil) {
+            [self.friendDelegate acceptFriendRequestFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        }
     }];
 }
 
@@ -287,10 +345,13 @@
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/hal+json", @"application/json", @"application/xml", nil];
     
     [manager PUT:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id res) {
-        
-        [self.friendDelegate rejectFriendRequestFinishedWithSuccess:YES withInfo:res failureReason:nil];
+        if (self.friendDelegate != nil) {
+            [self.friendDelegate rejectFriendRequestFinishedWithSuccess:YES withInfo:res failureReason:nil];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.friendDelegate rejectFriendRequestFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        if (self.friendDelegate != nil) {
+            [self.friendDelegate rejectFriendRequestFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        }
     }];
 }
 
@@ -340,10 +401,13 @@
     
     NSString *urlString = [NSString stringWithFormat:@"%@/poll/%@/vote/%@", TESTING_URL, pollId, answerId];
     [manager PUT:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id res) {
-        
-        [self.userActionDelegate votePollFinishedWithSuccess:YES withInfo:res failureReason:nil];
+        if (self.userActionDelegate != nil) {
+            [self.userActionDelegate votePollFinishedWithSuccess:YES withInfo:res failureReason:nil];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.userActionDelegate votePollFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        if (self.userActionDelegate != nil) {
+            [self.userActionDelegate votePollFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        }
     }];
 
 }
@@ -365,10 +429,13 @@
     
     NSString *urlString = [NSString stringWithFormat:@"%@/comment", TESTING_URL];
     [manager POST:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id res) {
-        
-        [self.userActionDelegate postPollCommentFinishedWithSuccess:YES withInfo:res failureReason:nil];
+        if (self.userActionDelegate != nil) {
+            [self.userActionDelegate postPollCommentFinishedWithSuccess:YES withInfo:res failureReason:nil];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.userActionDelegate postPollCommentFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        if (self.userActionDelegate != nil) {
+            [self.userActionDelegate postPollCommentFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        }
     }];
 
 }
@@ -396,17 +463,23 @@
                            [EBUserService retriveUserEmail]];
     if (like) {
         [manager PUT:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id res) {
-            
-            [self.userActionDelegate likeContentFinishedWithSuccess:YES withInfo:res failureReason:nil];
+            if (self.userActionDelegate != nil) {
+                [self.userActionDelegate likeContentFinishedWithSuccess:YES withInfo:res failureReason:nil];
+            }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            [self.userActionDelegate likeContentFinishedWithSuccess:NO withInfo:nil failureReason:error];
+            if (self.userActionDelegate != nil) {
+                [self.userActionDelegate likeContentFinishedWithSuccess:NO withInfo:nil failureReason:error];
+            }
         }];
     } else {
         [manager DELETE:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id res) {
-            
-            [self.userActionDelegate likeContentFinishedWithSuccess:YES withInfo:res failureReason:nil];
+            if (self.userActionDelegate != nil) {
+                [self.userActionDelegate likeContentFinishedWithSuccess:YES withInfo:res failureReason:nil];
+            }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            [self.userActionDelegate likeContentFinishedWithSuccess:NO withInfo:nil failureReason:error];
+            if (self.userActionDelegate != nil) {
+                [self.userActionDelegate likeContentFinishedWithSuccess:NO withInfo:nil failureReason:error];
+            }
         }];
     }
     
@@ -424,17 +497,23 @@
     NSString *urlString = [NSString stringWithFormat:@"%@/ticket/%@/support/%@/", TESTING_URL, ticketId, [EBUserService retriveUserEmail]];
     if (support) {
         [manager PUT:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id res) {
-         
-            [self.userActionDelegate supportTicketFinishedWithSuccess:YES withInfo:res failureReason:nil];
+             if (self.userActionDelegate != nil) {
+                [self.userActionDelegate supportTicketFinishedWithSuccess:YES withInfo:res failureReason:nil];
+             }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            [self.userActionDelegate supportTicketFinishedWithSuccess:NO withInfo:nil failureReason:error];
+            if (self.userActionDelegate != nil) {
+                [self.userActionDelegate supportTicketFinishedWithSuccess:NO withInfo:nil failureReason:error];
+            }
         }];
     } else {
         [manager DELETE:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id res) {
-            
-            [self.userActionDelegate supportTicketFinishedWithSuccess:YES withInfo:res failureReason:nil];
+            if (self.userActionDelegate != nil) {
+                [self.userActionDelegate supportTicketFinishedWithSuccess:YES withInfo:res failureReason:nil];
+            }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            [self.userActionDelegate supportTicketFinishedWithSuccess:NO withInfo:nil failureReason:error];
+            if (self.userActionDelegate != nil) {
+                [self.userActionDelegate supportTicketFinishedWithSuccess:NO withInfo:nil failureReason:error];
+            }
         }];
     }
     
@@ -451,9 +530,13 @@
     NSString *urlString = [NSString stringWithFormat:@"%@/newsArticles/%@?pageSize=100", TESTING_URL, TESTING_INSTITUTION_ID];
     
     [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.contentDelegate getNewsFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getNewsFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.contentDelegate getNewsFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getNewsFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        }
     }];
 }
 
@@ -464,9 +547,13 @@
     NSString *urlString = [NSString stringWithFormat:@"%@/institution/%@/newsFeed", TESTING_URL, TESTING_INSTITUTION_ID];
     
     [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.contentDelegate getNewsFeedIdFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getNewsFeedIdFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.contentDelegate getNewsFeedIdFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getNewsFeedIdFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        }
     }];
 }
 
@@ -477,9 +564,13 @@
     NSString *urlString = [NSString stringWithFormat:@"%@/events/%@?pageSize=100", TESTING_URL, TESTING_INSTITUTION_ID];
     
     [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.contentDelegate getEventsFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getEventsFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.contentDelegate getEventsFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getEventsFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        }
     }];
 }
 
@@ -488,9 +579,13 @@
     NSString *urlString = [NSString stringWithFormat:@"%@/photoAlbums/%@?pageSize=100", TESTING_URL, newsFeedId];
     
     [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.contentDelegate getPhotoAlbumsFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getPhotoAlbumsFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.contentDelegate getPhotoAlbumsFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getPhotoAlbumsFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        }
     }];
 }
 
@@ -499,9 +594,13 @@
     NSString *urlString = [NSString stringWithFormat:@"%@/photos/%@?pageSize=100", TESTING_URL, albumId];
     
     [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.contentDelegate getPhotosFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getPhotosFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.contentDelegate getPhotosFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getPhotosFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        }
     }];
 }
 
@@ -510,9 +609,13 @@
     NSString *urlString = [NSString stringWithFormat:@"%@/user/photos/%@?pageSize=100", TESTING_URL, email];
     
     [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.contentDelegate getPhotosFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getPhotosFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.contentDelegate getPhotosFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getPhotosFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        }
     }];
 }
 
@@ -521,9 +624,13 @@
     NSString *urlString = [NSString stringWithFormat:@"%@/elections/%@", TESTING_URL, institutionId];
     
     [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.contentDelegate getElectionsInfoFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getElectionsInfoFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.contentDelegate getElectionsInfoFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getElectionsInfoFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        }
     }];
 }
 
@@ -533,9 +640,13 @@
     NSString *urlString = [NSString stringWithFormat:@"%@/election/%@", TESTING_URL, electionId];
     
     [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.contentDelegate getElectionInfoFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getElectionInfoFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.contentDelegate getElectionInfoFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getElectionInfoFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        }
     }];
 }
 
@@ -544,9 +655,13 @@
     NSString *urlString = [NSString stringWithFormat:@"%@/positions/%@", TESTING_URL, electionId];
     
     [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.contentDelegate getPositionsInfoFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getPositionsInfoFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.contentDelegate getPositionsInfoFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getPositionsInfoFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        }
     }];
 }
 
@@ -555,9 +670,13 @@
     NSString *urlString = [NSString stringWithFormat:@"%@/candidates/%@", TESTING_URL, electionId];
     
     [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.contentDelegate getCandidatesInfoFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getCandidatesInfoFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.contentDelegate getCandidatesInfoFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getCandidatesInfoFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        }
     }];
 
 }
@@ -567,9 +686,13 @@
     NSString *urlString = [NSString stringWithFormat:@"%@/tickets/%@", TESTING_URL, electionId];
     
     [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.contentDelegate getTicketsInfoFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getTicketsInfoFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.contentDelegate getTicketsInfoFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getTicketsInfoFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        }
     }];
     
 }
@@ -581,9 +704,13 @@
     NSString *urlString = [NSString stringWithFormat:@"%@/polls/%@", TESTING_URL, institutionId];
     
     [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.contentDelegate getPollsFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getPollsFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.contentDelegate getPollsFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getPollsFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        }
     }];
 }
 
@@ -592,9 +719,13 @@
     NSString *urlString = [NSString stringWithFormat:@"%@/poll/%@/results", TESTING_URL, pollId];
     
     [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.contentDelegate getPollResultsFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getPollResultsFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.contentDelegate getPollResultsFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getPollResultsFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        }
     }];
 }
 
@@ -603,9 +734,13 @@
     NSString *urlString = [NSString stringWithFormat:@"%@/comments/%@", TESTING_URL, pollId];
     
     [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.contentDelegate getPollCommentsFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getPollCommentsFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.contentDelegate getPollCommentsFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getPollCommentsFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        }
     }];
 }
 
@@ -614,9 +749,13 @@
     NSString *urlString = [NSString stringWithFormat:@"%@/badges/complete/%@?pageSize=100", TESTING_URL, userId];
     
     [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.contentDelegate getCompleteBadgesFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getCompleteBadgesFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.contentDelegate getCompleteBadgesFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getCompleteBadgesFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        }
     }];
 }
 
@@ -625,9 +764,13 @@
     NSString *urlString = [NSString stringWithFormat:@"%@/badges/remaining/%@?pageSize=100", TESTING_URL, userId];
     
     [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.contentDelegate getRemainingBadgesFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getRemainingBadgesFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.contentDelegate getRemainingBadgesFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getRemainingBadgesFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        }
     }];
 }
 
@@ -636,9 +779,13 @@
     NSString *urlString = [NSString stringWithFormat:@"%@/tasks?pageSize=100", TESTING_URL];
     
     [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.contentDelegate getTasksFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getTasksFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.contentDelegate getTasksFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getTasksFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        }
     }];
 }
 
@@ -647,9 +794,13 @@
     NSString *urlString = [NSString stringWithFormat:@"%@/newsArticle/%@/likes", TESTING_URL, articleId];
     
     [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.contentDelegate getNewsLikesFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getNewsLikesFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.contentDelegate getNewsLikesFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getNewsLikesFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        }
     }];
 }
 
@@ -658,9 +809,13 @@
     NSString *urlString = [NSString stringWithFormat:@"%@/photo/%@/likes", TESTING_URL, photoId];
     
     [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.contentDelegate getPhotoLikesFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getPhotoLikesFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.contentDelegate getPhotoLikesFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getPhotoLikesFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        }
     }];
 }
 
@@ -669,9 +824,13 @@
     NSString *urlString = [NSString stringWithFormat:@"%@/ticket/%@/supporters", TESTING_URL, ticketId];
     
     [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.contentDelegate getTicketSupportersFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getTicketSupportersFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.contentDelegate getTicketSupportersFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getTicketSupportersFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        }
     }];
 }
 
@@ -680,9 +839,13 @@
     NSString *urlString = [NSString stringWithFormat:@"%@/institution/%@", TESTING_URL, institutionId];
     
     [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.contentDelegate getInstitutionInfoFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getInstitutionInfoFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.contentDelegate getInstitutionInfoFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getInstitutionInfoFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        }
     }];
 }
 
@@ -698,11 +861,11 @@
     [manager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSArray *servers = (NSArray *)responseObject;
         NSDictionary *info = (NSDictionary *)responseObject;
-        if (self.contentDelegate) {
+        if (self.contentDelegate != nil) {
             [self.contentDelegate getServerInfoFinishedWithSuccess:YES withInfo:info failureReason:nil];
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (self.contentDelegate) {
+        if (self.contentDelegate != nil) {
             [self.contentDelegate getServerInfoFinishedWithSuccess:NO withInfo:nil failureReason:error];
         }
     }];
@@ -718,9 +881,13 @@
     
     [manager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *info = (NSDictionary *)responseObject;
-        [self.contentDelegate getGeneralInfoFinishedWithSuccess:YES withInfo:info failureReason:nil];
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getGeneralInfoFinishedWithSuccess:YES withInfo:info failureReason:nil];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.contentDelegate getGeneralInfoFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getGeneralInfoFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        }
     }];
 }
 

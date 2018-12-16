@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES" initialViewController="fmt-DH-4Pl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES" initialViewController="fmt-DH-4Pl">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -81,7 +81,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="htM-uf-7fK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1267" y="-2271"/>
+            <point key="canvasLocation" x="2027.2" y="-2042.8785607196403"/>
         </scene>
         <!--Feed-->
         <scene sceneID="W3I-pn-N6e">
@@ -401,7 +401,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1267" y="-1566"/>
+            <point key="canvasLocation" x="2027.2" y="-1408.6956521739132"/>
         </scene>
         <!--Article-->
         <scene sceneID="0MP-vW-NGp">
@@ -534,7 +534,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ful-Ix-sqH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2131" y="-2271"/>
+            <point key="canvasLocation" x="3409.5999999999999" y="-2042.8785607196403"/>
         </scene>
         <!--Test Path View Controller-->
         <scene sceneID="L8x-fO-gE8">
@@ -555,7 +555,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wtD-nP-eME" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1414" y="378"/>
+            <point key="canvasLocation" x="-2262.4000000000001" y="340.02998500749629"/>
         </scene>
         <!--Welcome View Controller-->
         <scene sceneID="6O4-jy-RpX">
@@ -692,7 +692,7 @@
                                         <rect key="frame" x="149" y="20" width="76" height="76"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fgu-2E-p6B" customClass="EBButtonLightSystem">
+                                    <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fgu-2E-p6B" customClass="EBButtonLightSystem">
                                         <rect key="frame" x="38" y="375" width="303" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
@@ -700,11 +700,11 @@
                                             <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                     </button>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="white" id="vOY-jM-bQS">
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" id="vOY-jM-bQS">
                                         <rect key="frame" x="177" y="400" width="20" height="20"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     </activityIndicatorView>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JWc-0t-BD9" customClass="EBButton">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JWc-0t-BD9" customClass="EBButton">
                                         <rect key="frame" x="128" y="347" width="122" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Forget password?">
@@ -717,7 +717,7 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <pickerView contentMode="scaleToFill" misplaced="YES" id="fvw-5h-kLg">
+                            <pickerView contentMode="scaleToFill" id="fvw-5h-kLg">
                                 <rect key="frame" x="0.0" y="505" width="375" height="162"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -749,7 +749,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lrq-o8-M07" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1113" y="1209"/>
+            <point key="canvasLocation" x="-1780.8" y="1087.5562218890555"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="j34-qu-Bo2">
@@ -776,7 +776,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LpQ-4G-AJ1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-613" y="2795"/>
+            <point key="canvasLocation" x="-980.79999999999995" y="2514.2428785607199"/>
         </scene>
         <!--Find Friend View Controller-->
         <scene sceneID="4HU-cR-rrk">
@@ -836,7 +836,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N4J-gx-Gmd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-163" y="2795"/>
+            <point key="canvasLocation" x="-260.80000000000001" y="2514.2428785607199"/>
         </scene>
         <!--Sign Up-->
         <scene sceneID="UBg-rf-R3Y">
@@ -870,16 +870,16 @@
                                     <action selector="uploadImage:" destination="AS6-Ue-LrR" eventType="touchUpInside" id="ToU-Fd-alg"/>
                                 </connections>
                             </button>
-                            <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progress="0.5" id="n5N-bh-Eje">
+                            <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" id="n5N-bh-Eje">
                                 <rect key="frame" x="123" y="216" width="128" height="2"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="progressTintColor" red="0.37647058823529411" green="0.59999999999999998" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </progressView>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" id="ge1-bF-dNV">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" id="ge1-bF-dNV">
                                 <rect key="frame" x="15" y="252" width="345" height="396"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <textField clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Institution" minimumFontSize="17" clearButtonMode="whileEditing" id="GB2-5c-cGX">
+                                    <textField clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Institution" minimumFontSize="17" clearButtonMode="whileEditing" id="GB2-5c-cGX">
                                         <rect key="frame" x="10" y="352" width="335" height="44"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <color key="textColor" red="0.14541876316070557" green="0.1842799037694931" blue="0.23556813597679138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -889,7 +889,7 @@
                                             <outlet property="delegate" destination="AS6-Ue-LrR" id="4ey-dX-eiv"/>
                                         </connections>
                                     </textField>
-                                    <textField clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Country" minimumFontSize="17" clearButtonMode="whileEditing" id="hYI-M2-EDD">
+                                    <textField clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Country" minimumFontSize="17" clearButtonMode="whileEditing" id="hYI-M2-EDD">
                                         <rect key="frame" x="10" y="308" width="335" height="44"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <color key="textColor" red="0.14541876316070557" green="0.1842799037694931" blue="0.23556813597679138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -949,7 +949,7 @@
                                             <outlet property="delegate" destination="AS6-Ue-LrR" id="XRi-77-w75"/>
                                         </connections>
                                     </textField>
-                                    <textField clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Age" minimumFontSize="17" clearButtonMode="whileEditing" id="G3m-Wq-0CI">
+                                    <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Age" minimumFontSize="17" clearButtonMode="whileEditing" id="G3m-Wq-0CI">
                                         <rect key="frame" x="10" y="220" width="335" height="44"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <color key="textColor" red="0.1454187632" green="0.18427990380000001" blue="0.23556813600000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -959,7 +959,7 @@
                                             <outlet property="delegate" destination="AS6-Ue-LrR" id="cDx-O9-kST"/>
                                         </connections>
                                     </textField>
-                                    <textField clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Gender" minimumFontSize="17" clearButtonMode="whileEditing" id="GJe-0y-0iX">
+                                    <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Gender" minimumFontSize="17" clearButtonMode="whileEditing" id="GJe-0y-0iX">
                                         <rect key="frame" x="10" y="264" width="335" height="44"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <color key="textColor" red="0.1454187632" green="0.18427990380000001" blue="0.23556813600000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -969,7 +969,7 @@
                                             <outlet property="delegate" destination="AS6-Ue-LrR" id="fik-gb-zzM"/>
                                         </connections>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="RbA-0d-hMI" userLabel="Gender Button">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="RbA-0d-hMI" userLabel="Gender Button">
                                         <rect key="frame" x="5" y="264" width="335" height="44"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <state key="normal">
@@ -979,7 +979,7 @@
                                             <action selector="chooseGender:" destination="AS6-Ue-LrR" eventType="touchUpInside" id="FX1-wb-7Ec"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="FaZ-XB-aI2">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="FaZ-XB-aI2">
                                         <rect key="frame" x="10" y="351" width="335" height="44"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <state key="normal">
@@ -989,7 +989,7 @@
                                             <action selector="chooseUniversity:" destination="AS6-Ue-LrR" eventType="touchUpInside" id="4h0-Mc-yJm"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UCb-GX-CEH">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UCb-GX-CEH">
                                         <rect key="frame" x="10" y="308" width="335" height="44"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <state key="normal">
@@ -1003,35 +1003,35 @@
                                         <rect key="frame" x="315" y="17" width="22" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="YMO-7O-YUx">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="YMO-7O-YUx">
                                         <rect key="frame" x="315" y="55" width="22" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="yhF-FC-h9c">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="yhF-FC-h9c">
                                         <rect key="frame" x="315" y="99" width="22" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="4q2-mL-NKN">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="4q2-mL-NKN">
                                         <rect key="frame" x="315" y="143" width="22" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="XwN-RS-EKV">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="XwN-RS-EKV">
                                         <rect key="frame" x="315" y="187" width="22" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="e2u-Ll-LlV">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="e2u-Ll-LlV">
                                         <rect key="frame" x="315" y="319" width="22" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="h9w-c8-WsJ">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="h9w-c8-WsJ">
                                         <rect key="frame" x="315" y="363" width="22" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="zXb-gD-jWo">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="zXb-gD-jWo">
                                         <rect key="frame" x="315" y="231" width="22" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="QAg-oF-HPf">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="QAg-oF-HPf">
                                         <rect key="frame" x="315" y="275" width="22" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -1060,17 +1060,17 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.79094433784484863" green="0.79094433784484863" blue="0.79094433784484863" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
-                                    <view contentMode="scaleToFill" misplaced="YES" id="YY3-aI-89W" customClass="EBOnePixelLine">
+                                    <view contentMode="scaleToFill" id="YY3-aI-89W" customClass="EBOnePixelLine">
                                         <rect key="frame" x="0.0" y="264" width="345" height="1"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.79094433779999995" green="0.79094433779999995" blue="0.79094433779999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
-                                    <view contentMode="scaleToFill" misplaced="YES" id="vTU-WC-BUi" customClass="EBOnePixelLine">
+                                    <view contentMode="scaleToFill" id="vTU-WC-BUi" customClass="EBOnePixelLine">
                                         <rect key="frame" x="0.0" y="308" width="345" height="1"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.79094433779999995" green="0.79094433779999995" blue="0.79094433779999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
-                                    <view contentMode="scaleToFill" misplaced="YES" id="BEs-dB-U3N" customClass="EBOnePixelLine">
+                                    <view contentMode="scaleToFill" id="BEs-dB-U3N" customClass="EBOnePixelLine">
                                         <rect key="frame" x="0.0" y="352" width="345" height="1"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.79094433784484863" green="0.79094433784484863" blue="0.79094433784484863" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1106,7 +1106,7 @@
                                     <segue destination="i1h-Cc-saW" kind="push" id="Z83-OW-woT"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Error Message" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HGb-El-Wg6" customClass="EBLabelLight">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Message" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HGb-El-Wg6" customClass="EBLabelLight">
                                 <rect key="frame" x="15" y="224" width="345" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -1158,7 +1158,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gur-3p-9oT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-606.5" y="1208.5"/>
+            <point key="canvasLocation" x="-970.39999999999998" y="1087.1064467766118"/>
         </scene>
         <!--Sign Up-->
         <scene sceneID="uPo-k2-j4O">
@@ -1242,7 +1242,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kN2-sE-0w4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-63" y="1209"/>
+            <point key="canvasLocation" x="-100.8" y="1087.5562218890555"/>
         </scene>
         <!--Election-->
         <scene sceneID="ot8-2e-RuS">
@@ -1266,11 +1266,11 @@
                                     <segue destination="KYc-k3-CcX" kind="embed" id="Ejg-es-JQc"/>
                                 </connections>
                             </containerView>
-                            <view opaque="NO" alpha="0.84999999999999998" contentMode="scaleToFill" misplaced="YES" id="ElT-zv-Qqc">
+                            <view opaque="NO" alpha="0.84999999999999998" contentMode="scaleToFill" id="ElT-zv-Qqc">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3zD-Ye-Qk3" customClass="EBLabelLight">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3zD-Ye-Qk3" customClass="EBLabelLight">
                                         <rect key="frame" x="49" y="248" width="276" height="123"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <string key="text">Welcome to your election centre.
@@ -1279,7 +1279,7 @@ Learn about your political efficacy by completing this survey.</string>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bgJ-wf-zj9" customClass="EBButtonRoundedHeavy">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bgJ-wf-zj9" customClass="EBButtonRoundedHeavy">
                                         <rect key="frame" x="122" y="379" width="131" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -1327,7 +1327,7 @@ Learn about your political efficacy by completing this survey.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3qq-4t-Ow8" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1290.5" y="5.5"/>
+            <point key="canvasLocation" x="2064.8000000000002" y="4.9475262368815596"/>
         </scene>
         <!--Stopwatch View Controller-->
         <scene sceneID="R5H-QO-9Ph">
@@ -1382,7 +1382,7 @@ Learn about your political efficacy by completing this survey.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oeg-aO-wZg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-662" y="-501"/>
+            <point key="canvasLocation" x="-1059.2" y="-450.67466266866569"/>
         </scene>
         <!--Photo Stack View Controller-->
         <scene sceneID="ml9-Qb-hMG">
@@ -1425,7 +1425,7 @@ Learn about your political efficacy by completing this survey.</string>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bf8-bM-ran" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-616" y="283"/>
+            <point key="canvasLocation" x="-985.60000000000002" y="254.57271364317842"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Vex-rW-GRa">
@@ -1446,7 +1446,7 @@ Learn about your political efficacy by completing this survey.</string>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FNP-y4-bzi" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="180"/>
+            <point key="canvasLocation" x="211.19999999999999" y="161.91904047976013"/>
         </scene>
         <!--Current Polls-->
         <scene sceneID="e4P-3q-ABx">
@@ -1461,7 +1461,7 @@ Learn about your political efficacy by completing this survey.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XB8-VG-G4u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1299" y="1069"/>
+            <point key="canvasLocation" x="2078.4000000000001" y="961.61919040479768"/>
         </scene>
         <!--Poll Content View Controller-->
         <scene sceneID="0iq-Go-eY0">
@@ -1492,14 +1492,14 @@ Learn about your political efficacy by completing this survey.</string>
                                 <inset key="contentInset" minX="0.0" minY="0.0" maxX="0.0" maxY="49"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" misplaced="YES" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PollAnswerCell" rowHeight="278" id="TeE-uQ-8i2" customClass="EBPollAnswerTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PollAnswerCell" rowHeight="278" id="TeE-uQ-8i2" customClass="EBPollAnswerTableViewCell">
                                         <rect key="frame" x="0.0" y="22" width="375" height="278"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TeE-uQ-8i2" id="Wba-AS-9pI">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="278"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" id="a80-r8-1YG">
+                                                <view opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" id="a80-r8-1YG">
                                                     <rect key="frame" x="43" y="231" width="319" height="10"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <subviews>
@@ -1516,25 +1516,25 @@ Learn about your political efficacy by completing this survey.</string>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Liberal Party" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uLE-gT-hzL" customClass="EBLabelMedium">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Liberal Party" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uLE-gT-hzL" customClass="EBLabelMedium">
                                                     <rect key="frame" x="195" y="246" width="167" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.14541876316070557" green="0.1842799037694931" blue="0.23556813597679138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0, 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="74n-cj-D3C" customClass="EBLabelMedium">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0, 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="74n-cj-D3C" customClass="EBLabelMedium">
                                                     <rect key="frame" x="43" y="247" width="71" height="16"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.14541876316070557" green="0.1842799037694931" blue="0.23556813597679138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Tick Disabled" id="FyY-wo-C5y">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tick Disabled" id="FyY-wo-C5y">
                                                     <rect key="frame" x="10" y="235" width="22" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="js0-3T-jkz">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="js0-3T-jkz">
                                                     <rect key="frame" x="87" y="11" width="201" height="201"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -1550,7 +1550,7 @@ Learn about your political efficacy by completing this survey.</string>
                                             <outlet property="tickImageView" destination="FyY-wo-C5y" id="Lop-xH-PzY"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" misplaced="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CommentCell" rowHeight="152" id="EQS-wA-7po" customClass="EBPollCommentTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CommentCell" rowHeight="152" id="EQS-wA-7po" customClass="EBPollCommentTableViewCell">
                                         <rect key="frame" x="0.0" y="300" width="375" height="152"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EQS-wA-7po" id="muh-XU-egF">
@@ -1739,7 +1739,7 @@ Learn about your political efficacy by completing this survey.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KD7-cF-PjY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1712.5" y="1068.5"/>
+            <point key="canvasLocation" x="2740" y="961.16941529235385"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="8EK-Ay-rj0">
@@ -1747,7 +1747,7 @@ Learn about your political efficacy by completing this survey.</string>
                 <pageViewController storyboardIdentifier="PollPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Fsr-40-3S5" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qWA-51-Ucy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2146" y="1069"/>
+            <point key="canvasLocation" x="3433.5999999999999" y="961.61919040479768"/>
         </scene>
         <!--Personality View Controller-->
         <scene sceneID="Res-2q-Nha">
@@ -2130,7 +2130,7 @@ All you need to do is answer a few questions about yourself and your personality
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cxu-fe-cuR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2602" y="1069"/>
+            <point key="canvasLocation" x="4163.1999999999998" y="961.61919040479768"/>
         </scene>
         <!--Pledge-->
         <scene sceneID="iBl-yy-B90">
@@ -2158,7 +2158,7 @@ All you need to do is answer a few questions about yourself and your personality
                                         <color key="textColor" red="0.47058823529999999" green="0.4823529412" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Djd-nc-cN4" customClass="EBButtonRoundedHeavy">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Djd-nc-cN4" customClass="EBButtonRoundedHeavy">
                                         <rect key="frame" x="122" y="489" width="131" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -2213,7 +2213,7 @@ All you need to do is answer a few questions about yourself and your personality
                                             <action selector="chooseDate:" destination="tqy-QC-0u3" eventType="touchUpInside" id="ou0-Qd-vd9"/>
                                         </connections>
                                     </button>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Voting is the most key part of a democratic system and the best method of having your voice heard." textAlignment="center" id="aUb-s3-Odh" customClass="EBTextViewMuseoLight">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Voting is the most key part of a democratic system and the best method of having your voice heard." textAlignment="center" id="aUb-s3-Odh" customClass="EBTextViewMuseoLight">
                                         <rect key="frame" x="57" y="353" width="260" height="74"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2221,7 +2221,7 @@ All you need to do is answer a few questions about yourself and your personality
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <pickerView opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" misplaced="YES" id="qUi-wf-J7b">
+                                    <pickerView opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" id="qUi-wf-J7b">
                                         <rect key="frame" x="27" y="317" width="320" height="162"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <connections>
@@ -2329,7 +2329,7 @@ All you need to do is answer a few questions about yourself and your personality
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aaz-NA-Qz5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1384.5" y="-691.5"/>
+            <point key="canvasLocation" x="2215.1999999999998" y="-622.03898050974522"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="F6B-Hq-Py0">
@@ -2349,7 +2349,7 @@ All you need to do is answer a few questions about yourself and your personality
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LnB-VX-ebh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1634" y="1209"/>
+            <point key="canvasLocation" x="-2614.4000000000001" y="1087.5562218890555"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TNU-bB-P6z">
@@ -2368,7 +2368,7 @@ All you need to do is answer a few questions about yourself and your personality
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h18-7J-TEO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="741" y="-1566"/>
+            <point key="canvasLocation" x="1185.5999999999999" y="-1408.6956521739132"/>
         </scene>
         <!--Profile-->
         <scene sceneID="X6r-0T-uPr">
@@ -2387,7 +2387,7 @@ All you need to do is answer a few questions about yourself and your personality
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F3N-Ry-2Cw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1139" y="2795"/>
+            <point key="canvasLocation" x="-1822.4000000000001" y="2514.2428785607199"/>
         </scene>
         <!--Event-->
         <scene sceneID="0gD-tZ-4UY">
@@ -2585,7 +2585,7 @@ All you need to do is answer a few questions about yourself and your personality
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YHU-il-i6Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2131" y="-1566"/>
+            <point key="canvasLocation" x="3409.5999999999999" y="-1408.6956521739132"/>
         </scene>
         <!--Volunteer-->
         <scene sceneID="AWp-eo-b4c">
@@ -2660,7 +2660,7 @@ All you need to do is answer a few questions about yourself and your personality
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HEO-gs-KRT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2785" y="-1947"/>
+            <point key="canvasLocation" x="4456" y="-1751.4242878560722"/>
         </scene>
         <!--Profile-->
         <scene sceneID="tKJ-HY-UUS">
@@ -2960,7 +2960,7 @@ All you need to do is answer a few questions about yourself and your personality
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HNL-pv-fz6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1825" y="2478"/>
+            <point key="canvasLocation" x="2920" y="2229.0854572713647"/>
         </scene>
         <!--Friends-->
         <scene sceneID="GdQ-37-tIE">
@@ -3048,7 +3048,7 @@ All you need to do is answer a few questions about yourself and your personality
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZnZ-G4-2P4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2629" y="2000"/>
+            <point key="canvasLocation" x="4206.3999999999996" y="1799.1004497751126"/>
         </scene>
         <!--Add Contact Table View Controller-->
         <scene sceneID="14W-yk-Rrn">
@@ -3138,7 +3138,7 @@ All you need to do is answer a few questions about yourself and your personality
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SQK-25-WtH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5916" y="-2231"/>
+            <point key="canvasLocation" x="9465.6000000000004" y="-2006.8965517241381"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lcg-Dh-Qgj">
@@ -3157,7 +3157,7 @@ All you need to do is answer a few questions about yourself and your personality
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gQs-Bh-NFH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1259" y="2478"/>
+            <point key="canvasLocation" x="2014.4000000000001" y="2229.0854572713647"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="j5C-13-e5M">
@@ -3176,7 +3176,7 @@ All you need to do is answer a few questions about yourself and your personality
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GBh-zg-LT8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="773" y="6"/>
+            <point key="canvasLocation" x="1236.8" y="5.3973013493253381"/>
         </scene>
         <!--Candidate View Controller-->
         <scene sceneID="QOB-3Y-zd5">
@@ -3258,7 +3258,7 @@ All you need to do is answer a few questions about yourself and your personality
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BkN-1R-pD0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1847" y="-340"/>
+            <point key="canvasLocation" x="2955.1999999999998" y="-305.84707646176912"/>
         </scene>
         <!--Candidate Table View Controller-->
         <scene sceneID="Bfu-qM-L3z">
@@ -3426,7 +3426,7 @@ All you need to do is answer a few questions about yourself and your personality
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="47w-3s-afZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4074" y="-340"/>
+            <point key="canvasLocation" x="6518.3999999999996" y="-305.84707646176912"/>
         </scene>
         <!--Tickets Collection View Controller-->
         <scene sceneID="eNC-k5-p8X">
@@ -3497,7 +3497,7 @@ All you need to do is answer a few questions about yourself and your personality
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WZC-a8-ws0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2762" y="80"/>
+            <point key="canvasLocation" x="4419.1999999999998" y="71.964017991004496"/>
         </scene>
         <!--Candidate Profile View Controller-->
         <scene sceneID="y6n-iH-bWa">
@@ -3617,7 +3617,7 @@ All you need to do is answer a few questions about yourself and your personality
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g6k-61-JTn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4566" y="-340"/>
+            <point key="canvasLocation" x="7305.6000000000004" y="-305.84707646176912"/>
         </scene>
         <!--Friend Profile View Controller-->
         <scene sceneID="Zpn-mw-S5v">
@@ -3824,7 +3824,7 @@ All you need to do is answer a few questions about yourself and your personality
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3df-Kq-KqN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4962" y="-340"/>
+            <point key="canvasLocation" x="7939.1999999999998" y="-305.84707646176912"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Gdx-hb-JrZ">
@@ -3843,7 +3843,7 @@ All you need to do is answer a few questions about yourself and your personality
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xf6-xo-skA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="773" y="1069"/>
+            <point key="canvasLocation" x="1236.8" y="961.61919040479768"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ClN-q5-rGV">
@@ -3924,7 +3924,7 @@ That it. Let’s do this. </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tdN-pj-bdG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4322" y="790"/>
+            <point key="canvasLocation" x="6915.1999999999998" y="710.64467766116945"/>
         </scene>
         <!--Second-->
         <scene sceneID="Znw-ku-z2j">
@@ -3953,7 +3953,7 @@ That it. Let’s do this. </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ufg-T9-L15" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3915" y="790"/>
+            <point key="canvasLocation" x="6264" y="710.64467766116945"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2c0-8V-JdU">
@@ -3971,7 +3971,7 @@ That it. Let’s do this. </string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YdV-8E-d7U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3389" y="790"/>
+            <point key="canvasLocation" x="5422.3999999999996" y="710.64467766116945"/>
         </scene>
         <!--Badges Collection View Controller-->
         <scene sceneID="Wbi-UU-RbS">
@@ -4006,7 +4006,7 @@ That it. Let’s do this. </string>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1jV-eD-IBv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5367" y="-134.5"/>
+            <point key="canvasLocation" x="8587.2000000000007" y="-120.98950524737631"/>
         </scene>
         <!--Badges-->
         <scene sceneID="i6t-UJ-kJR">
@@ -4066,7 +4066,7 @@ That it. Let’s do this. </string>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6ZE-Kk-kSj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2624" y="2698"/>
+            <point key="canvasLocation" x="4198.3999999999996" y="2426.9865067466267"/>
         </scene>
         <!--Settings-->
         <scene sceneID="fKU-o1-q3j">
@@ -4243,7 +4243,7 @@ That it. Let’s do this. </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pHV-k7-YbN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3136" y="2400"/>
+            <point key="canvasLocation" x="5017.6000000000004" y="2158.9205397301353"/>
         </scene>
         <!--Content View Controller-->
         <scene sceneID="5iP-bo-Tg4">
@@ -4319,7 +4319,7 @@ That it. Let’s do this. </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GvF-R8-1ps" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2656" y="-2715"/>
+            <point key="canvasLocation" x="4249.6000000000004" y="-2442.2788605697151"/>
         </scene>
         <!--Article View Controller-->
         <scene sceneID="bWR-dh-Udy">
@@ -4416,7 +4416,7 @@ That it. Let’s do this. </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gld-hO-3mN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3050" y="-2715"/>
+            <point key="canvasLocation" x="4880" y="-2442.2788605697151"/>
         </scene>
         <!--Event Detail Table View Controller-->
         <scene sceneID="5Ea-YU-DrQ">
@@ -4559,7 +4559,7 @@ That it. Let’s do this. </string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tyQ-Pn-8eh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3404" y="-2715"/>
+            <point key="canvasLocation" x="5446.3999999999996" y="-2442.2788605697151"/>
         </scene>
         <!--Profile Description View Controller-->
         <scene sceneID="t2Z-6P-Akh">
@@ -4608,7 +4608,7 @@ That it. Let’s do this. </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eW0-WJ-shV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3766" y="-2715"/>
+            <point key="canvasLocation" x="6025.6000000000004" y="-2442.2788605697151"/>
         </scene>
         <!--Ticket View Controller-->
         <scene sceneID="42R-AY-Vs9">
@@ -4685,7 +4685,7 @@ That it. Let’s do this. </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ABL-oW-GoM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4131" y="-2715"/>
+            <point key="canvasLocation" x="6609.6000000000004" y="-2442.2788605697151"/>
         </scene>
         <!--Profile Content View Controller-->
         <scene sceneID="fyp-dz-SNK">
@@ -4763,14 +4763,14 @@ That it. Let’s do this. </string>
                                 <color key="textColor" red="0.14541876316070557" green="0.1842799037694931" blue="0.23556813597679138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="need 500" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UZP-PM-jIy" customClass="EBLabelHeavy">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="need 500" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UZP-PM-jIy" customClass="EBLabelHeavy">
                                 <rect key="frame" x="22" y="104" width="41" height="12"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="8"/>
                                 <color key="textColor" red="0.34609341621398926" green="0.40155163407325745" blue="0.46691009402275085" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Level" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Sl3-Pz-hR5" customClass="EBLabelHeavy">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Sl3-Pz-hR5" customClass="EBLabelHeavy">
                                 <rect key="frame" x="22" y="74" width="41" height="11"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="8"/>
@@ -4784,7 +4784,7 @@ That it. Let’s do this. </string>
                                 <color key="textColor" red="0.34609341621398926" green="0.40155163407325745" blue="0.46691009402275085" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bvG-Mm-aC1" customClass="EBLabelLight">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bvG-Mm-aC1" customClass="EBLabelLight">
                                 <rect key="frame" x="26" y="83" width="35" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -4892,7 +4892,7 @@ That it. Let’s do this. </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qv6-fr-zzA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4523.5" y="-2715.5"/>
+            <point key="canvasLocation" x="7237.6000000000004" y="-2442.7286356821592"/>
         </scene>
         <!--About-->
         <scene sceneID="CIl-6t-kpL">
@@ -5106,7 +5106,7 @@ That it. Let’s do this. </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sha-Of-lq2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3599" y="2407"/>
+            <point key="canvasLocation" x="5758.3999999999996" y="2165.217391304348"/>
         </scene>
         <!--Tasks-->
         <scene sceneID="kzm-9a-6WR">
@@ -5173,7 +5173,7 @@ That it. Let’s do this. </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e3m-k7-UQv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2617" y="3460"/>
+            <point key="canvasLocation" x="4187.1999999999998" y="3112.4437781109445"/>
         </scene>
         <!--Tasks Table View Controller-->
         <scene sceneID="89W-jy-Z7Y">
@@ -5228,7 +5228,7 @@ That it. Let’s do this. </string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GWx-Bv-k97" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3189" y="3554"/>
+            <point key="canvasLocation" x="5102.3999999999996" y="3197.0014992503752"/>
         </scene>
         <!--Badges Collection View Controller-->
         <scene sceneID="Osb-DU-VFp">
@@ -5263,7 +5263,7 @@ That it. Let’s do this. </string>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MOM-3C-kck" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1847" y="3146"/>
+            <point key="canvasLocation" x="2955.1999999999998" y="2829.9850074962519"/>
         </scene>
         <!--Ticket Profile View Controller-->
         <scene sceneID="a8G-7F-pRJ">
@@ -5399,7 +5399,7 @@ That it. Let’s do this. </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KYg-dz-GXB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3362" y="124"/>
+            <point key="canvasLocation" x="5379.1999999999998" y="111.54422788605699"/>
         </scene>
         <!--Sign Up-->
         <scene sceneID="vfz-5C-OYp">
@@ -5459,7 +5459,7 @@ If you have any further questions about the research itself, please contact the 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S0E-jZ-8ls" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-281" y="1935"/>
+            <point key="canvasLocation" x="-449.60000000000002" y="1740.6296851574214"/>
         </scene>
         <!--Personality Questions-->
         <scene sceneID="9Ta-SP-hb3">
@@ -5537,7 +5537,7 @@ If you have any further questions about the research itself, please contact the 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y3w-bj-IFh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="762" y="1970"/>
+            <point key="canvasLocation" x="1219.2" y="1772.1139430284859"/>
         </scene>
         <!--Sign Up-->
         <scene sceneID="tLg-Cd-crq">
@@ -5595,7 +5595,7 @@ If you have any further questions about the research itself, please contact the 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9KC-nD-Fyx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="272" y="1935"/>
+            <point key="canvasLocation" x="435.19999999999999" y="1740.6296851574214"/>
         </scene>
         <!--Photo-->
         <scene sceneID="006-Lt-b37">
@@ -5624,7 +5624,7 @@ If you have any further questions about the research itself, please contact the 
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="QZN-W5-T6D">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="QZN-W5-T6D">
                                 <rect key="frame" x="320" y="626" width="22" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                 <state key="normal" image="Photo Star">
@@ -5636,7 +5636,7 @@ If you have any further questions about the research itself, please contact the 
                                     <action selector="like:" destination="Ag8-Il-Pdj" eventType="touchUpInside" id="GaF-GR-BEG"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="100" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xke-Sb-qs6" customClass="EBLabelLight">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xke-Sb-qs6" customClass="EBLabelLight">
                                 <rect key="frame" x="280" y="628" width="39" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
@@ -5650,7 +5650,7 @@ If you have any further questions about the research itself, please contact the 
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="20th Marth 2014" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ar0-UE-2ry">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20th Marth 2014" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ar0-UE-2ry">
                                 <rect key="frame" x="20" y="626" width="163" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
@@ -5674,7 +5674,7 @@ If you have any further questions about the research itself, please contact the 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TRY-3b-N9u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1605.5" y="-2976.5"/>
+            <point key="canvasLocation" x="2568.8000000000002" y="-2677.5112443778112"/>
         </scene>
         <!--Election Info Table View Controller-->
         <scene sceneID="N5c-9P-vNQ">
@@ -5739,7 +5739,7 @@ If you have any further questions about the research itself, please contact the 
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UX7-GE-hDY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1747" y="378"/>
+            <point key="canvasLocation" x="2795.1999999999998" y="340.02998500749629"/>
         </scene>
         <!--Positions Collection View Controller-->
         <scene sceneID="p8w-gO-MxC">
@@ -5809,7 +5809,7 @@ If you have any further questions about the research itself, please contact the 
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z26-8c-1QB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2762" y="-738"/>
+            <point key="canvasLocation" x="4419.1999999999998" y="-663.86806596701649"/>
         </scene>
         <!--Tasks Table View Controller-->
         <scene sceneID="oYp-Gn-NkW">
@@ -5864,7 +5864,7 @@ If you have any further questions about the research itself, please contact the 
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fya-oW-CgO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5129" y="-2106"/>
+            <point key="canvasLocation" x="8206.3999999999996" y="-1894.4527736131936"/>
         </scene>
         <!--Badges-->
         <scene sceneID="Stf-oQ-Y5e">
@@ -5924,7 +5924,7 @@ If you have any further questions about the research itself, please contact the 
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XI4-Eg-TAt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4922" y="-2976"/>
+            <point key="canvasLocation" x="7875.1999999999998" y="-2677.0614692653676"/>
         </scene>
         <!--Tasks-->
         <scene sceneID="2f5-X9-seL">
@@ -5992,7 +5992,7 @@ If you have any further questions about the research itself, please contact the 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uTE-fR-e91" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4637" y="-2001"/>
+            <point key="canvasLocation" x="7419.1999999999998" y="-1800.0000000000002"/>
         </scene>
         <!--Friends-->
         <scene sceneID="FYS-n0-eN2">
@@ -6093,7 +6093,7 @@ If you have any further questions about the research itself, please contact the 
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q44-q0-Rl3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5506" y="-2482"/>
+            <point key="canvasLocation" x="8809.6000000000004" y="-2232.6836581709149"/>
         </scene>
         <!--Settings-->
         <scene sceneID="QM4-Lr-uSK">
@@ -6148,7 +6148,7 @@ If you have any further questions about the research itself, please contact the 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e3v-Vv-JFk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5367" y="-3099"/>
+            <point key="canvasLocation" x="8587.2000000000007" y="-2787.7061469265368"/>
         </scene>
         <!--About-->
         <scene sceneID="kyA-89-2M2">
@@ -6362,7 +6362,7 @@ If you have any further questions about the research itself, please contact the 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IBT-6y-njV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5721" y="-3106"/>
+            <point key="canvasLocation" x="9153.6000000000004" y="-2794.00299850075"/>
         </scene>
         <!--Self-Efficacy Questions-->
         <scene sceneID="6ey-SF-nNO">
@@ -6376,7 +6376,7 @@ If you have any further questions about the research itself, please contact the 
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <textView key="tableHeaderView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" id="3Sk-Yt-68p">
+                                <textView key="tableHeaderView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" id="3Sk-Yt-68p">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                     <inset key="contentInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
@@ -6388,28 +6388,28 @@ The 4 items are measured on a 5 point Likert scale,  from 1 (not at all) to 5 
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 </textView>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" misplaced="YES" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SliderCell" rowHeight="199" id="NW1-fJ-kuI" customClass="EBSliderTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SliderCell" rowHeight="199" id="NW1-fJ-kuI" customClass="EBSliderTableViewCell">
                                         <rect key="frame" x="0.0" y="150" width="375" height="199"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NW1-fJ-kuI" id="8lg-S2-Bio">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="199"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Title" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="p2j-v3-Ags" customClass="EBLabelMedium">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="p2j-v3-Ags" customClass="EBLabelMedium">
                                                     <rect key="frame" x="15" y="8" width="345" height="111"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.1454187632" green="0.18427990380000001" blue="0.23556813600000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Degree" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1VN-lz-9sC" customClass="EBLabelMedium">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Degree" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1VN-lz-9sC" customClass="EBLabelMedium">
                                                     <rect key="frame" x="76" y="168" width="222" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <color key="textColor" red="0.45224356650000003" green="0.50741010900000005" blue="0.57205563780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" continuous="NO" id="Fvs-KP-HpF" customClass="EBEfficacySlider">
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" continuous="NO" id="Fvs-KP-HpF" customClass="EBEfficacySlider">
                                                     <rect key="frame" x="45" y="130" width="285" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 </slider>
@@ -6440,31 +6440,31 @@ The 4 items are measured on a 5 point Likert scale,  from 1 (not at all) to 5 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xFt-hu-rB2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3361.5" y="-1279.5"/>
+            <point key="canvasLocation" x="5378.3999999999996" y="-1150.9745127436283"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Chevron 2" width="8" height="12"/>
-        <image name="Comment Amount" width="20" height="20"/>
-        <image name="Election" width="25" height="25"/>
-        <image name="Email Blue 256" width="128" height="128"/>
-        <image name="Feed" width="25" height="25"/>
-        <image name="Icon Welcome" width="76" height="76"/>
-        <image name="Photo Star" width="22" height="22"/>
-        <image name="PhotoPlaceHolder" width="47" height="36"/>
-        <image name="PhotoPlaceHolderHighlighted" width="47" height="36"/>
-        <image name="Pledge Icon" width="18" height="21"/>
-        <image name="Poll" width="25" height="25"/>
-        <image name="Polled Amount" width="20" height="20"/>
-        <image name="Profile" width="25" height="25"/>
-        <image name="Profile Reveal" width="32" height="22"/>
-        <image name="Profile Reveal Highlighted" width="32" height="22"/>
-        <image name="Science 256" width="129" height="129"/>
-        <image name="Settings" width="22" height="22"/>
-        <image name="Share" width="22" height="22"/>
-        <image name="Tick Disabled" width="22" height="22"/>
-        <image name="Verified" width="15" height="15"/>
-        <image name="badge0xl" width="128" height="128"/>
+        <image name="Chevron 2" width="16" height="25"/>
+        <image name="Comment Amount" width="40" height="40"/>
+        <image name="Election" width="50" height="50"/>
+        <image name="Email Blue 256" width="256" height="256"/>
+        <image name="Feed" width="50" height="50"/>
+        <image name="Icon Welcome" width="152" height="152"/>
+        <image name="Photo Star" width="44" height="44"/>
+        <image name="PhotoPlaceHolder" width="94" height="73"/>
+        <image name="PhotoPlaceHolderHighlighted" width="94" height="73"/>
+        <image name="Pledge Icon" width="37" height="42"/>
+        <image name="Poll" width="50" height="50"/>
+        <image name="Polled Amount" width="40" height="40"/>
+        <image name="Profile" width="50" height="50"/>
+        <image name="Profile Reveal" width="64" height="44"/>
+        <image name="Profile Reveal Highlighted" width="64" height="44"/>
+        <image name="Science 256" width="258" height="258"/>
+        <image name="Settings" width="44" height="44"/>
+        <image name="Share" width="44" height="44"/>
+        <image name="Tick Disabled" width="44" height="44"/>
+        <image name="Verified" width="30" height="31"/>
+        <image name="badge0xl" width="256" height="256"/>
         <image name="first" width="30" height="30"/>
         <image name="head1.jpg" width="48" height="48"/>
         <image name="welcome.jpg" width="640" height="1136"/>

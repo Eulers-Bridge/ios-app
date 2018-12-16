@@ -26,7 +26,7 @@
 @property (strong, nonatomic) NSArray *degreeTitles;
 @property long index;
 
-@property (assign, nonatomic) id<EBPersonalitySelectionDelegate> selectionDelegate;
+@property (weak, nonatomic) id<EBPersonalitySelectionDelegate> selectionDelegate;
 
 -(void)setSelectionWithIndex:(int)index;
 
