@@ -76,10 +76,10 @@
     EBSliderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SliderCell" forIndexPath:indexPath];
     cell.titleLabel.text = self.titleArray[indexPath.row];
     cell.degreeTitles = self.degreeArray;
-    [cell setSelectionWithIndex:[self.selectionArray[indexPath.row] intValue]];
     cell.selectionDelegate = self;
     cell.index = indexPath.row;
     cell.numChoice = 7;
+    [cell setSelectionWithIndex:[self.selectionArray[indexPath.row] intValue]];
     return cell;
 }
 

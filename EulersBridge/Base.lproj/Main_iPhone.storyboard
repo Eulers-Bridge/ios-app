@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES" initialViewController="fmt-DH-4Pl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES" initialViewController="fmt-DH-4Pl">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -1305,7 +1305,7 @@ Learn about your political efficacy by completing this survey.</string>
                     <navigationItem key="navigationItem" id="DLi-fg-KPz">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="XJI-Wc-Snu">
-                            <rect key="frame" x="73" y="8" width="230" height="29"/>
+                            <rect key="frame" x="72.5" y="7.5" width="230" height="29"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Election"/>
@@ -1315,7 +1315,7 @@ Learn about your political efficacy by completing this survey.</string>
                         </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" image="Pledge Icon" id="aKP-HO-f6v">
                             <connections>
-                                <segue destination="tqy-QC-0u3" kind="push" id="fsx-1V-cqu"/>
+                                <segue destination="tqy-QC-0u3" kind="push" identifier="ShowPledge" id="fsx-1V-cqu"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -2144,101 +2144,124 @@ All you need to do is answer a few questions about yourself and your personality
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I will be voting in the next community election at" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="f52-pO-cI9" customClass="EBLabelLight">
-                                        <rect key="frame" x="65" y="128" width="245" height="53"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <color key="textColor" red="0.47058823529999999" green="0.4823529412" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="And I'll set a reminder for my vote at the time of" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ErV-lq-3IK" customClass="EBLabelLight">
-                                        <rect key="frame" x="65" y="228" width="245" height="53"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <color key="textColor" red="0.47058823529999999" green="0.4823529412" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Djd-nc-cN4" customClass="EBButtonRoundedHeavy">
-                                        <rect key="frame" x="122" y="489" width="131" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" title="Create Reminder">
-                                            <color key="titleColor" red="0.4315030574798584" green="0.69289422035217285" blue="0.25811487436294556" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="mainColor">
-                                                <color key="value" red="0.31676065921783447" green="0.7318044900894165" blue="0.25796914100646973" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                                <color key="value" red="0.31676065921783447" green="0.7318044900894165" blue="0.25796914100646973" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="setReminder:" destination="tqy-QC-0u3" eventType="touchUpInside" id="ibm-U4-zoG"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pIP-Un-EfL" customClass="EBLabelMedium">
-                                        <rect key="frame" x="77" y="186" width="220" height="28"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.15086385607719421" green="0.16489085555076599" blue="0.2084064781665802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6No-h7-4yF" customClass="EBLabelMedium">
-                                        <rect key="frame" x="77" y="295" width="220" height="28"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.15086385607719421" green="0.16489085555076599" blue="0.2084064781665802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ot0-gX-KOx">
-                                        <rect key="frame" x="77" y="292" width="220" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <state key="normal">
-                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="chooseLocation:" destination="tqy-QC-0u3" eventType="touchUpInside" id="8tD-xW-oNX"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ueo-OP-k9m">
-                                        <rect key="frame" x="77" y="185" width="220" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <state key="normal">
-                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="chooseDate:" destination="tqy-QC-0u3" eventType="touchUpInside" id="ou0-Qd-vd9"/>
-                                        </connections>
-                                    </button>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Voting is the most key part of a democratic system and the best method of having your voice heard." textAlignment="center" id="aUb-s3-Odh" customClass="EBTextViewMuseoLight">
-                                        <rect key="frame" x="57" y="353" width="260" height="74"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <color key="textColor" red="0.14541876316070557" green="0.1842799037694931" blue="0.23556813597679138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                    <pickerView opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" id="qUi-wf-J7b">
-                                        <rect key="frame" x="27" y="317" width="320" height="162"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <connections>
-                                            <outlet property="dataSource" destination="tqy-QC-0u3" id="Vgm-EQ-wrt"/>
-                                            <outlet property="delegate" destination="tqy-QC-0u3" id="clo-Hf-aLU"/>
-                                        </connections>
-                                    </pickerView>
-                                    <view contentMode="scaleToFill" id="6Tw-Pn-wlj">
-                                        <rect key="frame" x="77" y="326" width="220" height="1"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.39865052700042725" green="0.3953668475151062" blue="0.4916556179523468" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </view>
-                                    <view contentMode="scaleToFill" id="wUz-nj-Ox9">
-                                        <rect key="frame" x="77" y="218" width="220" height="1"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.39865052700042725" green="0.3953668475151062" blue="0.4916556179523468" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </view>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" id="AsI-DW-e6A">
+                                        <rect key="frame" x="-20" y="108" width="415" height="557"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I will be voting in the next community election at" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="f52-pO-cI9" customClass="EBLabelLight">
+                                                <rect key="frame" x="85" y="20" width="245" height="53"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <color key="textColor" red="0.47058823529999999" green="0.4823529412" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="And I'll set a reminder for my vote at the time of" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ErV-lq-3IK" customClass="EBLabelLight">
+                                                <rect key="frame" x="85" y="120" width="245" height="53"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <color key="textColor" red="0.47058823529999999" green="0.4823529412" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Djd-nc-cN4" customClass="EBButtonRoundedHeavy">
+                                                <rect key="frame" x="142" y="462" width="131" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <state key="normal" title="Create Reminder">
+                                                    <color key="titleColor" red="0.4315030574798584" green="0.69289422035217285" blue="0.25811487436294556" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="mainColor">
+                                                        <color key="value" red="0.31676065921783447" green="0.7318044900894165" blue="0.25796914100646973" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                        <color key="value" red="0.31676065921783447" green="0.7318044900894165" blue="0.25796914100646973" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="setReminder:" destination="tqy-QC-0u3" eventType="touchUpInside" id="ibm-U4-zoG"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pIP-Un-EfL" customClass="EBLabelMedium">
+                                                <rect key="frame" x="97" y="78" width="220" height="28"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.15086385607719421" green="0.16489085555076599" blue="0.2084064781665802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6No-h7-4yF" customClass="EBLabelMedium">
+                                                <rect key="frame" x="97" y="187" width="220" height="28"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.15086385607719421" green="0.16489085555076599" blue="0.2084064781665802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ot0-gX-KOx">
+                                                <rect key="frame" x="97" y="184" width="220" height="43"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <state key="normal">
+                                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="chooseLocation:" destination="tqy-QC-0u3" eventType="touchUpInside" id="8tD-xW-oNX"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ueo-OP-k9m">
+                                                <rect key="frame" x="97" y="77" width="220" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <state key="normal">
+                                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="chooseDate:" destination="tqy-QC-0u3" eventType="touchUpInside" id="ou0-Qd-vd9"/>
+                                                </connections>
+                                            </button>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Voting is the most key part of a democratic system and the best method of having your voice heard." textAlignment="center" id="aUb-s3-Odh" customClass="EBTextViewMuseoLight">
+                                                <rect key="frame" x="77" y="245" width="260" height="74"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" red="0.14541876316070557" green="0.1842799037694931" blue="0.23556813597679138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <view contentMode="scaleToFill" id="6Tw-Pn-wlj">
+                                                <rect key="frame" x="97" y="218" width="220" height="1"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.39865052700042725" green="0.3953668475151062" blue="0.4916556179523468" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" id="wUz-nj-Ox9">
+                                                <rect key="frame" x="97" y="110" width="220" height="1"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.39865052700042725" green="0.3953668475151062" blue="0.4916556179523468" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </view>
+                                            <pickerView opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" id="qUi-wf-J7b">
+                                                <rect key="frame" x="47" y="229" width="320" height="162"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="tqy-QC-0u3" id="Vgm-EQ-wrt"/>
+                                                    <outlet property="delegate" destination="tqy-QC-0u3" id="clo-Hf-aLU"/>
+                                                </connections>
+                                            </pickerView>
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" id="xnQ-d6-7gb">
+                                                <rect key="frame" x="20" y="235" width="375" height="216"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <date key="date" timeIntervalSinceReferenceDate="581410922.95647597">
+                                                    <!--2019-06-05 07:02:02 +0000-->
+                                                </date>
+                                                <connections>
+                                                    <action selector="datePickerValueChanged:" destination="tqy-QC-0u3" eventType="valueChanged" id="Qtx-gG-5d4"/>
+                                                </connections>
+                                            </datePicker>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" id="07c-gB-fom">
+                                                <rect key="frame" x="189" y="500" width="37" height="37"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="color" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </activityIndicatorView>
+                                        </subviews>
+                                    </scrollView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
@@ -2311,9 +2334,12 @@ All you need to do is answer a few questions about yourself and your personality
                     </view>
                     <navigationItem key="navigationItem" title="Pledge" id="mSu-Sw-xTx"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="07c-gB-fom" id="cDr-1w-CSX"/>
                         <outlet property="backButton" destination="87n-Dm-LNh" id="F8f-4q-jYQ"/>
+                        <outlet property="chooseLocationButton" destination="ot0-gX-KOx" id="Uu4-vg-Vtw"/>
                         <outlet property="createReminderButton" destination="Djd-nc-cN4" id="j9y-ad-B4w"/>
                         <outlet property="dateLabel" destination="pIP-Un-EfL" id="GOK-dF-8xf"/>
+                        <outlet property="datePicker" destination="xnQ-d6-7gb" id="tJV-P8-Qq5"/>
                         <outlet property="finishImageView" destination="i4d-3z-s47" id="gne-e4-CjF"/>
                         <outlet property="finishTextView" destination="Pa6-pA-u1G" id="dyk-pM-Aa5"/>
                         <outlet property="finishTitleLabel" destination="Pw1-tv-C5w" id="VSe-f9-8sn"/>
@@ -5473,17 +5499,38 @@ If you have any further questions about the research itself, please contact the 
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <textView key="tableHeaderView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" id="bjd-zD-d6N">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="148"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                    <string key="text">Simply select a number next to each statement  to indicate the extent to which you agree or disagree. You should rate the extent to which  the pair of traits applies to you, even if one characteristic applies more strongly than the other.  </string>
-                                    <color key="textColor" red="0.14541876316070557" green="0.1842799037694931" blue="0.23556813597679138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                </textView>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="7Vr-Lx-UoF">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="143"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" id="dXq-4V-I3F">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="105"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                            <string key="text">Simply select a number next to each statement  to indicate the extent to which you agree or disagree. You should rate the extent to which  the pair of traits applies to you, even if one characteristic applies more strongly than the other.  </string>
+                                            <color key="textColor" red="0.1454187632" green="0.18427990380000001" blue="0.23556813600000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;&lt; Disagree" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="x12-un-7vJ" customClass="EBLabelMedium">
+                                            <rect key="frame" x="19" y="107" width="84" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" red="1" green="0.36862745099999999" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Agree &gt;&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pVg-RK-Jli" customClass="EBLabelMedium">
+                                            <rect key="frame" x="289" y="107" width="64" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" red="0.49164348050000001" green="0.875445272" blue="0.51357163439999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SliderCell" id="cMw-Zy-6En" customClass="EBSliderTableViewCell">
-                                        <rect key="frame" x="0.0" y="170" width="375" height="82"/>
+                                        <rect key="frame" x="0.0" y="165" width="375" height="82"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cMw-Zy-6En" id="Fek-Yl-enR">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="82"/>
@@ -5494,17 +5541,17 @@ If you have any further questions about the research itself, please contact the 
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 </slider>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xdx-sk-42U" customClass="EBLabelMedium">
-                                                    <rect key="frame" x="15" y="8" width="222" height="17"/>
+                                                    <rect key="frame" x="15" y="8" width="345" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.14541876316070557" green="0.1842799037694931" blue="0.23556813597679138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Degree" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YOZ-fj-Xwt" customClass="EBLabelMedium">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Agree" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YOZ-fj-Xwt" customClass="EBLabelMedium">
                                                     <rect key="frame" x="76" y="58" width="222" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                    <color key="textColor" red="0.45224356651306152" green="0.50741010904312134" blue="0.5720556378364563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" white="0.17054404171419815" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -5537,7 +5584,7 @@ If you have any further questions about the research itself, please contact the 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y3w-bj-IFh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1219.2" y="1772.1139430284859"/>
+            <point key="canvasLocation" x="1218.4000000000001" y="1771.6641679160421"/>
         </scene>
         <!--Sign Up-->
         <scene sceneID="tLg-Cd-crq">
@@ -6376,20 +6423,41 @@ If you have any further questions about the research itself, please contact the 
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <textView key="tableHeaderView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" id="3Sk-Yt-68p">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                    <inset key="contentInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
-                                    <string key="text">The PPSE-S composed of 4 items aimed to assess individuals’ beliefs in their capabilities to engage actively in politics.
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="DXZ-7N-0kW">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="155"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" id="J3v-HG-7pT">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="97"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                            <inset key="contentInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                            <string key="text">The PPSE-S composed of 4 items aimed to assess individuals’ beliefs in their capabilities to engage actively in politics.
 The 4 items are measured on a 5 point Likert scale,  from 1 (not at all) to 5 (completely).
 </string>
-                                    <color key="textColor" red="0.1454187632" green="0.18427990380000001" blue="0.23556813600000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                </textView>
+                                            <color key="textColor" red="0.1454187632" green="0.18427990380000001" blue="0.23556813600000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;&lt; Not at all" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Hl2-RR-Z4D" customClass="EBLabelMedium">
+                                            <rect key="frame" x="20" y="117" width="85" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" red="1" green="0.36862745099999999" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Completely &gt;&gt;" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UXr-JF-TBt" customClass="EBLabelMedium">
+                                            <rect key="frame" x="244" y="117" width="107" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" red="0.49164348050000001" green="0.875445272" blue="0.51357163439999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SliderCell" rowHeight="199" id="NW1-fJ-kuI" customClass="EBSliderTableViewCell">
-                                        <rect key="frame" x="0.0" y="150" width="375" height="199"/>
+                                        <rect key="frame" x="0.0" y="177" width="375" height="199"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NW1-fJ-kuI" id="8lg-S2-Bio">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="199"/>
@@ -6402,11 +6470,11 @@ The 4 items are measured on a 5 point Likert scale,  from 1 (not at all) to 5 
                                                     <color key="textColor" red="0.1454187632" green="0.18427990380000001" blue="0.23556813600000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Degree" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1VN-lz-9sC" customClass="EBLabelMedium">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Agree" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1VN-lz-9sC" customClass="EBLabelMedium">
                                                     <rect key="frame" x="76" y="168" width="222" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                    <color key="textColor" red="0.45224356650000003" green="0.50741010900000005" blue="0.57205563780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" white="0.1771736631930714" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" continuous="NO" id="Fvs-KP-HpF" customClass="EBEfficacySlider">
@@ -6442,39 +6510,53 @@ The 4 items are measured on a 5 point Likert scale,  from 1 (not at all) to 5 
             </objects>
             <point key="canvasLocation" x="5378.3999999999996" y="-1150.9745127436283"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="Tfw-tV-EvX">
+            <objects>
+                <viewController id="riD-lc-RUV" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zTD-vm-oMt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BJq-aY-5dr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6066" y="-1209"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="Chevron 2" width="16" height="25"/>
-        <image name="Comment Amount" width="40" height="40"/>
-        <image name="Election" width="50" height="50"/>
-        <image name="Email Blue 256" width="256" height="256"/>
-        <image name="Feed" width="50" height="50"/>
-        <image name="Icon Welcome" width="152" height="152"/>
-        <image name="Photo Star" width="44" height="44"/>
-        <image name="PhotoPlaceHolder" width="94" height="73"/>
-        <image name="PhotoPlaceHolderHighlighted" width="94" height="73"/>
-        <image name="Pledge Icon" width="37" height="42"/>
-        <image name="Poll" width="50" height="50"/>
-        <image name="Polled Amount" width="40" height="40"/>
-        <image name="Profile" width="50" height="50"/>
-        <image name="Profile Reveal" width="64" height="44"/>
-        <image name="Profile Reveal Highlighted" width="64" height="44"/>
-        <image name="Science 256" width="258" height="258"/>
-        <image name="Settings" width="44" height="44"/>
-        <image name="Share" width="44" height="44"/>
-        <image name="Tick Disabled" width="44" height="44"/>
-        <image name="Verified" width="30" height="31"/>
-        <image name="badge0xl" width="256" height="256"/>
+        <image name="Chevron 2" width="8" height="12.5"/>
+        <image name="Comment Amount" width="20" height="20"/>
+        <image name="Election" width="25" height="25"/>
+        <image name="Email Blue 256" width="128" height="128"/>
+        <image name="Feed" width="25" height="25"/>
+        <image name="Icon Welcome" width="76" height="76"/>
+        <image name="Photo Star" width="22" height="22"/>
+        <image name="PhotoPlaceHolder" width="47" height="36.5"/>
+        <image name="PhotoPlaceHolderHighlighted" width="47" height="36.5"/>
+        <image name="Pledge Icon" width="18.5" height="21"/>
+        <image name="Poll" width="25" height="25"/>
+        <image name="Polled Amount" width="20" height="20"/>
+        <image name="Profile" width="25" height="25"/>
+        <image name="Profile Reveal" width="32" height="22"/>
+        <image name="Profile Reveal Highlighted" width="32" height="22"/>
+        <image name="Science 256" width="129" height="129"/>
+        <image name="Settings" width="22" height="22"/>
+        <image name="Share" width="22" height="22"/>
+        <image name="Tick Disabled" width="22" height="22"/>
+        <image name="Verified" width="15" height="15.5"/>
+        <image name="badge0xl" width="128" height="128"/>
         <image name="first" width="30" height="30"/>
-        <image name="head1.jpg" width="48" height="48"/>
+        <image name="head1.jpg" width="11.520000457763672" height="11.520000457763672"/>
         <image name="welcome.jpg" width="640" height="1136"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="phb-OD-nP9"/>
-        <segue reference="ccM-QI-Ya5"/>
+        <segue reference="cqZ-rZ-ALM"/>
         <segue reference="eh2-Tf-C1m"/>
         <segue reference="YQG-kQ-vCD"/>
-        <segue reference="THe-Rv-3qE"/>
+        <segue reference="WU0-f4-Xhh"/>
         <segue reference="Qa8-yg-wXH"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.23315238952636719" green="0.47978004813194275" blue="0.85770797729492188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

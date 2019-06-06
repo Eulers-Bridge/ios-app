@@ -71,7 +71,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     EBCandidateTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CandidateCellSmall" forIndexPath:indexPath];
-    cell.nameLabel.text = self.data[@"organizer"];
+    if (self.data[@"organizer"] != [NSNull null]) {
+        cell.nameLabel.text = self.data[@"organizer"];
+    }
     cell.subtitleLabel.text = self.data[@"organizerEmail"];
     
     return cell;

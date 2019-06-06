@@ -14,11 +14,12 @@
 #import "EBHelper.h"
 #import "EBNetworkService.h"
 
-@interface EBVoteViewController () <UIPickerViewDataSource, UIPickerViewDelegate, EKEventEditViewDelegate>
+@interface EBVoteViewController () <UIPickerViewDataSource, UIPickerViewDelegate, EKEventEditViewDelegate, EBContentServiceDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 
 @property (weak, nonatomic) IBOutlet UIPickerView *picker;
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (weak, nonatomic) IBOutlet UILabel *scanResultLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
@@ -40,8 +41,11 @@
 @property (weak, nonatomic) IBOutlet UIImageView *finishImageView;
 @property (weak, nonatomic) IBOutlet UITextView *finishTextView;
 @property (weak, nonatomic) IBOutlet UIButton *scanButton;
+@property (weak, nonatomic) IBOutlet UIButton *chooseLocationButton;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
-@property (strong, nonatomic) NSString *dateSelected;
+//@property (strong, nonatomic) NSString *dateSelected;
+@property (strong, nonatomic) NSDate *dateSelected;
 
 
 @end
@@ -62,10 +66,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.picker.hidden = YES;
+    self.datePicker.hidden = YES;
     self.textView.hidden = NO;
     
     self.votingDates = @[@"2017-10-26 15:30"];
-    self.votingLocations = @[@"Rm 8.02, L8 Doug McDonell Building, UoM"];
+    self.votingLocations = [NSArray array];
     // 14:30 12th July 2014
     // Gesture Recognizer
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
@@ -84,12 +89,18 @@
     
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self getVotingLocationsInfo];
+}
+
 
 #pragma mark tap gesture
 
 - (void)tapAnywhere
 {
     self.picker.hidden = YES;
+    self.datePicker.hidden = YES;
     self.textView.hidden = NO;
 }
 
@@ -97,27 +108,28 @@
 
 - (IBAction)chooseDate:(UIButton *)sender
 {
-    self.picker.hidden = NO;
+    self.datePicker.hidden = NO;
+    self.picker.hidden = YES;
     self.textView.hidden = YES;
-    self.pickerViewCurrentArray = self.votingDates;
-    [self.picker reloadAllComponents];
-    
-    if ([self.dateLabel.text isEqualToString:@""]) {
-        self.dateLabel.text = [self pickerView:self.picker titleForRow:[self.picker selectedRowInComponent:0] forComponent:0];
-        self.dateSelected = self.votingDates[[self.picker selectedRowInComponent:0]];
-    }
+    self.datePicker.datePickerMode = UIDatePickerModeDateAndTime;
+    NSDate *startDate = [NSDate dateWithTimeIntervalSince1970:[self.electionInfo[@"startVoting"] integerValue] / 1000];
+    NSDate *endDate = [NSDate dateWithTimeIntervalSince1970:[self.electionInfo[@"endVoting"] integerValue] / 1000];
+    self.datePicker.minimumDate = startDate;
+    self.datePicker.maximumDate = endDate;
+    [self datePickerValueChanged:self.datePicker];
 }
 
 
 - (IBAction)chooseLocation:(UIButton *)sender
 {
     self.picker.hidden = NO;
+    self.datePicker.hidden = YES;
     self.textView.hidden = YES;
     self.pickerViewCurrentArray = self.votingLocations;
     [self.picker reloadAllComponents];
     
-    if ([self.locationLabel.text isEqualToString:@""]) {
-        self.locationLabel.text = self.pickerViewCurrentArray[[self.picker selectedRowInComponent:0]];
+    if ([self.locationLabel.text isEqualToString:@""] && (self.pickerViewCurrentArray.count > 0)) {
+        self.locationLabel.text = self.pickerViewCurrentArray[[self.picker selectedRowInComponent:0]][@"name"];
     }
 }
 
@@ -136,6 +148,14 @@
         
     }];
 
+}
+
+- (IBAction)datePickerValueChanged:(UIDatePicker *)sender {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd MMMM yyyy, h:mm a"];
+    NSString *dateAndTime = [dateFormatter stringFromDate:sender.date];
+    self.dateSelected = sender.date;
+    self.dateLabel.text = dateAndTime;
 }
 
 #pragma mark pickerView delegate
@@ -162,19 +182,23 @@
         return [formatter2 stringFromDate:date];
 
     } else {
-        return self.pickerViewCurrentArray[row];
+        NSString *locationString = self.votingLocations[row][@"name"];
+        return locationString;
     }
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
+    if (_pickerViewCurrentArray.count == 0) {
+        return;
+    }
     if (self.pickerViewCurrentArray == self.votingDates) {
         self.dateLabel.text = [self pickerView:pickerView titleForRow:row forComponent:component];
         self.dateSelected = self.votingDates[row];
     }
     
     if (self.pickerViewCurrentArray == self.votingLocations) {
-        self.locationLabel.text = self.votingLocations[row];
+        self.locationLabel.text = self.votingLocations[row][@"name"];
     }
 }
 
@@ -189,8 +213,6 @@
 
 - (IBAction)setReminder:(UIButton *)sender
 {
-    EBNetworkService *service = [[EBNetworkService alloc] init];
-    [service addVoteReminder];
     
     if ([self.dateLabel.text isEqualToString:@""] || [self.locationLabel.text isEqualToString:@""]) {
         
@@ -198,6 +220,8 @@
         return;
     }
     
+    EBNetworkService *service = [[EBNetworkService alloc] init];
+    [service addVoteReminder:self.electionInfo[@"electionId"] date:self.dateSelected location:self.locationLabel.text];
     
     EKEventStore *store = [[EKEventStore alloc] init];
     [store requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
@@ -213,17 +237,17 @@
         event.location = self.locationLabel.text;
         
         
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
-        NSDate *date = [formatter dateFromString:self.dateSelected];
+//        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+//        [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+//        NSDate *date = [formatter dateFromString:self.dateSelected];
         
         
-        event.startDate = date;
+        event.startDate = self.dateSelected;
         event.endDate = [event.startDate dateByAddingTimeInterval:60*60];  //set 1 hour meeting
         [event setCalendar:[store defaultCalendarForNewEvents]];
         event.allDay = NO;
         
-        event.alarms = @[[EKAlarm alarmWithAbsoluteDate:date]];
+        event.alarms = @[[EKAlarm alarmWithAbsoluteDate:self.dateSelected]];
         
         
         
@@ -287,7 +311,30 @@
     [self presentViewController:scanningNavVC animated:YES completion:nil];
 }
 
+- (void)getVotingLocationsInfo
+{
+    EBNetworkService *service = [[EBNetworkService alloc] init];
+    service.contentDelegate = self;
+    [service getVotingLocationInfoWithInstitutionId:TESTING_INSTITUTION_ID];
+    [self.activityIndicator startAnimating];
+    self.chooseLocationButton.enabled = NO;
+}
 
+-(void)getVotingLocationInfoFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
+{
+    [self.activityIndicator stopAnimating];
+    self.chooseLocationButton.enabled = YES;
+    if (success) {
+        NSArray *array = info[@"foundObjects"];
+        if (array.count > 0) {
+            EBNetworkService *service = [[EBNetworkService alloc] init];
+            service.contentDelegate = self;
+            self.votingLocations = info[@"foundObjects"];
+        }
+    } else {
+        
+    }
+}
 
 
 

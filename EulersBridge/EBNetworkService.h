@@ -52,6 +52,7 @@
 - (void)getPositionsInfoFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 - (void)getCandidatesInfoFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 - (void)getTicketsInfoFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
+- (void)getVotingLocationInfoFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 - (void)getNewsLikesFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 - (void)getPhotoLikesFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 - (void)getTicketSupportersFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
@@ -121,6 +122,7 @@
 - (void)getPositionsInfoWithElectionId:(NSString *)electionId;
 - (void)getCandidatesInfoWithElectionId:(NSString *)electionId;
 - (void)getTicketsInfoWithElectionId:(NSString *)electionId;
+- (void)getVotingLocationInfoWithInstitutionId:(NSString *)institutionId;
 - (void)getNewsLikesWithArticleId:(NSString *)articleId;
 - (void)getPhotoLikesWithPhotoId:(NSString *)photoId;
 - (void)getSupportsWithTicketId:(NSString *)ticketId;
@@ -134,7 +136,7 @@
 - (void)getTasks;
 
 // User action service
-- (void)addVoteReminder;
+- (void)addVoteReminder:(NSString *)electionId date:(NSDate *)date location:(NSString *)location;
 - (void)voteWithPollId:(NSString *)pollId answerId:(NSString *)optionId;
 - (void)postPollCommentWithPollId:(NSString *)pollId comment:(NSString *)comment;
 - (void)likeContentWithLike:(BOOL)like contentType:(EBContentViewType)contentType contentId:(NSString *)contentId;

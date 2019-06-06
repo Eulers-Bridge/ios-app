@@ -366,16 +366,17 @@
 
 #pragma mark User Action Services
 
-- (void)addVoteReminder
+- (void)addVoteReminder:(NSString *)electionId date:(NSDate *)date location:(NSString *)location
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:TESTING_USERNAME password:TESTING_PASSWORD];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/hal+json", @"application/json", @"application/xml", nil];
+    NSString *dateString = [NSString stringWithFormat:@"%.0f", [date timeIntervalSince1970] * 1000];
     NSDictionary *parameters = @{@"userEmail": [[NSUserDefaults standardUserDefaults] objectForKey:@"userEmail"],
-                                     @"electionId": @7459,
-                                     @"date": @1509031800000,
-                                     @"location": @"Rm 8.02, L8 Doug McDonell Building, UoM"};
+                                     @"electionId": electionId,
+                                     @"date": dateString,
+                                     @"location": location};
     
     NSString *urlString = [NSString stringWithFormat:@"%@/user/%@/voteReminder", TESTING_URL, [[NSUserDefaults standardUserDefaults] objectForKey:@"userEmail"]];
     [manager PUT:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id res) {
@@ -695,6 +696,21 @@
         }
     }];
     
+}
+
+- (void)getVotingLocationInfoWithInstitutionId:(NSString *)institutionId
+{
+    NSString *urlString = [NSString stringWithFormat:@"%@/votingLocations/%@", TESTING_URL, institutionId];
+    
+    [self getContentWithUrlString:urlString success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getVotingLocationInfoFinishedWithSuccess:YES withInfo:responseObject failureReason:nil];
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (self.contentDelegate != nil) {
+            [self.contentDelegate getVotingLocationInfoFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        }
+    }];
 }
 
 - (void)getPollsWithInstitutionId:(NSString *)institutionId

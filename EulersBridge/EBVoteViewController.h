@@ -10,4 +10,6 @@
 
 @interface EBVoteViewController : UIViewController
 
+@property (strong, nonatomic) NSDictionary *electionInfo;
+
 @end

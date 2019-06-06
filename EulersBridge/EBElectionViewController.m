@@ -14,6 +14,7 @@
 #import "EBElectionPositionDetailViewController.h"
 #import "EBNetworkService.h"
 #import "EBUserService.h"
+#import "EBVoteViewController.h"
 
 @interface EBElectionViewController () <UIScrollViewDelegate, EBContentServiceDelegate>
 
@@ -26,6 +27,8 @@
 @property (weak, nonatomic) IBOutlet UIView *candidateView;
 
 @property (weak, nonatomic) IBOutlet UIView *coverView;
+
+@property (strong, nonatomic) NSDictionary *electionInfo;
 
 
 
@@ -48,12 +51,13 @@
     self.candidateView.hidden = YES;
     [self.segmentedControl addTarget:self action:@selector(changeSegment) forControlEvents:UIControlEventValueChanged];
     
-    [self getElectionInfo];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    self.navigationItem.rightBarButtonItem.enabled = NO;
+    [self getElectionInfo];
     BOOL hasPPSEQuestions = [EBUserService hasPPSEQuestions];
     self.coverView.hidden = hasPPSEQuestions;
     [self.segmentedControl setEnabled:hasPPSEQuestions];
@@ -102,7 +106,9 @@
 - (void)getElectionInfoFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
 {
     if (success) {
+        self.electionInfo = info;
         self.electionTitleLabel.text = info[@"title"];
+        self.navigationItem.rightBarButtonItem.enabled = YES;
     } else {
         NSLog(@"%@", error);
     }
@@ -114,7 +120,10 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    
+    if ([segue.identifier isEqualToString:@"ShowPledge"]) {
+        EBVoteViewController *voteViewController = (EBVoteViewController *)[segue destinationViewController];
+        voteViewController.electionInfo = self.electionInfo;
+    }
 }
 
 

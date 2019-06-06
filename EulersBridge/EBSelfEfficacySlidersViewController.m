@@ -48,7 +48,7 @@
     
     self.selectionArray = [NSMutableArray array];
     for (int i = 0; i < self.titleArray.count; i += 1) {
-        [self.selectionArray addObject:@(3)];
+        [self.selectionArray addObject:@(2)];
     }
     
     self.navigationController.navigationBarHidden = NO;
@@ -69,10 +69,10 @@
     EBSliderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SliderCell" forIndexPath:indexPath];
     cell.titleLabel.text = self.titleArray[indexPath.row];
     cell.degreeTitles = self.degreeArray;
-    [cell setSelectionWithIndex:[self.selectionArray[indexPath.row] intValue]];
     cell.selectionDelegate = self;
     cell.index = indexPath.row;
     cell.numChoice = 5;
+    [cell setSelectionWithIndex:[self.selectionArray[indexPath.row] intValue]];
     return cell;
 }
 
