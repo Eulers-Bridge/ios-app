@@ -36,12 +36,12 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *confirmPasswordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *ageTextField;
-@property (weak, nonatomic) IBOutlet UITextField *countryTextField;
-@property (weak, nonatomic) IBOutlet UITextField *genderTextField;
-@property (weak, nonatomic) IBOutlet UITextField *universityTextField;
-@property (weak, nonatomic) IBOutlet UIButton *genderButton;
-@property (weak, nonatomic) IBOutlet UIButton *countryButton;
-@property (weak, nonatomic) IBOutlet UIButton *universityButton;
+//@property (weak, nonatomic) IBOutlet UITextField *countryTextField;
+//@property (weak, nonatomic) IBOutlet UITextField *genderTextField;
+//@property (weak, nonatomic) IBOutlet UITextField *universityTextField;
+//@property (weak, nonatomic) IBOutlet UIButton *genderButton;
+//@property (weak, nonatomic) IBOutlet UIButton *countryButton;
+//@property (weak, nonatomic) IBOutlet UIButton *universityButton;
 
 @property (weak, nonatomic) IBOutlet UIImageView *nameValidIndicator;
 @property (weak, nonatomic) IBOutlet UIImageView *familyNameValidIndicator;
@@ -55,7 +55,7 @@
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
-@property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
+//@property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
 
 @property (strong, nonatomic) NSArray *countries;
 @property (strong, nonatomic) NSArray *universities;
@@ -129,8 +129,8 @@
         self.textFieldContainerView.frame = frame;
     }
     
-    self.countryButton.enabled = NO;
-    self.pickerView.hidden = YES;
+//    self.countryButton.enabled = NO;
+//    self.pickerView.hidden = YES;
     self.errorLabel.hidden = YES;
     
     // Gesture Recognizer
@@ -153,7 +153,7 @@
     self.termsAgreed = NO;
     self.contentPushedUp = NO;
     self.countrySelected = 0;
-    self.universityButton.enabled = NO;
+//    self.universityButton.enabled = NO;
     
     self.institutionIdSelected = @"";
     self.genderSelected = @"";
@@ -201,62 +201,62 @@
 
 }
 
-- (IBAction)chooseGender:(UIButton *)sender
-{
-    [self dismissKeyboard];
-    self.pickerView.hidden = NO;
-    [self pushContentUpWithCompletion:^(BOOL finished) {
-        self.pickerView.hidden = NO;
-    }];
-    
-    self.pickerViewCurrentArray = self.genders;
-    [self.pickerView reloadAllComponents];
-    
-    [self.pickerView selectRow:0 inComponent:0 animated:NO];
-    
-    if ([self.genderTextField.text isEqualToString:@""]) {
-        self.genderTextField.text = self.pickerViewCurrentArray[[self.pickerView selectedRowInComponent:0]];
-        self.genderSelected = self.genders[0];
-    }
-}
+//- (IBAction)chooseGender:(UIButton *)sender
+//{
+//    [self dismissKeyboard];
+//    self.pickerView.hidden = NO;
+//    [self pushContentUpWithCompletion:^(BOOL finished) {
+//        self.pickerView.hidden = NO;
+//    }];
+//
+//    self.pickerViewCurrentArray = self.genders;
+//    [self.pickerView reloadAllComponents];
+//
+//    [self.pickerView selectRow:0 inComponent:0 animated:NO];
+//
+//    if ([self.genderTextField.text isEqualToString:@""]) {
+//        self.genderTextField.text = self.pickerViewCurrentArray[[self.pickerView selectedRowInComponent:0]];
+//        self.genderSelected = self.genders[0];
+//    }
+//}
 
-- (IBAction)chooseCountry:(UIButton *)sender
-{
-    [self dismissKeyboard];
-    self.pickerView.hidden = NO;
-    [self pushContentUpWithCompletion:^(BOOL finished) {
-        self.pickerView.hidden = NO;
-    }];
-
-    self.pickerViewCurrentArray = self.countries;
-    [self.pickerView reloadAllComponents];
-    
-    [self.pickerView selectRow:self.countrySelected inComponent:0 animated:NO];
-    
-    if ([self.countryTextField.text isEqualToString:@""]) {
-        self.countryTextField.text = self.pickerViewCurrentArray[[self.pickerView selectedRowInComponent:0]];
-        self.countrySelected = 0;
-    }
-    self.universityButton.enabled = YES;
-    self.universityTextField.text = @"";
-}
-
-- (IBAction)chooseUniversity:(UIButton *)sender
-{
-    [self dismissKeyboard];
-    [self pushContentUpWithCompletion:^(BOOL finished) {
-        self.pickerView.hidden = NO;
-    }];
-    self.pickerViewCurrentArray = self.universities[self.countrySelected];
-    [self.pickerView reloadAllComponents];
-    [self.pickerView selectRow:0 inComponent:0 animated:NO];
-    
-    if ([self.universityTextField.text isEqualToString:@""]) {
-        self.universityTextField.text = self.pickerViewCurrentArray[[self.pickerView selectedRowInComponent:0]];
-        self.institutionIdSelected = self.generalInfo[@"countrys"][self.countrySelected][@"institutions"][0][@"institutionId"];
-    }
-    
-}
+//- (IBAction)chooseCountry:(UIButton *)sender
+//{
+//    [self dismissKeyboard];
+//    self.pickerView.hidden = NO;
+//    [self pushContentUpWithCompletion:^(BOOL finished) {
+//        self.pickerView.hidden = NO;
+//    }];
+//
+//    self.pickerViewCurrentArray = self.countries;
+//    [self.pickerView reloadAllComponents];
+//
+//    [self.pickerView selectRow:self.countrySelected inComponent:0 animated:NO];
+//
+//    if ([self.countryTextField.text isEqualToString:@""]) {
+//        self.countryTextField.text = self.pickerViewCurrentArray[[self.pickerView selectedRowInComponent:0]];
+//        self.countrySelected = 0;
+//    }
+//    self.universityButton.enabled = YES;
+//    self.universityTextField.text = @"";
+//}
+//
+//- (IBAction)chooseUniversity:(UIButton *)sender
+//{
+//    [self dismissKeyboard];
+//    [self pushContentUpWithCompletion:^(BOOL finished) {
+//        self.pickerView.hidden = NO;
+//    }];
+//    self.pickerViewCurrentArray = self.universities[self.countrySelected];
+//    [self.pickerView reloadAllComponents];
+//    [self.pickerView selectRow:0 inComponent:0 animated:NO];
+//
+//    if ([self.universityTextField.text isEqualToString:@""]) {
+//        self.universityTextField.text = self.pickerViewCurrentArray[[self.pickerView selectedRowInComponent:0]];
+//        self.institutionIdSelected = self.generalInfo[@"countrys"][self.countrySelected][@"institutions"][0][@"institutionId"];
+//    }
+//
+//}
 
 - (IBAction)signupAction:(UIBarButtonItem *)sender
 {
@@ -277,38 +277,38 @@
 
 #pragma mark pickerView delegate
 
--(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
-{
-    return 1;
-}
-
--(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
-{
-    return [self.pickerViewCurrentArray count];
-}
-
--(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
-{
-    return self.pickerViewCurrentArray[row];
-}
-
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
-{
-    if (self.pickerViewCurrentArray == self.genders) {
-        self.genderTextField.text = self.genders[row];
-        self.genderSelected = self.genders[row];
-    }
-    
-    if (self.pickerViewCurrentArray == self.countries) {
-        self.countryTextField.text = self.countries[row];
-        self.countrySelected = row;
-    }
-    
-    if (self.pickerViewCurrentArray == self.universities[self.countrySelected]) {
-        self.universityTextField.text = self.universities[self.countrySelected][row];
-        self.institutionIdSelected = self.generalInfo[@"countrys"][self.countrySelected][@"institutions"][row][@"institutionId"];
-    }
-}
+//-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+//{
+//    return 1;
+//}
+//
+//-(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+//{
+//    return [self.pickerViewCurrentArray count];
+//}
+//
+//-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+//{
+//    return self.pickerViewCurrentArray[row];
+//}
+//
+//- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+//{
+//    if (self.pickerViewCurrentArray == self.genders) {
+//        self.genderTextField.text = self.genders[row];
+//        self.genderSelected = self.genders[row];
+//    }
+//
+//    if (self.pickerViewCurrentArray == self.countries) {
+//        self.countryTextField.text = self.countries[row];
+//        self.countrySelected = row;
+//    }
+//
+//    if (self.pickerViewCurrentArray == self.universities[self.countrySelected]) {
+//        self.universityTextField.text = self.universities[self.countrySelected][row];
+//        self.institutionIdSelected = self.generalInfo[@"countrys"][self.countrySelected][@"institutions"][row][@"institutionId"];
+//    }
+//}
 
 #pragma mark textField delegate
 
@@ -335,11 +335,12 @@
     } else if (textField == self.confirmPasswordTextField) {
         [self.ageTextField becomeFirstResponder];
         return NO;
-    } else if (textField == self.ageTextField) {
-        [self.genderTextField becomeFirstResponder];
-        [self chooseGender:self.genderButton];
-        return NO;
     }
+//    else if (textField == self.ageTextField) {
+//        [self.genderTextField becomeFirstResponder];
+//        [self chooseGender:self.genderButton];
+//        return NO;
+//    }
     return YES;
 }
 
@@ -350,7 +351,7 @@
 {
     [self dismissKeyboard];
     [self pushContentDown];
-    self.pickerView.hidden = YES;
+//    self.pickerView.hidden = YES;
     self.uploadImageButton.hidden = NO;
 }
 
@@ -607,7 +608,7 @@
         }
         self.countries = [countries copy];
         self.universities = [institutions copy];
-        self.countryButton.enabled = YES;
+//        self.countryButton.enabled = YES;
     } else {
         // Display error reason.
     }
@@ -665,7 +666,7 @@
                                           givenName:self.nameTextField.text
                                          familyName:self.familyNameTextField.text
                                         yearOfBirth:yearOfBirth
-                                             gender:self.genderTextField.text
+                                             gender:@""
                                       institutionId:self.institutionIdSelected
                                         profilePicURL:self.profilePicURL];
         // Set the spinning wheel or equivelent.
@@ -748,32 +749,32 @@
         allGood = NO;
     }
     
-    if ([self.countryTextField.text length] == 0) {
-        // show cross
-        self.countryValidIndicator.image = cross;
-        allGood = NO;
-    } else {
-        self.countryTextField.textColor = ISEGORIA_COLOR_SIGNUP_GREEN;
-        self.countryValidIndicator.image = tick;
-    }
+//    if ([self.countryTextField.text length] == 0) {
+//        // show cross
+//        self.countryValidIndicator.image = cross;
+//        allGood = NO;
+//    } else {
+//        self.countryTextField.textColor = ISEGORIA_COLOR_SIGNUP_GREEN;
+//        self.countryValidIndicator.image = tick;
+//    }
     
-    if ([self.genderTextField.text length] == 0) {
-        // show cross
-        self.genderValidIndicator.image = cross;
-        allGood = NO;
-    } else {
-        self.genderTextField.textColor = ISEGORIA_COLOR_SIGNUP_GREEN;
-        self.genderValidIndicator.image = tick;
-    }
+//    if ([self.genderTextField.text length] == 0) {
+//        // show cross
+//        self.genderValidIndicator.image = cross;
+//        allGood = NO;
+//    } else {
+//        self.genderTextField.textColor = ISEGORIA_COLOR_SIGNUP_GREEN;
+//        self.genderValidIndicator.image = tick;
+//    }
     
-    if ([self.universityTextField.text length] == 0) {
-        // show cross
-        self.universityValidIndicator.image = cross;
-        allGood = NO;
-    } else {
-        self.universityTextField.textColor = ISEGORIA_COLOR_SIGNUP_GREEN;
-        self.universityValidIndicator.image = tick;
-    }
+//    if ([self.universityTextField.text length] == 0) {
+//        // show cross
+//        self.universityValidIndicator.image = cross;
+//        allGood = NO;
+//    } else {
+//        self.universityTextField.textColor = ISEGORIA_COLOR_SIGNUP_GREEN;
+//        self.universityValidIndicator.image = tick;
+//    }
     
     if (self.uploadProgressView.hidden == false) {
         allGood = NO;
@@ -806,17 +807,17 @@
     self.ageTextField.enabled = YES;
     self.ageTextField.textColor = [UIColor blackColor];
     self.ageValidIndicator.image = nil;
-    self.countryButton.enabled = YES;
-    self.countryTextField.backgroundColor = [UIColor whiteColor];
-    self.countryTextField.textColor = [UIColor blackColor];
-    self.genderTextField.backgroundColor = [UIColor whiteColor];
-    self.genderTextField.textColor = [UIColor blackColor];
-    self.genderValidIndicator.image = nil;
-    self.countryValidIndicator.image = nil;
-    self.universityButton.enabled = YES;
-    self.universityTextField.backgroundColor = [UIColor whiteColor];
-    self.universityTextField.textColor = [UIColor blackColor];
-    self.universityValidIndicator.image = nil;
+//    self.countryButton.enabled = YES;
+//    self.countryTextField.backgroundColor = [UIColor whiteColor];
+//    self.countryTextField.textColor = [UIColor blackColor];
+//    self.genderTextField.backgroundColor = [UIColor whiteColor];
+//    self.genderTextField.textColor = [UIColor blackColor];
+//    self.genderValidIndicator.image = nil;
+//    self.countryValidIndicator.image = nil;
+//    self.universityButton.enabled = YES;
+//    self.universityTextField.backgroundColor = [UIColor whiteColor];
+//    self.universityTextField.textColor = [UIColor blackColor];
+//    self.universityValidIndicator.image = nil;
 }
 
 - (void)didReceiveMemoryWarning

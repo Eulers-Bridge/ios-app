@@ -71,6 +71,26 @@
 
 }
 
+- (void)updateUserGender:(NSString *)gender
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:TESTING_USERNAME password:TESTING_PASSWORD];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/hal+json", @"application/json", @"application/xml", nil];
+    NSDictionary *parameters = @{@"gender": gender};
+    NSString *urlString = [NSString stringWithFormat:@"%@/user/%@", TESTING_URL, TESTING_USERNAME];
+    [manager PUT:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id res) {
+        if (self.userDelegate != nil) {
+            [self.userDelegate updateUserGenderWithSuccess:YES failureReason:nil];
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (self.userDelegate != nil) {
+            [self.userDelegate updateUserGenderWithSuccess:NO failureReason:error];
+        }
+        
+    }];
+}
+
 - (void)addPersonalityForUser:(EBUser *)user withParameters:(NSDictionary *)parameters
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];

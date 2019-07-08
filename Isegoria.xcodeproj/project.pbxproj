@@ -155,6 +155,7 @@
 		049A476D196A803F00D363AE /* EBEmailVerificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049A476C196A803F00D363AE /* EBEmailVerificationViewController.m */; };
 		049A4770196B803E00D363AE /* EBTextFieldMuseo.m in Sources */ = {isa = PBXBuildFile; fileRef = 049A476F196B803E00D363AE /* EBTextFieldMuseo.m */; };
 		04A2380D1B65F4AE00377499 /* EBTextViewHelvetica.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A2380C1B65F4AE00377499 /* EBTextViewHelvetica.m */; };
+		04A650BA22C0B5B300757735 /* EBGenderSelectorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A650B922C0B5B300757735 /* EBGenderSelectorTableViewController.m */; };
 		04B177621ACBA98D00008293 /* TestPathViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B177611ACBA98D00008293 /* TestPathViewController.m */; };
 		04B177651ACBAB5000008293 /* TestPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B177641ACBAB5000008293 /* TestPathView.m */; };
 		04B6556C196109EE0002E784 /* EBBadgeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B6556B196109EE0002E784 /* EBBadgeCollectionViewCell.m */; };
@@ -448,6 +449,8 @@
 		049A476F196B803E00D363AE /* EBTextFieldMuseo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBTextFieldMuseo.m; sourceTree = "<group>"; };
 		04A2380B1B65F4AE00377499 /* EBTextViewHelvetica.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBTextViewHelvetica.h; sourceTree = "<group>"; };
 		04A2380C1B65F4AE00377499 /* EBTextViewHelvetica.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBTextViewHelvetica.m; sourceTree = "<group>"; };
+		04A650B822C0B5B300757735 /* EBGenderSelectorTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EBGenderSelectorTableViewController.h; sourceTree = "<group>"; };
+		04A650B922C0B5B300757735 /* EBGenderSelectorTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EBGenderSelectorTableViewController.m; sourceTree = "<group>"; };
 		04B177601ACBA98D00008293 /* TestPathViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestPathViewController.h; path = ../TestPathViewController.h; sourceTree = "<group>"; };
 		04B177611ACBA98D00008293 /* TestPathViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestPathViewController.m; path = ../TestPathViewController.m; sourceTree = "<group>"; };
 		04B177631ACBAB5000008293 /* TestPathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestPathView.h; sourceTree = "<group>"; };
@@ -1033,6 +1036,8 @@
 				04B6556E196123610002E784 /* EBProfileSettingsViewController.m */,
 				04D82593198B29DF00715E0A /* EBAboutViewController.h */,
 				04D82594198B29DF00715E0A /* EBAboutViewController.m */,
+				04A650B822C0B5B300757735 /* EBGenderSelectorTableViewController.h */,
+				04A650B922C0B5B300757735 /* EBGenderSelectorTableViewController.m */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -1594,6 +1599,7 @@
 				04788ECE195A70460015FB06 /* EBButtonRounded.m in Sources */,
 				040797471940E7F80097706C /* EBButton.m in Sources */,
 				04DE97331B672188000091A8 /* EBArticleViewController.m in Sources */,
+				04A650BA22C0B5B300757735 /* EBGenderSelectorTableViewController.m in Sources */,
 				04EC195D1941C0A90001FF72 /* EBPollAnswerTableViewCell.m in Sources */,
 				04EC197319488A730001FF72 /* EBButtonRoundedHeavy.m in Sources */,
 				04DA53C91B7DADF50090AD6B /* EBDarkImageView.m in Sources */,

@@ -13,6 +13,7 @@
 @optional
 - (void)signupFinishedWithSuccess:(BOOL)success withUser:(EBUser *)user failureReason:(NSError *)error;
 - (void)loginFinishedWithSuccess:(BOOL)success withUser:(EBUser *)user failureReason:(NSError *)error errorString:(NSString *)errorString;
+- (void)updateUserGenderWithSuccess:(BOOL)success failureReason:(NSError *)error;
 - (void)resendEmailFinishedWithSuccess:(BOOL)success withUser:(EBUser *)user failureReason:(NSError *)error;
 - (void)requestPasswordResetWithEmailFinishedWithSuccess:(BOOL)success failureReason:(NSError *)error errorString:(NSString *)errorString;
 - (void)addPersonalityForUserFinishedWithSuccess:(BOOL)success withUser:(EBUser *)user failureReason:(NSError *)error;
@@ -89,6 +90,7 @@
 - (void)signupWithEmailAddress:(NSString *)email password:(NSString *)password givenName:(NSString *)givenName familyName:(NSString *)familyName yearOfBirth:(NSString *)yearOfBirth gender:(NSString *)gender institutionId:(NSString *)institutionId profilePicURL:(NSString *)profilePicURL;
 
 - (void)loginWithEmailAddress:(NSString *)email password:(NSString *)password arn:(NSString *)arn deviceToken:(NSString *)deviceToken;
+- (void)updateUserGender:(NSString *)gender;
 - (void)resendVerificationEmailForUser:(EBUser *)user;
 - (void)requestPasswordResetWithEmail:(NSString *)email;
 - (void)addPersonalityForUser:(EBUser *)user withParameters:(NSDictionary *)parameters;

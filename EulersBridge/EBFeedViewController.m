@@ -364,7 +364,7 @@
         int i = 0;
         for (NSDictionary *eventItem in eventsList) {
             
-            NSDate *date = [NSDate dateWithTimeIntervalSince1970:[eventItem[@"starts"] integerValue] / 1000];
+            NSDate *date = [NSDate dateWithTimeIntervalSince1970:[(eventItem[@"starts"] == [NSNull null] ? eventItem[@"created"] : eventItem[@"starts"]) integerValue] / 1000];
             NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
             [dateFormatter setDateFormat:@"dd MMMM yyyy 'at' h:mm a"];
             NSString *dateAndTime = [dateFormatter stringFromDate:date];
