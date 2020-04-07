@@ -25,7 +25,9 @@
 
 - (void)setupData:(NSDictionary *)data
 {
-    self.textView.text = data[@"policyStatement"];
+    if (data[@"policyStatement"] != [NSNull null]) {
+        self.textView.text = data[@"policyStatement"];
+    }
     CGFloat oldHeight = self.textView.frame.size.height;
     [EBHelper resetTextView:self.textView];
     CGFloat textViewExtraHeight = self.textView.frame.size.height - oldHeight;

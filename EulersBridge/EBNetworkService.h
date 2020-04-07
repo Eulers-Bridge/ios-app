@@ -14,6 +14,7 @@
 - (void)signupFinishedWithSuccess:(BOOL)success withUser:(EBUser *)user failureReason:(NSError *)error;
 - (void)loginFinishedWithSuccess:(BOOL)success withUser:(EBUser *)user failureReason:(NSError *)error errorString:(NSString *)errorString;
 - (void)updateUserGenderWithSuccess:(BOOL)success failureReason:(NSError *)error;
+- (void)updateProfilePicURLWithSuccess:(BOOL)success failureReason:(NSError *)error;
 - (void)resendEmailFinishedWithSuccess:(BOOL)success withUser:(EBUser *)user failureReason:(NSError *)error;
 - (void)requestPasswordResetWithEmailFinishedWithSuccess:(BOOL)success failureReason:(NSError *)error errorString:(NSString *)errorString;
 - (void)addPersonalityForUserFinishedWithSuccess:(BOOL)success withUser:(EBUser *)user failureReason:(NSError *)error;
@@ -33,6 +34,7 @@
 - (void)addFriendWithEmailFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 - (void)acceptFriendRequestFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 - (void)rejectFriendRequestFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
+- (void)deleteFriendRequestFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error;
 @end
 
 
@@ -91,6 +93,7 @@
 
 - (void)loginWithEmailAddress:(NSString *)email password:(NSString *)password arn:(NSString *)arn deviceToken:(NSString *)deviceToken;
 - (void)updateUserGender:(NSString *)gender;
+- (void)updateProfilePicURL:(NSString *)profilePicURL;
 - (void)resendVerificationEmailForUser:(EBUser *)user;
 - (void)requestPasswordResetWithEmail:(NSString *)email;
 - (void)addPersonalityForUser:(EBUser *)user withParameters:(NSDictionary *)parameters;
@@ -109,6 +112,7 @@
 - (void)addFriendWithEmail:(NSString *)email;
 - (void)acceptFriendRequestWithRequestId:(NSString *)requestId;
 - (void)rejectFriendRequestWithRequestId:(NSString *)requestId;
+- (void)deleteFriendRequestWithRequestId:(NSString *)requestId;
 
 
 // Content services

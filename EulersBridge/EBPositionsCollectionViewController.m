@@ -91,6 +91,7 @@
     if ([segue.identifier isEqualToString:@"ShowCandidateFromPosition"]) {
         EBCandidateTableViewController *tvc = (EBCandidateTableViewController *)[segue destinationViewController];
         tvc.candidateFilter = EBCandidateFilterByPosition;
+        tvc.candidateViewType = EBCandidateViewTypePositionProfile;
         EBFeedCollectionViewCell *cell = (EBFeedCollectionViewCell *)sender;
         tvc.filterId = [cell.data[@"id"] intValue];
         tvc.filterTitle = cell.titleLabel.text;

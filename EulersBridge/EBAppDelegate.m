@@ -20,7 +20,7 @@
     
     // Setup Amazon s3
     AWSStaticCredentialsProvider *credentialsProvider = [[AWSStaticCredentialsProvider alloc] initWithAccessKey:@"AKIAJNFUHYIZGWPMIZWA" secretKey:@"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"];
-    AWSServiceConfiguration *defaultServiceConfiguration = [[AWSServiceConfiguration alloc] initWithRegion:AWSRegionAPSoutheast2 credentialsProvider:credentialsProvider];
+    AWSServiceConfiguration *defaultServiceConfiguration = [[AWSServiceConfiguration alloc] initWithRegion:AWSRegionUSEast1 credentialsProvider:credentialsProvider];
     [AWSServiceManager defaultServiceManager].defaultServiceConfiguration = defaultServiceConfiguration;
     
     

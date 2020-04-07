@@ -102,6 +102,8 @@
     if ([photo class] != [NSNull class]) {
         NSString *answerImageURL = photo[@"url"];
         [self.answerImageView setImageWithURL:[NSURL URLWithString:answerImageURL] placeholderImage:[UIImage imageNamed:@"ImagePlaceholder"]];
+    } else {
+        self.answerImageView.hidden = YES;
     }
     self.progressViewFrame.backgroundColor = [UIColor clearColor];
     self.progressViewFrame.layer.borderWidth = 1.0;

@@ -17,8 +17,10 @@
 #import "EBTicketViewController.h"
 #import "EBProfileContentViewController.h"
 #import "EBUserService.h"
+#import <MobileCoreServices/MobileCoreServices.h>
+#import "AWSS3.h"
 
-@interface EBContentViewController () <UIScrollViewDelegate, EBUserServiceDelegate, EBContentServiceDelegate>
+@interface EBContentViewController () <UIScrollViewDelegate, EBUserServiceDelegate, EBContentServiceDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet EBBlurImageView *imageView;
@@ -27,9 +29,14 @@
 @property (weak, nonatomic) IBOutlet UIImageView *centerImageView;
 @property (weak, nonatomic) IBOutlet EBLabelLight *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *institutionLabel;
+@property (weak, nonatomic) IBOutlet UIButton *uploadProfilePictureButton;
+@property (weak, nonatomic) IBOutlet UIProgressView *uploadProgressView;
 
 @property (strong, nonatomic) UIViewController *contentViewController;
 @property (strong, nonatomic) NSMutableArray *signUpNetworkServices;
+@property BOOL isPickingPhoto;
+@property BOOL isInitialLoad;
+
 @end
 
 @implementation EBContentViewController
@@ -46,7 +53,13 @@
     self.contentScrollView.delegate = self;
     self.contentScrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height + 1);
     self.loadingIndicator.hidden = YES;
+    self.uploadProfilePictureButton.hidden = YES;
+    self.uploadProgressView.hidden = YES;
+    [self.uploadProgressView setProgress:0.0 animated:NO];
+    self.centerImageView.image = [UIImage imageNamed:@"PhotoPlaceHolder"];
+    self.centerImageView.contentMode = UIViewContentModeCenter;
     // Load content view
+    self.isInitialLoad = YES;
     [self loadContentView];
     
     
@@ -56,7 +69,11 @@
 {
     [super viewWillAppear:animated];
     if (self.contentViewType == EBContentViewTypeProfile) {
-        [self loadContentView];
+        if (self.isInitialLoad) {
+            self.isInitialLoad = NO;
+        } else {
+            [self loadContentView];
+        }
     }
 }
 
@@ -134,27 +151,29 @@
         [self setupDetailViewController:ticketVC];
 
     } else if (self.contentViewType == EBContentViewTypeProfile) {
-        
-        self.titleLabel.hidden = YES;
-        self.centerImageView.hidden = NO;
-        self.nameLabel.hidden = NO;
-        self.institutionLabel.hidden = NO;
-        // Add an upload button
-        
-        [self getInstitutionInfo];
-        
-        self.navigationItem.title = @"Profile";
-        
-        if (self.isSelfProfile) {
-            [self getUserDetailWithEmail:[EBUserService retriveUserEmail]];
-        } else {
-            [self getUserDetailWithEmail:self.data[@"email"]];
+
+        if (!self.isPickingPhoto) {
+            self.titleLabel.hidden = YES;
+            self.centerImageView.hidden = NO;
+            self.nameLabel.hidden = NO;
+            self.institutionLabel.hidden = NO;
+            self.uploadProfilePictureButton.hidden = NO;
+            self.centerImageView.hidden = NO;
+            
+            [self getInstitutionInfo];
+            
+            self.navigationItem.title = @"Profile";
+            
+            if (self.isSelfProfile) {
+                [self getUserDetailWithEmail:[EBUserService retriveUserEmail]];
+            } else {
+                [self getUserDetailWithEmail:self.data[@"email"]];
+            }
+            
+            EBProfileContentViewController *profileVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ProfileContentView"];
+            profileVC.isSelfProfile = self.isSelfProfile;
+            [self setupDetailViewController:profileVC];
         }
-        
-        EBProfileContentViewController *profileVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ProfileContentView"];
-        profileVC.isSelfProfile = self.isSelfProfile;
-        [self setupDetailViewController:profileVC];
-        
     }
     // Receive content size information
     // Set scroll view content size
@@ -162,15 +181,16 @@
 
 - (void)setupDetailViewController:(UIViewController <EBContentDetail> *)detailVC
 {
-
-    self.contentViewController = detailVC;
-    [self addChildViewController:detailVC];
-    [detailVC didMoveToParentViewController:self];
-    [self.contentScrollView addSubview:detailVC.view];
-    [detailVC setupData:self.data];
-    detailVC.view.frame = CGRectMake(0, self.imageView.frame.size.height, detailVC.view.frame.size.width, detailVC.view.frame.size.height);
-    
-    self.contentScrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.imageView.frame.size.height + detailVC.view.frame.size.height);
+    if (self.contentViewController == nil) {
+        self.contentViewController = detailVC;
+        [self addChildViewController:detailVC];
+        [detailVC didMoveToParentViewController:self];
+        [self.contentScrollView addSubview:detailVC.view];
+        [detailVC setupData:self.data];
+        detailVC.view.frame = CGRectMake(0, self.imageView.frame.size.height, detailVC.view.frame.size.width, detailVC.view.frame.size.height);
+        
+        self.contentScrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.imageView.frame.size.height + detailVC.view.frame.size.height);
+    }
     
 }
 
@@ -183,6 +203,7 @@
         self.image = image;
         self.imageView.image = image;
         self.centerImageView.image = image;
+        self.centerImageView.contentMode = UIViewContentModeScaleAspectFill;
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
         NSLog(@"%@", error);
     }];
@@ -264,6 +285,137 @@
         self.imageView.frame = frame;
     }
     
+}
+
+- (IBAction)uploadProfilePictureAction:(UIButton *)sender
+{
+    [self showPicker:sender];
+}
+
+- (void)showPicker:(UIButton *)sender {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *takePhotoAction = [UIAlertAction actionWithTitle:@"Take Photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        // TODO: Show Camera
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        picker.allowsEditing = YES;
+        picker.modalPresentationStyle = UIModalPresentationFullScreen;
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        picker.mediaTypes = @[(NSString *)kUTTypeImage];
+        [self presentViewController:picker animated:YES completion:nil];
+    }];
+    UIAlertAction *libAction = [UIAlertAction actionWithTitle:@"Photo Library" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        // TODO: Show Photo Library
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        picker.allowsEditing = YES;
+        picker.modalPresentationStyle = UIModalPresentationPopover;
+        picker.popoverPresentationController.sourceView = sender;
+        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        picker.mediaTypes = @[(NSString *)kUTTypeImage];
+        [self presentViewController:picker animated:YES completion:nil];
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    [alert addAction:takePhotoAction];
+    [alert addAction:libAction];
+    [alert addAction:cancelAction];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    self.isPickingPhoto = YES;
+    [self dismissViewControllerAnimated:YES completion:nil];
+    //    UIImage *image = info[UIImagePickerControllerEditedImage];
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    self.image = image;
+    self.imageView.image = image;
+    self.centerImageView.image = image;
+    self.centerImageView.contentMode = UIViewContentModeScaleAspectFill;
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.6);
+    NSUInteger imageSize = imageData.length;
+    NSLog(@"SIZE OF IMAGE: %lu ", (unsigned long)imageSize);
+    // Upload the photo
+    NSString *uuidString = [NSUUID UUID].UUIDString;
+    NSString *key = [NSString stringWithFormat:@"%@.jpg", uuidString];
+    
+    // Transfer the data
+    self.uploadProgressView.hidden = NO;
+    NSData *dataToUpload = imageData;// The data to upload.
+    
+    AWSS3TransferUtilityUploadExpression *expression = [AWSS3TransferUtilityUploadExpression new];
+    expression.uploadProgress = ^(AWSS3TransferUtilityTask *task, int64_t bytesSent,
+                                  int64_t totalBytesSent,
+                                  int64_t totalBytesExpectedToSend) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            float progress = (float)totalBytesSent / (float)totalBytesExpectedToSend;
+            [self.uploadProgressView setProgress:progress animated:YES];
+        });
+    };
+    
+    AWSS3TransferUtilityUploadCompletionHandlerBlock completionHandler = ^(AWSS3TransferUtilityUploadTask *task, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.uploadProgressView.hidden = YES;
+            [self.uploadProgressView setProgress:0.0 animated:NO];
+            self.isPickingPhoto = NO;
+            if (error) {
+                NSLog(@"Error: %@", error);
+            } else {
+                self.uploadProgressView.hidden = YES;
+                [self.uploadProgressView setProgress:0.0 animated:NO];
+                [self updateProfilePicURL:[S3_URL_PREFIX stringByAppendingString:key]];
+            }
+        });
+    };
+    
+    AWSS3TransferUtility *transferUtility = [AWSS3TransferUtility defaultS3TransferUtility];
+    [[transferUtility uploadData:dataToUpload
+                          bucket:S3_BUCKET_KEY
+                             key:key
+                     contentType:@"image"
+                      expression:expression
+                completionHander:completionHandler] continueWithBlock:^id(AWSTask *task) {
+        
+        if (task.error) {
+            NSLog(@"Error: %@", task.error);
+            self.uploadProgressView.hidden = YES;
+            [self.uploadProgressView setProgress:0.0 animated:NO];
+            [[[UIAlertView alloc] initWithTitle:@"Upload failed" message:task.error.description delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
+        }
+        if (task.exception) {
+            NSLog(@"Exception: %@", task.exception);
+            self.uploadProgressView.hidden = YES;
+            [self.uploadProgressView setProgress:0.0 animated:NO];
+            [[[UIAlertView alloc] initWithTitle:@"Upload failed" message:task.exception.description delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
+        }
+        if (task.result) {
+        }
+        
+        return nil;
+    }];
+    
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)updateProfilePicURL:(NSString *)profilePicURL
+{
+    EBNetworkService *service = [[EBNetworkService alloc] init];
+    service.userDelegate = self;
+    [service updateProfilePicURL:profilePicURL];
+}
+
+-(void)updateProfilePicURLWithSuccess:(BOOL)success failureReason:(NSError *)error
+{
+    if (success) {
+        
+    } else {
+        NSLog(@"Error: %@", error);
+    }
 }
 
 -(void)dealloc

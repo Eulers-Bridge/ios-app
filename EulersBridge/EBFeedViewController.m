@@ -399,8 +399,10 @@
         NSMutableArray *photoAlbumsDataList = [NSMutableArray array];
         int i = 0;
         for (NSDictionary *photoAlbumItem in photoAlbumsList) {
-            
-            NSDate *date = [NSDate dateWithTimeIntervalSince1970:[photoAlbumItem[@"modified"] integerValue]];
+            if (photoAlbumItem[@"created"] == [NSNull null]) {
+                continue;
+            }
+            NSDate *date = [NSDate dateWithTimeIntervalSince1970:[photoAlbumItem[@"created"] integerValue]];
             NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
             [dateFormatter setDateFormat:@"dd MMMM yyyy 'at' h:mm a"];
             NSString *dateAndTime = [dateFormatter stringFromDate:date];

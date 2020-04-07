@@ -40,10 +40,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    if (self.candidateViewType == EBCandidateViewTypeTicketProfile) {
-        self.tableView.scrollEnabled = NO;
-    }
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.tableView.scrollEnabled = !(self.candidateViewType == EBCandidateViewTypeTicketProfile);
     
     self.candidateSearchBar.delegate = self;
     self.candidateSearchBar.showsCancelButton = YES;
@@ -233,14 +231,14 @@
     NSMutableArray *matchingCandidates = [NSMutableArray array];
 
     for (NSDictionary *candidate in self.candidates) {
-        NSString *id = @"";
+        NSString *_id = @"";
         if (self.candidateFilter == EBCandidateFilterByPosition) {
-            id = candidate[@"candidateData"][@"positionId"];
+            _id = candidate[@"candidateData"][@"positionId"];
         } else if (self.candidateFilter == EBCandidateFilterByTicket) {
-            id = candidate[@"candidateData"][@"ticketId"];
+            _id = candidate[@"candidateData"][@"ticketId"];
         }
-        if (id != [NSNull null]) {
-            if ([id intValue] == self.filterId) {
+        if (_id != [NSNull null]) {
+            if ([_id intValue] == self.filterId) {
                 [matchingCandidates addObject:candidate];
             }
         }
@@ -302,7 +300,9 @@
         cell.subtitleLabel.text = data[@"positionData"][@"name"];
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:@"CandidateCell" forIndexPath:indexPath];
-        cell.descriptionTextView.text = data[@"candidateData"][@"policyStatement"];
+        if (data[@"candidateData"][@"policyStatement"] != [NSNull null]) {
+            cell.descriptionTextView.text = data[@"candidateData"][@"policyStatement"];
+        }
     }
     
     cell.nameLabel.text = [EBHelper fullNameWithUserObject:data[@"candidateData"]];

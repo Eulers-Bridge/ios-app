@@ -17,8 +17,10 @@
 #import "EBNetworkService.h"
 #import "EBHelper.h"
 #import "EBButtonHeavySystem.h"
+#import <MobileCoreServices/MobileCoreServices.h>
+#import "AWSS3.h"
 
-@interface EBProfileViewController () <ABPeoplePickerNavigationControllerDelegate, UIScrollViewDelegate, EBContentServiceDelegate>
+@interface EBProfileViewController () <ABPeoplePickerNavigationControllerDelegate, UIScrollViewDelegate, EBContentServiceDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, EBUserServiceDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet EBBlurImageView *imageView;
@@ -33,6 +35,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *XPLevelLabel;
 
 @property (weak, nonatomic) IBOutlet UIButton *actionButton;
+@property (weak, nonatomic) IBOutlet UIButton *uploadProfilePictureButton;
+@property (weak, nonatomic) IBOutlet UIProgressView *uploadProgressView;
 
 @property (weak, nonatomic) IBOutlet UIView *darkBackgroundView;
 
@@ -114,6 +118,11 @@
 }
 
 
+- (IBAction)uploadProfilePictureAction:(UIButton *)sender
+{
+    [self showPicker:sender];
+}
+
 - (void)peoplePickerNavigationControllerDidCancel:
 (ABPeoplePickerNavigationController *)peoplePicker
 {
@@ -163,13 +172,28 @@
     [service getTasks];
 }
 
+- (void)updateProfilePicURL:(NSString *)profilePicURL
+{
+    EBNetworkService *service = [[EBNetworkService alloc] init];
+    service.userDelegate = self;
+    [service updateProfilePicURL:profilePicURL];
+}
+
+-(void)updateProfilePicURLWithSuccess:(BOOL)success failureReason:(NSError *)error
+{
+    if (success) {
+    } else {
+        NSLog(@"Error: %@", error);
+    }
+}
+
 -(void)getCompleteBadgesFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
 {
     if (success) {
         self.completedBadges = info[@"foundObjects"];
         [self updateBadges];
     } else {
-        
+        NSLog(@"Error: %@", error);
     }
 }
 
@@ -178,6 +202,8 @@
     if (success) {
         self.remainingBadges = info[@"foundObjects"];
         [self updateBadges];
+    } else {
+        NSLog(@"Error: %@", error);
     }
 }
 
@@ -187,6 +213,8 @@
         self.tasks = info[@"foundObjects"];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"TasksReturnedFromServer" object:nil userInfo:info];
         [self updateTasks];
+    } else {
+        NSLog(@"Error: %@", error);
     }
 }
 
@@ -211,7 +239,6 @@
         self.showProgressButton.enabled = YES;
         self.tasksLoadingLabel.hidden = YES;
         self.tasksContainerView.hidden = NO;
-        
     }
 }
 
@@ -233,7 +260,111 @@
 
 
 
+- (void)showPicker:(UIButton *)sender {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *takePhotoAction = [UIAlertAction actionWithTitle:@"Take Photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        // TODO: Show Camera
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        picker.allowsEditing = YES;
+        picker.modalPresentationStyle = UIModalPresentationFullScreen;
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        picker.mediaTypes = @[(NSString *)kUTTypeImage];
+        [self presentViewController:picker animated:YES completion:nil];
+    }];
+    UIAlertAction *libAction = [UIAlertAction actionWithTitle:@"Photo Library" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        // TODO: Show Photo Library
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        picker.allowsEditing = YES;
+        picker.modalPresentationStyle = UIModalPresentationPopover;
+        picker.popoverPresentationController.sourceView = sender;
+        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        picker.mediaTypes = @[(NSString *)kUTTypeImage];
+        [self presentViewController:picker animated:YES completion:nil];
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    [alert addAction:takePhotoAction];
+    [alert addAction:libAction];
+    [alert addAction:cancelAction];
+    [self presentViewController:alert animated:YES completion:nil];
+}
 
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    [self dismissViewControllerAnimated:YES completion:nil];
+    //    UIImage *image = info[UIImagePickerControllerEditedImage];
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    self.profileImageView.image = image;
+    self.profileImageView.contentMode = UIViewContentModeScaleAspectFill;
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.6);
+    NSUInteger imageSize = imageData.length;
+    NSLog(@"SIZE OF IMAGE: %lu ", (unsigned long)imageSize);
+    // Upload the photo
+    NSString *uuidString = [NSUUID UUID].UUIDString;
+    NSString *key = [NSString stringWithFormat:@"%@.jpg", uuidString];
+    
+    // Transfer the data
+    self.uploadProgressView.hidden = NO;
+    NSData *dataToUpload = imageData;// The data to upload.
+    
+    AWSS3TransferUtilityUploadExpression *expression = [AWSS3TransferUtilityUploadExpression new];
+    expression.uploadProgress = ^(AWSS3TransferUtilityTask *task, int64_t bytesSent,
+                                  int64_t totalBytesSent,
+                                  int64_t totalBytesExpectedToSend) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            float progress = (float)totalBytesSent / (float)totalBytesExpectedToSend;
+            [self.uploadProgressView setProgress:progress animated:YES];
+        });
+    };
+    
+    AWSS3TransferUtilityUploadCompletionHandlerBlock completionHandler = ^(AWSS3TransferUtilityUploadTask *task, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.uploadProgressView.hidden = YES;
+            [self.uploadProgressView setProgress:0.0 animated:NO];
+            if (error) {
+                NSLog(@"Error: %@", error);
+            } else {
+                self.uploadProgressView.hidden = YES;
+                [self.uploadProgressView setProgress:0.0 animated:NO];
+                [self updateProfilePicURL:[S3_URL_PREFIX stringByAppendingString:key]];
+            }
+        });
+    };
+    
+    AWSS3TransferUtility *transferUtility = [AWSS3TransferUtility defaultS3TransferUtility];
+    [[transferUtility uploadData:dataToUpload
+                          bucket:S3_BUCKET_KEY
+                             key:key
+                     contentType:@"image"
+                      expression:expression
+                completionHander:completionHandler] continueWithBlock:^id(AWSTask *task) {
+        
+        if (task.error) {
+            NSLog(@"Error: %@", task.error);
+            self.uploadProgressView.hidden = YES;
+            [self.uploadProgressView setProgress:0.0 animated:NO];
+            [[[UIAlertView alloc] initWithTitle:@"Upload failed" message:task.error.description delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
+        }
+        if (task.exception) {
+            NSLog(@"Exception: %@", task.exception);
+            self.uploadProgressView.hidden = YES;
+            [self.uploadProgressView setProgress:0.0 animated:NO];
+            [[[UIAlertView alloc] initWithTitle:@"Upload failed" message:task.exception.description delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
+        }
+        if (task.result) {
+        }
+        
+        return nil;
+    }];
+    
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 
 - (void)didReceiveMemoryWarning
@@ -274,6 +405,7 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
+
 
 
 @end

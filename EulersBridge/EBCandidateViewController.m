@@ -169,6 +169,7 @@
     if ([segue.identifier isEqualToString:@"CandidateTableEmbed"]) {
         EBCandidateTableViewController *tvc = (EBCandidateTableViewController *)[segue destinationViewController];
         tvc.candidateFilter = EBCandidateFilterAll;
+        tvc.candidateViewType = EBCandidateViewTypeAll;
     }
 }
 

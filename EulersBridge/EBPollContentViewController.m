@@ -320,7 +320,7 @@
 {
     switch (indexPath.section) {
         case 0:
-            return 278;
+            return 47;
             break;
         case 1:
             return 110;

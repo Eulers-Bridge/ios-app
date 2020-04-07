@@ -91,6 +91,26 @@
     }];
 }
 
+- (void)updateProfilePicURL:(NSString *)profilePicURL
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:TESTING_USERNAME password:TESTING_PASSWORD];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/hal+json", @"application/json", @"application/xml", nil];
+    NSDictionary *parameters = @{@"profilePhoto": profilePicURL};
+    NSString *urlString = [NSString stringWithFormat:@"%@/user/%@", TESTING_URL, TESTING_USERNAME];
+    [manager PUT:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id res) {
+        if (self.userDelegate != nil) {
+            [self.userDelegate updateProfilePicURLWithSuccess:YES failureReason:nil];
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (self.userDelegate != nil) {
+            [self.userDelegate updateProfilePicURLWithSuccess:NO failureReason:error];
+        }
+        
+    }];
+}
+
 - (void)addPersonalityForUser:(EBUser *)user withParameters:(NSDictionary *)parameters
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -371,6 +391,26 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (self.friendDelegate != nil) {
             [self.friendDelegate rejectFriendRequestFinishedWithSuccess:NO withInfo:nil failureReason:error];
+        }
+    }];
+}
+
+- (void)deleteFriendRequestWithRequestId:(NSString *)requestId
+{
+    NSString *urlString = [NSString stringWithFormat:@"%@/user/contactRequest/%@", TESTING_URL, requestId];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:TESTING_USERNAME password:TESTING_PASSWORD];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/hal+json", @"application/json", @"application/xml", nil];
+    
+    [manager DELETE:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id res) {
+        if (self.friendDelegate != nil) {
+            [self.friendDelegate deleteFriendRequestFinishedWithSuccess:YES withInfo:res failureReason:nil];
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (self.friendDelegate != nil) {
+            [self.friendDelegate deleteFriendRequestFinishedWithSuccess:NO withInfo:nil failureReason:error];
         }
     }];
 }

@@ -233,13 +233,32 @@
             self.loginButton.enabled = YES;
             self.signupButton.enabled = YES;
             [self.pickerView reloadAllComponents];
-            NSString *serverURL = (NSString *)((NSDictionary *)self.serverList[0])[@"apiRoot"];
-            [[NSUserDefaults standardUserDefaults] setObject:serverURL forKey:@"serverURL"];
-            [self.pickerView selectRow:0 inComponent:0 animated:NO];
+            NSString *savedServerURL = [[NSUserDefaults standardUserDefaults] objectForKey:@"serverURL"];
+            if (savedServerURL == nil) {
+                NSString *serverURL = (NSString *)((NSDictionary *)self.serverList[0])[@"apiRoot"];
+                [[NSUserDefaults standardUserDefaults] setObject:serverURL forKey:@"serverURL"];
+                [self.pickerView selectRow:0 inComponent:0 animated:NO];
+            } else {
+                [self checkAndSelectServer:self.serverList];
+            }
         }
         
     } else {
         
+    }
+}
+
+- (void)checkAndSelectServer:(NSArray *)serverList
+{
+    if ([serverList count] > 0) {
+        for (int i = 0; i < [serverList count]; i++) {
+            NSString *url = (NSString *)((NSDictionary *)serverList[i])[@"apiRoot"];
+            NSString *savedServerURL = [[NSUserDefaults standardUserDefaults] objectForKey:@"serverURL"];
+            if ([url isEqualToString:savedServerURL]) {
+                [self.pickerView selectRow:i inComponent:0 animated:NO];
+                break;
+            }
+        }
     }
 }
 

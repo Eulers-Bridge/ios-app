@@ -7,16 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040275F622E9CEF100F5FA87 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 040275F522E9CEF100F5FA87 /* Images.xcassets */; };
+		040275F822E9CF2A00F5FA87 /* Badges.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 040275F722E9CF2A00F5FA87 /* Badges.xcassets */; };
+		040275FA22E9CF3000F5FA87 /* Tasks.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 040275F922E9CF3000F5FA87 /* Tasks.xcassets */; };
 		040761931929BF3D00E660A8 /* MuseoSansRounded-700.otf in Resources */ = {isa = PBXBuildFile; fileRef = 040761921929BF3D00E660A8 /* MuseoSansRounded-700.otf */; };
 		04079741194072800097706C /* EBSignupTermsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 040797401940727F0097706C /* EBSignupTermsViewController.m */; };
 		040797441940E5AA0097706C /* EBLabelLight.m in Sources */ = {isa = PBXBuildFile; fileRef = 040797431940E5AA0097706C /* EBLabelLight.m */; };
 		040797471940E7F80097706C /* EBButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 040797461940E7F80097706C /* EBButton.m */; };
 		04173F4F197DF8C90093C145 /* GentiumPlus-I.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04173F4D197DF8C90093C145 /* GentiumPlus-I.ttf */; };
 		04173F50197DF8C90093C145 /* GentiumPlus-R.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04173F4E197DF8C90093C145 /* GentiumPlus-R.ttf */; };
+		041742AB22E9D1A300EB0119 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 041742AA22E9D1A300EB0119 /* Launch Screen.storyboard */; };
 		0421B3141F71D04A00E4AAE0 /* EBEfficacySlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 0421B3131F71D04A00E4AAE0 /* EBEfficacySlider.m */; };
 		042559331931C9FD0030AA0A /* Sentinel-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 042559321931C9FD0030AA0A /* Sentinel-Book.otf */; };
 		0425593C19346DA40030AA0A /* EBCandidateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0425593B19346DA40030AA0A /* EBCandidateViewController.m */; };
 		0425593F1935D6970030AA0A /* CALayer+XibConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0425593E1935D6970030AA0A /* CALayer+XibConfiguration.m */; };
+		0427D8F522E9D38900143A31 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04FD418D19062ECD00AF17DC /* Main_iPhone.storyboard */; };
 		04428E141998CE450061E2C5 /* EBSlidersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04428E131998CE450061E2C5 /* EBSlidersViewController.m */; };
 		04428E171999B8370061E2C5 /* EBPersonalitySlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 04428E161999B8370061E2C5 /* EBPersonalitySlider.m */; };
 		04428E1A199C6F5B0061E2C5 /* EBSliderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04428E19199C6F5B0061E2C5 /* EBSliderTableViewCell.m */; };
@@ -105,7 +110,6 @@
 		048D01C7195BB6C900E878DA /* EBButtonHeavy.m in Sources */ = {isa = PBXBuildFile; fileRef = 048D01C6195BB6C900E878DA /* EBButtonHeavy.m */; };
 		048D01CB195BBBEF00E878DA /* head2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 048D01CA195BBBEF00E878DA /* head2.jpg */; };
 		048D01CE195BC53500E878DA /* EBFriendProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 048D01CD195BC53500E878DA /* EBFriendProfileViewController.m */; };
-		048D01D0195BC9EB00E878DA /* Badges.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 048D01CF195BC9EB00E878DA /* Badges.xcassets */; };
 		048D01D3195BDC5400E878DA /* EBBadgesCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 048D01D2195BDC5400E878DA /* EBBadgesCollectionViewController.m */; };
 		048D01E0195BEF8200E878DA /* candidate0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 048D01D7195BEF8200E878DA /* candidate0.jpg */; };
 		048D01E1195BEF8200E878DA /* candidate1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 048D01D8195BEF8200E878DA /* candidate1.jpg */; };
@@ -142,7 +146,6 @@
 		04959BAA1988CDF500D9E768 /* ticketicon5.png in Resources */ = {isa = PBXBuildFile; fileRef = 04959BA51988CDF500D9E768 /* ticketicon5.png */; };
 		0495C508191B651900EAEAB5 /* EBPhotoStackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0495C507191B651900EAEAB5 /* EBPhotoStackViewController.m */; };
 		0495C50C191B661000EAEAB5 /* EBStackLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0495C50B191B661000EAEAB5 /* EBStackLayout.m */; };
-		049A474E1964FDFB00D363AE /* Tasks.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 049A474D1964FDFB00D363AE /* Tasks.xcassets */; };
 		049A4751196514AB00D363AE /* EBTasksDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049A4750196514AB00D363AE /* EBTasksDetailViewController.m */; };
 		049A475419652D8700D363AE /* EBTicketProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049A475319652D8700D363AE /* EBTicketProfileViewController.m */; };
 		049A47571966740B00D363AE /* EBPersonalityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049A47561966740B00D363AE /* EBPersonalityViewController.m */; };
@@ -155,6 +158,7 @@
 		049A476D196A803F00D363AE /* EBEmailVerificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049A476C196A803F00D363AE /* EBEmailVerificationViewController.m */; };
 		049A4770196B803E00D363AE /* EBTextFieldMuseo.m in Sources */ = {isa = PBXBuildFile; fileRef = 049A476F196B803E00D363AE /* EBTextFieldMuseo.m */; };
 		04A2380D1B65F4AE00377499 /* EBTextViewHelvetica.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A2380C1B65F4AE00377499 /* EBTextViewHelvetica.m */; };
+		04A27EC722EC4BF900F6A31F /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04FD419019062ECD00AF17DC /* Main_iPad.storyboard */; };
 		04A650BA22C0B5B300757735 /* EBGenderSelectorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A650B922C0B5B300757735 /* EBGenderSelectorTableViewController.m */; };
 		04B177621ACBA98D00008293 /* TestPathViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B177611ACBA98D00008293 /* TestPathViewController.m */; };
 		04B177651ACBAB5000008293 /* TestPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B177641ACBAB5000008293 /* TestPathView.m */; };
@@ -225,9 +229,6 @@
 		04FD418619062ECD00AF17DC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04FD418419062ECD00AF17DC /* InfoPlist.strings */; };
 		04FD418819062ECD00AF17DC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FD418719062ECD00AF17DC /* main.m */; };
 		04FD418C19062ECD00AF17DC /* EBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FD418B19062ECD00AF17DC /* EBAppDelegate.m */; };
-		04FD418F19062ECD00AF17DC /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04FD418D19062ECD00AF17DC /* Main_iPhone.storyboard */; };
-		04FD419219062ECD00AF17DC /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04FD419019062ECD00AF17DC /* Main_iPad.storyboard */; };
-		04FD419A19062ECD00AF17DC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04FD419919062ECD00AF17DC /* Images.xcassets */; };
 		04FD41A119062ECD00AF17DC /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FD41A019062ECD00AF17DC /* XCTest.framework */; };
 		04FD41A219062ECD00AF17DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FD417B19062ECD00AF17DC /* Foundation.framework */; };
 		04FD41A319062ECD00AF17DC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FD417F19062ECD00AF17DC /* UIKit.framework */; };
@@ -250,6 +251,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		040275F522E9CEF100F5FA87 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		040275F722E9CF2A00F5FA87 /* Badges.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Badges.xcassets; sourceTree = SOURCE_ROOT; };
+		040275F922E9CF3000F5FA87 /* Tasks.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Tasks.xcassets; sourceTree = SOURCE_ROOT; };
 		040761921929BF3D00E660A8 /* MuseoSansRounded-700.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MuseoSansRounded-700.otf"; sourceTree = "<group>"; };
 		0407973F1940727F0097706C /* EBSignupTermsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBSignupTermsViewController.h; sourceTree = "<group>"; };
 		040797401940727F0097706C /* EBSignupTermsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBSignupTermsViewController.m; sourceTree = "<group>"; };
@@ -259,6 +263,7 @@
 		040797461940E7F80097706C /* EBButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBButton.m; sourceTree = "<group>"; };
 		04173F4D197DF8C90093C145 /* GentiumPlus-I.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GentiumPlus-I.ttf"; sourceTree = "<group>"; };
 		04173F4E197DF8C90093C145 /* GentiumPlus-R.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GentiumPlus-R.ttf"; sourceTree = "<group>"; };
+		041742AA22E9D1A300EB0119 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		0421B3121F71D04A00E4AAE0 /* EBEfficacySlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBEfficacySlider.h; sourceTree = "<group>"; };
 		0421B3131F71D04A00E4AAE0 /* EBEfficacySlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBEfficacySlider.m; sourceTree = "<group>"; };
 		042559321931C9FD0030AA0A /* Sentinel-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sentinel-Book.otf"; sourceTree = "<group>"; };
@@ -374,7 +379,6 @@
 		048D01CA195BBBEF00E878DA /* head2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = head2.jpg; sourceTree = "<group>"; };
 		048D01CC195BC53500E878DA /* EBFriendProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBFriendProfileViewController.h; sourceTree = "<group>"; };
 		048D01CD195BC53500E878DA /* EBFriendProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBFriendProfileViewController.m; sourceTree = "<group>"; };
-		048D01CF195BC9EB00E878DA /* Badges.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Badges.xcassets; sourceTree = "<group>"; };
 		048D01D1195BDC5400E878DA /* EBBadgesCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBBadgesCollectionViewController.h; sourceTree = "<group>"; };
 		048D01D2195BDC5400E878DA /* EBBadgesCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBBadgesCollectionViewController.m; sourceTree = "<group>"; };
 		048D01D7195BEF8200E878DA /* candidate0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = candidate0.jpg; sourceTree = "<group>"; };
@@ -424,7 +428,6 @@
 		0495C507191B651900EAEAB5 /* EBPhotoStackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBPhotoStackViewController.m; sourceTree = "<group>"; };
 		0495C50A191B661000EAEAB5 /* EBStackLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBStackLayout.h; sourceTree = "<group>"; };
 		0495C50B191B661000EAEAB5 /* EBStackLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBStackLayout.m; sourceTree = "<group>"; };
-		049A474D1964FDFB00D363AE /* Tasks.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Tasks.xcassets; sourceTree = "<group>"; };
 		049A474F196514AB00D363AE /* EBTasksDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBTasksDetailViewController.h; sourceTree = "<group>"; };
 		049A4750196514AB00D363AE /* EBTasksDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBTasksDetailViewController.m; sourceTree = "<group>"; };
 		049A475219652D8700D363AE /* EBTicketProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBTicketProfileViewController.h; sourceTree = "<group>"; };
@@ -576,7 +579,6 @@
 		04FD418B19062ECD00AF17DC /* EBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EBAppDelegate.m; sourceTree = "<group>"; };
 		04FD418E19062ECD00AF17DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		04FD419119062ECD00AF17DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		04FD419919062ECD00AF17DC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = EulersBridge/Images.xcassets; sourceTree = "<group>"; };
 		04FD419F19062ECD00AF17DC /* IsegoriaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IsegoriaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04FD41A019062ECD00AF17DC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		04FD41A819062ECD00AF17DC /* IsegoriaTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IsegoriaTests-Info.plist"; sourceTree = "<group>"; };
@@ -1171,9 +1173,6 @@
 				04FD41A619062ECD00AF17DC /* EulersBridgeTests */,
 				04FD417A19062ECD00AF17DC /* Frameworks */,
 				04FD417919062ECD00AF17DC /* Products */,
-				04FD419919062ECD00AF17DC /* Images.xcassets */,
-				048D01CF195BC9EB00E878DA /* Badges.xcassets */,
-				049A474D1964FDFB00D363AE /* Tasks.xcassets */,
 				7D4C810F426BA9CADEBF71D9 /* Pods */,
 			);
 			sourceTree = "<group>";
@@ -1227,7 +1226,11 @@
 				049A475B196A2CF000D363AE /* Model Classes */,
 				04BB7035190B83AC0059E93C /* Helpers */,
 				04FD418219062ECD00AF17DC /* Supporting Files */,
+				040275F522E9CEF100F5FA87 /* Images.xcassets */,
+				040275F722E9CF2A00F5FA87 /* Badges.xcassets */,
+				040275F922E9CF3000F5FA87 /* Tasks.xcassets */,
 				0495C509191B65CC00EAEAB5 /* Test concepts */,
+				041742AA22E9D1A300EB0119 /* Launch Screen.storyboard */,
 			);
 			path = EulersBridge;
 			sourceTree = "<group>";
@@ -1366,7 +1369,6 @@
 			files = (
 				046D64E719319D8800C354F4 /* photo4.jpg in Resources */,
 				04954701193EEA90003F020B /* welcome.jpg in Resources */,
-				049A474E1964FDFB00D363AE /* Tasks.xcassets in Resources */,
 				046D64BF1930F29E00C354F4 /* event6.txt in Resources */,
 				04959BA61988CDF500D9E768 /* ticketicon1.png in Resources */,
 				046D64D11930F2B900C354F4 /* event6.jpg in Resources */,
@@ -1390,12 +1392,13 @@
 				046D6477192E29E700C354F4 /* news5.jpg in Resources */,
 				046D64EF19319D8800C354F4 /* photo12.jpg in Resources */,
 				04954709193F04C9003F020B /* Icon-76@2x.png in Resources */,
+				04A27EC722EC4BF900F6A31F /* Main_iPad.storyboard in Resources */,
 				046D645B192D8E9D00C354F4 /* selfHeadBig.jpg in Resources */,
-				04FD419219062ECD00AF17DC /* Main_iPad.storyboard in Resources */,
 				048D01E2195BEF8200E878DA /* candidate2.jpg in Resources */,
 				048D01E0195BEF8200E878DA /* candidate0.jpg in Resources */,
 				046D64EB19319D8800C354F4 /* photo8.jpg in Resources */,
 				046D64E319319D8800C354F4 /* photo0.jpg in Resources */,
+				041742AB22E9D1A300EB0119 /* Launch Screen.storyboard in Resources */,
 				046D64B91930F29E00C354F4 /* event0.txt in Resources */,
 				046D64E519319D8800C354F4 /* photo2.jpg in Resources */,
 				046D64CF1930F2B900C354F4 /* event4.jpg in Resources */,
@@ -1405,13 +1408,12 @@
 				046D64BC1930F29E00C354F4 /* event3.txt in Resources */,
 				046D64A8192E3E8600C354F4 /* news5.txt in Resources */,
 				046D64BD1930F29E00C354F4 /* event4.txt in Resources */,
-				04FD419A19062ECD00AF17DC /* Images.xcassets in Resources */,
-				048D01D0195BC9EB00E878DA /* Badges.xcassets in Resources */,
 				046D64E619319D8800C354F4 /* photo3.jpg in Resources */,
 				046D6499192E2DEA00C354F4 /* news4.txt in Resources */,
 				046D649E192E2DEA00C354F4 /* news9.txt in Resources */,
 				046D647B192E29E700C354F4 /* news9.jpg in Resources */,
 				048D01E7195BEF8200E878DA /* candidate7.jpg in Resources */,
+				040275FA22E9CF3000F5FA87 /* Tasks.xcassets in Resources */,
 				046D64E419319D8800C354F4 /* photo1.jpg in Resources */,
 				046D64EE19319D8800C354F4 /* photo11.jpg in Resources */,
 				046D64EC19319D8800C354F4 /* photo9.jpg in Resources */,
@@ -1419,10 +1421,12 @@
 				046D64E819319D8800C354F4 /* photo5.jpg in Resources */,
 				046D647F192E29E700C354F4 /* news13.jpg in Resources */,
 				0494A4BC1920AA6300602CB9 /* MuseoSansRounded-300.otf in Resources */,
+				040275F622E9CEF100F5FA87 /* Images.xcassets in Resources */,
 				04173F4F197DF8C90093C145 /* GentiumPlus-I.ttf in Resources */,
 				046D644C192B4A5100C354F4 /* head1.jpg in Resources */,
 				046D6476192E29E700C354F4 /* news4.jpg in Resources */,
 				048D01E4195BEF8200E878DA /* candidate4.jpg in Resources */,
+				0427D8F522E9D38900143A31 /* Main_iPhone.storyboard in Resources */,
 				046D64AE192E434100C354F4 /* news14.txt in Resources */,
 				046D64BB1930F29E00C354F4 /* event2.txt in Resources */,
 				046D6497192E2DEA00C354F4 /* news2.txt in Resources */,
@@ -1443,7 +1447,6 @@
 				046D6475192E29E700C354F4 /* news3.jpg in Resources */,
 				04959BA91988CDF500D9E768 /* ticketicon4.png in Resources */,
 				042559331931C9FD0030AA0A /* Sentinel-Book.otf in Resources */,
-				04FD418F19062ECD00AF17DC /* Main_iPhone.storyboard in Resources */,
 				046D64C01930F29E00C354F4 /* event7.txt in Resources */,
 				046D64AC192E426600C354F4 /* news0.txt in Resources */,
 				046D64CB1930F2B900C354F4 /* event0.jpg in Resources */,
@@ -1465,6 +1468,7 @@
 				04959BAA1988CDF500D9E768 /* ticketicon5.png in Resources */,
 				046D6478192E29E700C354F4 /* news6.jpg in Resources */,
 				046D64BE1930F29E00C354F4 /* event5.txt in Resources */,
+				040275F822E9CF2A00F5FA87 /* Badges.xcassets in Resources */,
 				046D647C192E29E700C354F4 /* news10.jpg in Resources */,
 				040761931929BF3D00E660A8 /* MuseoSansRounded-700.otf in Resources */,
 				046D649F192E2DEA00C354F4 /* news10.txt in Resources */,
@@ -1780,7 +1784,7 @@
 			baseConfigurationReference = B68AF925497CE21AC52CBED6 /* Pods-Isegoria.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-4";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Isegoria.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1806,7 +1810,7 @@
 			baseConfigurationReference = 09F30ABD320CEA5D2A8809C1 /* Pods-Isegoria.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-4";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Isegoria.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

@@ -237,6 +237,26 @@
     return cell;
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return YES if you want the specified item to be editable.
+    if (indexPath.section == 1) {
+        return YES;
+    }
+    return NO;
+}
+
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Update the server
+        [self deleteFriendWithRequestId:(self.friendRequestsPending[indexPath.row][@"id"])];
+        NSMutableArray *friendRequestsChanged = [self.friendRequestsPending mutableCopy];
+        [friendRequestsChanged removeObjectAtIndex:indexPath.row];
+        self.friendRequestsPending = [friendRequestsChanged copy];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+}
+
 
 #pragma mark UISearchBar delegate
 
@@ -319,6 +339,14 @@
     [service rejectFriendRequestWithRequestId:requestId];
 }
 
+- (void)deleteFriendWithRequestId:(NSString *)requestId
+{
+    EBNetworkService *service = [[EBNetworkService alloc] init];
+    [self.networkServices addObject:service];
+    service.friendDelegate = self;
+    [service deleteFriendRequestWithRequestId:requestId];
+}
+
 - (void)actionButtonTapped:(NSDictionary *)contact
 {
     // Show contact profile.
@@ -347,6 +375,17 @@
         
     }
 
+}
+
+- (void)deleteFriendRequestFinishedWithSuccess:(BOOL)success withInfo:(NSDictionary *)info failureReason:(NSError *)error
+{
+    [self loadFriendRequests];
+    if (success) {
+        
+    } else {
+        
+    }
+    
 }
 
 -(void)dealloc
